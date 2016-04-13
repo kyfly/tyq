@@ -172,3 +172,40 @@ hr {
 .brand-logo {
     margin-bottom: 50px !important;
 }
+.wechat_a{
+    padding-right: 3px !important;
+    padding-left: 3px !important;
+}
+.wechat_main{
+    position: relative;
+    width:100%;
+    height: 100%;
+}
+.wechat_zero{
+    margin:0 !important;
+    padding: 0 !important;
+}
+.wechat_chose{
+    padding: 10px !important;
+}
+.wechat_chose_div{
+    height:25px;
+    padding-left: 15px;
+}
+.wechat_btn{
+    margin-left: 4px!important;
+    margin-right: 4px!important;
+}
+.wechat_tr{
+    border-bottom: solid 1px #d4d4d4;
+}
+.wechat_title{
+    line-height: 20px;
+    font-size: 17px;
+    margin: 10px;
+    padding: 10px;
+}
+.wechat_search{
+    border: solid 1px #f1f1f1;
+    border-bottom:0 ;
+}
