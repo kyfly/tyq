@@ -28,7 +28,7 @@ exports.default = {
         desc: "同步单条图文信息到发现页面"
     },{
         api: "/news/:id",
-        method: "distroy",
+        method: "delete",
         action: "distroy",
         remote: "/api/news/:id",
         desc: "删除一条图文信息"

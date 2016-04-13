@@ -16,7 +16,7 @@ exports.default = {
         desc: "话题详情"
     },{
         api: "/topics/:id",
-        method: "distroy",
+        method: "delete",
         action: "distroy",
         remote: "/api/topics/:id",
         desc: "删除话题"
