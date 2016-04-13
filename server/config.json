@@ -1,0 +1,15 @@
+{
+  "restApiRoot": "/api",
+  "host": "127.0.0.1",
+  "port": 3000,
+  "source": {
+    "controller": "./controllers",
+    "model": "./apis",
+    "route": "./routes",
+    "view": "./views"
+  },
+  "remote": {
+    "domain": "dmday.cn",
+    "pathPrefix": "apis"
+  }
+}

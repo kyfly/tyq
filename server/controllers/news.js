@@ -1,5 +1,7 @@
+var rp = require('request-promise');
 exports.list = function (req, res, next) {
-    console.log(this);
+    console.log(req.app);
+    next();
 }
 exports.findById = function () {
     
