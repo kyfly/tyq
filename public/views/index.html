@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="TYQ">
+<html ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>糖友圈管理系统</title>
@@ -8,33 +8,76 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link href="../lib/materialize/css/material-icons.css" rel="stylesheet">
-    <link href="../lib/materialize/css/materialize.css" rel="stylesheet">
-    <link href="../stylesheets/style.css">
+    <link href="/lib/materialize/css/material-icons.css" rel="stylesheet">
+    <link href="/lib/materialize/css/materialize.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
 </head>
-<body>
-<div class="container">
-    在
+<body ng-controller="IndexCtrl">
+<!--侧边导航-->
+<ul class="side-nav fixed z-depth-2" id="sideBar">
+    <h5 class="text-center orgName">微信号名字</h5>
+    <a class="logo brand-logo" href="/">
+        <img id="front-page-logo" src="">
+    </a>
+    <hr id="sidebarHr">
+    <li id="{{sidebar.id}}" ng-repeat="sidebar in sidebars" ng-class="{active: sidebar.active}" class="bold">
+        <a class="waves-effect" href="{{sidebar.url}}" ng-click="redirect($index)">{{sidebar.display_name}}</a>
+    </li>
+</ul>
+<div class="wrap">
+    <div class="main">
+        <!--头部nav-->
+        <nav>
+            <div class="nav-wrapper light-blue darken-2 center">
+                <a href="" data-activates="sideBar" class="button-collapse left">
+                    <i class="mdi-navigation-menu"></i>
+                </a>
+                <a href="" class="center page-title brand-logo" ng-bind="pageTitle">
+
+                </a>
+                <!--<ul class="right">-->
+                <!--<li ng-show="access">-->
+                <!--<a tooltipped data-position="bottom" data-delay="0" data-tooltip="退出登陆" class="login-out waves-effect" href ng-click="logout()"><i class="mdi-action-settings-power"></i></a>-->
+                <!--</li>-->
+                <!--</ul>-->
+            </div>
+        </nav>
+        <!--右侧主要内容-->
+        <main >
+            <div class="container">
+                <div class="col s12" ui-view=""></div>
+            </div>
+        </main>
+    </div>
 </div>
+<!--底部信息-->
+<footer class="light-blue darken-2">
+    <div class="footer-copyright">
+        <div class="container grey-text text-lighten-4">
+            © 团团一家工作室
+            <a class="grey-text text-lighten-4 right" href="http://www.etuan.org/">www.etuan.org</a>
+        </div>
+    </div>
+</footer>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/angular/angular.min.js"></script>
+<script src="/lib/materialize/js/materialize.min.js"></script>
+<script src="/lib/angular-components/angular-resource.min.js"></script>
+<script src="/lib/angular-components/angular-ui-router.min.js"></script>
+<script src="/lib/materialize/js/angular-materialize.js"></script>
 
 
 
-
-
-
-
-
-<!--angular-->
-<script src="../lib/angular/angular.min.js"></script>
-<!-- material -->
-<script src="../lib/materialize/js/materialize.min.js"></script>
-<!--angular-ueditor-->
-<script src="../lib/angular-ueditor/angular-ueditor.min.js"></script>
-<!-- ng-material -->
-<script src="../lib/materialize/js/angular-materialize.js"></script>
-<!--ui-router-->
-<script src="../lib/angular-components/angular-ui-router.min.js"></script>
-<!--resource-->
-<script src="../lib/angular-components/angular-resource.min.js"></script>
+<script src="/lib/ueditor/ueditor.config.js"></script>
+<script src="/lib/ueditor/ueditor.all.min.js"></script>
+<script src="/lib/angular-ueditor/angular-ueditor.min.js"></script>
+<script src="/javascripts/configure.js"></script>
+<script src="/javascripts/route.js"></script>
+<script src="/javascripts/controllers/homecontroller.js"></script>
+<script src="/javascripts/controllers/usercontroller.js"></script>
+<script src="/javascripts/controllers/forumcontroller.js"></script>
+<script src="/javascripts/controllers/wechatcontroller.js"></script>
+<script src="/javascripts/controllers/statisticscontroller.js"></script>
+<script src="/javascripts/services/ueditor-services.js"></script>
 </body>
 </html>
