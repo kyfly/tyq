@@ -43,6 +43,13 @@ app.controller('ForumPublishCtrl', ['$scope','Ueditor', function ($scope,Ueditor
 
 app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
 
+
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+
 }]);
 
 app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
