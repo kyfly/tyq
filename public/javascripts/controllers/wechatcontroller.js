@@ -1,5 +1,4 @@
 app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
-	console.log("×ö¸ö²âÊÔ");
+	console.log("åšä¸ªæµ‹è¯•");
 	var a="aaaaaaa";
-	//$scope.(a);
 }]);

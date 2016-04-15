@@ -1,1 +1,15 @@
-publish.html
+<div class="container">
+    <h5>发表话题</h5>
+    <div>
+        <div input-field>
+            <input id="name" type="text" style="margin:0" ng-model="article.title" length="11" required>
+            <label for="name">请输入文章标题</label>
+        </div>
+        <div>{{editorConfig}}
+            <div class="ueditor" ng-model="articleEditorContent" config="editorConfig"></div>
+        </div>
+    </div>
+    <div style="margin: 20px" class="center">
+        <a href="" class="btn waves-effect waves-light red" ng-click="createArticle()">发布</a>
+    </div>
+</div>
