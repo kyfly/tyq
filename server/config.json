@@ -6,7 +6,8 @@
     "controller": "./controllers",
     "model": "./apis",
     "route": "./routes",
-    "view": "./views"
+    "view": "./views",
+    "static": "./public"
   },
   "remote": {
     "domain": "dmday.cn",

@@ -3,7 +3,7 @@ var fs = require('fs');
 var readdir = fs.readdirSync;
 var app;
 function loadApis () {
-  var apidir = path.join(__dirname, './apis');
+  var apidir = path.join(__dirname, '../apis');
   var apis = [];
   readdir(apidir).forEach(function (file) {
     var apiFile = path.join(apidir, file);
@@ -19,7 +19,7 @@ function loadApis () {
   return apis;
 }
 function loadController(controllerName) {
-  var contrldir = path.join(__dirname, './controllers');
+  var contrldir = path.join(__dirname, '../controllers');
   var contrlFIle = path.join(contrldir, controllerName)
   if (!fs.existsSync(contrlFIle + '.js')) {
     throw new Error(`${contrlFIle} 文件不存在`);
@@ -28,8 +28,8 @@ function loadController(controllerName) {
   return contrl;
 }
 
-function loadModels(app) {
-  app = app;
+function loadModels(server) {
+  app = server;
   var models = loadApis ();
   models.forEach(function (model) {
     if (!model)
@@ -37,6 +37,6 @@ function loadModels(app) {
     var controller = loadController(model.controller);
     model.controller = controller;
   });
-  return models;
+  server.models = models;
 }
-exports.models = loadModels;
+exports.setup = loadModels;
