@@ -26,6 +26,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/users/scheme.html',
             controller: 'UserSchemeCtrl'
         })
+        /*
+        用户积分管理
+         */
+        .state('userScore',{
+        url:'/MS/user/score/:id',
+            templateUrl:"/views/users/score.html",
+            controller:"UserScoreCtrl"
+    })
         .state('forumPublish', {
             url: '/MS/forum/publish',
             templateUrl: '/views/forum/publish.html',

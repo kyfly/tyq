@@ -228,3 +228,14 @@ hr {
 .n_top{
     margin-top: 40px;
 }
+
+.list_table_img{
+    width: 50px;
+    height: 50px;
+}
+.user_score_allscore{
+
+    font-size:20px;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
+    margin-top: 10px;
+}
