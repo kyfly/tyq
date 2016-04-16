@@ -228,3 +228,6 @@ hr {
 .n_top{
     margin-top: 40px;
 }
+.n_tr {
+    border-bottom: solid 1px #d4d4d4;
+}
