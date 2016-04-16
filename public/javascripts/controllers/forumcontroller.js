@@ -1,11 +1,11 @@
-app.controller('ForumPublishCtrl', ['$scope','Ueditor', function ($scope,Ueditor) {
+app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Ueditor) {
     $scope.editorConfig = {
         serverUrl: "/ue/uploads",
         toolbars: [[
             'fullscreen', 'source', '|', 'undo', 'redo', '|',
             'bold', 'italic', 'underline', 'fontborder', 'strikethrough', '|',
             'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
-            'simpleupload', 'insertimage','attachment','insertvideo', 'music'
+            'simpleupload', 'insertimage', 'attachment', 'insertvideo', 'music'
         ]],
         initialFrameHeight: 300,
         //关闭字数统计
@@ -36,18 +36,74 @@ app.controller('ForumPublishCtrl', ['$scope','Ueditor', function ($scope,Ueditor
             $scope.article.created = new Date();
             $scope.article.coterieId = $stateParams.id;
 
-            });
-        }
+        });
+    }
 
 }]);
 
 app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
 
 
+    //$scope.items = [];
+    //$scope.items = ['作者','看着','自己'];
+    $scope.peopleInfo = [
+        {
+            imgSrc: "/lib/img/weixin.jpg",
+            name: "李畅",
+            time: "2016.2.9 12时18分",
+            title: "新人在此！！！",
+            content: "大家好，我是新人",
+            contentImg:"",
+            numberOfReader:"55",
+            numberOfLike:"55",
+            numberOfComment:"100"
+        },
+        {
+            imgSrc: "/lib/img/weixin.jpg",
+            name: "金老师",
+            time: "2016.2.9 12时16分",
+            title: "21岁 一型糖尿病",
+            content: "刚确诊了，分手了 双重打击 有没有类似于群这样的 我加一个",
+            contentImg:"/lib/img/testImg1.png",
+            numberOfReader:"67",
+            numberOfLike:"44",
+            numberOfComment:"34"
+        },
+        {
+            imgSrc: "/lib/img/weixin.jpg",
+            name: "刘建东",
+            time: "2016.2.9 10时18分",
+            title: "测试测试",
+            content: "这里是一次测试，请勿回复！！",
+            contentImg:"",
+            numberOfReader:"23",
+            numberOfLike:"3",
+            numberOfComment:"0"
+        }
+    ];
 
-    $(document).ready(function() {
+    $(".button-collapse").sideNav();
+
+    //响应式图片
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+    });
+
+    //下拉框
+    $(document).ready(function () {
         $('select').material_select();
     });
+
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false // Displays dropdown below the button
+        }
+    );
+
 
 
 }]);

@@ -228,3 +228,9 @@ hr {
 .n_top{
     margin-top: 40px;
 }
+
+.screen_box{
+    position: absolute;
+    margin: -10px 0 0 -27px;
+}
+

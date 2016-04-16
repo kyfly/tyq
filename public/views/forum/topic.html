@@ -4,87 +4,63 @@
         <div class="row">
             <div class="input-field col s3">
                 <select>
-                    <option value="" selected>选一个</option>
-                    <option value="1">作者</option>
-                    <option value="2">正在</option>
-                    <option value="3">看着</option>
+                    <option>作者</option>
+                    <option>正在</option>
+                    <option>看着</option>
                 </select>
             </div>
-            <div class="input-field col s7" >
-                        <input placeholder="请输入搜索内容" id="first_name" type="text" class="validate">
-                        <!--<label for="first_name">First Name</label>-->
+            <div class="input-field col s7">
+                <input placeholder="请输入搜索内容" id="first_name" type="text" class="validate" required>
+                <!--<label for="first_name">First Name</label>-->
             </div>
             <div class="nav-wrapper col s2">
                 <a class="waves-effect waves-light btn">
                     <i class="mdi-action-search" style="vertical-align: top"></i>
-                    <span>搜索</span>
+                    <!--<span>搜索</span>-->
                 </a>
             </div>
         </div>
 
         <div>
+            <div style="background: #f1f1f1">
+                <input type="checkbox" id="topic-top"/>
+                <label for="topic-top">话题</label>
+            </div>
+
             <ul class="collection" style="border: 0">
-                <li class="collection-item avatar">
-                    <img src="/lib/img/weixin.jpg" alt="" class="circle">
-                    <span class="title">李畅</span>
-                    <p>2016.2.9 12时18分 <br>
-                        新人在此！！！
+                <li class="collection-item avatar" ng-repeat="personInfo in peopleInfo">
+                    <img ng-src={{personInfo.imgSrc}} alt="" class="circle">
+                    <span class="title" ng-bind="personInfo.name" style="font-weight: 700"></span>
+                    <p>
+                        <span ng-bind="personInfo.time" style="font-weight: 100"></span>
+                    <h6 ng-bind="personInfo.title" style="font-weight: 700"></h6>
+                    <p ng-bind="personInfo.content" style="font-weight: 100"></p>
+                    <div>
+                        <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img">
+                    </div>
+
                     </p>
-                    <a href="" class="secondary-content">
-                        <span>评论 | </span>
-                        <span>清理 | </span>
-                        <span>置顶 | </span>
-                        <span>锁定 | </span>
-                        <span>删除</span>
-                    </a>
-                </li>
-                <li class="collection-item avatar">
-                    <i class="mdi-file-folder circle"></i>
-                    <span class="title">金老师</span>
-                    <p>2016.2.9 12时16分 <br>
-                        21岁 一型糖尿病
-                    </p>
-                    <a href="" class="secondary-content">
-                        <span>评论 | </span>
-                        <span>清理 | </span>
-                        <span>置顶 | </span>
-                        <span>锁定 | </span>
-                        <span>删除</span>
-                    </a>
-                </li>
-                <li class="collection-item avatar">
-                    <i class="mdi-action-assessment circle green"></i>
-                    <span class="title">刘建东</span>
-                    <p>2016.2.9 10时16分<br>
-                        测试 测试
-                    </p>
-                    <a href="" class="secondary-content">
-                        <span>评论 | </span>
-                        <span>清理 | </span>
-                        <span>置顶 | </span>
-                        <span>锁定 | </span>
-                        <span>删除</span>
-                    </a>
-                </li>
-                <li class="collection-item avatar">
-                    <i class="mdi-av-play-arrow circle red"></i>
-                    <span class="title">外人</span>
-                    <p>2016.2.9 9时16分 <br>
-                        来凑热闹
-                    </p>
-                    <a href="" class="secondary-content">
-                        <span>评论 | </span>
-                        <span>清理 | </span>
-                        <span>置顶 | </span>
-                        <span>锁定 | </span>
-                        <span>删除</span>
-                    </a>
+                    <span>
+                        <i class="mdi-action-visibility" ng-bind="personInfo.numberOfReader"></i>
+                        &nbsp;
+                        <i class="mdi-action-thumb-up" ng-bind="personInfo.numberOfLike"></i>
+                        &nbsp;
+                        <i class="mdi-communication-chat" ng-bind="personInfo.numberOfComment"></i>
+                    </span>
+                    <div class="secondary-content screen_box">
+                        <a href="" class='dropdown-button waves-effect btn-flat white'
+                           data-activates='screenbox'
+                           style="padding: 0" dropdown>
+                            <i class="mdi-hardware-keyboard-arrow-down"></i>
+                        </a>
+                        <ul id='screenbox' class='dropdown-content'>
+                            <li><a href="">one</a></li>
+                            <li><a href="">two</a></li>
+                            <li><a href="">three</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
-
-
-
     </div>
-
 </div>
