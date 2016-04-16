@@ -15,17 +15,49 @@
 <div >
     <h5>正文</h5>
     <textarea class="n_textarea " placeholder="请输入公告内容" ></textarea>
-    <label for="textarea1"></label>
-
         <a href="" class="btn waves-effect waves-light red right" ng-click="">发布</a>
 </div>
 <div class="n_top">
     <h5>公告列表</h5>
     <form action="">
-        <div class="col s12 " style="background: #f1f1f1">
-            <input type="checkbox" class="filled-in" id="all"/>
-            <label for="all">公告日期</label>
-        </div>
+        <table>
+            <thead>
+            <tr class="">
+                <th><input type="checkbox" class="filled-in" id="all"/>
+                    <label for="all"></label></th>
+                <th data-field="date" style=""> 发布日期</th>
+            </tr>
+            </thead>
+            </body>
+            <tr class="n_tr">
+                <td>
+                    <input class="filled-in" type="checkbox" id="art_1"/>
+                    <label for="art_1" class=""></label>
+                </td>
+                <td>2015.0422</td>
+                <td clss="center">这是一次测试</td>
+                <td class="right">修改|删除</td>
+            </tr>
+            <tr class="n_tr">
+                <td>
+                    <input class="filled-in" type="checkbox" id="art_2"/>
+                    <label for="art_2" class=""></label>
+                </td>
+                <td>2015.0422</td>
+                <td clss="center">情人最后难免沦为朋友</td>
+                <td class="right">修改|删除</td>
+            </tr>
+            <tr class="n_tr">
+            <td>
+                <input class="filled-in" type="checkbox" id="art_3"/>
+                <label for="art_3" class=""></label>
+            </td>
+            <td>2015.0422</td>
+            <td clss="center">一生何求</td>
+            <td class="right">修改|删除</td>
+        </tr>
+            </tbody>
+        </table>
     </form>
 
  </div>
