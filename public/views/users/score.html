@@ -1,7 +1,12 @@
-<!--list.html用户列表-->
+<!--ntegral management用户积分管理-->
+<!--<div>-->
+    <!--<p ng-bind="user.name"></p>-->
+    <!--o;ihdsapido A-->
+<!--</div>-->
 <div class="row" style="font-size: 15px;line-height: 25px">
-    <div class="col s12  wechat_title">用户列表</div>
-    <div class="col s12">
+    <div class="col s12  wechat_title">用户列表 > {{user.name}}的积分</div>
+    <div class="col s12 user_score_allscore">积分总量：{{user.score}}</div>
+    <div class="col s12" style="margin-top: 20px">
         <div class="col s1 wechat_zero">
             <select class="browser-default wechat_zero">
                 <option>姓名</option>
@@ -18,41 +23,30 @@
 
 <div>
     <table class="centered bordered">
-        <thead class="grey-text">
+        <thead class="grey-text grey lighten-4">
         <tr>
             <th>
                 <input type="checkbox" class="filled-in" id="all">
                 <label for="all">全选</label>
             </th>
-            <th>头像</th>
-            <th>名字</th>
-            <th>积分</th>
-            <th>等级</th>
-            <th>发表</th>
-            <th>回复</th>
+            <th>时间</th>
+            <th>变化</th>
+            <th>原因</th>
             <th>功能</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="changeItem in user.changeItems">
             <td >
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}">
                 <label for="checkbox{{$index}}"></label>
             </td>
+            <td ng-bind="changeItem.time"></td>
+            <td ng-bind="changeItem.change"></td>
+            <td ng-bind="changeItem.reason"></td>
             <td>
-                <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
-            </td>
-            <td ng-bind="user.name"></td>
-            <td><a ng-href="/MS/user/score/{{user.id}}" ng-bind="user.score"></a></td>
-            <td ng-bind="user.level"></td>
-            <td ng-bind="user.comments"></td>
-            <td ng-bind="user.replies"></td>
-            <td>
-                <a class="wechat_a">拉黑</a>|
-                <a class="wechat_a">设为管理员</a>|
-                <a class="wechat_a">对话</a>|
-                <a class="wechat_a">详情</a>
+                <a class="wechat_a">删除</a>
             </td>
         </tr>
         </tbody>
@@ -60,8 +54,9 @@
 </div>
 
 <div style="margin: 5px">
-    <button class="btn col  wechat_btn">拉黑</button>
+    <button class="btn col  wechat_btn">删除</button>
     <button class="btn col wechat_btn right">上一页</button>
     <button class="btn col wechat_btn right">下一页</button>
 </div>
+
 
