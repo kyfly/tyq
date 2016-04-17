@@ -1,6 +1,5 @@
 app.controller('IndexCtrl', ['$scope', function ($scope) {
-    $scope.$on('$stateChangeStart', function (evt, next, current) {
-        console.log(next);
+    $scope.$on('$stateChangeStart', function (evt, next) {
         if (next.name !== 'index')
             $scope.redirect(next.stateIndex, next.type);
     });
