@@ -11,6 +11,45 @@ body > .wrap {
     min-height: 100%;
 }
 
+/*
+    主色-蓝色  #54adff
+    辅色-深灰色  #717171
+    辅色-浅灰色  #e6e8ea
+    特殊色-橘黄色  ff8d37
+*/
+
+.blue {
+    background-color: #54adff !important;
+}
+
+.blue-text {
+    color: #54adff !important;
+}
+
+.dark-grey {
+    background-color: #717171 !important;
+}
+
+.light-grey {
+    background-color: #e6e8ea !important;
+}
+
+.dark-grey-text {
+    color: #717171 !important;
+}
+
+.light-grey-text {
+    color: #e6e8ea !important;
+}
+
+.orange {
+    background-color: #ff8d37 !important;
+}
+
+.orange-text {
+    color: #ff8d37 !important;
+}
+
 .main {
     padding-bottom: 50px;
 }
@@ -22,12 +61,6 @@ footer {
     font-size: 1.2rem;
     padding-top: 15px;
     clear: both;
-}
-
-.logo {
-    text-align: center;
-    margin-top: 32px;
-    margin-bottom: 80px;
 }
 
 hr {
@@ -46,65 +79,59 @@ hr {
     display: block;
 }
 
-.logo:hover {
-    background-color: #ffffff;
-}
-
-#front-page-logo {
-    height: 80px;
-}
-
-#sidebarHr {
-    width: 70%;
-    margin-top: -10px;
-}
-
-.topBar-logo {
-    height: 35px;
-    margin-top: 10px;
-}
-
 .bold {
     padding: 0 !important;
     margin-right: 15px !important;
 }
 
 .bold > a {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .side-nav > li {
     text-align: center;
-    height: 55px;
+    height: 40px;
 }
 
 .side-nav > li > a {
-    height: 55px;
-    line-height: 55px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .side-nav li:hover, .side-nav li.active {
-    background-color: #0288D1;
+    background-color: #54adff;
 }
 
 .side-nav > li:hover > a, .side-nav > li.active > a {
     color: #ffffff;
 }
 
-.login-out > i {
-    font-size: 2.7rem;
-    height: 56px;
-    line-height: 56px;
+#sideBar {
+    padding-top: 30px;
 }
 
-/*main {
-  padding: 15px 0 15px 0;
-  background-color: #FCFCFC;
-}*/
+.navTitle {
+    font-size: 20px;
+    color: #a9b7b7;
+    margin-left: 25px;
+    line-height: 30px;
+}
+
+.navTitle > i {
+    font-size: 30px;
+}
 
 @media only screen and (min-width: 993px) {
     .container {
         width: 80% !important;
+    }
+
+    #sideBar {
+        margin-top: 64px;
+    }
+
+    #navBar {
+        padding-left: 0;
     }
 }
 
@@ -164,11 +191,6 @@ hr {
     margin-left: 15px !important;
 }
 
-.orgName {
-    margin-top: 30px !important;
-    font-size: medium;
-}
-
 .brand-logo {
     margin-bottom: 50px !important;
 }
@@ -222,33 +244,32 @@ hr {
 .topic-list .input-field {
     margin-top: 0;
 }
-.n_textarea{
+
+.n_textarea {
     height: 250px;
 }
-.n_top{
+
+.n_top {
     margin-top: 40px;
 }
 
-
-.screen_box{
+.screen_box {
     position: absolute;
     margin: -10px 0 0 -27px;
 }
-
-
 
 .n_tr {
     border-bottom: solid 1px #d4d4d4;
 }
 
-
-.list_table_img{
+.list_table_img {
     width: 50px;
     height: 50px;
 }
-.user_score_allscore{
 
-    font-size:20px;
+.user_score_allscore {
+
+    font-size: 20px;
     font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
     margin-top: 10px;
 }

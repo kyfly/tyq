@@ -1,16 +1,20 @@
 app.controller('IndexCtrl', ['$scope', function ($scope) {
+    $scope.$on('$stateChangeStart', function (evt, next, current) {
+        console.log(next);
+        if (next.name !== 'index')
+            $scope.redirect(next.stateIndex, next.type);
+    });
+
 //侧边栏显示内容
-    $scope.sidebars = [
-        {
-            'id': 'sidebarHome',
-            'display_name': '首页',
-            'url': '/MS/home'
-        },
+    $scope.sidebars1 = [
         {
             'id': 'sidebarWechatArticle',
             'display_name': '文章管理',
             'url': '/MS/wechat/article'
-        },
+        }
+    ];
+
+    $scope.sidebars2 = [
         {
             'id': 'sidebarUserList',
             'display_name': '用户列表',
@@ -30,7 +34,10 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
             'id': 'sidebarUserScheme',
             'display_name': '控糖方案',
             'url': '/MS/user/scheme'
-        },
+        }
+    ];
+
+    $scope.sidebars3 = [
         {
             'id': 'sidebarForumPublish',
             'display_name': '发表话题   ',
@@ -45,26 +52,34 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
             'id': 'sidebarForumNotice',
             'display_name': '公告管理',
             'url': '/MS/forum/notice'
-        },
-        {
-            'id': 'sidebarStatistics',
-            'display_name': '统计',
-            'url': '/MS/statistics'
         }
     ];
     //跳转函数，包括操作侧边栏按钮和跳转至相应页面
     //这里可以试试css选择器
-    $scope.redirect = function (index) {
-        for (var i = 0; i < $scope.sidebars.length; i++) {
-            $scope.sidebars[i].active = false;
+    $scope.redirect = function (index, key) {
+        for (var i = 0; i < $scope.sidebars1.length; i++) {
+            $scope.sidebars1[i].active = false;
         }
-        $scope.sidebars[index].active = true;
-
+        for (var j = 0; j < $scope.sidebars2.length; j++) {
+            $scope.sidebars2[j].active = false;
+        }
+        for (var k = 0; k < $scope.sidebars3.length; k++) {
+            $scope.sidebars3[k].active = false;
+        }
+        switch (key) {
+            case 1:
+                $scope.sidebars1[index].active = true;
+                break;
+            case 2:
+                $scope.sidebars2[index].active = true;
+                break;
+            case 3:
+                $scope.sidebars3[index].active = true;
+                break;
+            default:
+                $scope.sidebars1[0].active = true;
+        }
         $('.button-collapse').sideNav('hide');
     };
-
-}]);
-
-app.controller('HomeCtrl', ['$scope', function ($scope) {
 
 }]);
