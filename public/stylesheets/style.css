@@ -207,6 +207,10 @@ hr {
     border-bottom: solid 1px #d4d4d4;
 }
 
+.wechat_color_blue{
+    background-color: #01a8f4;
+}
+
 .wechat_title {
     line-height: 20px;
     font-size: 17px;
@@ -215,8 +219,36 @@ hr {
 }
 
 .wechat_search {
-    border: solid 1px #f1f1f1;
+    border: solid 1px #d4d4d4;
     border-bottom: 0;
+}
+
+div[class~=wechat_num]:hover div{
+    width: 100%;
+    height: 100%;
+    background-color: #01a8f4;
+    opacity: 0.15;
+    margin-top: -30px;
+}
+div[class~=wechat_num]:hover{
+    border: 1px solid #5a6dff;
+}
+.wechat_num_n{
+    margin-top: -35px;
+    width: 50%;
+    margin-left: 25%
+}
+
+.wechat_num{
+    font-size: 8px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin: 2px;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    z-index:10;
 }
 
 .topic-list .input-field {
