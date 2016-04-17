@@ -1,33 +1,30 @@
 app.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/MS/wechat/article');
+    $urlRouterProvider.otherwise('/MS/home');
     $stateProvider
+        .state('home', {
+            url: '/MS/home',
+            templateUrl: '/views/home.html',
+            controller: 'HomeCtrl'
+        })
         .state('userList', {
             url: '/MS/user/list',
             templateUrl: '/views/users/list.html',
-            controller: 'UserListCtrl',
-            stateIndex: 0,
-            type: 2
+            controller: 'UserListCtrl'
         })
         .state('userBlacklist', {
             url: '/MS/user/blacklist',
             templateUrl: '/views/users/blacklist.html',
-            controller: 'UserBlacklistCtrl',
-            stateIndex: 1,
-            type: 2
+            controller: 'UserBlacklistCtrl'
         })
         .state('userInfo', {
             url: '/MS/user/info',
             templateUrl: '/views/users/info.html',
-            controller: 'UserInfoCtrl',
-            stateIndex: 2,
-            type: 2
+            controller: 'UserInfoCtrl'
         })
         .state('userScheme', {
             url: '/MS/user/scheme',
             templateUrl: '/views/users/scheme.html',
-            controller: 'UserSchemeCtrl',
-            stateIndex: 3,
-            type: 2
+            controller: 'UserSchemeCtrl'
         })
         /*
         用户积分管理
@@ -35,37 +32,32 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('userScore',{
         url:'/MS/user/score/:id',
             templateUrl:"/views/users/score.html",
-            controller:"UserScoreCtrl",
-            stateIndex: 0,
-            type: 2
+            controller:"UserScoreCtrl"
     })
         .state('forumPublish', {
             url: '/MS/forum/publish',
             templateUrl: '/views/forum/publish.html',
-            controller: 'ForumPublishCtrl',
-            stateIndex: 0,
-            type: 3
+            controller: 'ForumPublishCtrl'
         })
         .state('forumTopic', {
             url: '/MS/forum/topic',
             templateUrl: '/views/forum/topic.html',
-            controller: 'ForumTopicCtrl',
-            stateIndex: 1,
-            type: 3
+            controller: 'ForumTopicCtrl'
         })
         .state('forumNotice', {
             url: '/MS/forum/notice',
             templateUrl: '/views/forum/notice.html',
-            controller: 'ForumNoticeCtrl',
-            stateIndex: 2,
-            type: 3
+            controller: 'ForumNoticeCtrl'
         })
         .state('wechatArticle', {
             url: '/MS/wechat/article',
             templateUrl: '/views/wechat/article.html',
-            controller: 'WechatArticleCtrl',
-            stateIndex: 0,
-            type: 1
+            controller: 'WechatArticleCtrl'
+        })
+        .state('statistics', {
+            url: '/MS/statistics',
+            templateUrl: '/views/statistics/statistics.html',
+            controller: 'StatisticsCtrl'
         })
 
 });
