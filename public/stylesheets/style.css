@@ -1,5 +1,5 @@
 body {
-    font-family:"Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体","sans-serif";
+    font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";
 }
 
 html, body, .wrap {
@@ -229,7 +229,7 @@ hr {
     border-bottom: solid 1px #d4d4d4;
 }
 
-.wechat_color_blue{
+.wechat_color_blue {
     background-color: #01a8f4;
 }
 
@@ -245,23 +245,25 @@ hr {
     border-bottom: 0;
 }
 
-div[class~=wechat_num]:hover div{
+div[class~=wechat_num]:hover div {
     width: 100%;
     height: 100%;
     background-color: #01a8f4;
     opacity: 0.15;
     margin-top: -30px;
 }
-div[class~=wechat_num]:hover{
+
+div[class~=wechat_num]:hover {
     border: 1px solid #5a6dff;
 }
-.wechat_num_n{
+
+.wechat_num_n {
     margin-top: -35px;
     width: 50%;
     margin-left: 25%
 }
 
-.wechat_num{
+.wechat_num {
     font-size: 8px;
     width: 30px;
     height: 30px;
@@ -270,7 +272,7 @@ div[class~=wechat_num]:hover{
     margin: 2px;
     border: 1px solid #d4d4d4;
     text-align: center;
-    z-index:10;
+    z-index: 10;
 }
 
 .topic-list .input-field {
@@ -299,7 +301,6 @@ div[class~=wechat_num]:hover{
     height: 50px;
 }
 
-
 .user_score_allscore {
 
     font-size: 20px;
@@ -307,35 +308,96 @@ div[class~=wechat_num]:hover{
     margin-top: 10px;
 }
 
-.topic-time{
+.topic-time {
     font-size: 12px;
     color: #999;
 }
 
-.topic-name{
+.topic-name {
     font-size: 14px;
     color: #000;
 }
 
-.topic-title{
+.topic-title {
     font-size: 16px;
     color: #000;
 }
-.topic-content{
+
+.topic-content {
     font-size: 14px;
 }
-.topic-icon-color{
+
+.topic-icon-color {
     color: #999;
 }
 
-.topic-search{height:60px;padding:0 200px 0 0;position:relative}
-.topic-search form{line-height:60px;padding-top:1px;white-space:nowrap}
-.topic-search input{border:1px solid ;border-right:0;font-size:16px;height:28px;outline:0;padding:0 8px;width:100%;margin-bottom: 0;border-color: #cdcdcd!important;}
-.topic-search input:hover{border-color:#a9a9a9!important;}
-.topic-search input:focus{border-color:#29A79B!important;}
-.topic-search button{background:#4285f4;border:1px solid transparent;border-bottom-right-radius:2px;border-top-right-radius:2px;height:30px;outline:0;position:absolute;top:15.5px;width:60px!important;}
-.topic-search i{line-height: 26px;position: absolute;top: 1px;left: 23px}
-.topic-search button:before{content:'';display:inline-block;height:16px;left:21px;position:absolute;top:6px;width:16px;}
-.topic-search button:focus{box-shadow:inset 0 0 0 1px #fff;}
-.topic-search button:active{background:#3c78dc;box-shadow:inset 0 2px 0 rgba(0,0,0,.15)}
+.topic-search {
+    height: 60px;
+    padding: 0 200px 0 0;
+    position: relative
+}
+
+.topic-search form {
+    line-height: 60px;
+    padding-top: 1px;
+    white-space: nowrap
+}
+
+.topic-search input {
+    border: 1px solid;
+    border-right: 0;
+    font-size: 16px;
+    height: 28px;
+    outline: 0;
+    padding: 0 8px;
+    width: 100%;
+    margin-bottom: 0;
+    border-color: #cdcdcd !important;
+}
+
+.topic-search input:hover {
+    border-color: #a9a9a9 !important;
+}
+
+.topic-search input:focus {
+    border-color: #4285f4 !important;
+}
+
+.topic-search button {
+    background: #4285f4;
+    border: 1px solid transparent;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 30px;
+    outline: 0;
+    position: absolute;
+    top: 15.5px;
+    width: 60px !important;
+}
+
+.topic-search i {
+    line-height: 26px;
+    position: absolute;
+    top: 1px;
+    left: 23px
+}
+
+.topic-search button:before {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    left: 21px;
+    position: absolute;
+    top: 6px;
+    width: 16px;
+}
+
+.topic-search button:focus {
+    box-shadow: inset 0 0 0 1px #fff;
+}
+
+.topic-search button:active {
+    background: #3c78dc;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .15)
+}
 
