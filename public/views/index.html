@@ -14,36 +14,33 @@
 </head>
 <body ng-controller="IndexCtrl">
 <!--侧边导航-->
-<ul class="side-nav fixed z-depth-2" id="sideBar">
-    <h5 class="text-center orgName">微信号名字</h5>
-    <a class="logo brand-logo" href="/">
-        <img id="front-page-logo" src="">
-    </a>
-    <hr id="sidebarHr">
-    <li id="{{sidebar.id}}" ng-repeat="sidebar in sidebars" ng-class="{active: sidebar.active}" class="bold">
-        <a class="waves-effect" href="{{sidebar.url}}" ng-click="redirect($index)">{{sidebar.display_name}}</a>
+<ul class="side-nav fixed" id="sideBar">
+    <p class="navTitle"><i class="mdi-file-cloud-circle left"></i>微信管理</p>
+    <li id="{{sidebar1.id}}" ng-repeat="sidebar1 in sidebars1" ng-class="{active: sidebar1.active}" class="bold">
+        <a class="waves-effect" href="{{sidebar1.url}}" ng-click="redirect($index, 1)">{{sidebar1.display_name}}</a>
+    </li>
+    <p class="navTitle"><i class="mdi-social-person left"></i>用户管理</p>
+    <li id="{{sidebar2.id}}" ng-repeat="sidebar2 in sidebars2" ng-class="{active: sidebar2.active}" class="bold">
+        <a class="waves-effect" href="{{sidebar2.url}}" ng-click="redirect($index, 2)">{{sidebar2.display_name}}</a>
+    </li>
+    <p class="navTitle"><i class="mdi-communication-forum left"></i>论坛管理</p>
+    <li id="{{sidebar3.id}}" ng-repeat="sidebar3 in sidebars3" ng-class="{active: sidebar3.active}" class="bold">
+        <a class="waves-effect" href="{{sidebar3.url}}" ng-click="redirect($index, 3)">{{sidebar3.display_name}}</a>
     </li>
 </ul>
 <div class="wrap">
     <div class="main">
         <!--头部nav-->
-        <nav>
-            <div class="nav-wrapper light-blue darken-2 center">
+        <nav id="navBar" class="blue">
+            <div class="nav-wrapper center">
                 <a href="" data-activates="sideBar" class="button-collapse left">
                     <i class="mdi-navigation-menu"></i>
                 </a>
-                <a href="" class="center page-title brand-logo" ng-bind="pageTitle">
-
-                </a>
-                <!--<ul class="right">-->
-                <!--<li ng-show="access">-->
-                <!--<a tooltipped data-position="bottom" data-delay="0" data-tooltip="退出登陆" class="login-out waves-effect" href ng-click="logout()"><i class="mdi-action-settings-power"></i></a>-->
-                <!--</li>-->
-                <!--</ul>-->
+                <a href="" class="center page-title brand-logo">糖友圈管理系统</a>
             </div>
         </nav>
         <!--右侧主要内容-->
-        <main >
+        <main>
             <div class="container">
                 <div class="col s12" ui-view=""></div>
             </div>
@@ -51,7 +48,7 @@
     </div>
 </div>
 <!--底部信息-->
-<footer class="light-blue darken-2">
+<footer class="blue">
     <div class="footer-copyright">
         <div class="container grey-text text-lighten-4">
             © 团团一家工作室
@@ -67,17 +64,15 @@
 <script src="/lib/materialize/js/angular-materialize.js"></script>
 
 
-
 <script src="/lib/ueditor/ueditor.config.js"></script>
 <script src="/lib/ueditor/ueditor.all.min.js"></script>
 <script src="/lib/angular-ueditor/angular-ueditor.min.js"></script>
 <script src="/javascripts/configure.js"></script>
 <script src="/javascripts/route.js"></script>
-<script src="/javascripts/controllers/homecontroller.js"></script>
+<script src="/javascripts/controllers/indexcontroller.js"></script>
 <script src="/javascripts/controllers/usercontroller.js"></script>
 <script src="/javascripts/controllers/forumcontroller.js"></script>
 <script src="/javascripts/controllers/wechatcontroller.js"></script>
-<script src="/javascripts/controllers/statisticscontroller.js"></script>
 <script src="/javascripts/services/ueditor-services.js"></script>
 
 <script>
