@@ -1,79 +1,89 @@
 <div>
     <div class="topic-list">
         <h5>话题列表</h5>
-        <!--<div class="topic-search">-->
-            <!--<form action="">-->
-                <!--&lt;!&ndash;<input value="" name="hl" type="hidden">&ndash;&gt;-->
-                <!--<textarea placeholder="搜索问题" style="resize: none;height: 30px"></textarea>-->
-                <!--&lt;!&ndash;<input placeholder="搜索问题" value="" autocomplete="off"&ndash;&gt;-->
-                       <!--&lt;!&ndash;name="q" type="search">&ndash;&gt;-->
-                <!--<button></button>-->
-            <!--</form>-->
-            <!--&lt;!&ndash;<div class="input-field col s7">&ndash;&gt;-->
-                <!--&lt;!&ndash;<input placeholder="请输入搜索内容" id="first_name" type="text" class="validate" required>&ndash;&gt;-->
-                <!--&lt;!&ndash;&lt;!&ndash;<label for="first_name">First Name</label>&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;<div class="nav-wrapper col s2">&ndash;&gt;-->
-                <!--&lt;!&ndash;<a class="waves-effect waves-light btn">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<i class="mdi-action-search" style="vertical-align: top"></i>&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<span>搜索</span>&ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-
         <div class="default topic-search ">
             <form action="">
                 <input value="" name="hl" type="hidden">
                 <input placeholder="搜索问题" value="" autocomplete="off" name="q">
-                <button class="z-depth-1"> <i class="mdi-action-search white-text" ></i></button>
+                <button class="z-depth-1"><i class="mdi-action-search white-text"></i></button>
             </form>
         </div>
 
+
         <div>
-            <table>
+            <table class="bordered">
                 <thead>
                 <tr>
-                    <input type="checkbox" id="topic-top"/>
-                    <label for="topic-top">话题</label>
+                    <th>
+                        <input type="checkbox" id="topic-top"/>
+                        <label for="topic-top"></label>
+                    </th>
+                    <th></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
 
+                <tbody class="hoverable">
+                <tr ng-repeat="personInfo in peopleInfo">
+                    <td style="position: absolute;padding-top: 38px">
+                        <input type="checkbox" id={{personInfo.id}}/>
+                        <label for={{personInfo.id}}></label>
+                    </td>
+                    <td>
+                        <ul class="collection" style="border: 0">
+                            <li class="collection-item avatar">
+                                <img ng-src={{personInfo.imgSrc}} alt="" class="circle">
+                                <span class="title topic-name" ng-bind="personInfo.name"></span>
+                                <p>
+                                    <span ng-bind="personInfo.time" class="topic-time"></span>
+                                <h6 ng-bind="personInfo.title" class="topic-title"></h6>
+                                <p ng-bind="personInfo.content" class="topic-content"></p>
+                                <div>
+                                    <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img">
+                                </div>
+
+                                </p>
+                                <div style="margin-top: 30px;margin-bottom: 10px">
+                                    <i class="mdi-action-visibility topic-icon-color"
+                                       ng-bind="personInfo.numberOfReader"></i>
+                                    &nbsp;
+                                    <i class="mdi-action-thumb-up topic-icon-color"
+                                       ng-bind="personInfo.numberOfLike"></i>
+                                    &nbsp;
+                                    <i class="mdi-communication-chat topic-icon-color"
+                                       ng-bind="personInfo.numberOfComment"></i>
+                                </div>
+                                <a class="secondary-content">
+                                    <span>评论</span>
+                                    <span>清理</span>
+                                    <span>置顶</span>
+                                    <span>锁定</span>
+                                    <span>删除</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+        </div>
 
+        <div style="margin: 20px 0;position: relative;" class="row">
+            <!--<a class="waves-effect waves-light btn red col l1"  style="position: absolute;top: 50%;height:36px;margin-top: -18px">删除</a>-->
+            <a class="waves-effect waves-light btn red col l1" style="position: absolute;top: 50%;height:36px;margin-top: -18px;">删除</a>
+            <a class="waves-effect waves-light btn red col" style="position: absolute;top: 50%;height:36px;margin-top: -18px;margin-left: 75%!important;">前一页</a>
+            <a class="waves-effect waves-light btn red col" style="position: absolute;top: 50%;height:36px;margin-top: -18px;margin-left: 86%!important;">后一页</a>
+            <pagination
+                    page="1"
+                    page-size="5"
+                    total="100"
+                    show-prev-next="false"
+                    dots="...."
+                    hide-if-empty="false"
+                    adjacent="1"
+                    scroll-top="false"
+                    pagination-action="changePage(page)"
+                    class="col l9 offset-l4 offset-m3 offset-s2">
 
-            <ul class="collection" style="border: 0">
-                <li class="collection-item avatar" ng-repeat="personInfo in peopleInfo">
-                    <img ng-src={{personInfo.imgSrc}} alt="" class="circle">
-                    <span class="title topic-name" ng-bind="personInfo.name"></span>
-                    <p>
-                        <span ng-bind="personInfo.time" class="topic-time"></span>
-                    <h6 ng-bind="personInfo.title" class="topic-title"></h6>
-                    <p ng-bind="personInfo.content" class="topic-content"></p>
-                    <div>
-                        <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img">
-                    </div>
-
-                    </p>
-                    <span>
-                        <i class="mdi-action-visibility topic-icon-color" ng-bind="personInfo.numberOfReader"></i>
-                        &nbsp;
-                        <i class="mdi-action-thumb-up topic-icon-color" ng-bind="personInfo.numberOfLike"></i>
-                        &nbsp;
-                        <i class="mdi-communication-chat topic-icon-color" ng-bind="personInfo.numberOfComment"></i>
-                    </span>
-                    <a class="secondary-content">
-                        <span>评论</span>
-                        <span>清理</span>
-                        <span>置顶</span>
-                        <span>锁定</span>
-                        <span>删除</span>
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

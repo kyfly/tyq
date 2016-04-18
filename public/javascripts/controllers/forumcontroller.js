@@ -44,6 +44,7 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
     $scope.peopleInfo = [
         {
+            id:"name1",
             imgSrc: "/lib/img/weixin.jpg",
             name: "李畅",
             time: "2016.2.9 12时18分",
@@ -55,6 +56,7 @@ app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
             numberOfComment:"100"
         },
         {
+            id:"name2",
             imgSrc: "/lib/img/weixin.jpg",
             name: "金老师",
             time: "2016.2.9 12时16分",
@@ -66,6 +68,7 @@ app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
             numberOfComment:"34"
         },
         {
+            id:"name3",
             imgSrc: "/lib/img/weixin.jpg",
             name: "刘建东",
             time: "2016.2.9 10时18分",
@@ -77,6 +80,13 @@ app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
             numberOfComment:"0"
         }
     ];
+
+    //var a=document.getElementsByTagName('tbody');
+    //var b = a.getElementsByName("input");
+    //for(var i in b){
+    //    b[i].id='id'+i
+    //}
+
     ////下拉框
     //$(document).ready(function () {
     //    $('select').material_select();
