@@ -1,64 +1,77 @@
 <div>
     <div class="topic-list">
-        <h6>话题列表</h6>
-        <div class="row">
-            <div class="input-field col s3">
-                <select>
-                    <option>作者</option>
-                    <option>正在</option>
-                    <option>看着</option>
-                </select>
-            </div>
-            <div class="input-field col s7">
-                <input placeholder="请输入搜索内容" id="first_name" type="text" class="validate" required>
-                <!--<label for="first_name">First Name</label>-->
-            </div>
-            <div class="nav-wrapper col s2">
-                <a class="waves-effect waves-light btn">
-                    <i class="mdi-action-search" style="vertical-align: top"></i>
-                    <!--<span>搜索</span>-->
-                </a>
-            </div>
+        <h5>话题列表</h5>
+        <!--<div class="topic-search">-->
+            <!--<form action="">-->
+                <!--&lt;!&ndash;<input value="" name="hl" type="hidden">&ndash;&gt;-->
+                <!--<textarea placeholder="搜索问题" style="resize: none;height: 30px"></textarea>-->
+                <!--&lt;!&ndash;<input placeholder="搜索问题" value="" autocomplete="off"&ndash;&gt;-->
+                       <!--&lt;!&ndash;name="q" type="search">&ndash;&gt;-->
+                <!--<button></button>-->
+            <!--</form>-->
+            <!--&lt;!&ndash;<div class="input-field col s7">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input placeholder="请输入搜索内容" id="first_name" type="text" class="validate" required>&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<label for="first_name">First Name</label>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="nav-wrapper col s2">&ndash;&gt;-->
+                <!--&lt;!&ndash;<a class="waves-effect waves-light btn">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<i class="mdi-action-search" style="vertical-align: top"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<span>搜索</span>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+
+        <div class="default topic-search ">
+            <form action="">
+                <input value="" name="hl" type="hidden">
+                <input placeholder="搜索问题" value="" autocomplete="off" name="q">
+                <button class="z-depth-1"> <i class="mdi-action-search white-text" ></i></button>
+            </form>
         </div>
 
         <div>
-            <div style="background: #f1f1f1">
-                <input type="checkbox" id="topic-top"/>
-                <label for="topic-top">话题</label>
-            </div>
+            <table>
+                <thead>
+                <tr>
+                    <input type="checkbox" id="topic-top"/>
+                    <label for="topic-top">话题</label>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                </tr>
+                </tbody>
+            </table>
+
 
             <ul class="collection" style="border: 0">
                 <li class="collection-item avatar" ng-repeat="personInfo in peopleInfo">
                     <img ng-src={{personInfo.imgSrc}} alt="" class="circle">
-                    <span class="title" ng-bind="personInfo.name" style="font-weight: 700"></span>
+                    <span class="title topic-name" ng-bind="personInfo.name"></span>
                     <p>
-                        <span ng-bind="personInfo.time" style="font-weight: 100"></span>
-                    <h6 ng-bind="personInfo.title" style="font-weight: 700"></h6>
-                    <p ng-bind="personInfo.content" style="font-weight: 100"></p>
+                        <span ng-bind="personInfo.time" class="topic-time"></span>
+                    <h6 ng-bind="personInfo.title" class="topic-title"></h6>
+                    <p ng-bind="personInfo.content" class="topic-content"></p>
                     <div>
                         <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img">
                     </div>
 
                     </p>
                     <span>
-                        <i class="mdi-action-visibility" ng-bind="personInfo.numberOfReader"></i>
+                        <i class="mdi-action-visibility topic-icon-color" ng-bind="personInfo.numberOfReader"></i>
                         &nbsp;
-                        <i class="mdi-action-thumb-up" ng-bind="personInfo.numberOfLike"></i>
+                        <i class="mdi-action-thumb-up topic-icon-color" ng-bind="personInfo.numberOfLike"></i>
                         &nbsp;
-                        <i class="mdi-communication-chat" ng-bind="personInfo.numberOfComment"></i>
+                        <i class="mdi-communication-chat topic-icon-color" ng-bind="personInfo.numberOfComment"></i>
                     </span>
-                    <div class="secondary-content screen_box">
-                        <a href="" class='dropdown-button waves-effect btn-flat white'
-                           data-activates='screenbox'
-                           style="padding: 0" dropdown>
-                            <i class="mdi-hardware-keyboard-arrow-down"></i>
-                        </a>
-                        <ul id='screenbox' class='dropdown-content'>
-                            <li><a href="">one</a></li>
-                            <li><a href="">two</a></li>
-                            <li><a href="">three</a></li>
-                        </ul>
-                    </div>
+                    <a class="secondary-content">
+                        <span>评论</span>
+                        <span>清理</span>
+                        <span>置顶</span>
+                        <span>锁定</span>
+                        <span>删除</span>
+                    </a>
                 </li>
             </ul>
         </div>
