@@ -8,17 +8,18 @@
 </nav>
 <h5>标题</h5>
 <div input-field>
-    <input id="name" type="text" style="margin:0"  length="20" placeholder="请输入标题" required>
+    <input id="name" type="text" style="margin:0" length="20" placeholder="请输入标题" required>
     <label for="name"></label>
 </div>
 
-<div >
+<div>
     <h5>正文</h5>
-    <textarea class="n_textarea " placeholder="请输入公告内容" ></textarea>
-        <a href="" class="btn  waves-light waves-effect orange" ng-click="">发布</a>
+    <textarea class="n_textarea " placeholder="请输入公告内容" style="resize: none"></textarea>
+    <a href="" class="btn  waves-light waves-effect orange" ng-click="">发布</a>
 </div>
 <div class="n_top">
     <h5>公告列表</h5>
+
     <form action="">
         <table>
             <thead>
@@ -36,6 +37,7 @@
                 </td>
                 <td>2015.0422</td>
                 <td clss="center">这是一次测试</td>
+                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
                 <td class="right">修改|删除</td>
             </tr>
             <tr class="n_tr">
@@ -45,19 +47,22 @@
                 </td>
                 <td>2015.0422</td>
                 <td clss="center">情人最后难免沦为朋友</td>
+                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
+
                 <td class="right">修改|删除</td>
             </tr>
             <tr class="n_tr">
-            <td>
-                <input class="filled-in" type="checkbox" id="art_3"/>
-                <label for="art_3" class=""></label>
-            </td>
-            <td>2015.0422</td>
-            <td clss="center">一生何求</td>
-            <td class="right">修改|删除</td>
-        </tr>
+                <td>
+                    <input class="filled-in" type="checkbox" id="art_3"/>
+                    <label for="art_3" class=""></label>
+                </td>
+                <td>2015.0422</td>
+                <td clss="center">一生何求</td>
+                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
+                <td class="right">修改|删除</td>
+            </tr>
             </tbody>
         </table>
     </form>
 
- </div>
+</div>
