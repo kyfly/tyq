@@ -1,7 +1,6 @@
 app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/MS/wechat/article');
     $stateProvider
-
         .state('userInfo', {
             url: '/MS/user/info',
             templateUrl: '/views/users/info.html',
@@ -16,9 +15,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             stateIndex: 1,
             type: 2
         })
-        /*
-        用户积分管理
-         */
         .state('userScore',{
         url:'/MS/user/score/:id',
             templateUrl:"/views/users/score.html",

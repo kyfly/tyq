@@ -50,6 +50,17 @@ body > .wrap {
     color: #ff8d37 !important;
 }
 
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #ff8d37 !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #ff8d37 !important;
+    box-shadow: 0 1px 0 0 #ff8d37 !important;
+}
+
 .main {
     padding-bottom: 50px;
 }
@@ -189,6 +200,10 @@ hr {
 
 .margin-left {
     margin-left: 15px !important;
+}
+
+.margin-top {
+    margin-top: 15px !important;
 }
 
 .brand-logo {
@@ -395,5 +410,3 @@ div[class~=wechat_num]:hover {
     background: #3c78dc;
     box-shadow: inset 0 2px 0 rgba(0, 0, 0, .15)
 }
-
-
