@@ -72,31 +72,4 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
             url: '/goods/orders'
         }]
     }];
-
-    $scope.redirect = function (index, key) {
-        for (var i = 0; i < $scope.sidebars1.length; i++) {
-            $scope.sidebars1[i].active = false;
-        }
-        for (var j = 0; j < $scope.sidebars2.length; j++) {
-            $scope.sidebars2[j].active = false;
-        }
-        for (var k = 0; k < $scope.sidebars3.length; k++) {
-            $scope.sidebars3[k].active = false;
-        }
-        switch (key) {
-            case 1:
-                $scope.sidebars1[index].active = true;
-                break;
-            case 2:
-                $scope.sidebars2[index].active = true;
-                break;
-            case 3:
-                $scope.sidebars3[index].active = true;
-                break;
-            default:
-                $scope.sidebars1[0].active = true;
-        }
-        $('.button-collapse').sideNav('hide');
-    };
-
 }]);
