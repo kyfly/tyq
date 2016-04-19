@@ -9,8 +9,12 @@ function loadRoute(app) {
     next();
   });
   app.use('/', routes);
-  app.use('/MS/*', function (req, res, next) {
-    res.sendfile(path.join(__dirname, '../../public/views/index.html'));
+  var client = ['weixin*', 'users*', 'forum*', 'goods*'];
+  client.forEach(function (r) {
+    app.use('/' + r, function (req, res, next) {
+      console.log(1);
+      res.sendfile(path.join(__dirname, '../../public/views/index.html'));
+    });
   });
 
   app.use('/api', apiRoutes(app));
