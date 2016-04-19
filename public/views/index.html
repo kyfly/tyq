@@ -13,70 +13,54 @@
     <link href="/stylesheets/style.css" rel="stylesheet">
 </head>
 <body ng-controller="IndexCtrl">
-<!--侧边导航-->
-<ul class="side-nav fixed" id="sideBar">
-    <p class="navTitle"><i class="mdi-file-cloud-circle left"></i>微信管理</p>
-    <li id="{{sidebar1.id}}" ng-repeat="sidebar1 in sidebars1" ng-class="{active: sidebar1.active}" class="bold">
-        <a class="waves-effect" href="{{sidebar1.url}}" ng-click="redirect($index, 1)">{{sidebar1.display_name}}</a>
-    </li>
-    <p class="navTitle"><i class="mdi-social-person left"></i>用户管理</p>
-    <li id="{{sidebar2.id}}" ng-repeat="sidebar2 in sidebars2" ng-class="{active: sidebar2.active}" class="bold">
-        <a class="waves-effect" href="{{sidebar2.url}}" ng-click="redirect($index, 2)">{{sidebar2.display_name}}</a>
-    </li>
-    <p class="navTitle"><i class="mdi-communication-forum left"></i>论坛管理</p>
-    <li id="{{sidebar3.id}}" ng-repeat="sidebar3 in sidebars3" ng-class="{active: sidebar3.active}" class="bold">
-        <a class="waves-effect" href="{{sidebar3.url}}" ng-click="redirect($index, 3)">{{sidebar3.display_name}}</a>
-    </li>
-</ul>
-<div class="wrap">
-    <div class="main">
-        <!--头部nav-->
-        <nav id="navBar" class="blue">
-            <div class="nav-wrapper center">
-                <a href="" data-activates="sideBar" class="button-collapse left">
-                    <i class="mdi-navigation-menu"></i>
-                </a>
-                <a href="" class="center page-title brand-logo">糖友圈管理系统</a>
-            </div>
-        </nav>
-        <!--右侧主要内容-->
-        <main>
-            <div class="container">
-                <div class="col s12" ui-view=""></div>
-            </div>
-        </main>
-    </div>
-</div>
-<!--底部信息-->
-<!--<footer class="blue">-->
-    <!--<div class="footer-copyright">-->
-        <!--<div class="container grey-text text-lighten-4">-->
-            <!--© 团团一家工作室-->
-            <!--<a class="grey-text text-lighten-4 right" href="http://www.etuan.org/">www.etuan.org</a>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</footer>-->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/angular/angular.min.js"></script>
-<script src="/lib/materialize/js/materialize.min.js"></script>
-<script src="/lib/angular-components/angular-resource.min.js"></script>
-<script src="/lib/angular-components/angular-ui-router.min.js"></script>
-<script src="/lib/materialize/js/angular-materialize.js"></script>
+    <nav id="navBar" class="blue">
+        <div class="nav-wrapper center">
+            <a href="" 
+                data-activates="sideBar" 
+                class="button-collapse left">
+                <i class="mdi-navigation-menu"></i>
+            </a>
+            <a href="" 
+                class="center page-title brand-logo">糖友圈管理系统</a>
+        </div>
+    </nav>
+    <!--侧边导航-->
+    <ul class="side-nav fixed" id="sideBar">
+        <div ng-repeat="sidebar in sidebars">
+            <h2 class="navTitle">
+                <i ng-class="sidebar.icon"></i>
+                <span ng-bind="sidebar.name"></span>
+            </h2>
+            <li id="{{sub.id}}" 
+                ng-class="{active: path == sub.url}" 
+                class="bold" 
+                ng-repeat="sub in sidebar.subM">
+                <a class="waves-effect" 
+                    ng-href="{{sub.url}}" 
+                    ng-bind="sub.name"></a>
+            </li>
+        </div>
+    </ul>
+    <main>
+        <div class="container">
+            <div class="col s12" ui-view=""></div>
+        </div>
+    </main>
+    <script src="/lib/components.min.js"></script>
+    <script src="/lib/materialize/js/angular-materialize.js"></script>
+    <script src="/javascripts/services/ueditor-services.js"></script>
 
 
-<script src="/lib/ueditor/ueditor.config.js"></script>
-<script src="/lib/ueditor/ueditor.all.min.js"></script>
-<script src="/lib/angular-ueditor/angular-ueditor.min.js"></script>
-<script src="/javascripts/configure.js"></script>
-<script src="/javascripts/route.js"></script>
-<script src="/javascripts/controllers/indexcontroller.js"></script>
-<script src="/javascripts/controllers/usercontroller.js"></script>
-<script src="/javascripts/controllers/forumcontroller.js"></script>
-<script src="/javascripts/controllers/wechatcontroller.js"></script>
-<script src="/javascripts/services/ueditor-services.js"></script>
+    <script src="/javascripts/configure.js"></script>
+    <script src="/javascripts/route.js"></script>
+    <script src="/javascripts/controllers/indexcontroller.js"></script>
+    <script src="/javascripts/controllers/usercontroller.js"></script>
+    <script src="/javascripts/controllers/forumcontroller.js"></script>
+    <script src="/javascripts/controllers/wechatcontroller.js"></script>
+   
 
-<script>
-    $(".button-collapse").sideNav();
-</script>
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
 </body>
 </html>
