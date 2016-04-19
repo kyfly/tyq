@@ -1,10 +1,11 @@
 app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/MS/wechat/article');
     $stateProvider
-        .state('userList', {
-            url: '/MS/user/list',
-            templateUrl: '/views/users/list.html',
-            controller: 'UserListCtrl',
+
+        .state('userInfo', {
+            url: '/MS/user/info',
+            templateUrl: '/views/users/info.html',
+            controller: 'UserInfoCtrl',
             stateIndex: 0,
             type: 2
         })
@@ -13,20 +14,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/users/blacklist.html',
             controller: 'UserBlacklistCtrl',
             stateIndex: 1,
-            type: 2
-        })
-        .state('userInfo', {
-            url: '/MS/user/info',
-            templateUrl: '/views/users/info.html',
-            controller: 'UserInfoCtrl',
-            stateIndex: 2,
-            type: 2
-        })
-        .state('userScheme', {
-            url: '/MS/user/scheme',
-            templateUrl: '/views/users/scheme.html',
-            controller: 'UserSchemeCtrl',
-            stateIndex: 3,
             type: 2
         })
         /*
@@ -39,25 +26,32 @@ app.config(function($stateProvider, $urlRouterProvider) {
             stateIndex: 0,
             type: 2
     })
+        .state('forumUserlist', {
+            url: '/MS/forum/userlist',
+            templateUrl: '/views/forum/userlist.html',
+            controller: 'ForumUserlistCtrl',
+            stateIndex: 0,
+            type: 3
+        })
         .state('forumPublish', {
             url: '/MS/forum/publish',
             templateUrl: '/views/forum/publish.html',
             controller: 'ForumPublishCtrl',
-            stateIndex: 0,
+            stateIndex: 1,
             type: 3
         })
         .state('forumTopic', {
             url: '/MS/forum/topic',
             templateUrl: '/views/forum/topic.html',
             controller: 'ForumTopicCtrl',
-            stateIndex: 1,
+            stateIndex: 2,
             type: 3
         })
         .state('forumNotice', {
             url: '/MS/forum/notice',
             templateUrl: '/views/forum/notice.html',
             controller: 'ForumNoticeCtrl',
-            stateIndex: 2,
+            stateIndex: 3,
             type: 3
         })
         .state('wechatArticle', {

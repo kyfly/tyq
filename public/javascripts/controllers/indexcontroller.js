@@ -15,28 +15,24 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
 
     $scope.sidebars2 = [
         {
-            'id': 'sidebarUserList',
-            'display_name': '用户列表',
-            'url': '/MS/user/list'
-        },
-        {
-            'id': 'sidebarUserBlacklist',
-            'display_name': '用户黑名单',
-            'url': '/MS/user/blacklist'
-        },
-        {
             'id': 'sidebarUserInfo',
             'display_name': '用户详情',
             'url': '/MS/user/info'
         },
         {
-            'id': 'sidebarUserScheme',
-            'display_name': '控糖方案',
-            'url': '/MS/user/scheme'
+            'id': 'sidebarUserBlacklist',
+            'display_name': '用户黑名单',
+            'url': '/MS/user/blacklist'
         }
+
     ];
 
     $scope.sidebars3 = [
+        {
+            'id': 'sidebarForumUserlist',
+            'display_name': '用户列表',
+            'url': '/MS/forum/userlist'
+        },
         {
             'id': 'sidebarForumPublish',
             'display_name': '发表话题   ',
