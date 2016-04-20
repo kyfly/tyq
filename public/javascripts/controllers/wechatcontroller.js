@@ -1,25 +1,63 @@
 app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
-    $scope.wechat_chose_all = function () {
-        var str = "art_";
-        var input = document.getElementsByTagName("input");
-        var all = document.getElementById("all");
-        var flag = 0;
-        var ans = {"0": "", "1": "true"};
-        if (all.getAttribute("checked") == null) {
-            flag = 1;
-            all.setAttribute("checked", "true");
-        } else {
-            all.removeAttribute("checked");
-        }
-        for (var i = 0; i < input.length; i++) {
-            if (input[i].getAttribute("type") == "checkbox") {
-                if (flag == 0) {
-                    input[i].removeAttribute("checked");
-                } else {
-                    input[i].setAttribute("checked", true);
-                }
-            }
-        }
-    };
-
+	$scope.wechat_info=[
+		{
+			id:"art_1",
+			title:"历史首次！space下终于王城猎鹰9火箭海上回收",
+			writer:"路将神",
+			time:"2015.2.9 12时18分",
+			type:"科技",
+			main:"例如：照明设备生产公司注册商标时，在1101类似群组中应选择“灯（110040）、照明器械及装置（110130）”，该两个商品与1101第二部分商品及1103类似群组下所有商品类似，即如果选择“灯（110040）、照明器械及装置（110130）”，则该商标的保护范围基于“空中运载工具用照明设备，运载工具用灯，汽车防炫光装置（灯配件），汽车前灯，自行车车灯，运载工具转向信号装置用灯泡，脚踏车车灯，运载工具用防炫光装置（灯配件），汽车转向指示器用灯，汽车灯”以及“乙炔灯，照明用提灯，油灯灯头，煤油灯罩，煤气灯，油灯”，可起到注册多个商品项目的效果。"
+		},
+		{
+			id:"art_1",
+			title:"历史首次！space下终于王城猎鹰9火箭海上回收",
+			writer:"路将神",
+			time:"2015.2.9 12时18分",
+			type:"科技",
+			main:"例如：照明设备生产公司注册商标时，在1101类似群组中应选择“灯（110040）、照明器械及装置（110130）”，该两个商品与1101第二部分商品及1103类似群组下所有商品类似，即如果选择“灯（110040）、照明器械及装置（110130）”，则该商标的保护范围基于“空中运载工具用照明设备，运载工具用灯，汽车防炫光装置（灯配件），汽车前灯，自行车车灯，运载工具转向信号装置用灯泡，脚踏车车灯，运载工具用防炫光装置（灯配件），汽车转向指示器用灯，汽车灯”以及“乙炔灯，照明用提灯，油灯灯头，煤油灯罩，煤气灯，油灯”，可起到注册多个商品项目的效果。"
+		},
+		{
+			id:"art_1",
+			title:"历史首次！space下终于王城猎鹰9火箭海上回收",
+			writer:"路将神",
+			time:"2015.2.9 12时18分",
+			type:"科技",
+			main:"例如：照明设备生产公司注册商标时，在1101类似群组中应选择“灯（110040）、照明器械及装置（110130）”，该两个商品与1101第二部分商品及1103类似群组下所有商品类似，即如果选择“灯（110040）、照明器械及装置（110130）”，则该商标的保护范围基于“空中运载工具用照明设备，运载工具用灯，汽车防炫光装置（灯配件），汽车前灯，自行车车灯，运载工具转向信号装置用灯泡，脚踏车车灯，运载工具用防炫光装置（灯配件），汽车转向指示器用灯，汽车灯”以及“乙炔灯，照明用提灯，油灯灯头，煤油灯罩，煤气灯，油灯”，可起到注册多个商品项目的效果。"
+		},
+		{
+			id:"art_1",
+			title:"历史首次！space下终于王城猎鹰9火箭海上回收",
+			writer:"路将神",
+			time:"2015.2.9 12时18分",
+			type:"科技",
+			main:"例如：照明设备生产公司注册商标时，在1101类似群组中应选择“灯（110040）、照明器械及装置（110130）”，该两个商品与1101第二部分商品及1103类似群组下所有商品类似，即如果选择“灯（110040）、照明器械及装置（110130）”，则该商标的保护范围基于“空中运载工具用照明设备，运载工具用灯，汽车防炫光装置（灯配件），汽车前灯，自行车车灯，运载工具转向信号装置用灯泡，脚踏车车灯，运载工具用防炫光装置（灯配件），汽车转向指示器用灯，汽车灯”以及“乙炔灯，照明用提灯，油灯灯头，煤油灯罩，煤气灯，油灯”，可起到注册多个商品项目的效果。"
+		}
+	];
+	console.log("做个测试");
+	var a="aaaaaaa";
+	wechat_chose_all=function(){
+		var str="art_";
+		var input=document.getElementsByTagName("input");
+		var all=document.getElementById("all");
+		var flag=0;
+		var ans={"0":"","1":"true"};
+		//console.log(all);
+		console.log(all.getAttribute("checked"));
+		if(all.getAttribute("checked")==null){
+			flag=1;
+			all.setAttribute("checked","true");
+		}else{
+			all.removeAttribute("checked");
+		}
+		for(var i=0;i<input.length;i++){
+			if(input[i].getAttribute("type")=="checkbox"){
+				if(flag==0){
+					input[i].removeAttribute("checked");
+				}else{
+					input[i].setAttribute("checked",true);
+				}
+			}
+		}
+	};
+	//chose_all();
 }]);
