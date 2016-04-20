@@ -15,12 +15,12 @@
 <body ng-controller="IndexCtrl">
     <nav id="navBar" class="blue">
         <div class="nav-wrapper center">
-            <a href="" 
-                data-activates="sideBar" 
+            <a href=""
+                data-activates="sideBar"
                 class="button-collapse left">
                 <i class="mdi-navigation-menu"></i>
             </a>
-            <a href="" 
+            <a href=""
                 class="center page-title brand-logo">糖友圈管理系统</a>
         </div>
     </nav>
@@ -31,12 +31,12 @@
                 <i ng-class="sidebar.icon"></i>
                 <span ng-bind="sidebar.name"></span>
             </h2>
-            <li id="{{sub.id}}" 
-                ng-class="{active: path == sub.url}" 
-                class="bold" 
+            <li id="{{sub.id}}"
+                ng-class="{active: path == sub.url}"
+                class="bold"
                 ng-repeat="sub in sidebar.subM">
-                <a class="waves-effect" 
-                    ng-href="{{sub.url}}" 
+                <a class="waves-effect"
+                    ng-href="{{sub.url}}"
                     ng-bind="sub.name"></a>
             </li>
         </div>
@@ -57,7 +57,7 @@
     <script src="/javascripts/controllers/usercontroller.js"></script>
     <script src="/javascripts/controllers/forumcontroller.js"></script>
     <script src="/javascripts/controllers/wechatcontroller.js"></script>
-   
+
 
     <script>
         $(".button-collapse").sideNav();

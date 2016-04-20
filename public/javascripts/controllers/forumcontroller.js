@@ -1,5 +1,57 @@
 app.controller('ForumUserlistCtrl', ['$scope', function ($scope) {
+    $scope.userList = [{
+        id: 1,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }, {
+        id: 2,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }, {
+        id: 3,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }];
+}]);
 
+app.controller('ForumBlacklistCtrl', ['$scope', function ($scope) {
+    $scope.blacklist = [{
+        id: 1,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }, {
+        id: 2,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }, {
+        id: 3,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }];
 }]);
 
 app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Ueditor) {

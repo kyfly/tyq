@@ -3,26 +3,26 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         id: 1,
         headImgUrl: "/lib/img/weixin.jpg",
         name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
+        phone: "18888888888",
+        type: "一型糖尿病",
+        BG: "5mmo/l",
+        score: 20
     }, {
-        id: 2,
+        id: 1,
         headImgUrl: "/lib/img/weixin.jpg",
         name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
+        phone: "18888888888",
+        type: "一型糖尿病",
+        BG: "5mmo/l",
+        score: 20
     }, {
-        id: 3,
+        id: 1,
         headImgUrl: "/lib/img/weixin.jpg",
         name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
+        phone: "18888888888",
+        type: "一型糖尿病",
+        BG: "5mmo/l",
+        score: 20
     }];
 
     $scope.chose_all = function () {
@@ -49,10 +49,6 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
             }
         }
     };
-
-}]);
-
-app.controller('UserBlacklistCtrl', ['$scope', function ($scope) {
 
 }]);
 

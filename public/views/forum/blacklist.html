@@ -26,16 +26,16 @@
             </th>
             <th>头像</th>
             <th>名字</th>
-            <th>手机号码</th>
-            <th>类型</th>
-            <th>最新血糖</th>
             <th>积分</th>
+            <th>等级</th>
+            <th>发表</th>
+            <th>回复</th>
             <th>功能</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="user in blacklist">
             <td >
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}" ng-model="checkbox">
                 <label for="checkbox{{$index}}"></label>
@@ -44,12 +44,13 @@
                 <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
             </td>
             <td ng-bind="user.name"></td>
-            <td ng-bind="user.phone"></td>
-            <td ng-bind="user.type"></td>
-            <td ng-bind="user.BG"></td>
             <td><a ng-href="/MS/user/score/{{user.id}}" ng-bind="user.score"></a></td>
+            <td ng-bind="user.level"></td>
+            <td ng-bind="user.comments"></td>
+            <td ng-bind="user.replies"></td>
             <td>
-                <a class="wechat_a">加入黑名单</a>
+                <a class="wechat_a">恢复</a>|
+                <a class="wechat_a">详情</a>
             </td>
         </tr>
         </tbody>
@@ -57,7 +58,7 @@
 </div>
 
 <div style="margin: 5px">
-    <button class="btn col wechat_btn waves-light waves-effect orange">拉黑</button>
+    <button class="btn col wechat_btn waves-light waves-effect orange">恢复</button>
     <button class="btn col wechat_btn right waves-light waves-effect orange">上一页</button>
     <button class="btn col wechat_btn right waves-light waves-effect orange">下一页</button>
 </div>

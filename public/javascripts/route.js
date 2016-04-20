@@ -11,10 +11,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/users/info.html',
             controller: 'UserInfoCtrl'
         })
-        .state('userBlacklist', {
-            url: '/users/blacklist',
-            templateUrl: '/views/users/blacklist.html',
-            controller: 'UserBlacklistCtrl'
+        .state('forumBlacklist', {
+            url: '/forum/blacklist',
+            templateUrl: '/views/forum/blacklist.html',
+            controller: 'ForumBlacklistCtrl'
         })
         .state('userScore',{
             url:'/user/score/:id',
@@ -22,12 +22,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller:"UserScoreCtrl"
         })
         .state('forumUserlist', {
-            url: '/users/forum',
+            url: '/forum/userlist',
             templateUrl: '/views/forum/userlist.html',
             controller: 'ForumUserlistCtrl'
         })
         .state('forumPublish', {
-            url: '/forum/publishs',
+            url: '/forum/publishes',
             templateUrl: '/views/forum/publish.html',
             controller: 'ForumPublishCtrl'
         })

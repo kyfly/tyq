@@ -98,6 +98,10 @@ hr {
     background-color: #54adff;
 }
 
+.side-nav li.active {
+    background-color: #54adff;
+}
+
 #sideBar {
     padding-top: 30px;
 }
