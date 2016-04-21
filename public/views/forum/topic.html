@@ -3,9 +3,8 @@
         <h5>话题列表</h5>
         <div class="topic-search">
             <form action="">
-                <input value="" name="hl" type="hidden">
-                <input placeholder="请输入名字/栏目/摘要/" value="" autocomplete="off" name="q">
-                <button class="z-depth-1"><i class="mdi-action-search white-text"></i></button>
+                <input placeholder="请输入名字/栏目/摘要/">
+                <button type="button" class="z-depth-1"><i class="mdi-action-search white-text"></i></button>
             </form>
         </div>
 
@@ -25,13 +24,13 @@
                 <tbody class="hoverable">
                 <tr ng-repeat="personInfo in peopleInfo">
                     <td style="position: absolute;padding-top: 38px">
-                        <input type="checkbox" id={{personInfo.id}}/>
-                        <label for={{personInfo.id}}></label>
+                        <input type="checkbox" id="{{personInfo.id}}">
+                        <label for="{{personInfo.id}}"></label>
                     </td>
                     <td>
                         <ul class="collection" style="border: 0">
                             <li class="collection-item avatar">
-                                <img ng-src={{personInfo.imgSrc}} alt="" class="circle">
+                                <img ng-src="{{personInfo.imgSrc}}" alt="" class="circle">
                                 <span class="title topic-name" ng-bind="personInfo.name"></span>
                                 <p>
                                     <span ng-bind="personInfo.time" class="topic-time"></span>
@@ -67,10 +66,11 @@
             </table>
         </div>
 
-        <div style="margin: 20px 0;" class="row">
-            <a class="waves-effect waves-light btn red col topic-btn">删除</a>
-            <a class="waves-effect waves-light btn red col topic-btn right">前一页</a>
-            <a class="waves-effect waves-light btn red col topic-btn right">后一页</a>
+        <div style="margin: 20px 0;position: relative;" class="row">
+            <!--<a class="waves-effect waves-light btn red col l1"  style="position: absolute;top: 50%;height:36px;margin-top: -18px">删除</a>-->
+            <a class="waves-effect waves-light btn orange col l1" style="position: absolute;top: 50%;height:36px;margin-top: -18px;">删除</a>
+            <a class="waves-effect waves-light btn orange col" style="position: absolute;top: 50%;height:36px;margin-top: -18px;margin-left: 75%!important;">前一页</a>
+            <a class="waves-effect waves-light btn orange col" style="position: absolute;top: 50%;height:36px;margin-top: -18px;margin-left: 86%!important;">后一页</a>
             <pagination
                     page="1"
                     page-size="10"
