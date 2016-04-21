@@ -1,41 +1,8 @@
-app.controller('UserListCtrl', ['$scope', function ($scope) {
-    $scope.userList = [{
-        id:1,
-        headImgUrl: "/lib/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    },{
-        id:2,
-        headImgUrl: "/lib/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    },{
-        id:3,
-        headImgUrl: "/lib/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }
-    ]
-}]);
-
 app.controller('UserBlacklistCtrl', ['$scope', function ($scope) {
 
 }]);
 
 app.controller('UserInfoCtrl', ['$scope', function ($scope) {
-
-}]);
-
-app.controller('UserSchemeCtrl', ['$scope', function ($scope) {
 
 }]);
 

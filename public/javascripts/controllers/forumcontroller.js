@@ -1,3 +1,34 @@
+app.controller('ForumUserlistCtrl', ['$scope', function ($scope) {
+
+    $scope.userList = [{
+        id:1,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    },{
+        id:2,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    },{
+        id:3,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }
+    ]
+}]);
+
+
 app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Ueditor) {
     $scope.editorConfig = {
         serverUrl: "/ue/uploads",
@@ -80,18 +111,6 @@ app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
             numberOfComment:"0"
         }
     ];
-
-    //var a=document.getElementsByTagName('tbody');
-    //var b = a.getElementsByName("input");
-    //for(var i in b){
-    //    b[i].id='id'+i
-    //}
-
-    ////下拉框
-    //$(document).ready(function () {
-    //    $('select').material_select();
-    //});
-    //
 }]);
 
 app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
