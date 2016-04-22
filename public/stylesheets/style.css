@@ -137,7 +137,7 @@ hr {
     #navBar {
         position: fixed;
         top: 0;
-        z-index: 1000;
+        z-index: 3;
     }
 }
 
@@ -337,8 +337,9 @@ div[class~=wechat_num]:hover {
     width: 1px;
 }
 
-
-.topic-del-btn{
+.topic-del-btn {
+    position: absolute;
+    margin-top: 14px;
 
 }
 
@@ -347,7 +348,6 @@ div[class~=wechat_num]:hover {
     color: #ccc;
     text-align: center;
 }
-
 
 .change-page a {
     display: inline-block;
@@ -388,6 +388,7 @@ div[class~=wechat_num]:hover {
     background: #f2f2f2;
     border-radius: 4px;
     vertical-align: middle;
+}
 
 td > img {
     width: 50px;
@@ -398,3 +399,16 @@ td {
     padding: 3px !important;
 
 }
+
+.topic-img{
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.topic-choose-all{
+    padding: 10px 10px 8px 3px!important;
+}
+
+
+
