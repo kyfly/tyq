@@ -337,6 +337,7 @@ div[class~=wechat_num]:hover {
     width: 1px;
 }
 
+
 .topic-del-btn{
 
 }
@@ -387,4 +388,13 @@ div[class~=wechat_num]:hover {
     background: #f2f2f2;
     border-radius: 4px;
     vertical-align: middle;
+
+td > img {
+    width: 50px;
+    height: 50px;
+}
+
+td {
+    padding: 3px !important;
+
 }

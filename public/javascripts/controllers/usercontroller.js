@@ -5,7 +5,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         name: "sm",
         phone: "18888888888",
         type: "一型糖尿病",
-        BG: "5mmo/l",
+        BG: "5mmol/L",
         score: 20
     }, {
         id: 1,
@@ -13,7 +13,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         name: "sm",
         phone: "18888888888",
         type: "一型糖尿病",
-        BG: "5mmo/l",
+        BG: "5mmol/L",
         score: 20
     }, {
         id: 1,
@@ -21,7 +21,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         name: "sm",
         phone: "18888888888",
         type: "一型糖尿病",
-        BG: "5mmo/l",
+        BG: "5mmol/L",
         score: 20
     }];
 

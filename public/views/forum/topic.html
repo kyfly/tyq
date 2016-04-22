@@ -1,13 +1,12 @@
 <div>
     <div class="topic-list row">
         <h5>话题列表</h5>
-        <div class="col s12 wechat_title">文章列表</div>
         <div class="col s12 wechat_zero">
-            <div class="col s10 wechat_zero input-field wechat_search">
+            <div class="col s11 wechat_zero input-field wechat_search">
                 <input class="wechat_zero" id="search" type="text" placeholder="请输入作者/标题/栏目">
             </div>
             <div class="wechat_zero">
-                <button class="btn col s2 waves-effect waves-light orange" style="height: 45px">搜索</button>
+                <button class="btn col s1 waves-effect waves-light orange" style="height: 45px">搜索</button>
             </div>
         </div>
 
@@ -17,7 +16,8 @@
                 <thead>
                 <tr>
                     <th>
-                        <input type="checkbox" id="topic-top" class="filled-in" ng-model="master" ng-click="all(master,peopleInfo)">
+                        <input type="checkbox" id="topic-top" class="filled-in" ng-model="master"
+                               ng-click="all(master,peopleInfo)">
                         <label for="topic-top"></label>
                     </th>
                     <th></th>
@@ -27,7 +27,8 @@
                 <tbody class="hoverable">
                 <tr ng-repeat="personInfo in peopleInfo">
                     <td style="position: absolute;padding-top: 38px">
-                        <input type="checkbox" id="{{personInfo.id}}" class="filled-in" ng-model="x" ng-checked="master" ng-click="chk(personInfo,x)">
+                        <input type="checkbox" id="{{personInfo.id}}" class="filled-in" ng-model="x" ng-checked="master"
+                               ng-click="chk(personInfo,x)">
                         <label for="{{personInfo.id}}"></label>
                     </td>
                     <td>
@@ -73,9 +74,7 @@
             <button class="topic-del-btn btn col wechat_btn waves-light waves-effect orange" ng-click="delete()">删除 </button>
             <!--<button class="btn col wechat_btn right waves-light waves-effect orange">下一页</button>-->
             <!--<button class="btn col wechat_btn right waves-light waves-effect orange">上一页</button>-->
-
             <div class="change-page"></div>
-
         </div>
     </div>
 </div>
