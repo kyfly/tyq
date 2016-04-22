@@ -17,7 +17,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'ForumBlacklistCtrl'
         })
         .state('userScore',{
-            url:'/user/score/:id',
+            url:'/users/score/:id',
             templateUrl:"/views/users/score.html",
             controller:"UserScoreCtrl"
         })

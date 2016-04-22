@@ -32,9 +32,9 @@
 
         <tbody>
         <tr ng-repeat="user in userList">
-            <td >
+            <td>
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}" ng-model="checkbox">
-                <label for="checkbox{{$index}}"></label>
+                <label class="table-checkbox" for="checkbox{{$index}}"></label>
             </td>
             <td>
                 <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
@@ -43,7 +43,7 @@
             <td ng-bind="user.phone"></td>
             <td ng-bind="user.type"></td>
             <td ng-bind="user.BG"></td>
-            <td><a ng-href="/MS/user/score/{{user.id}}" ng-bind="user.score"></a></td>
+            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.score"></a></td>
             <td>
                 <a class="wechat_a">加入黑名单</a>
             </td>
