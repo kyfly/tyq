@@ -19,7 +19,8 @@
                 <input type="checkbox" class="filled-in" id="all">
                 <label for="all">全选</label>
             </th>
-            <th>用户</th>
+            <th>头像</th>
+            <th>名字</th>
             <th>积分</th>
             <th>等级</th>
             <th>发表</th>
@@ -32,12 +33,12 @@
         <tr ng-repeat="user in userList">
             <td>
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}">
-                <label for="checkbox{{$index}}"></label>
+                <label class="table-checkbox" for="checkbox{{$index}}"></label>
             </td>
             <td>
-                <img ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img left">
-                <p ng-bind="user.name"></p>
+                <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
             </td>
+            <td ng-bind="user.name"></td>
             <td><a ng-href="user/score/{{user.id}}" ng-bind="user.score"></a></td>
             <td ng-bind="user.level"></td>
             <td ng-bind="user.comments"></td>

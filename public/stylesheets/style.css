@@ -78,14 +78,14 @@ hr {
 }
 
 .bold {
-    margin-right: 0 45px !important;
+    padding: 0 !important;
 }
 
 .bold > a {
     font-size: 16px;
     height: 40px;
     line-height: 40px;
-    padding-left: 47px !important;
+    padding-left: 85px !important;
 }
 
 .side-nav li:hover {
@@ -137,16 +137,13 @@ hr {
     #navBar {
         position: fixed;
         top: 0;
-        z-index: 1000;
+        z-index: 3;
     }
 }
 
 @media screen and (min-width: 993px) {
     main {
         padding-top: 100px;
-    }
-
-    main, nav {
         padding-left: 240px;
     }
 }
@@ -302,14 +299,19 @@ hr {
 }
 
 .list_table_img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: -3px;
+    margin-top: 3px;
+}
+
+.table-checkbox {
+    margin-bottom: -6px;
+    margin-top: 6px;
 }
 
 .user_score_allscore {
-
     font-size: 20px;
-    font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
     margin-top: 10px;
 }
 
@@ -353,9 +355,9 @@ hr {
     width: 1px;
 }
 
-
-.topic-del-btn{
-
+.topic-del-btn {
+    position: absolute;
+    margin-top: 14px;
 }
 
 .change-page {
@@ -363,7 +365,6 @@ hr {
     color: #ccc;
     text-align: center;
 }
-
 
 .change-page a {
     display: inline-block;
@@ -404,6 +405,7 @@ hr {
     background: #f2f2f2;
     border-radius: 4px;
     vertical-align: middle;
+}
 
 td > img {
     width: 50px;
@@ -412,5 +414,16 @@ td > img {
 
 td {
     padding: 3px !important;
-
 }
+
+.topic-img{
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.topic-choose-all{
+    padding: 10px 10px 8px 3px!important;
+}
+
+

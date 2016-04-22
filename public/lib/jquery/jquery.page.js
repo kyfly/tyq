@@ -12,10 +12,10 @@
 				obj.empty();
 				//下一页
 				if(args.current < args.pageCount){
-					obj.append('<button class="nextPage btn col wechat_btn right waves-light waves-effect orange">下一页</button>');
+					obj.append('<button class="nextPage btn col wechat_btn right waves-light orange">下一页</button>');
 				}else{
 					obj.remove('.nextPage');
-					obj.append('<span class="disabled btn col wechat_btn right waves-light waves-effect orange">下一页</span>');
+					obj.append('<span class="disabled btn col wechat_btn right waves-light orange">下一页</span>');
 				}
 
 				//中间页码
