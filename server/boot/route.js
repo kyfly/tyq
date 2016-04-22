@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var routes = require('../routes/index');
 var apiRoutes = require('../routes/api');
+var upload = require('../lib/upload').upload;
 function loadRoute(app) {
   app.use(express.static('public'));
   app.use('*', function (req, res, next) {
@@ -16,7 +17,7 @@ function loadRoute(app) {
       res.sendfile(path.join(__dirname, '../../public/views/index.html'));
     });
   });
-
+  app.use('/ue/uploads', upload(app));
   app.use('/api', apiRoutes(app));
   app.use('*', notFount);
   app.use(error);

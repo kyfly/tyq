@@ -10,4 +10,5 @@ router.get('/wechat', wechatCtrl.wechat);
 router.get('/wechat/:id', wechatCtrl.entry);
 router.get('/login', acount.login);
 router.get('/register', acount.register);
+
 module.exports = router;
