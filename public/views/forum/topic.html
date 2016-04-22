@@ -70,21 +70,11 @@
         </div>
 
         <div style="margin: 20px 0;" class="row">
-            <button class="btn col wechat_btn waves-light waves-effect orange" ng-click="delete()">删除 </button>
-            <button class="btn col wechat_btn right waves-light waves-effect orange">下一页</button>
-            <button class="btn col wechat_btn right waves-light waves-effect orange">上一页</button>
-            <pagination
-                    page="1"
-                    page-size="10"
-                    total="100"
-                    show-prev-next="false"
-                    dots="...."
-                    hide-if-empty="false"
-                    adjacent="1"
-                    scroll-top="false"
-                    pagination-action="changePage(page)"
-                    class="col offset-l3 offset-m2"
-            >
+            <button class="topic-del-btn btn col wechat_btn waves-light waves-effect orange" ng-click="delete()">删除 </button>
+            <!--<button class="btn col wechat_btn right waves-light waves-effect orange">下一页</button>-->
+            <!--<button class="btn col wechat_btn right waves-light waves-effect orange">上一页</button>-->
+
+            <div class="change-page"></div>
 
         </div>
     </div>

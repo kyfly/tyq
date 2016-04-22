@@ -173,6 +173,13 @@ app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
         }
     };
 
+    $(".change-page").createPage({
+        pageCount:14,
+        current:1,
+        backFn:function(p){
+            console.log(p);
+        }
+    });
 }]);
 
 app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {

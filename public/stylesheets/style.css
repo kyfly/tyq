@@ -61,7 +61,6 @@ body > .wrap {
     box-shadow: 0 1px 0 0 #ff8d37 !important;
 }
 
-
 hr {
     border-top: 1px solid #DDDDDD;
     border-bottom: none;
@@ -115,10 +114,12 @@ hr {
     padding: 0;
     position: relative;
 }
-.navTitle > span{
+
+.navTitle > span {
     position: absolute;
     padding-left: 10px;
 }
+
 .navTitle > i {
     font-size: 30px;
 }
@@ -127,10 +128,12 @@ hr {
     .container {
         width: 80% !important;
     }
+
     #sideBar {
         padding-top: 100px;
         z-index: 0;
     }
+
     #navBar {
         position: fixed;
         top: 0;
@@ -138,13 +141,11 @@ hr {
     }
 }
 
-
-
-
 @media screen and (min-width: 993px) {
     main {
         padding-top: 100px;
     }
+
     main, nav {
         padding-left: 240px;
     }
@@ -319,16 +320,71 @@ div[class~=wechat_num]:hover {
     color: #999;
 }
 
-.topic-btn{
-    margin-left: 15px!important;
-    margin-right: 15px!important;
+.topic-btn {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
 }
+
 .side-nav::-webkit-scrollbar {
-   width: 1px;
+    width: 1px;
 }
+
 .side-nav::-moz-scrollbar {
-   width: 1px;
+    width: 1px;
 }
+
 .side-nav::scrollbar {
-   width: 1px;
+    width: 1px;
+}
+
+.topic-del-btn{
+
+}
+
+.change-page {
+    padding: 15px 20px;
+    color: #ccc;
+    text-align: center;
+}
+
+
+.change-page a {
+    display: inline-block;
+    color: #ff8d37;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.change-page a:hover {
+    text-decoration: none;
+    border: 1px solid #ff8d37;
+}
+
+.change-page span.current {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #fff;
+    background-color: #ff8d37;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.change-page span.disabled {
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #bfbfbf;
+    background: #f2f2f2;
+    border-radius: 4px;
+    vertical-align: middle;
 }
