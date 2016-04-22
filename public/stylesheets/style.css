@@ -61,7 +61,6 @@ body > .wrap {
     box-shadow: 0 1px 0 0 #ff8d37 !important;
 }
 
-
 hr {
     border-top: 1px solid #DDDDDD;
     border-bottom: none;
@@ -115,10 +114,12 @@ hr {
     padding: 0;
     position: relative;
 }
-.navTitle > span{
+
+.navTitle > span {
     position: absolute;
     padding-left: 10px;
 }
+
 .navTitle > i {
     font-size: 30px;
 }
@@ -127,10 +128,12 @@ hr {
     .container {
         width: 80% !important;
     }
+
     #sideBar {
         padding-top: 100px;
         z-index: 0;
     }
+
     #navBar {
         position: fixed;
         top: 0;
@@ -138,13 +141,11 @@ hr {
     }
 }
 
-
-
-
 @media screen and (min-width: 993px) {
     main {
         padding-top: 100px;
     }
+
     main, nav {
         padding-left: 240px;
     }
@@ -319,16 +320,28 @@ div[class~=wechat_num]:hover {
     color: #999;
 }
 
-.topic-btn{
-    margin-left: 15px!important;
-    margin-right: 15px!important;
+.topic-btn {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
 }
+
 .side-nav::-webkit-scrollbar {
-   width: 1px;
+    width: 1px;
 }
+
 .side-nav::-moz-scrollbar {
-   width: 1px;
+    width: 1px;
 }
+
 .side-nav::scrollbar {
-   width: 1px;
+    width: 1px;
+}
+
+td > img {
+    width: 50px;
+    height: 50px;
+}
+
+td {
+    padding: 3px !important;
 }
