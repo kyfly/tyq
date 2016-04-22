@@ -36,15 +36,12 @@
                             <li class="collection-item avatar">
                                 <img ng-src="{{personInfo.imgSrc}}" alt="" class="circle">
                                 <span class="title topic-name" ng-bind="personInfo.name"></span>
-                                <p>
                                     <span ng-bind="personInfo.time" class="topic-time"></span>
-                                <h6 ng-bind="personInfo.title" class="topic-title"></h6>
-                                <p ng-bind="personInfo.content" class="topic-content"></p>
+                                    <h6 ng-bind="personInfo.title" class="topic-title"></h6>
+                                    <p ng-bind="personInfo.content" class="topic-content"></p>
                                 <div>
                                     <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img">
                                 </div>
-
-                                </p>
                                 <div style="margin-top: 30px;margin-bottom: 10px">
                                     <i class="mdi-action-visibility topic-icon-color"
                                        ng-bind="personInfo.numberOfReader"></i>
@@ -71,7 +68,8 @@
         </div>
 
         <div style="margin: 20px 0;" class="row">
-            <button class="topic-del-btn btn col wechat_btn waves-light waves-effect orange" ng-click="delete()">删除 </button>
+            <button class="topic-del-btn btn col wechat_btn waves-light waves-effect orange" ng-click="delete()">删除
+            </button>
             <!--<button class="btn col wechat_btn right waves-light waves-effect orange">下一页</button>-->
             <!--<button class="btn col wechat_btn right waves-light waves-effect orange">上一页</button>-->
             <div class="change-page"></div>

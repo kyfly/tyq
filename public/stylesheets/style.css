@@ -78,14 +78,14 @@ hr {
 }
 
 .bold {
-    margin-right: 0 45px !important;
+    padding: 0 !important;
 }
 
 .bold > a {
     font-size: 16px;
     height: 40px;
     line-height: 40px;
-    padding-left: 47px !important;
+    padding-left: 85px !important;
 }
 
 .side-nav li:hover {
@@ -144,9 +144,6 @@ hr {
 @media screen and (min-width: 993px) {
     main {
         padding-top: 100px;
-    }
-
-    main, nav {
         padding-left: 240px;
     }
 }
@@ -286,14 +283,19 @@ div[class~=wechat_num]:hover {
 }
 
 .list_table_img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: -3px;
+    margin-top: 3px;
+}
+
+.table-checkbox {
+    margin-bottom: -6px;
+    margin-top: 6px;
 }
 
 .user_score_allscore {
-
     font-size: 20px;
-    font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
     margin-top: 10px;
 }
 
@@ -337,8 +339,7 @@ div[class~=wechat_num]:hover {
     width: 1px;
 }
 
-
-.topic-del-btn{
+.topic-del-btn {
 
 }
 
@@ -347,7 +348,6 @@ div[class~=wechat_num]:hover {
     color: #ccc;
     text-align: center;
 }
-
 
 .change-page a {
     display: inline-block;
@@ -388,13 +388,8 @@ div[class~=wechat_num]:hover {
     background: #f2f2f2;
     border-radius: 4px;
     vertical-align: middle;
-
-td > img {
-    width: 50px;
-    height: 50px;
 }
 
 td {
     padding: 3px !important;
-
 }
