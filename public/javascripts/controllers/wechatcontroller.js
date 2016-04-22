@@ -34,17 +34,23 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
 		}
 	];
 	$scope.page= {
-		all:"300"//文章总数
+		all:"4"//文章总数
 	};
-	//function{
-	//	var page_num=10;
-	//	var chose_all=false;
-	//	var chose_empty=true;
-	//	var chose=new array(page_num);
-	//	for(var i=0;i<page_num;i++){
-	//		chose[i]=false;
-	//	}
-	//}
+	first=function(page){
+		var page_num=10;
+		$scope.num_cut=0;
+		$scope.num_all=$scope.page.all-(page_num*page)>=10?10:$scope.page.all-(page_num*page);
+		var chose_all=false;
+		var chose_empty=true;
+		$scope.chose=new Array(0);
+
+		for(var i=0;i<$scope.num_all;i++){
+			$scope.chose.push(false);
+		}
+		console.log($scope.chose);
+		//console.log(num);
+	};
+	first(1);
 
 	//$scope.wechat_chose_all=function(){
 	//	var wechat_tr=document.getElementsByClassName("wechat-tr");
@@ -64,8 +70,18 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
 	//	//console.log(wechat_tr[0].getElementsByTagName("input").attribute("ng-checked"));
 	//
 	//};
-	//$scope.wechatchk=function(num){
-	//	console.log(x);
-	//};
+	$scope.wechatchk=function(obj){
+		var num=obj.id;
+		num=num.substring(4,num.length)-1;
+		//console.log(num);
+		$scope.chose[num]=true;
+		console.log($scope.chose);
+		$scope.num_cut++;
+		if($scope.num_cut==$scope.num_all){
+			document.getElementById("all").setAttribute("checked","true");
+		}else{
+			document.getElementById("all").removeAttribute("checked");
+		}
+	};
 	//chose_all();
 }]);

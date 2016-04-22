@@ -19,7 +19,7 @@
 			<tr class="wechat-tr" ng-repeat="main in wechat_info">
 				<td>
 					<div class="col s1 wechat_chose_div">
-						<input class="filled-in" type="checkbox" id="{{main.id}}" ng-checked="chkall" ng-model="x" ng-click="wechatchk(x)"/>
+						<input class="filled-in" type="checkbox" id="{{main.id}}" ng-checked="chkall" ng-click="wechatchk(main)"/>
 						<label for="{{main.id}}" class="wechat_zero"></label>
 					</div>
 					<div>

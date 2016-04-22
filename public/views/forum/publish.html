@@ -1,15 +1,13 @@
-<div class="container">
-    <h5>发表话题</h5>
+<h5>发表话题</h5>
+<div>
+    <div input-field>
+        <input id="name" type="text" style="margin:0" ng-model="publishItem.title" length="11" required>
+        <label for="name">请输入文章标题</label>
+    </div>
     <div>
-        <div input-field>
-            <input id="name" type="text" style="margin:0" ng-model="article.title" length="11" required>
-            <label for="name">请输入文章标题</label>
-        </div>
-        <div>{{editorConfig}}
-            <div class="ueditor" ng-model="articleEditorContent" config="editorConfig"></div>
-        </div>
+        <div class="ueditor" ng-model="publishEditorContent" config="editorConfig"></div>
     </div>
-    <div style="margin: 20px" class="center">
-        <a href="" class="btn waves-light waves-effect orange" ng-click="createArticle()">发布</a>
-    </div>
+</div>
+<div style="margin: 20px" class="center">
+    <a href="" class="btn waves-light waves-effect orange" ng-click="publishTopic()">发布</a>
 </div>
