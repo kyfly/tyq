@@ -10,21 +10,25 @@
 	</div>
 	<form>
 		<div class="col s12 wechat_chose margin-top" style="background: #f1f1f1">
-				<input type="checkbox" class="filled-in" id="all" ng-click="wechat_chose_all()">
+				<input type="checkbox" class="filled-in" id="all" ng-click="wechat_chose_all()" ng-model="chkall" ng-checked="chkall">
 				<label for="all" id="chose_all">全选</label>
 		</div>
 		<table class="border-all">
 			<tbody class="border-all">
 
-			<tr class="wechat_tr" ng-repeat="main in wechat_info">
+			<tr class="wechat-tr" ng-repeat="main in wechat_info">
 				<td>
 					<div class="col s1 wechat_chose_div">
-						<input class="filled-in" type="checkbox" id="{{main.id}}"/>
+						<input class="filled-in" type="checkbox" id="{{main.id}}" ng-checked="chkall" ng-model="x" ng-click="wechatchk(x)"/>
 						<label for="{{main.id}}" class="wechat_zero"></label>
 					</div>
 					<div>
 						<div class="col s9" ng-bind="main.title"></div>
-						<div class="col s2"><a class="wechat_a">修改</a>|<a class="wechat_a">删除</a>|<a class="wechat_a">同步</a></div>
+						<div class="col s2 ">
+							<a class="wechat_a secondary-content">| <span>同步</span></a>
+							<a class="wechat_a secondary-content">| <span>删除</span></a>
+							<a class="wechat_a secondary-content"><span>修改</span></a>
+						</div>
 						<div class="col s1" ng-bind="main.writer"></div><div class="col s3" ng-bind="main.time"></div><div class="col s1" ng-bind="main.type"></div>
 						<div class="col s12" ng-bind="main.main"></div>
 					</div>
@@ -40,16 +44,17 @@
 	<button class="btn col wechat_btn waves-light waves-effect orange">同步</button>
 	<button class="btn col wechat_btn right waves-light waves-effect orange">上一页</button>
 	<button class="btn col wechat_btn right waves-light waves-effect orange">下一页</button>
-	<div class="center-align wechat_num_n">
-		<div>
-			<a><div class="wechat_num">1<div></div></div></a>
-			<a><div class="wechat_num">2<div></div></div></a>
-			<a><div class="wechat_num">3<div></div></div></a>
-			<a><div class="wechat_num">4<div></div></div></a>
-			<a><div class="wechat_num">5<div></div></div></a>
-			<span class="wechat_num" style="border: 0">......</span>
-			<a><div class="wechat_num">10<div></div></div></a>
-		</div>
-
-	</div>
+</div>
+<div class="center-align wechat_num_n">
+	<pagination
+			page="1"
+			page-size="10"
+			total="page.all"
+			show-prev-next="false"
+			dots="..."
+			hide-if-empty="false"
+			adjacent="2"
+			scroll-top="true"
+			pagination-action="changePage(page)"
+			>
 </div>
