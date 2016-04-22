@@ -33,55 +33,78 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
 			main:"例如：照明设备生产公司注册商标时，在1101类似群组中应选择“灯（110040）"
 		}
 	];
-	$scope.page= {
-		all:"4"//文章总数
-	};
+	$scope.page_all=4;//文章总数
+	var chose_all=false;//全选标志
+	var chose_empty=true;//全不选标志
+	var chose=new Array(0);//选项标志
+	var num_cut=0;//选中文章数
+	$scope.num_all=0;//每页文章数
+	$scope.page=1;
+	//页初始
 	first=function(page){
+		$scope.page=page;
 		var page_num=10;
-		$scope.num_cut=0;
-		$scope.num_all=$scope.page.all-(page_num*page)>=10?10:$scope.page.all-(page_num*page);
-		var chose_all=false;
-		var chose_empty=true;
-		$scope.chose=new Array(0);
-
+		$scope.num_all=$scope.page_all-(page_num*(page-1))>=10?10:$scope.page_all-(page_num*(page-1));
+		console.log($scope.num_all);
 		for(var i=0;i<$scope.num_all;i++){
-			$scope.chose.push(false);
+			chose.push(false);
 		}
-		console.log($scope.chose);
-		//console.log(num);
+		console.log(chose);
 	};
 	first(1);
+	//全选
+	$scope.wechat_chose_all=function(){
+		//var wechat_tr=document.getElementsByClassName("wechat-tr");
+		//var all=document.getElementById("all");
+		//console.log(all);
+		//console.log(wechat_tr);
+		if(chose_all==true){
+			chose_all=false;
+			num_cut=0;
+			for(var i=0;i<$scope.page_all;i++){
+				chose[i]=false;
+			}
+			document.getElementById("all").removeAttribute("checked");
+		}else{
+			chose_all=true;
+			num_cut=$scope.num_all;
+			for(i=0;i<$scope.page_all;i++){
+				chose[i]=true;
+			}
+			document.getElementById("all").setAttribute("checked","chkall");
+		}
+		console.log(chose);
+		console.log("num_cut"+num_cut);
+		console.log(chose_all);
+		//console.log(wechat_tr[0].getElementsByTagName("input").attribute("ng-checked"));
 
-	//$scope.wechat_chose_all=function(){
-	//	var wechat_tr=document.getElementsByClassName("wechat-tr");
-	//	var all=document.getElementById("all");
-	//	console.log(all);
-	//	console.log(wechat_tr);
-	//	if(chose_all=true){
-	//		chose_all=false;
-	//		for(i=0;i<page_num;i++){
-	//			chose[i]=false;
-	//		}
-	//	}else{
-	//		for(i=0;i<page_num;i++){
-	//			chose[i]=true;
-	//		}
-	//	}
-	//	//console.log(wechat_tr[0].getElementsByTagName("input").attribute("ng-checked"));
-	//
-	//};
+	};
+	//单选
 	$scope.wechatchk=function(obj){
 		var num=obj.id;
 		num=num.substring(4,num.length)-1;
 		//console.log(num);
-		$scope.chose[num]=true;
-		console.log($scope.chose);
-		$scope.num_cut++;
-		if($scope.num_cut==$scope.num_all){
-			document.getElementById("all").setAttribute("checked","true");
+		if(chose[num]==false){
+			chose[num]=true;
+			chose_empty=false;
+			console.log(chose);
+			num_cut++;
 		}else{
-			document.getElementById("all").removeAttribute("checked");
+			chose[num]=false;
+			chose_all=false;
+			console.log(chose);
+			num_cut--;
 		}
+
+		//if(num_cut==$scope.num_all){
+		//	//$scope.wechat_chose_all();
+		//	chose_all=true;
+		//	document.getElementById("all").setAttribute("checked","chkall");
+		//}else{
+		//	chose_empty=true;
+		//	document.getElementById("all").removeAttribute("checked");
+		//}
+		console.log("num_cut"+num_cut);
 	};
 	//chose_all();
 }]);
