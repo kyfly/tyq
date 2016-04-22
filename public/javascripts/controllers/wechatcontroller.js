@@ -40,10 +40,10 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
 	var num_cut=0;//选中文章数
 	$scope.num_all=0;//每页文章数
 	$scope.page=1;
+	var page_num=10;
 	//页初始
 	first=function(page){
 		$scope.page=page;
-		var page_num=10;
 		$scope.num_all=$scope.page_all-(page_num*(page-1))>=10?10:$scope.page_all-(page_num*(page-1));
 		console.log($scope.num_all);
 		for(var i=0;i<$scope.num_all;i++){
@@ -106,5 +106,14 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
 		//}
 		console.log("num_cut"+num_cut);
 	};
+	$(".wechat_page").createPage({
+		pageCount:Math.ceil($scope.page_all/page_num),
+		//pageCount:20,
+		current:1,
+		backFn:function(p){
+			console.log(p+"页");
+			first(p);
+		}
+	});
 	//chose_all();
 }]);
