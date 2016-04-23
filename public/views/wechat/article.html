@@ -16,11 +16,12 @@
           	<th class="choose-row">
           		<input 
           			type="checkbox" id="all"
-          		 	ng-click="chose_all()">
+          			class="filled-in"
+          		 	ng-click="chooseAll()">
             	<label for="all"></label>
           	</th>
           	<th>文章内容</th>
-          	<th class="operation-row">操作</th>
+          	<th class="article-operation-row">操作</th>
       	</tr>
     </thead>
 
@@ -29,8 +30,10 @@
 		<td>
 			<input 
 				type="checkbox" 
-				id="{{article.id}}" 
-				ng-click="wechatchk()"/>
+				class="filled-in"
+				id="{{article.id}}"
+				ng-model="article.select"
+				ng-init="article.select = false"/>
 			<label for="{{article.id}}" ></label>
 		</td>
 		<td class="left">
@@ -51,18 +54,18 @@
 	</tr>
 	</tbody>
 </table>
-<pagination
+<pagination 
+	class="center"
     page="1"
-    page-size="10"
-    total="200"
-    show-prev-next="true"
-    dots="...."
-    hide-if-empty="false"
+    page-size="articles.count"
+    total="articles.total"
+    show-prev-next="false"
+    dots="..."
+    hide-if-empty="true"
     adjacent="2"
     scroll-top="false"
-    pagination-action="changePage(page)" />
+    pagination-action="changePage(page)"/>
 <div class="margin-top margin-bottom">
-	<button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
+	<button class="btn col wechat_btn waves-light waves-effect blue" ng-click="batchAction()">删除</button>
 	<button class="btn col wechat_btn waves-light waves-effect blue">同步</button>
-	<div class="wechat_page"></div>
 </div>

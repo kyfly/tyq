@@ -1,9 +1,24 @@
 app.controller(
 'WechatArticleCtrl', ['$scope', function ($scope) {
 	$scope.articles = getArticles();
+	$scope.chooseAll = function () {
+		$scope.articles.content.forEach(function (article) {
+			article.select = true;
+		});
+	}
+	$scope.batchAction = function () {
+		var articles = $scope.articles.content;
+		for(var x in articles) if (articles[x].select === true) {
+			console.log(articles[x].id)
+		}
+	}
+	$scope.changePage = function (page) {
+		console.log(page)
+		$scope.articles = getArticles();
+	}
 	function getArticles() {
 		var articles = [];
-		for (var i = 0; i < 20; i ++)
+		for (var i = 0; i < 10; i ++)
 		{
 			var article = {
 		       "id": i,
@@ -18,7 +33,7 @@ app.controller(
 		}
 		return {
 			total: 300,
-			count: 20,
+			count: 10,
 			content: articles
 		}
 	}
