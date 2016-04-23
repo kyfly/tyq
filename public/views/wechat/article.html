@@ -1,44 +1,66 @@
-<div class="row" style="line-height: 25px">
-	<div class="col s12 wechat_title">文章列表</div>
-	<div class="col s12 wechat_zero">
-		<div class="col s10 wechat_zero input-field wechat_search">
-			<input class="wechat_zero" id="search" type="text" placeholder="请输入作者/标题/栏目">
-		</div>
-		<div class="wechat_zero">
-			<button class="btn col s2 waves-effect waves-light blue" style="height: 45px">搜索</button>
-		</div>
+<div class="row">
+	<h5 class="path col m5 s12">
+	    文章列表
+	</h5>
+	<div class="col m6 s11 center search-box">
+	    <input type="text" placeholder="请输入作者/标题/栏目">
+	    <button class="btn waves-effect blue waves-light">	
+	    	搜索
+	    </button>
 	</div>
-	<form>
-		<div class="col s12 wechat_chose margin-top" style="background: #f1f1f1">
-				<input type="checkbox" class="filled-in" id="all" ng-click="wechat_chose_all()" ng-model="chkall">
-				<label for="all" id="chose_all"></label>
-		</div>
-		<table class="border-all">
-			<tbody class="border-all">
-
-			<tr class="wechat-tr" ng-repeat="main in wechat_info">
-				<td>
-					<div class="col s1 wechat_chose_div">
-						<input class="filled-in" type="checkbox" id="{{main.id}}" ng-checked="chkall" ng-click="wechatchk(main)"/>
-						<label for="{{main.id}}" class="wechat_zero"></label>
-					</div>
-					<div>
-						<div class="col s9" ng-bind="main.title"></div>
-						<div class="col s2 ">
-							<a class="wechat_a secondary-content">| <span>同步</span></a>
-							<a class="wechat_a secondary-content">| <span>删除</span></a>
-							<a class="wechat_a secondary-content"><span>修改</span></a>
-						</div>
-						<div class="col s1" ng-bind="main.writer"></div><div class="col s3" ng-bind="main.time"></div><div class="col s1" ng-bind="main.type"></div>
-						<div class="col s12" ng-bind="main.main"></div>
-					</div>
-				</td>
-			</tr>
-
-			</tbody>
-		</table>
-	</form>
 </div>
+<hr class="path-line">
+<table class="bordered">
+	<thead>
+      	<tr>
+          	<th class="choose-row">
+          		<input 
+          			type="checkbox" id="all"
+          		 	ng-click="chose_all()">
+            	<label for="all"></label>
+          	</th>
+          	<th>文章内容</th>
+          	<th class="operation-row">操作</th>
+      	</tr>
+    </thead>
+
+	<tbody>
+	<tr ng-repeat="article in articles.content">
+		<td>
+			<input 
+				type="checkbox" 
+				id="{{article.id}}" 
+				ng-click="wechatchk()"/>
+			<label for="{{article.id}}" ></label>
+		</td>
+		<td class="left">
+			<h6 ng-bind="article.title"></h6>
+			<p ng-bind="article.digest"></p>
+		</td>
+		<td>
+			<a class="wechat_a secondary-content">| 
+				<span>同步</span>
+			</a>
+			<a class="wechat_a secondary-content">| 
+				<span>删除</span>
+			</a>
+			<a class="wechat_a secondary-content">
+				<span>修改</span>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<pagination
+    page="1"
+    page-size="10"
+    total="200"
+    show-prev-next="true"
+    dots="...."
+    hide-if-empty="false"
+    adjacent="2"
+    scroll-top="false"
+    pagination-action="changePage(page)" />
 <div class="margin-top margin-bottom">
 	<button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
 	<button class="btn col wechat_btn waves-light waves-effect blue">同步</button>

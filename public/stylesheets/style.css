@@ -1,10 +1,6 @@
-hr {
-    border-top: 1px solid #DDDDDD;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
+nav .brand-logo {
+    height: 100%;
 }
-
 nav .brand-logo.left {
     left: 0;
 }
@@ -26,15 +22,80 @@ nav ul {
     }
 }
 
-.page-title {
-    width: 80%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1.4rem !important;
-    display: block;
+@media only screen and (min-width: 993px) {
+    #sideBar {
+        z-index: 1;
+        width: 240px !important;
+        position: relative !important;
+        left:0 !important;
+        background: #fff;
+        padding-bottom: 30px !important;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 
+        0 0px 0px 0 rgba(0, 0, 0, 0.12) !important;
+    }
+    main {
+        margin-top: 100px !important;
+        position: relative;
+    }
+    #navBar {
+        position: fixed;
+        top: 0;
+        z-index: 3;
+    }
+    
+    .view-box{
+        position: absolute;
+        top: 0;
+        padding: 20px;
+        width: 100%;
+        left: 0;
+        padding-left: 260px;
+        background: #fff;
+        min-height:100%;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 
+        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    .view-line {
+        position: absolute;
+        left: 240px;
+        height: calc(100% - 2px);
+        bottom: 2px;
+        width: 1px;
+        background-color: rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 
+        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
 }
 
+@media screen and (max-width: 992px) {
+    main, nav {
+        padding-left: 0;
+    }
+    main {
+        margin-top: 30px !important;
+        position: relative;
+    }
+    .view-box{
+        position: absolute;
+        top: 0;
+        padding: 20px;
+        background: #fff;
+        width: 100%;
+    }
+    .container {
+        width: 95%;
+    }
+}
+table {
+    table-layout: fixed;
+}
+td{
+    word-break: break-all; 
+    word-wrap:break-word;
+}
+#sideBar {
+    padding-top: 30px;
+}
 .bold {
     padding: 0 !important;
 }
@@ -46,22 +107,20 @@ nav ul {
     padding-left: 65px !important;
 }
 
-.side-nav li:hover {
+#sideBar li:hover {
     background-color: #e6e8ea;
 }
 
-.side-nav li.active > a {
+#sideBar li.active > a {
     color: #ffffff;
     background-color: #54adff;
 }
 
-.side-nav li.active {
+#sideBar li.active {
     background-color: #54adff;
 }
 
-#sideBar {
-    padding-top: 30px;
-}
+
 
 .navTitle {
     font-size: 20px;
@@ -82,57 +141,11 @@ nav ul {
     font-size: 30px;
 }
 
-@media only screen and (min-width: 993px) {
-    .container {
-        width: 80% !important;
-    }
-
-    #sideBar {
-        padding-top: 80px;
-        z-index: 0;
-    }
-
-    #navBar {
-        position: fixed;
-        top: 0;
-        z-index: 3;
-    }
-}
-
-@media screen and (min-width: 993px) {
-    main {
-        padding-top: 100px;
-        padding-left: 240px;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    main, nav {
-        padding-left: 0;
-    }
-}
-
-@media only screen and (max-width: 601px) {
-    .container {
-        margin: 0 auto;
-        max-width: 1280px;
-        width: 95%;
-    }
-}
-
-.path-box {
-
-}
 
 .path {
     color: #717171
 }
 
-.path-line {
-    margin: 5px -30px;
-    padding: 1px 0;
-    background: #e6e8ea;
-}
 
 .search-box {
     position: relative;
@@ -155,23 +168,25 @@ nav ul {
 .search-box button {
     position: absolute;
     top: -1px;
-    right: -2px;
+    right: -4px;
     height: 34px;
     border-radius: 0 5px 5px 0;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
-.choose-all {
+.choose-row {
     width: 40px;
     position: relative;
 }
 
-.choose-all label {
+.choose-row label {
     padding-top: 10px;
     position: absolute;
     top: 17px;
 }
-
+.operation-row {
+    width: 200px;
+}
 .card-content > p {
     padding: 5px;
 }
@@ -353,15 +368,15 @@ nav ul {
     margin-right: 15px !important;
 }
 
-.side-nav::-webkit-scrollbar {
+#sideBar::-webkit-scrollbar {
     width: 1px;
 }
 
-.side-nav::-moz-scrollbar {
+#sideBar::-moz-scrollbar {
     width: 1px;
 }
 
-.side-nav::scrollbar {
+#sideBar::scrollbar {
     width: 1px;
 }
 

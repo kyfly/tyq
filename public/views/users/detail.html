@@ -1,7 +1,14 @@
 <div class="row">
-    <div class="col s12  wechat_title"><a ui-sref="wechatUsers">用户列表</a> > {{user.name}}的详情</div>
+    <h5 class="path col m5 s12">
+        <a ui-sref="wechatUsers">用户列表</a>
+        > 用户详情
+    </h5>
+    <div class="col m6 s11 center search-box">
+        <input type="text">
+        <button class="btn waves-effect blue waves-light">搜索</button>
+    </div>
 </div>
-<hr>
+<hr class="path-line">
 <table class="centered">
     <thead class="detail-thead">
     <tr class="detail-tr">
