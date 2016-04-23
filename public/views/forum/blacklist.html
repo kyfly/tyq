@@ -1,16 +1,13 @@
 <!--list.html用户列表-->
-<div class="row" style="font-size: 15px;line-height: 25px">
-    <div class="col s12  wechat_title">用户列表</div>
-    <div class="col s12">
-        <div class="col s11 wechat_zero input-field wechat_search">
-            <input class="wechat_zero" id="search" type="text">
-        </div>
-        <div class="wechat_zero">
-            <button class="btn col s1 waves-light waves-effect blue" style="height: 45px;">搜索</button>
-        </div>
+<div class="row">
+    <h5 class="path col m5 s12">黑名单</h5>
+    <div class="col m6 s11 center search-box">
+        <input type="text">
+        <button class="btn waves-effect blue waves-light">搜索</button>
     </div>
 </div>
-</div>
+<hr class="path-line">
+<div>
 
 <div>
     <table class="centered bordered">
@@ -40,7 +37,7 @@
                 <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
             </td>
             <td ng-bind="user.name"></td>
-            <td><a ng-href="/MS/user/score/{{user.id}}" ng-bind="user.score"></a></td>
+            <td><a ng-href="/users/score/{{user.id}}" ng-bind="user.score"></a></td>
             <td ng-bind="user.level"></td>
             <td ng-bind="user.comments"></td>
             <td ng-bind="user.replies"></td>
