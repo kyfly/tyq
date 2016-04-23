@@ -1,4 +1,4 @@
-<h5 class="path">公告列表</h5>
+<h5 class="path">公告管理</h5>
 <hr>
 <h5 class="margin-top">标题</h5>
 <div input-field>
@@ -12,22 +12,24 @@
     <a href="" class="btn  waves-light waves-effect blue" ng-click="">发布</a>
 </div>
 <div class="n_top">
-    <h4>公告列表</h4>
+    <h5 class="path">公告列表</h5>
     <hr>
     <form action="">
         <table>
             <thead>
             <tr class="">
-                <th><input type="checkbox" class="filled-in" id="all"/>
-                    <label for="all"></label></th>
-                <th data-field="date" style=""> 发布日期</th>
+                <th> <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
+                            ng-click="all(master,notice)">
+                    <label for="topic-top" id="chose_all"></label></th>
+                <th data-field="date" style="" class="path"> 发布日期</th>
             </tr>
             </thead>
             <tbody>
             <tr class="n_tr"ng-repeat="notice  in noticeList">
                 <td>
-                    <input class="filled-in" type="checkbox" id="art_1"/>
-                    <label for="art_1" class=""></label>
+                    <input class="filled-in" type="checkbox" id="{{notice.id}}"
+                           ng-model="x" ng-checked="master" ng-click="chk(notice,x)">
+                    <label for="{{notice.id}}" class=""></label>
                 </td>
                 <td ng-bind="notice.time"></td>
                 <td clss="center" ng-bind="notice.content"></td>
