@@ -43,7 +43,7 @@ nav ul {
     font-size: 16px;
     height: 40px;
     line-height: 40px;
-    padding-left: 65px !important;
+    padding-left: 80px !important;
 }
 
 .side-nav li:hover {
@@ -508,7 +508,7 @@ body > .wrap {
 }
 
 .detail-tr > td, .detail-tr > th {
-    padding: 40px !important;
+    padding: 25px !important;
 }
 
 .detail-thead {
@@ -527,4 +527,8 @@ body > .wrap {
 
 .detail-border {
     border-right: 1px solid #DDDDDD;
+}
+
+.bold-font {
+    font-weight: bold;
 }

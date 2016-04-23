@@ -32,12 +32,12 @@
                 <label class="table-checkbox" for="checkbox{{$index}}"></label>
             </td>
             <td>
-                <a ng-href="users/detail/{{user.id}}">
+                <a ng-href="users/detail/{{user.id}}/health">
                     <img ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
                 </a>
             </td>
             <td>
-                <a ng-href="users/detail/{{user.id}}" ng-bind="user.name"></a>
+                <a ng-href="users/detail/{{user.id}}/health" ng-bind="user.name"></a>
             </td>
             <td ng-bind="user.phone"></td>
             <td ng-bind="user.type"></td>
