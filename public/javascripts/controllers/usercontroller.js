@@ -90,6 +90,17 @@ app.controller('UserScoreCtrl', ['$scope', function ($scope) {
 }]);
 
 app.controller('UserDetailCtrl', ['$scope', function ($scope) {
+    $scope.user = {
+        id: 0,
+        headImgUrl: "/lib/img/weixin.jpg",
+        name: "李志斌",
+        sex: "男",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 300,
+        BG: "5mmol/L"
+    };
 }]);
 
 app.controller('UserServiceCtrl', ['$scope', function ($scope) {
