@@ -3,7 +3,7 @@ app.controller(
 	$scope.articles = getArticles();
 	$scope.chooseAll = function () {
 		$scope.articles.content.forEach(function (article) {
-			article.select = true;
+			article.select = !article.select;
 		});
 	}
 	$scope.batchAction = function () {
