@@ -73,7 +73,6 @@
     padding-left: 0 !important;
 }
 
-
 /*常用margin--start*/
     .margin-left {
         margin-left: 15px !important;
@@ -236,8 +235,6 @@ body > .wrap {
     border-bottom: 1px solid #54adff !important;
     box-shadow: 0 1px 0 0 #54adff !important;
 }
-
-
 
 /*顶部设置*/
     nav .brand-logo {

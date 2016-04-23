@@ -33,4 +33,32 @@
     </tr>
     </tbody>
 </table>
-<hr>
+<hr class="margin-bottom">
+<div class="row">
+    <div class="col s3 detail-item detail-border center">
+        <a ui-sref="userDetail.health">
+            <img src="/img/health.png">
+            <p class="black-text">健康信息</p>
+        </a>
+    </div>
+    <div class="col s3 detail-item detail-border center">
+        <a ui-sref="userDetail.check">
+            <img src="/img/check.png">
+            <p class="black-text">检查数据</p>
+        </a>
+    </div>
+    <div class="col s3 detail-item detail-border center">
+        <a ui-sref="userDetail.scheme">
+            <img src="/img/scheme.png">
+            <p class="black-text">控糖方案</p>
+        </a>
+    </div>
+    <div class="col s3 detail-item center">
+        <a ui-sref="userDetail.dialogue">
+            <img src="/img/dialogue.png">
+            <p class="black-text">控糖日志</p>
+        </a>
+    </div>
+</div>
+<hr class="double-margin-top">
+<div class="double-margin-top margin-bottom" ui-view=""></div>

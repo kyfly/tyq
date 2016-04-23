@@ -26,6 +26,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl:"/views/users/detail.html",
             controller:"UserDetailCtrl"
         })
+        .state('userDetail.health', {
+            url: '/health',
+            templateUrl: '/views/users/detail/health.html'
+        })
+        .state('userDetail.check', {
+            url: '/check',
+            templateUrl: '/views/users/detail/check.html'
+        })
+        .state('userDetail.scheme', {
+            url: '/scheme',
+            templateUrl: '/views/users/detail/scheme.html'
+        })
+        .state('userDetail.dialogue', {
+            url: '/dialogue',
+            templateUrl: '/views/users/detail/dialogue.html'
+        })
         .state('forumUserlist', {
             url: '/forum/userlist',
             templateUrl: '/views/forum/userlist.html',

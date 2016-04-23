@@ -23,7 +23,6 @@
                 <th style="padding: 0"></th>
             </tr>
             </thead>
-
             <tbody>
             <tr ng-repeat="personInfo in peopleInfo">
                 <td style="position:absolute;margin-top: 25px;">
@@ -37,7 +36,6 @@
                             <img ng-src="{{personInfo.imgSrc}}" alt="" class="circle">
                             <span class="title topic-name" ng-bind="personInfo.name"></span>
                                 <span ng-bind="personInfo.time" class="topic-time"></span>
-
                             <h6 ng-bind="personInfo.title" class="topic-title"></h6>
                             <p ng-bind="personInfo.content" class="topic-content" style="padding: 5px 0"></p>
                             <div class="topic-img">

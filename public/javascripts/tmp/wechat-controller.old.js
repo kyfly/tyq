@@ -101,16 +101,6 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
         //}
         console.log("num_cut"+num_cut);
     };
-    $(".wechat_page").createPage({
-        pageCount:Math.ceil($scope.page_all/page_num),
-        //pageCount:20,
-        current:1,
-        backFn:function(p){
-            console.log(p+"页");
-            first(p);
-        }
-    });
-    //chose_all();
 }]);
 
 app.controller('WechatAccountCtrl', ['$scope', function ($scope) {
