@@ -43,7 +43,7 @@ nav ul {
     font-size: 16px;
     height: 40px;
     line-height: 40px;
-    padding-left: 65px !important;
+    padding-left: 80px !important;
 }
 
 .side-nav li:hover {
@@ -194,6 +194,10 @@ nav ul {
 
 .margin-top {
     margin-top: 15px !important;
+}
+
+.double-margin-top {
+    margin-top: 30px !important;
 }
 
 .margin-bottom {
@@ -504,9 +508,27 @@ body > .wrap {
 }
 
 .detail-tr > td, .detail-tr > th {
-    padding: 40px !important;
+    padding: 25px !important;
 }
 
 .detail-thead {
     border: none;
+}
+
+.detail-item {
+    height: 180px;
+}
+
+.detail-item > a > img {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.detail-border {
+    border-right: 1px solid #DDDDDD;
+}
+
+.bold-font {
+    font-weight: bold;
 }

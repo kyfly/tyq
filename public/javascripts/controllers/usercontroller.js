@@ -1,7 +1,7 @@
 app.controller('UserInfoCtrl', ['$scope', function ($scope) {
     $scope.userList = [{
         id: 0,
-        headImgUrl: "/lib/img/weixin.jpg",
+        headImgUrl: "/img/weixin.jpg",
         name: "sm",
         phone: "18888888888",
         type: "一型糖尿病",
@@ -9,7 +9,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         score: 20
     }, {
         id: 1,
-        headImgUrl: "/lib/img/weixin.jpg",
+        headImgUrl: "/img/weixin.jpg",
         name: "sm",
         phone: "18888888888",
         type: "一型糖尿病",
@@ -17,7 +17,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         score: 20
     }, {
         id: 2,
-        headImgUrl: "/lib/img/weixin.jpg",
+        headImgUrl: "/img/weixin.jpg",
         name: "sm",
         phone: "18888888888",
         type: "一型糖尿病",
@@ -57,7 +57,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
 app.controller('UserScoreCtrl', ['$scope', function ($scope) {
     $scope.user = {
         id: 2,
-        headImgUrl: "/lib/img/weixin.jpg",
+        headImgUrl: "/img/weixin.jpg",
         name: "sm",
         score: 20,
         level: 20,
@@ -92,7 +92,7 @@ app.controller('UserScoreCtrl', ['$scope', function ($scope) {
 app.controller('UserDetailCtrl', ['$scope', function ($scope) {
     $scope.user = {
         id: 0,
-        headImgUrl: "/lib/img/weixin.jpg",
+        headImgUrl: "img/weixin.jpg",
         name: "李志斌",
         sex: "男",
         score: 20,
