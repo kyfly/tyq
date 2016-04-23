@@ -8,8 +8,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('serviceUsers', {
             url: '/users/service',
-            templateUrl: '/views/users/info.html',
-            controller: 'UserInfoCtrl'
+            templateUrl: '/views/users/service.html',
+            controller: 'UserServiceCtrl'
         })
         .state('forumBlacklist', {
             url: '/forum/blacklist',
@@ -20,6 +20,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url:'/users/score/:id',
             templateUrl:"/views/users/score.html",
             controller:"UserScoreCtrl"
+        })
+        .state('userDetail',{
+            url:'/users/detail/:id',
+            templateUrl:"/views/users/detail.html",
+            controller:"UserDetailCtrl"
         })
         .state('forumUserlist', {
             url: '/forum/userlist',
@@ -46,19 +51,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/wechat/article.html',
             controller: 'WechatArticleCtrl'
         })
-        .state('wechatNumber', {
-            url: '/weixin/public-number',
-            templateUrl: '/views/wechat/article.html',
-            controller: 'WechatArticleCtrl'
+        .state('wechatAccount', {
+            url: '/weixin/account',
+            templateUrl: '/views/wechat/account.html',
+            controller: 'WechatAccountCtrl'
         })
         .state('releaseOfGoods', {
             url: '/goods/release',
-            templateUrl: '/views/wechat/article.html',
-            controller: 'WechatArticleCtrl'
+            templateUrl: '/views/store/release.html',
+            controller: 'StoreReleaseCtrl'
         })
         .state('orderForGoods', {
             url: '/goods/orders',
-            templateUrl: '/views/wechat/article.html',
-            controller: 'WechatArticleCtrl'
+            templateUrl: '/views/store/order.html',
+            controller: 'StoreOrderCtrl'
         })
 });

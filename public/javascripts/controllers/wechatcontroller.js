@@ -112,3 +112,6 @@ app.controller('WechatArticleCtrl', ['$scope', function ($scope) {
 	});
 	//chose_all();
 }]);
+
+app.controller('WechatAccountCtrl', ['$scope', function ($scope) {
+}]);

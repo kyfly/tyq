@@ -6,7 +6,7 @@
                 <input class="wechat_zero" id="search" type="text" placeholder="请输入作者/标题/栏目">
             </div>
             <div class="wechat_zero">
-                <button class="btn col s1 waves-effect waves-light orange" style="height: 45px">搜索</button>
+                <button class="btn col s1 waves-effect waves-light blue" style="height: 45px">搜索</button>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
             <div class="col s12 topic-choose-all margin-top" style="background: #f1f1f1;" >
                 <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
                        ng-click="all(master,peopleInfo)">
-                <label for="topic-top" id="chose_all">全选</label>
+                <label for="topic-top" id="chose_all"></label>
             </div>
 
             <table class="bordered">
@@ -73,8 +73,8 @@
             </table>
         </div>
 
-        <div style="margin: 20px 0;" class="row">
-            <button class="topic-del-btn btn col wechat_btn waves-light waves-effect orange" ng-click="delete()">删除 </button>
+        <div class="margin-bottom margin-top">
+            <button class="topic-del-btn btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">删除</button>
             <div class="change-page"></div>
         </div>
     </div>

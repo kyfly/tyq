@@ -9,9 +9,9 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
         icon: 'mdi-file-cloud-circle',
         subM: [
             {
-                id: 'sidebarWechatArticle',
+                id: 'sidebarWechatAccount',
                 name: '公众号',
-                url: '/weixin/public-number'
+                url: '/weixin/account'
             },
             {
                 id: 'sidebarWechatArticle',
@@ -23,7 +23,7 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
         icon: 'mdi-social-person',
         subM: [
             {
-                id: 'sidebarUserInfo',
+                id: 'sidebarUserService',
                 name: '平台客服',
                 url: '/users/service'
             },

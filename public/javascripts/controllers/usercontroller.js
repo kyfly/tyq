@@ -1,6 +1,6 @@
 app.controller('UserInfoCtrl', ['$scope', function ($scope) {
     $scope.userList = [{
-        id: 1,
+        id: 0,
         headImgUrl: "/lib/img/weixin.jpg",
         name: "sm",
         phone: "18888888888",
@@ -16,7 +16,7 @@ app.controller('UserInfoCtrl', ['$scope', function ($scope) {
         BG: "5mmol/L",
         score: 20
     }, {
-        id: 1,
+        id: 2,
         headImgUrl: "/lib/img/weixin.jpg",
         name: "sm",
         phone: "18888888888",
@@ -87,4 +87,10 @@ app.controller('UserScoreCtrl', ['$scope', function ($scope) {
     };
 
 
+}]);
+
+app.controller('UserDetailCtrl', ['$scope', function ($scope) {
+}]);
+
+app.controller('UserServiceCtrl', ['$scope', function ($scope) {
 }]);
