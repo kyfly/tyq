@@ -167,5 +167,17 @@ app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
 }]);
 
 app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
+    $scope.noticeList=[{
+        time:"2015.0422",
+        content:"这是一次测试"
+    },
+        {
+            time:"2015.0522",
+            content:"另外一次测试"
+        },
+        {
+            time:"2016.0422",
+            content:"最后次测试"
+        }]
 
 }]);

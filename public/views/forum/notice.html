@@ -1,4 +1,4 @@
-<h4>公告列表</h4>
+<h5 class="path">公告列表</h5>
 <hr>
 <h5 class="margin-top">标题</h5>
 <div input-field>
@@ -23,35 +23,14 @@
                 <th data-field="date" style=""> 发布日期</th>
             </tr>
             </thead>
-            </body>
-            <tr class="n_tr">
+            <tbody>
+            <tr class="n_tr"ng-repeat="notice  in noticeList">
                 <td>
                     <input class="filled-in" type="checkbox" id="art_1"/>
                     <label for="art_1" class=""></label>
                 </td>
-                <td>2015.0422</td>
-                <td clss="center">这是一次测试</td>
-                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-                <td class="right">修改|删除</td>
-            </tr>
-            <tr class="n_tr">
-                <td>
-                    <input class="filled-in" type="checkbox" id="art_2"/>
-                    <label for="art_2" class=""></label>
-                </td>
-                <td>2015.0422</td>
-                <td clss="center">情人最后难免沦为朋友</td>
-                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-
-                <td class="right">修改|删除</td>
-            </tr>
-            <tr class="n_tr">
-                <td>
-                    <input class="filled-in" type="checkbox" id="art_3"/>
-                    <label for="art_3" class=""></label>
-                </td>
-                <td>2015.0422</td>
-                <td clss="center">一生何求</td>
+                <td ng-bind="notice.time"></td>
+                <td clss="center" ng-bind="notice.content"></td>
                 <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
                 <td class="right">修改|删除</td>
             </tr>
