@@ -198,3 +198,56 @@ app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
         $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
     };
 }]);
+app.controller('ForumBlacklistCtrl', ['$scope', function ($scope) {
+
+    $scope.blackList = [{
+        id: 1,
+        headImgUrl: "/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }, {
+        id: 2,
+        headImgUrl: "/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }, {
+        id: 3,
+        headImgUrl: "/img/weixin.jpg",
+        name: "sm",
+        score: 20,
+        level: 20,
+        comments: 20,
+        replies: 30
+    }];
+    $scope.choseArr = [];//定义数组用于存放前端显示
+    var str = "";//
+    var flag = '';//是否点击了全选，是为a
+    $scope.x = false;//默认未选中
+    $scope.all = function (c, v) {//全选
+        if (c == true) {
+            $scope.x = true;
+            $scope.choseArr = v;
+        } else {
+            $scope.x = false;
+            $scope.choseArr = [""];
+        }
+        flag = 'a';
+    };
+    $scope.chk = function (z, x) {//单选或者多选
+        if (flag == 'a') {//在全选的基础上操作
+            str = $scope.choseArr.join();
+        }
+        if (x == true) {//选中
+            str = str + z + ',';
+        } else {
+            str = str.replace(z + ',', '');//取消选中
+        }
+        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
+    };
+}]);
