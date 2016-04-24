@@ -15,12 +15,12 @@
 <body class="light-grey" ng-controller="IndexCtrl">
 <nav id="navBar" class="blue">
     <div class="nav-wrapper container">
-        <a href="" data-activates="sideBar" 
-            class="left brand-logo button-collapse">
+        <a href="" data-activates="sideBar"
+           class="left brand-logo button-collapse">
             <img src="/img/logo.png">
         </a>
-        <a href="" data-activates="sideBar" 
-            class="left brand-logo">
+        <a href="" data-activates="sideBar"
+           class="left brand-logo">
             <img src="/img/logo.png">
         </a>
         <ul class="right">
@@ -38,11 +38,11 @@
                 <i ng-class="sidebar.icon"></i>
                 <span ng-bind="sidebar.name"></span>
             </h2>
-            <li id="{{sub.id}}" class="bold" 
-                ng-class="{active: path == sub.url}" 
+            <li id="{{sub.id}}" class="bold"
+                ng-class="{active: path == sub.url}"
                 ng-repeat="sub in sidebar.subM">
-                <a class="waves-effect" 
-                    ng-href="{{sub.url}}" ng-bind="sub.name">
+                <a class="waves-effect"
+                   ng-href="{{sub.url}}" ng-bind="sub.name">
                 </a>
             </li>
         </div>
