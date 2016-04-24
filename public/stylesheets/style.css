@@ -93,11 +93,15 @@
 }
 
 .margin-bottom {
-    margin-bottom: 30px !important;
+    margin-bottom: 15px !important;
 }
 
 .double-margin-top {
     margin-top: 30px;
+}
+
+.double-margin-bottom {
+    margin-bottom: 30px;
 }
 
 /*常用margin--end*/
