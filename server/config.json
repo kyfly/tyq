@@ -7,10 +7,11 @@
     "model": "./apis",
     "route": "./routes",
     "view": "./views",
-    "static": "./public"
+    "static": "../public",
+    "index": "../public/views/index.html"
   },
   "remote": {
-    "domain": "dmday.cn",
+    "domain": "http://www.dmday.cn",
     "pathPrefix": "apis"
   }
 }

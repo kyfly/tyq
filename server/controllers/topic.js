@@ -1,12 +1,10 @@
-exports.list = function (req, res, next) {
-    console.log(this);
-}
-exports.findById = function () {
-    
-}
-exports.modify = function () {
-    
-}
-exports.distroy = function () {
-    
-}
+exports.find = function (req, res, next) {}
+exports.findById = function (req, res, next) {}
+exports.updateById = function (req, res, next) {}
+exports.distroyById = function (req, res, next) {}
+exports.replyList = function (req, res, next) {}
+exports.distroyReply = function (req, res, next) {}
+exports.publish = function (req, res, next) {}
+exports.createPublish = function (req, res, next) {}
+exports.updatePublishById = function (req, res, next) {}
+exports.distroyPublishById = function (req, res, next) {}
