@@ -10,7 +10,7 @@
 <hr class="path-line">
 <div>
     <div>
-        <div class="col s12 topic-choose-all margin-top" style="background: #f1f1f1;" >
+        <div class="col s12 topic-choose-all margin-top">
             <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
                    ng-click="all(master,peopleInfo)">
             <label for="topic-top" id="chose_all"></label>
@@ -31,28 +31,28 @@
                     <label for="{{personInfo.id}}"></label>
                 </td>
                 <td style="padding:0;">
-                    <ul class="collection" style="border: 0;margin-bottom: 0">
+                    <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
                             <img ng-src="{{personInfo.imgSrc}}" alt="" class="circle">
                             <span class="title topic-name" ng-bind="personInfo.name"></span>
-                                <span ng-bind="personInfo.time" class="topic-time"></span>
-                            <h6 ng-bind="personInfo.title" class="topic-title"></h6>
-                            <p ng-bind="personInfo.content" class="topic-content" style="padding: 5px 0"></p>
+                            <span ng-bind="personInfo.time" class="topic-time dark-grey-text"></span>
+                            <h6 ng-bind="personInfo.title" class="topic-title margin-top"></h6>
+                            <p ng-bind="personInfo.content" class="topic-content dark-grey-text" style="padding: 5px 0"></p>
                             <div class="topic-img">
                                 <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img" materialboxed
                                      ng-show="personInfo.contentImg">
                             </div>
 
                             </p>
-                            <div>
-                                <i class="mdi-action-visibility topic-icon-color"
-                                   ng-bind="personInfo.numberOfReader"></i>
+                            <div class="margin-top">
+                                <i class="mdi-action-visibility dark-grey-text"></i>
+                                <span ng-bind="personInfo.numberOfReader"></span>
                                 &nbsp;
-                                <i class="mdi-action-thumb-up topic-icon-color"
-                                   ng-bind="personInfo.numberOfLike"></i>
+                                <i class="mdi-action-thumb-up dark-grey-text"></i>
+                                <span ng-bind="personInfo.numberOfLike"></span>
                                 &nbsp;
-                                <i class="mdi-communication-chat topic-icon-color"
-                                   ng-bind="personInfo.numberOfComment"></i>
+                                <i class="mdi-communication-chat dark-grey-text"></i>
+                                <span ng-bind="personInfo.numberOfComment"></span>
                             </div>
                             <a class="secondary-content">
                                 <span>评论</span>
@@ -81,7 +81,7 @@
                     adjacent="2"
                     scroll-top="false"
                     pagination-action="changePage(page)"
-                    class="center "></pagination>
+                    class="center"></pagination>
         </div>
     </div>
 </div>
