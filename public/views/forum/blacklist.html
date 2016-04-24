@@ -13,7 +13,7 @@
         <thead class="grey-text">
         <tr>
             <th>
-                <input type="checkbox" class="filled-in" id="all" ng-click="chose_all()">
+                <input type="checkbox" class="filled-in" id="all" ng-click="all(master,blacklist)"ng-model="master">
                 <label for="all"></label>
             </th>
             <th>头像</th>
@@ -27,10 +27,10 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in blacklist">
+        <tr ng-repeat="user in blackList">
             <td >
-                <input type="checkbox" class="filled-in" id="checkbox{{$index}}" ng-model="checkbox">
-                <label for="checkbox{{$index}}"></label>
+                <input type="checkbox" class="filled-in" id="{{user.id}}" ng-model="x" ng-checked="master" ng-click="chk(blacklist,x)">
+                <label for="{{user.id}}"></label>
             </td>
             <td>
                 <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
