@@ -2,10 +2,7 @@
     <h5 class="path col m5 s12">
         公告管理
     </h5>
-    <div class="col m6 s11 center search-box">
-        <input type="text" placeholder="">
-        <button class="btn waves-effect blue waves-light">搜索</button>
-    </div>
+
 </div>
 <hr class="path-line">
 <h5 class="margin-top">标题</h5>
@@ -14,12 +11,12 @@
     <label for="name"></label>
 </div>
 
-<div>
+<div class="double-margin-top">
     <h5>正文</h5>
-    <textarea class="n_textarea " placeholder="请输入公告内容" style="resize: none"></textarea>
-    <a href="" class="btn  waves-light waves-effect blue" ng-click="">发布</a>
+    <textarea class="n_textarea" placeholder="请输入公告内容" style="resize: none"></textarea>
+    <a href="" class="btn  waves-light waves-effect blue margin-top" ng-click="">发布</a>
 </div>
-<div class="n_top">
+<div class=" double-margin-top">
     <h5 class="path">公告列表</h5>
     <hr>
     <form action="">
@@ -47,5 +44,21 @@
             </tbody>
         </table>
     </form>
+    <div class="double-margin-bottom margin-top">
+        <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
+        <div class="double-margin-bottom margin-top">
+            <pagination
+                    page="1"
+                    page-size="10"
+                    total="200"
+                    show-prev-next="true"
+                    dots="...."
+                    hide-if-empty="false"
+                    adjacent="2"
+                    scroll-top="false"
+                    pagination-action="changePage(page)"
+                    class="center "></pagination>
+        </div>
+    </div>
 
 </div>
