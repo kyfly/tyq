@@ -68,9 +68,20 @@
             </tbody>
         </table>
     </div>
-
-    <div class="margin-bottom margin-top">
-        <button class="topic-del-btn btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">删除</button>
-        <div class="change-page"></div>
+    <div class="double-margin-bottom margin-top">
+        <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
+        <div class="double-margin-bottom margin-top">
+            <pagination
+                    page="1"
+                    page-size="10"
+                    total="200"
+                    show-prev-next="true"
+                    dots="...."
+                    hide-if-empty="false"
+                    adjacent="2"
+                    scroll-top="false"
+                    pagination-action="changePage(page)"
+                    class="center "></pagination>
+        </div>
     </div>
 </div>

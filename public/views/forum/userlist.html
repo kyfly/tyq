@@ -52,9 +52,20 @@
     </table>
 </div>
 
-<div class="margin-bottom margin-top">
+<div class="double-margin-bottom margin-top">
     <button class="btn col wechat_btn waves-light waves-effect blue">拉黑</button>
-    <button class="btn col wechat_btn right waves-light waves-effect blue">上一页</button>
-    <button class="btn col wechat_btn right waves-light waves-effect blue">下一页</button>
+    <div class="double-margin-bottom margin-top">
+        <pagination
+                page="1"
+                page-size="10"
+                total="200"
+                show-prev-next="true"
+                dots="...."
+                hide-if-empty="false"
+                adjacent="2"
+                scroll-top="false"
+                pagination-action="changePage(page)"
+                class="center "></pagination>
+    </div>
 </div>
 

@@ -1,69 +1,79 @@
 .row {
     margin-bottom: 0 !important;
 }
+
 .text-center {
     text-align: center;
 }
+
 .detail-tr > td, .detail-tr > th {
-    padding: 40px !important;
+    padding: 30px !important;
 }
+
 .detail-thead {
     border: none;
 }
+
 .path {
     color: #717171
 }
+
 /*搜索框--start*/
-    .search-box {
-        position: relative;
-        padding: 0 !important;
-        margin: 0.82rem 0.75rem 0.656rem 0.75rem !important;
-    }
+.search-box {
+    position: relative;
+    padding: 0 !important;
+    margin: 0.82rem 0.75rem 0.656rem 0.75rem !important;
+}
 
-    .search-box input {
-        border: 1px solid #9e9e9e !important;
-        border-radius: 5px !important;
-        margin: 0 !important;
-        height: 30px !important;
-    }
+.search-box input {
+    border: 1px solid #9e9e9e !important;
+    border-radius: 5px !important;
+    margin: 0 !important;
+    height: 30px !important;
+}
 
-    .search-box input:focus {
-        border: 1px solid #9e9e9e !important;
-        box-shadow: 0 0px 0 0 #26a69a !important;
-    }
+.search-box input:focus {
+    border: 1px solid #9e9e9e !important;
+    box-shadow: 0 0px 0 0 #26a69a !important;
+}
 
-    .search-box button {
-        position: absolute;
-        top: -1px;
-        right: -4px;
-        height: 34px;
-        border-radius: 0 5px 5px 0;
-        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-    }
+.search-box button {
+    position: absolute;
+    top: -1px;
+    right: -4px;
+    height: 34px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
 /*搜索框--end*/
 /*table的th设置--start*/
-    /*全选框*/
-        .choose-row {
-            width: 40px;
-            position: relative;
-        }
-        .choose-row label {
-            padding-top: 10px;
-            position: absolute;
-            top: 17px;
-        }
-    /*全选框*/
-        
-    /*操作列，可在这里定义自己table的最后列样式*/
-        .article-operation-row {
-            width: 120px;
-        }
-    /*操作列*/
+/*全选框*/
+.choose-row {
+    width: 40px;
+    position: relative;
+}
+
+.choose-row label {
+    padding-top: 10px;
+    position: absolute;
+    top: 17px;
+}
+
+/*全选框*/
+
+/*操作列，可在这里定义自己table的最后列样式*/
+.article-operation-row {
+    width: 120px;
+}
+
+/*操作列*/
 /*table的th设置--end*/
 /*分页css*/
-    .pagination li.active {
-        background: #54adff;
-    }
+.pagination li.active {
+    background: #54adff;
+}
+
 /*分页css*/
 .card-content > p {
     padding: 5px;
@@ -74,27 +84,34 @@
 }
 
 /*常用margin--start*/
-    .margin-left {
-        margin-left: 15px !important;
-    }
+.margin-left {
+    margin-left: 15px !important;
+}
 
-    .margin-top {
-        margin-top: 15px !important;
-    }
+.margin-top {
+    margin-top: 15px !important;
+}
 
-    .margin-bottom {
-        margin-bottom: 30px !important;
-    }
+.margin-bottom {
+    margin-bottom: 15px !important;
+}
+
+.double-margin-top {
+    margin-top: 30px;
+}
+
+.double-margin-bottom {
+    margin-bottom: 30px;
+}
+
 /*常用margin--end*/
-
-
 
 .topic-list .input-field {
     margin-top: 0;
 }
 
 .n_textarea {
-    height: 250px;
+    height: 130px;
 }
 
 .n_top {
@@ -149,6 +166,7 @@
     margin-left: 15px !important;
     margin-right: 15px !important;
 }
+
 .topic-del-btn {
     position: absolute;
     margin-top: 14px;
@@ -163,6 +181,17 @@ td {
     padding: 3px !important;
 }
 
+hr {
+    border-top: 1px solid #dddddd;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bold-font {
+    font-weight: bold;
+}
+
 .topic-img {
     max-width: 100px;
     max-height: 100px;
@@ -175,15 +204,16 @@ td {
 
 body {
     font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";
+    padding-bottom: 50px;
+}
+
+html {
+    padding-bottom: 50px;
 }
 
 html, body, .wrap {
-    height: 100%;
-}
-
-body > .wrap {
-    height: auto;
     min-height: 100%;
+    height: 100px;
 }
 
 /*
@@ -193,36 +223,38 @@ body > .wrap {
     特殊色-橘黄色  ff8d37
 */
 /*常用颜色*/
-    .blue {
-        background-color: #54adff !important;
-    }
+.blue {
+    background-color: #54adff !important;
+}
 
-    .blue-text {
-        color: #54adff !important;
-    }
+.blue-text {
+    color: #54adff !important;
+}
 
-    .dark-grey {
-        background-color: #717171 !important;
-    }
+.dark-grey {
+    background-color: #717171 !important;
+}
 
-    .light-grey {
-        background-color: #e6e8ea !important;
-    }
-    .dark-grey-text {
-        color: #717171 !important;
-    }
+.light-grey {
+    background-color: #e6e8ea !important;
+}
 
-    .light-grey-text {
-        color: #e6e8ea !important;
-    }
+.dark-grey-text {
+    color: #717171 !important;
+}
 
-    .orange {
-        background-color: #ff8d37 !important;
-    }
+.light-grey-text {
+    color: #e6e8ea !important;
+}
 
-    .orange-text {
-        color: #ff8d37 !important;
-    }
+.orange {
+    background-color: #ff8d37 !important;
+}
+
+.orange-text {
+    color: #ff8d37 !important;
+}
+
 /*常用颜色*/
 
 /* label focus color */
@@ -237,158 +269,189 @@ body > .wrap {
 }
 
 /*顶部设置*/
-    nav .brand-logo {
-        height: 100%;
+nav .brand-logo {
+    height: 100%;
+}
+
+nav .brand-logo.left {
+    left: 0;
+}
+
+nav .brand-logo img {
+    height: 42px;
+    line-height: 42px;
+    margin: 7px 0;
+    z-index: 3;
+}
+
+nav ul {
+    padding-right: 50px;
+    z-index: 5;
+}
+
+@media only screen and (min-width: 601px) {
+    nav .brand-logo img {
+        height: 50px;
+        line-height: 50px;
     }
-    nav .brand-logo.left {
-        left: 0;
+}
+
+/*顶部设置*/
+/*侧边栏调整，没事不要改*/
+@media only screen and (min-width: 993px) {
+    #sideBar {
+        z-index: 1;
+        width: 240px !important;
+        position: absolute !important;
+        left: 0 !important;
+        background: #fff;
+        padding-bottom: 0 !important;
+        height: 100%;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16),
+        0 0px 0px 0 rgba(0, 0, 0, 0.12) !important;
     }
 
-    nav .brand-logo img {
-        height: 42px;
-        line-height: 42px;
-        margin: 7px 0;
+    main {
+        margin-top: 100px !important;
+        position: relative;
+        min-height: 100%;
+    }
+
+    #navBar {
+        position: fixed;
+        top: 0;
         z-index: 3;
     }
 
-    nav ul {
-        padding-right: 50px;
-        z-index: 5;
+    .view-box {
+        position: absolute;
+        top: 0;
+        padding: 20px;
+        width: 100%;
+        left: 0;
+        padding-left: 260px;
+        background: #fff;
+        min-height: 100%;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+        0 2px 10px 0 rgba(0, 0, 0, 0.12);
     }
 
-    @media only screen and (min-width: 601px) {
-        nav .brand-logo img {
-            height: 50px;
-            line-height: 50px;
-        }
-    }
-/*顶部设置*/
-/*侧边栏调整，没事不要改*/
-    @media only screen and (min-width: 993px) {
-        #sideBar {
-            z-index: 1;
-            width: 240px !important;
-            position: relative !important;
-            left:0 !important;
-            background: #fff;
-            padding-bottom: 30px !important;
-            box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 
-            0 0px 0px 0 rgba(0, 0, 0, 0.12) !important;
-        }
-        main {
-            margin-top: 100px !important;
-            position: relative;
-        }
-        #navBar {
-            position: fixed;
-            top: 0;
-            z-index: 3;
-        }
-        
-        .view-box{
-            position: absolute;
-            top: 0;
-            padding: 20px;
-            width: 100%;
-            left: 0;
-            padding-left: 260px;
-            background: #fff;
-            min-height:100%;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 
-            0 2px 10px 0 rgba(0, 0, 0, 0.12);
-        }
-        .view-line {
-            position: absolute;
-            left: 240px;
-            height: calc(100% - 2px);
-            bottom: 2px;
-            width: 1px;
-            background-color: rgba(0, 0, 0, 0.12);
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 
-            0 2px 10px 0 rgba(0, 0, 0, 0.12);
-        }
-    }
-
-    @media screen and (max-width: 992px) {
-        main, nav {
-            padding-left: 0;
-        }
-        main {
-            margin-top: 30px !important;
-            position: relative;
-        }
-        .view-box{
-            position: absolute;
-            top: 0;
-            padding: 20px;
-            background: #fff;
-            width: 100%;
-        }
-        .container {
-            width: 95%;
-        }
-    }
-    table {
-        table-layout: fixed;
-    }
-    td{
-        word-break: break-all; 
-        word-wrap:break-word;
-    }
-    #sideBar {
-        padding-top: 30px;
-    }
-    #sideBar::-webkit-scrollbar {
+    .view-line {
+        position: absolute;
+        left: 240px;
+        height: calc(100% - 2px);
+        bottom: 2px;
         width: 1px;
+        background-color: rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    main, nav {
+        padding-left: 0;
     }
 
-    #sideBar::-moz-scrollbar {
-        width: 1px;
-    }
-
-    #sideBar::scrollbar {
-        width: 1px;
-    }
-    .bold {
-        padding: 0 !important;
-    }
-
-    .bold > a {
-        font-size: 16px;
-        height: 40px;
-        line-height: 40px;
-        padding-left: 65px !important;
-    }
-
-    #sideBar li:hover {
-        background-color: #e6e8ea;
-    }
-
-    #sideBar li.active > a {
-        color: #ffffff;
-        background-color: #54adff;
-    }
-
-    #sideBar li.active {
-        background-color: #54adff;
-    }
-/*菜单调整没事不要改*/
-    .navTitle {
-        font-size: 20px;
-        color: #a9b7b7;
-        margin: 0;
-        margin-left: 25px;
-        line-height: 30px;
-        padding: 0;
+    main {
+        margin-top: 30px !important;
         position: relative;
     }
 
-    .navTitle > span {
+    .view-box {
         position: absolute;
-        padding-left: 10px;
+        top: 0;
+        padding: 20px;
+        background: #fff;
+        width: 100%;
     }
 
-    .navTitle > i {
-        font-size: 30px;
+    .container {
+        width: 95%;
     }
+}
+
+table {
+    table-layout: fixed;
+}
+
+td {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+#sideBar {
+    padding-top: 30px;
+}
+
+#sideBar::-webkit-scrollbar {
+    width: 1px;
+}
+
+#sideBar::-moz-scrollbar {
+    width: 1px;
+}
+
+#sideBar::scrollbar {
+    width: 1px;
+}
+
+.bold {
+    padding: 0 !important;
+}
+
+.bold > a {
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 65px !important;
+}
+
+#sideBar li:hover {
+    background-color: #e6e8ea;
+}
+
+#sideBar li.active > a {
+    color: #ffffff;
+    background-color: #54adff;
+}
+
+#sideBar li.active {
+    background-color: #54adff;
+}
+
 /*菜单调整没事不要改*/
+.navTitle {
+    font-size: 20px;
+    color: #a9b7b7;
+    margin: 0;
+    margin-left: 25px;
+    line-height: 30px;
+    padding: 0;
+    position: relative;
+}
+
+.navTitle > span {
+    position: absolute;
+    padding-left: 10px;
+}
+
+.navTitle > i {
+    font-size: 30px;
+}
+
+/*菜单调整没事不要改*/
+
+.detail-item {
+    height: 180px;
+}
+
+.detail-item > a > img {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.detail-border {
+    border-right: 1px solid #dddddd;
+}
