@@ -5,7 +5,7 @@ exports.default = {
     routes: [{
         api: "/news",
         method: "get",
-        action: "list",
+        action: "find",
         remote: "/wechat/articles",
         desc: "图文素材列表"
     },{
