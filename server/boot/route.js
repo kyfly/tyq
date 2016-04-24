@@ -14,7 +14,7 @@ function loadRoute(app) {
   client.forEach(function (r) {
     app.use('/' + r, function (req, res, next) {
       console.log(1);
-      res.sendfile(path.join(__dirname, '../../public/views/index.html'));
+      res.sendfile(path.join(app.root, app.get('source').index));
     });
   });
   app.use('/ue/uploads', upload(app));

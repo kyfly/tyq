@@ -6,32 +6,44 @@ exports.default = {
         api: "/news",
         method: "get",
         action: "list",
-        remote: "/api/news",
+        remote: "/wechat/articles",
         desc: "图文素材列表"
     },{
         api: "/news/:id",
         method: "get",
         action: "findById",
-        remote: "/api/news/:id",
+        remote: "/wechat/articles/:id",
         desc: "图文详情"
     },{
         api: "/news/:id",
         method: "put",
-        action: "modify",
-        remote: "/api/news/:id",
+        action: "updateById",
+        remote: "/wechat/articles/:id",
         desc: "修改图文信息"
     },{
         api: "/news/:id/synchronize",
         method: "post",
         action: "synchronize",
-        remote: "/api/news/:id/synchronize",
+        remote: "/wechat/articles/:id/synchronize",
         desc: "同步单条图文信息到发现页面"
+    },{
+        api: "/news/synchronize",
+        method: "post",
+        action: "synchronizeMore",
+        remote: "/wechat/articles/synchronize",
+        desc: "同步多条图文信息到发现页面"
     },{
         api: "/news/:id",
         method: "delete",
-        action: "distroy",
-        remote: "/api/news/:id",
+        action: "distroyById",
+        remote: "/wechat/articles/:id",
         desc: "删除一条图文信息"
+    },{
+        api: "/news",
+        method: "delete",
+        action: "distroyMore",
+        remote: "/wechat/articles",
+        desc: "删除多条图文信息"
     }],
     properties: {
         id: {
