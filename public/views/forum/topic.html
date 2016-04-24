@@ -37,10 +37,11 @@
                             <span class="title topic-name" ng-bind="personInfo.name"></span>
                             <span ng-bind="personInfo.time" class="topic-time dark-grey-text"></span>
                             <h6 ng-bind="personInfo.title" class="topic-title margin-top"></h6>
-                            <p ng-bind="personInfo.content" class="topic-content dark-grey-text" style="padding: 5px 0"></p>
-                            <div class="topic-img">
-                                <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img" materialboxed
-                                     ng-show="personInfo.contentImg">
+                            <p ng-bind="personInfo.content" class="topic-content dark-grey-text"
+                               style="padding: 5px 0"></p>
+                            <div ng-if="personInfo.contentImg" class="topic-img">
+                                <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img"
+                                     materialboxed>
                             </div>
 
                             </p>
