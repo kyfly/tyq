@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编辑收货地址</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/all.css">
+</head>
+<body>
+	<div class="container-fluid add_address_all">
+		<form>
+		 	<div class="form-group detail_pad">
+			    <label for="userName">收货人姓名</label>
+			    <input type="text" class="form-control" id="userName" placeholder="请输入收货人姓名">
+			 	</div>
+			<div class="form-group detail_pad">
+			  	<label for="phoneNum">手机号码</label>
+			  	<input type="text" class="form-control" id="phoneNum" placeholder="请输入收货人手机号码">
+			</div>
+			<div class="form-group detail_pad">
+				<label for="select_address">省、市、区</label>
+				<div class="selectList">
+					<select name="" id="select_address" class="form-control province">
+						<option>请选择</option>
+					</select>
+					<select name="" id="select_address" class="form-control city">
+						<option>请选择</option>
+					</select>
+					<select name="" id="select_address" class="form-control district">
+						<option>请选择</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group detail_pad">
+				<label for="textarea-address">街道详细地址</label>			
+				<textarea class="form-control" rows="3" id="textarea-address"></textarea>
+			</div>
+			<div class="checkbox">
+			    <label>
+			    	<div class="samll_check"><img src="image/dui.png" alt=""></div><input type="checkbox"> 设为默认地址
+			    	
+			    </label>
+			</div>
+
+		  	<div class="detail_btn" id="position_edit_address">保存地址</div>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/my_all.js"></script>
+</body>
+</html>
