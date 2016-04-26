@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row top-nav">
     <h5 class="path col m5 s12">
         公众号
     </h5>
@@ -8,3 +8,20 @@
     </div>
 </div>
 <hr class="path-line">
+<fieldset class="row double-margin-top">
+    <h5 class="dark-grey-text col s12 m10 offset-m1">
+        复制以下参数到微信公众平台开发者中心->参数配置
+    </h5>
+    <div class="input-field col s12 m10 offset-m1">
+        <input placeholder="Placeholder" id="url" type="text" ng-model="config.url" readonly>
+        <label for="url">url</label>
+    </div>
+    <div class="input-field col s12 m10 offset-m1">
+        <input placeholder="Placeholder" id="token" type="text" ng-model="config.token" readonly>
+        <label for="token">token</label>
+    </div>
+    <div class="input-field col s12 m10 offset-m1">
+        <input placeholder="Placeholder" id="EncodingAESKey" type="text" ng-model="config.EncodingAESKey" readonly>
+        <label for="EncodingAESKey">EncodingAESKey</label>
+    </div>
+</fieldset>

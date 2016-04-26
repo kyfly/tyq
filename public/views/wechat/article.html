@@ -1,73 +1,19 @@
-<div class="row">
-    <h5 class="path col m5 s12">
-        文章列表
+<div class="row top-nav">
+    <h5 class="path col s12">
+        <a href="/weixin/articles">文章列表</a>
+        >文章详情
+        <a class="right" href="/weixin/articles/{{article.id}}/edit">
+            <i class="mdi-editor-mode-edit"></i>
+        </a>
     </h5>
-    <div class="col m6 s11 center search-box">
-        <input type="text" placeholder="请输入作者/标题/栏目">
-        <button class="btn waves-effect blue waves-light">
-            搜索
-        </button>
-    </div>
 </div>
 <hr class="path-line">
-<table class="bordered">
-    <thead>
-    <tr>
-        <th class="choose-row">
-            <input
-                    type="checkbox" id="all"
-                    class="filled-in"
-                    ng-click="chooseAll()">
-            <label for="all"></label>
-        </th>
-        <th>文章内容</th>
-        <th class="article-operation-row">操作</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr ng-repeat="article in articles.content">
-        <td>
-            <input
-                    type="checkbox"
-                    class="filled-in"
-                    id="{{article.id}}"
-                    ng-model="article.select"
-                    ng-init="article.select = false"/>
-            <label for="{{article.id}}"></label>
-        </td>
-        <td class="left">
-            <h6 ng-bind="article.title"></h6>
-            <p ng-bind="article.digest"></p>
-        </td>
-        <td>
-            <a class="wechat_a secondary-content">|
-                <span>同步</span>
-            </a>
-            <a class="wechat_a secondary-content">|
-                <span>删除</span>
-            </a>
-            <a class="wechat_a secondary-content">
-                <span>修改</span>
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<div class="double-margin-bottom margin-top">
-    <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="batchAction()">删除</button>
-    <button class="btn col wechat_btn waves-light waves-effect blue">同步</button>
-    <div class="double-margin-bottom margin-top">
-        <pagination
-                page="1"
-                page-size="10"
-                total="200"
-                show-prev-next="true"
-                dots="...."
-                hide-if-empty="false"
-                adjacent="2"
-                scroll-top="false"
-                pagination-action="changePage(page)"
-                class="center "></pagination>
-    </div>
-</div>
+<article>
+    <h4 ng-bind="article.title"></h4>
+    <h6>
+        <span ng-bind="article.author"></span> 
+        <span ng-bind="article.update_time | date: 'yy-mm-dd'"></span> 
+        <span ng-bind="article.tags"></span>
+    </h6>
+    <div ng-bind-html="article.content"></div>
+</article>

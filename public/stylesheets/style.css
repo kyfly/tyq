@@ -30,6 +30,7 @@
     border-radius: 5px !important;
     margin: 0 !important;
     height: 30px !important;
+    padding-left: 10px;
 }
 
 .search-box input:focus {
@@ -40,12 +41,15 @@
 .search-box button {
     position: absolute;
     top: -1px;
-    right: -4px;
+    right: -14px;
     height: 34px;
     border-radius: 0 5px 5px 0;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
-
+.top-nav .right {
+    font-size: 1.3rem;
+    margin-right: 30px;
+}
 /*搜索框--end*/
 /*table的th设置--start*/
 /*全选框*/
@@ -66,8 +70,23 @@
 .article-operation-row {
     width: 120px;
 }
-
+.article-action-td {
+    position: relative;
+}
+.article-action-td section{
+    position: absolute;
+    top: 10px;
+}
+.forum-user-operation-row{
+    width: 210px;
+}
 /*操作列*/
+/*选择列*/
+td {
+    padding: 3px !important;
+    position: relative;
+}
+/*选择列*/
 /*table的th设置--end*/
 /*分页css*/
 .pagination li.active {
@@ -105,7 +124,29 @@
 }
 
 /*常用margin--end*/
-
+/*微信文章css--start*/
+.articles {}
+.articles td [type="checkbox"] + label {
+    padding-left: 0 !important;
+    position: absolute;
+    top: 20px;
+}
+.articles h5 a {
+    color: #444;
+}
+.articles .save {
+    font-size: 1.3rem;
+    margin-right: 30px;
+}
+/*微信文章css--end*/
+/**/
+.user-info *{
+    vertical-align:middle
+}
+.users tr td label{
+    margin-top: 10px;
+}
+/**/
 .topic-list .input-field {
     margin-top: 0;
 }
@@ -164,7 +205,14 @@
     position: absolute;
     margin-top: 14px;
 }
+table {
+    table-layout: fixed;
+}
 
+td {
+    word-break: break-all;
+    word-wrap: break-word;
+}
 td > img {
     width: 50px;
     height: 50px;
@@ -198,8 +246,11 @@ hr {
 body {
     font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";
     padding-bottom: 50px;
+    word-break:break-all;
 }
-
+a{
+    cursor: pointer;
+}
 html {
     padding-bottom: 50px;
 }
@@ -362,15 +413,6 @@ nav ul {
     .container {
         width: 95%;
     }
-}
-
-table {
-    table-layout: fixed;
-}
-
-td {
-    word-break: break-all;
-    word-wrap: break-word;
 }
 
 #sideBar {

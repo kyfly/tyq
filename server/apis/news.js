@@ -9,6 +9,12 @@ exports.default = {
         remote: "/wechat/articles",
         desc: "图文素材列表"
     },{
+        api: "/news",
+        method: "post",
+        action: "create",
+        remote: "/wechat/articles",
+        desc: "创建图文"
+    },{
         api: "/news/:id",
         method: "get",
         action: "findById",

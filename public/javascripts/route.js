@@ -62,11 +62,27 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/forum/notice.html',
             controller: 'ForumNoticeCtrl'
         })
+        .state('wechatArticles', {
+            url: '/weixin/articles',
+            templateUrl: '/views/wechat/articles.html',
+            controller: 'WechatArticlesCtrl'
+        })
+        .state('wechatArticleCreate', {
+            url: '/weixin/articles/create',
+            templateUrl: '/views/wechat/edit.html',
+            controller: 'WechatArticleEditCtrl'
+        })
         .state('wechatArticle', {
-            url: '/weixin/article',
+            url: '/weixin/articles/:id',
             templateUrl: '/views/wechat/article.html',
             controller: 'WechatArticleCtrl'
         })
+        .state('wechatArticleEdit', {
+            url: '/weixin/articles/:id/edit',
+            templateUrl: '/views/wechat/edit.html',
+            controller: 'WechatArticleEditCtrl'
+        })
+        
         .state('wechatAccount', {
             url: '/weixin/account',
             templateUrl: '/views/wechat/account.html',

@@ -1,0 +1,26 @@
+<div class="row top-nav">
+    <h5 class="path col s12">
+        <a href="/weixin/articles">文章列表</a>
+        >文章编辑
+        <a ng-click="save()" class="right save" href="#">
+            <i class="mdi-content-save"></i>保存
+        </a>
+    </h5>
+</div>
+<hr class="path-line">
+<div class="double-margin-top">
+    <div input-field>
+        <input id="name" type="text" ng-model="article.title" required>
+        <label for="name">请输入文章标题</label>
+    </div>
+    <div input-field>
+        <input id="name" type="text" ng-model="article.tags" required>
+        <label for="name">请输入标签(多个标签逗号隔开)</label>
+    </div>
+    <div class="margin-top">
+        <div class="dark-grey-text">
+            <h5>请在下面编辑内容</h5>
+        </div>
+        <div class="ueditor" ng-model="article.content" config="editorConfig"></div>
+    </div>
+</div>

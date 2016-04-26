@@ -22,9 +22,15 @@ exports.put = function (req, res, next) {
 }
 exports.getMore = function (d) {
     var s = [];
-    for (var i = 20; i >= 0; i--) {
-        d.id = i;
-        s.push(d);
+    var r = [];
+    for (var i = 0; i < 10; i++) {
+        var a = {};
+        for(var x in d) if (x == 'id') {
+            a[x] = i;
+        } else {
+            a[x] = d[x];
+        }
+        s.push(a)
     }
     return s; 
 }
