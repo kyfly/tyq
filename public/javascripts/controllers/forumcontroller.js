@@ -1,57 +1,26 @@
-app.controller('ForumUserlistCtrl', ['$scope', function ($scope) {
-    $scope.userList = [{
-        id: 1,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }, {
-        id: 2,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }, {
-        id: 3,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }];
-}]);
+app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
+    User.find({}, function (res) {
+        console.log(res);
+        $scope.users = res;
+    }, function () {
+        Materialize.toast("获取用户列表失败!", 2000);
+    });
 
-app.controller('ForumBlacklistCtrl', ['$scope', function ($scope) {
-    $scope.blacklist = [{
-        id: 1,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }, {
-        id: 2,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }, {
-        id: 3,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }];
+    $scope.moveToBlacklist = function () {
+        var thisElement = this;
+        User.updateById({
+            id: thisElement.user.id
+        }, {role: 0}, function () {
+            Materialize.toast('拉黑成功！', 2000);
+            var id = thisElement.user.id;
+            for (var x in $scope.users.content)
+                if ($scope.users.content[x].id === id) {
+                    $scope.users.content.splice(x, 1);
+                }
+        }, function () {
+            Materialize.toast('拉黑失败！', 2000);
+        });
+    };
 }]);
 
 app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Ueditor) {
@@ -205,33 +174,30 @@ app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
         $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
     };
 }]);
-app.controller('ForumBlacklistCtrl', ['$scope', function ($scope) {
+app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {
+    User.find({}, function (res) {
+        console.log(res);
+        $scope.blacklist = res;
+    }, function () {
+        Materialize.toast("获取黑名单列表失败!", 2000);
+    });
 
-    $scope.blackList = [{
-        id: 1,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }, {
-        id: 2,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }, {
-        id: 3,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 30
-    }];
+    $scope.removeFromBlacklist = function () {
+        var thisElement = this;
+        User.updateById({
+            id: thisElement.user.id
+        }, {role: 1}, function () {
+            Materialize.toast('恢复成功！', 2000);
+            var id = thisElement.user.id;
+            for (var x in $scope.blacklist.content)
+                if ($scope.blacklist.content[x].id === id) {
+                    $scope.blacklist.content.splice(x, 1);
+                }
+        }, function () {
+            Materialize.toast('恢复失败！', 2000);
+        });
+    };
+
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a

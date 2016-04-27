@@ -1,5 +1,5 @@
 app.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/weixin/article');
+    $urlRouterProvider.otherwise('/weixin/account');
     $stateProvider
         .state('wechatUsers', {
             url: '/users/wechat',
@@ -10,11 +10,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/users/service',
             templateUrl: '/views/users/service.html',
             controller: 'UserServiceCtrl'
-        })
-        .state('forumBlacklist', {
-            url: '/forum/blacklist',
-            templateUrl: '/views/forum/blacklist.html',
-            controller: 'ForumBlacklistCtrl'
         })
         .state('userScore',{
             url:'/users/score/:id',
@@ -46,6 +41,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/forum/userlist',
             templateUrl: '/views/forum/userlist.html',
             controller: 'ForumUserlistCtrl'
+        })
+        .state('forumBlacklist', {
+            url: '/forum/blacklist',
+            templateUrl: '/views/forum/blacklist.html',
+            controller: 'ForumBlacklistCtrl'
         })
         .state('forumPublish', {
             url: '/forum/publishes',
@@ -82,7 +82,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/wechat/edit.html',
             controller: 'WechatArticleEditCtrl'
         })
-        
         .state('wechatAccount', {
             url: '/weixin/account',
             templateUrl: '/views/wechat/account.html',

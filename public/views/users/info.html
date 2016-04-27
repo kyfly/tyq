@@ -25,7 +25,7 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="user in users.content" ng-show="user.role === 1">
             <td>
                 <input
                     type="checkbox"
@@ -37,18 +37,18 @@
             </td>
             <td>
                 <a ng-href="users/detail/{{user.id}}/health" class="user-info">
-                    <img ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
+                    <img ng-src="{{user.headImg}}" alt="" class="circle list_table_img">
                     <span ng-bind="user.name"></span>
                 </a>
             </td>
             <td ng-bind="user.phone"></td>
-            <td ng-bind="user.type"></td>
-            <td ng-bind="user.BG"></td>
+            <td ng-bind="user.BGtype"></td>
+            <td ng-bind="user.lastBG"></td>
             <td>
-                <a ng-href="users/score/{{user.id}}" ng-bind="user.score"></a>
+                <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
             </td>
             <td>
-                <a href="#">加入黑名单</a>
+                <a href="" ng-click="moveToBlacklist()">加入黑名单</a>
             </td>
         </tr>
         </tbody>

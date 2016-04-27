@@ -27,23 +27,26 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="user in users.content" ng-show="user.role === 1">
             <td>
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}">
                 <label class="table-checkbox" for="checkbox{{$index}}"></label>
             </td>
             <td class="user-info">
-                <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img"><span ng-bind="user.name"></span>
+                <a ng-href="users/detail/{{user.id}}/health" class="user-info">
+                    <img ng-src="{{user.headImg}}" alt="" class="circle list_table_img">
+                    <span ng-bind="user.name"></span>
+                </a>
             </td>
-            <td><a ng-href="user/score/{{user.id}}" ng-bind="user.score"></a></td>
+            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a></td>
             <td ng-bind="user.level"></td>
-            <td ng-bind="user.comments"></td>
+            <td ng-bind="user.topics"></td>
             <td ng-bind="user.replies"></td>
             <td>
                 <section>
-                    <a class="wechat_a">拉黑</a> | 
-                    <a class="wechat_a">设为管理员</a> | 
-                    <a class="wechat_a">对话</a> | 
+                    <a class="wechat_a" ng-click="moveToBlacklist()">拉黑</a> |
+                    <a class="wechat_a">设为管理员</a> |
+                    <a class="wechat_a">对话</a> |
                     <a class="wechat_a">详情</a>
                 </section>
             </td>

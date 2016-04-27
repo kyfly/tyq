@@ -1,29 +1,26 @@
-app.controller('UserInfoCtrl', ['$scope', function ($scope) {
-    $scope.userList = [{
-        id: 0,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        phone: "18888888888",
-        type: "一型糖尿病",
-        BG: "5mmol/L",
-        score: 20
-    }, {
-        id: 1,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        phone: "18888888888",
-        type: "一型糖尿病",
-        BG: "5mmol/L",
-        score: 20
-    }, {
-        id: 2,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        phone: "18888888888",
-        type: "一型糖尿病",
-        BG: "5mmol/L",
-        score: 20
-    }];
+app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
+    User.find({}, function (res) {
+        console.log(res);
+        $scope.users = res;
+    }, function () {
+        Materialize.toast("获取用户列表失败!", 2000);
+    });
+
+    $scope.moveToBlacklist = function () {
+        var thisElement = this;
+        User.updateById({
+            id: thisElement.user.id
+        }, {role: 0}, function () {
+            Materialize.toast('拉黑成功！', 2000);
+            var id = thisElement.user.id;
+            for (var x in $scope.users.content)
+                if ($scope.users.content[x].id === id) {
+                    $scope.users.content.splice(x, 1);
+                }
+        }, function () {
+            Materialize.toast('拉黑失败！', 2000);
+        });
+    };
 
     $scope.chose_all = function () {
         var str = "art_";
