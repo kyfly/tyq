@@ -7,7 +7,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            空腹血糖 ： 5.6mmo/L
+            空腹血糖 ： <span ng-bind="userExamine.GDM.fasting"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -15,7 +15,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            OTGG2H ： 5.6mmo/L
+            OTGG2H ： <span ng-bind="userExamine.GDM.OTGG2h"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -23,7 +23,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            糖化血红蛋白（HBA1c）： 5.6mmo/L
+            糖化血红蛋白（HBA1c）： <span ng-bind="userExamine.GDM.HBA1c"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -31,7 +31,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            胰岛素 ： 5.6mmo/L
+            胰岛素 ： <span ng-bind="userExamine.GDM.INS"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -39,7 +39,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            C肽 ： 5.6mmo/L
+            C肽 ： <span ng-bind="userExamine.GDM.CP"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -49,12 +49,12 @@
 
 <div class="row double-margin-top">
     <div class="col s12">
-        <h6 class="bold-font col s6 offset-s2">糖尿病检查</h6>
+        <h6 class="bold-font col s6 offset-s2">血糖检查</h6>
         <hr class="col s12">
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            总胆固醇 ： 5.6mmo/L
+            总胆固醇 ： <span ng-bind="userExamine.BG.CH"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -62,7 +62,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            高密度脂蛋白胆固醇 ： 5.6mmo/L
+            高密度脂蛋白胆固醇 ： <span ng-bind="userExamine.BG.HDICH"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -70,7 +70,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            甘油三酯 ： 5.6mmo/L
+            甘油三酯 ： <span ng-bind="userExamine.BG.TC"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -78,7 +78,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            低密度脂蛋白胆固醇 ： 5.6mmo/L
+            低密度脂蛋白胆固醇 ： <span ng-bind="userExamine.BG.LDICH"></span>mmo/L
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -93,7 +93,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            谷丙转氨酶 ： 3.0 U/L
+            谷丙转氨酶 ： <span ng-bind="userExamine.GPT.GPT"></span>U/L
         </div>
         <div class="col s1">
             <a href="">修改</a>

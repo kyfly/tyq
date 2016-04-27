@@ -2,7 +2,7 @@
 <div class="row double-margin-top">
     <div class="col s12">
         <div class="col s5 offset-s3">
-            身高 ： 160cm
+            身高 ： <span ng-bind="userHealth.tops"></span>cm
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -10,7 +10,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            体重 ： 47kg
+            体重 ： <span ng-bind="userHealth.weight"></span>kg
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -18,7 +18,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            BMI值 ： 20.1kg/m2
+            BMI值 ： <span ng-bind="userHealth.BMI"></span>kg/m2
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -26,7 +26,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            症状 ： 多饮 多食
+            症状 ： <span ng-bind="userHealth.symptoms"></span>
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -34,7 +34,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            已有并发症 ： 多饮 多食
+            已有并发症 ： <span ng-bind="userHealth.chronic"></span>
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -42,7 +42,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            劳动强度 ： 多饮 多食
+            劳动强度 ： <span ng-bind="userHealth.labourIntensive"></span>
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -50,7 +50,7 @@
     </div>
     <div class="col s12 margin-top">
         <div class="col s5 offset-s3">
-            用药情况 ： 多饮 多食
+            用药情况 ： <span ng-bind="userHealth.medication"></span>
         </div>
         <div class="col s1">
             <a href="">修改</a>

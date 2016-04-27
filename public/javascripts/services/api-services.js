@@ -78,9 +78,37 @@
                                 utl: urlBase + '/Users/:id',
                                 method: 'PUT'
                             },
-                            "create": {
-                                utl: urlBase + '/Users',
-                                method: 'POST'
+                            "findHealth": {
+                                url: urlBase + '/Users/:id/health',
+                                method: 'GET'
+                            },
+                            "updateHealth": {
+                                url: urlBase + '/Users/:id/health',
+                                method: 'PUT'
+                            },
+                            "findExamine": {
+                                url: urlBase + '/Users/:id/examine',
+                                method: 'GET'
+                            },
+                            "updateExamine": {
+                                url: urlBase + '/Users/:id/examine',
+                                method: 'PUT'
+                            },
+                            "findSchema": {
+                                url: urlBase + '/Users/:id/schema',
+                                method: 'GET'
+                            },
+                            "updateSchema": {
+                                url: urlBase + '/Users/:id/schema',
+                                method: 'PUT'
+                            },
+                            "findLog": {
+                                url: urlBase + '/Users/:id/log',
+                                method: 'GET'
+                            },
+                            "updateLog": {
+                                url: urlBase + '/Users/:id/log',
+                                method: 'PUT'
                             }
                         });
                     R.modelName = "User";

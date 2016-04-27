@@ -86,18 +86,43 @@ app.controller('UserScoreCtrl', ['$scope', function ($scope) {
 
 }]);
 
-app.controller('UserDetailCtrl', ['$scope', function ($scope) {
-    $scope.user = {
-        id: 0,
-        headImgUrl: "img/weixin.jpg",
-        name: "李志斌",
-        sex: "男",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 300,
-        BG: "5mmol/L"
-    };
+app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
+    User.findById({
+        id: $stateParams.id
+    }, function (res) {
+        console.log(res);
+        $scope.user = res;
+    }, function () {
+        Materialize.toast("获取用户列表失败!", 2000);
+    });
+
+    User.findHealth({
+        id: $stateParams.id
+    }, function (res) {
+        console.log(res);
+        $scope.userHealth = res;
+    });
+
+    User.findExamine({
+        id: $stateParams.id
+    }, function (res) {
+        console.log(res);
+        $scope.userExamine = res;
+    });
+
+    User.findSchema({
+        id: $stateParams.id
+    }, function (res) {
+        console.log(res);
+        $scope.userSchema = res;
+    });
+
+    User.findLog({
+        id: $stateParams.id
+    }, function (res) {
+        console.log(res);
+        $scope.userLog = res;
+    })
 }]);
 
 app.controller('UserServiceCtrl', ['$scope', function ($scope) {

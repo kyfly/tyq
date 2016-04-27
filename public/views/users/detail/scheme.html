@@ -5,41 +5,9 @@
         <h6 class="bold-font col s6 offset-s2">每日饮食原则</h6>
         <hr class="col s12">
     </div>
-    <div class="col s12 margin-top">
+    <div class="col s12 margin-top" ng-repeat="diet in userSchema.diet">
         <div class="col s5 offset-s3">
-            谷署 ： 标准量70g
-        </div>
-        <div class="col s1">
-            <a href="">修改</a>
-        </div>
-    </div>
-    <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            果蔬 ： 标准量150g
-        </div>
-        <div class="col s1">
-            <a href="">修改</a>
-        </div>
-    </div>
-    <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            鱼肉蛋： 标准量70g
-        </div>
-        <div class="col s1">
-            <a href="">修改</a>
-        </div>
-    </div>
-    <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            豆乳 ： 5.6mmo/L
-        </div>
-        <div class="col s1">
-            <a href="">修改</a>
-        </div>
-    </div>
-    <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            油脂 ： 5.6mmo/L
+            <span ng-bind="diet.type"></span> ： <span ng-bind="diet.dosage"></span><span ng-bind="diet.unit"></span>
         </div>
         <div class="col s1">
             <a href="">修改</a>
@@ -52,17 +20,9 @@
         <h6 class="bold-font col s6 offset-s2">每日运动推荐</h6>
         <hr class="col s12">
     </div>
-    <div class="col s12 margin-top">
+    <div class="col s12 margin-top" ng-repeat="diet in userSchema.sport">
         <div class="col s5 offset-s3">
-            跑步 ： 1000米
-        </div>
-        <div class="col s1">
-            <a href="">修改</a>
-        </div>
-    </div>
-    <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            骑车 ： 1000米
+            <span ng-bind="diet.type"></span> ： <span ng-bind="diet.dosage"></span><span ng-bind="diet.unit"></span>
         </div>
         <div class="col s1">
             <a href="">修改</a>
