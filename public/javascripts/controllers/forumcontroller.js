@@ -81,45 +81,51 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 
 }]);
 
-app.controller('ForumTopicCtrl', ['$scope', function ($scope) {
-    $scope.peopleInfo = [
-        {
-            id: "name1",
-            imgSrc: "/img/weixin.jpg",
-            name: "李畅",
-            time: "2016.2.9 12时18分",
-            title: "新人在此！！！",
-            content: "大家好，我是新人",
-            contentImg: "",
-            numberOfReader: "55",
-            numberOfLike: "55",
-            numberOfComment: "100"
-        },
-        {
-            id: "name2",
-            imgSrc: "/img/weixin.jpg",
-            name: "金老师",
-            time: "2016.2.9 12时16分",
-            title: "21岁 一型糖尿病",
-            content: "刚确诊了，分手了 双重打击 有没有类似于群这样的 我加一个",
-            contentImg: "/img/testImg1.png",
-            numberOfReader: "67",
-            numberOfLike: "44",
-            numberOfComment: "34"
-        },
-        {
-            id: "name3",
-            imgSrc: "/img/weixin.jpg",
-            name: "刘建东",
-            time: "2016.2.9 10时18分",
-            title: "测试测试",
-            content: "这里是一次测试，请勿回复！！",
-            contentImg: "",
-            numberOfReader: "23",
-            numberOfLike: "3",
-            numberOfComment: "0"
-        }
-    ];
+app.controller('ForumTopicCtrl',['$scope','Topic',function ($scope,Topic) {
+    Topic.find({},
+        function (topics) {
+        $scope.topics = topics;
+    });
+
+
+    //$scope.peopleInfo = [
+    //    {
+    //        id: "name1",
+    //        imgSrc: "/img/weixin.jpg",
+    //        name: "李畅",
+    //        time: "2016.2.9 12时18分",
+    //        title: "新人在此！！！",
+    //        content: "大家好，我是新人",
+    //        contentImg: "",
+    //        numberOfReader: "55",
+    //        numberOfLike: "55",
+    //        numberOfComment: "100"
+    //    },
+    //    {
+    //        id: "name2",
+    //        imgSrc: "/img/weixin.jpg",
+    //        name: "金老师",
+    //        time: "2016.2.9 12时16分",
+    //        title: "21岁 一型糖尿病",
+    //        content: "刚确诊了，分手了 双重打击 有没有类似于群这样的 我加一个",
+    //        contentImg: "/img/testImg1.png",
+    //        numberOfReader: "67",
+    //        numberOfLike: "44",
+    //        numberOfComment: "34"
+    //    },
+    //    {
+    //        id: "name3",
+    //        imgSrc: "/img/weixin.jpg",
+    //        name: "刘建东",
+    //        time: "2016.2.9 10时18分",
+    //        title: "测试测试",
+    //        content: "这里是一次测试，请勿回复！！",
+    //        contentImg: "",
+    //        numberOfReader: "23",
+    //        numberOfLike: "3",
+    //        numberOfComment: "0"
+    //    }
+    //];
 
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//

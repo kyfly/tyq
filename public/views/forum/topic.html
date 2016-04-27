@@ -24,36 +24,36 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="personInfo in peopleInfo">
+            <tr ng-repeat="topic in topics.content">
                 <td style="position:absolute;margin-top: 25px;">
-                    <input type="checkbox" id="{{personInfo.id}}" class="filled-in"
-                           ng-model="x" ng-checked="master" ng-click="chk(personInfo,x)">
-                    <label for="{{personInfo.id}}"></label>
+                    <input type="checkbox" id="{{topic.id}}" class="filled-in"
+                           ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
+                    <label for="{{topic.id}}"></label>
                 </td>
                 <td style="padding:0;">
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
-                            <img ng-src="{{personInfo.imgSrc}}" alt="" class="circle">
-                            <span class="title topic-name" ng-bind="personInfo.name"></span>
-                            <span ng-bind="personInfo.time" class="topic-time dark-grey-text"></span>
-                            <h6 ng-bind="personInfo.title" class="topic-title margin-top"></h6>
-                            <p ng-bind="personInfo.content" class="topic-content dark-grey-text"
+                            <img ng-src="{{topic.user.headImg}}" alt="" class="circle">
+                            <span class="title topic-name" ng-bind="topic.user.name"></span>
+                            <span ng-bind="topic.created" class="topic-time dark-grey-text"></span>
+                            <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
+                            <p ng-bind="topic.content" class="topic-content dark-grey-text"
                                style="padding: 5px 0"></p>
-                            <div ng-if="personInfo.contentImg" class="topic-img">
-                                <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img"
+                            <div ng-if="topic.imgs" class="topic-img">
+                                <img ng-src={{topic.imgs}} class="materialboxed responsive-img"
                                      materialboxed>
                             </div>
 
                             </p>
                             <div class="margin-top">
                                 <i class="mdi-action-visibility dark-grey-text"></i>
-                                <span ng-bind="personInfo.numberOfReader"></span>
+                                <span ng-bind="topic.view"></span>
                                 &nbsp;
                                 <i class="mdi-action-thumb-up dark-grey-text"></i>
-                                <span ng-bind="personInfo.numberOfLike"></span>
+                                <span ng-bind="topic.like"></span>
                                 &nbsp;
                                 <i class="mdi-communication-chat dark-grey-text"></i>
-                                <span ng-bind="personInfo.numberOfComment"></span>
+                                <span ng-bind="topic.reply"></span>
                             </div>
                             <a class="secondary-content">
                                 <span>评论</span>
