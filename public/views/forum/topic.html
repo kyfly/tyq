@@ -24,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="topic in topics.content">
+            <tr ng-repeat="topic in topics.content track by $index">
                 <td style="position:absolute;margin-top: 25px;">
                     <input type="checkbox" id="{{topic.id}}" class="filled-in"
                            ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
@@ -33,8 +33,8 @@
                 <td style="padding:0;">
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
-                            <img ng-src="{{topic.user.headImg}}" alt="" class="circle">
-                            <span class="title topic-name" ng-bind="topic.user.name"></span>
+                            <img ng-src="{{topic.headImg}}" alt="" class="circle">
+                            <span class="title topic-name" ng-bind="topic.name"></span>
                             <span ng-bind="topic.created" class="topic-time dark-grey-text"></span>
                             <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
                             <p ng-bind="topic.content" class="topic-content dark-grey-text"
@@ -53,7 +53,7 @@
                                 <span ng-bind="topic.like"></span>
                                 &nbsp;
                                 <i class="mdi-communication-chat dark-grey-text"></i>
-                                <span ng-bind="topic.reply"></span>
+                                <span ng-bind="topic.replies"></span>
                             </div>
                             <a class="secondary-content">
                                 <span>评论</span>

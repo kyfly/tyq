@@ -81,11 +81,12 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 
 }]);
 
-app.controller('ForumTopicCtrl',['$scope','Topic',function ($scope,Topic) {
+app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
     Topic.find({},
-        function (topics) {
-        $scope.topics = topics;
-    });
+        function (res) {
+            console.log(res);
+            $scope.topics = res;
+        });
 
 
     //$scope.peopleInfo = [
@@ -166,18 +167,18 @@ app.controller('ForumTopicCtrl',['$scope','Topic',function ($scope,Topic) {
 
 app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
     $scope.noticeList = [{
-        id:0,
+        id: 0,
         time: "2015.0422",
         content: "这是一次测试"
     }, {
-        id:1,
+        id: 1,
         time: "2015.0522",
         content: "另外一次测试"
     }, {
-        id:2,
-            time: "2016.0422",
-            content: "最后次测试"
-        }];
+        id: 2,
+        time: "2016.0422",
+        content: "最后次测试"
+    }];
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a

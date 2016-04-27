@@ -30,6 +30,34 @@
           R.modelName = "Article";
           return R;
         }])
+  .factory(
+      'Topic',
+      ['ExpressResource', 'LoopBackAuth', '$injector',
+        function (Resource, LoopBackAuth, $injector) {
+          var R = Resource(
+              urlBase + '/topics/:id',
+              {'id': '@id'},
+              {
+                "find": {
+                  url: urlBase + '/topics',
+                  method: 'GET'
+                },
+                "findById": {
+                  url: urlBase + '/topics/:id',
+                  method: 'GET'
+                },
+                "updateById": {
+                  utl: urlBase + '/topics/:id',
+                  method: 'PUT'
+                },
+                "create": {
+                  utl: urlBase + '/topics',
+                  method: 'POST'
+                }
+              });
+          R.modelName = "Topic";
+          return R;
+        }])
     .factory('LoopBackAuth', function () {
       var props = ['accessTokenId', 'currentUserId'];
       var propsPrefix = '$LoopBack$';
