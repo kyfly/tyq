@@ -6,43 +6,53 @@
         <hr class="col s12">
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            空腹血糖 ： <span ng-bind="userExamine.GDM.fasting"></span>mmo/L
+        <div class="col s7 offset-s2">
+            空腹血糖 ： <span ng-show="!isEdit[7]" ng-bind="userExamine.GDM.fasting"></span>
+            <span ng-show="!isEdit[7]">mmo/L</span>
+            <input ng-show="isEdit[7]" class="col s8 right health-modify" type="text" ng-model="userExamine.GDM.fasting">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[7] = !isEdit[7]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            OTGG2H ： <span ng-bind="userExamine.GDM.OTGG2h"></span>mmo/L
+        <div class="col s7 offset-s2">
+            OTGG2H ： <span ng-show="!isEdit[8]" ng-bind="userExamine.GDM.OTGG2h"></span>
+            <span ng-show="!isEdit[8]">mmo/L</span>
+            <input ng-show="isEdit[8]" class="col s8 right health-modify" type="text" ng-model="userExamine.GDM.OTGG2h">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[8] = !isEdit[8]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            糖化血红蛋白（HBA1c）： <span ng-bind="userExamine.GDM.HBA1c"></span>mmo/L
+        <div class="col s7 offset-s2">
+            糖化血红蛋白（HBA1c）： <span ng-show="!isEdit[9]" ng-bind="userExamine.GDM.HBA1c"></span>
+            <span ng-show="!isEdit[9]">mmo/L</span>
+            <input ng-show="isEdit[9]" class="col s8 right health-modify" type="text" ng-model="userExamine.GDM.HBA1c">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[9] = !isEdit[9]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            胰岛素 ： <span ng-bind="userExamine.GDM.INS"></span>mmo/L
+        <div class="col s7 offset-s2">
+            胰岛素 ： <span ng-show="!isEdit[10]" ng-bind="userExamine.GDM.INS"></span>
+            <span ng-show="!isEdit[10]">mmo/L</span>
+            <input ng-show="isEdit[10]" class="col s8 right health-modify" type="text" ng-model="userExamine.GDM.INS">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[10] = !isEdit[10]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            C肽 ： <span ng-bind="userExamine.GDM.CP"></span>mmo/L
+        <div class="col s7 offset-s2">
+            C肽 ： <span ng-show="!isEdit[11]" ng-bind="userExamine.GDM.CP"></span>
+            <span ng-show="!isEdit[11]">mmo/L</span>
+            <input ng-show="isEdit[11]" class="col s8 right health-modify" type="text" ng-model="userExamine.GDM.CP">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[11] = !isEdit[11]">修改</a>
         </div>
     </div>
 </div>
@@ -53,35 +63,43 @@
         <hr class="col s12">
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            总胆固醇 ： <span ng-bind="userExamine.BG.CH"></span>mmo/L
+        <div class="col s7 offset-s2">
+            总胆固醇 ： <span ng-show="!isEdit[12]" ng-bind="userExamine.BG.CH"></span>
+            <span ng-show="!isEdit[12]">mmo/L</span>
+            <input ng-show="isEdit[12]" class="col s8 right health-modify" type="text" ng-model="userExamine.BG.CH">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[12] = !isEdit[12]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            高密度脂蛋白胆固醇 ： <span ng-bind="userExamine.BG.HDICH"></span>mmo/L
+        <div class="col s7 offset-s2">
+            高密度脂蛋白胆固醇 ： <span ng-show="!isEdit[13]" ng-bind="userExamine.BG.HDICH"></span>
+            <span ng-show="!isEdit[13]">mmo/L</span>
+            <input ng-show="isEdit[13]" class="col s8 right health-modify" type="text" ng-model="userExamine.BG.HDICH">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[13] = !isEdit[13]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            甘油三酯 ： <span ng-bind="userExamine.BG.TC"></span>mmo/L
+        <div class="col s7 offset-s2">
+            甘油三酯 ： <span ng-show="!isEdit[14]" ng-bind="userExamine.BG.TC"></span>
+            <span ng-show="!isEdit[14]">mmo/L</span>
+            <input ng-show="isEdit[14]" class="col s8 right health-modify" type="text" ng-model="userExamine.BG.TC">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[14] = !isEdit[14]">修改</a>
         </div>
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            低密度脂蛋白胆固醇 ： <span ng-bind="userExamine.BG.LDICH"></span>mmo/L
+        <div class="col s7 offset-s2">
+            低密度脂蛋白胆固醇 ： <span ng-show="!isEdit[15]" ng-bind="userExamine.BG.LDICH"></span>
+            <span ng-show="!isEdit[15]">mmo/L</span>
+            <input ng-show="isEdit[15]" class="col s8 right health-modify" type="text" ng-model="userExamine.BG.LDICH">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[15] = !isEdit[15]">修改</a>
         </div>
     </div>
 </div>
@@ -92,16 +110,18 @@
         <hr class="col s12">
     </div>
     <div class="col s12 margin-top">
-        <div class="col s5 offset-s3">
-            谷丙转氨酶 ： <span ng-bind="userExamine.GPT.GPT"></span>U/L
+        <div class="col s7 offset-s2">
+            谷丙转氨酶 ： <span ng-show="!isEdit[16]" ng-bind="userExamine.GPT.GPT"></span>
+            <span ng-show="!isEdit[16]">U/L</span>
+            <input ng-show="isEdit[16]" class="col s8 right health-modify" type="text" ng-model="userExamine.GPT.GPT">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[16] = !isEdit[16]">修改</a>
         </div>
     </div>
     <div class="col s12 double-margin-top">
-        <div class="col s6 offset-s3">
-            <a class="btn waves-effect waves-light blue offset-s6 right">确认修改</a>
+        <div class="col s6 offset-s4">
+            <a class="btn waves-effect waves-light blue offset-s6 right" ng-click="updateExamine()">确认修改</a>
         </div>
     </div>
 </div>

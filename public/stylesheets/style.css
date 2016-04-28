@@ -490,3 +490,7 @@ nav ul {
 .detail-border {
     border-right: 1px solid #dddddd;
 }
+
+.health-modify {
+    margin-top: -10px !important;
+}
