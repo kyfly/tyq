@@ -1,18 +1,35 @@
 var rq = require('../lib/request');
 exports.find = function (req, res, next) {
     res.send({
-        total: 2000,
+        total: 300,
         count: 20,
         content: rq.getMore({
             id: 'ID',
-            headImg: '/img/logo.ong',
-            name: 'NAME',
-            level: 20,
-            topics: 23,
-            replies: 45,
-            points: 522,
-            role: 2,
-            openid: 'OPENIDOPENIDOPENIDOPENID'
+            content: 'CONTENT',
+            imgs: '/img/testImg1.png',
+            created: 'CTEATETIME',
+            reply: 'REPLYCOUNT',
+            view: 'VIEWCOUNT',
+            like: 'LIKECOUNT',
+            deleted: false,
+            state: {
+                locked: true,
+                istop: false
+            },
+            user: {
+                id: 'USERID',
+                name: 'NAME',
+                headImg: '/img/weixin.jpg'
+            }
+            //id: 'ID',
+            //headImg: '/img/logo.ong',
+            //name: 'NAME',
+            //level: 20,
+            //topics: 23,
+            //replies: 45,
+            //points: 522,
+            //role: 2,
+            //openid: 'OPENIDOPENIDOPENIDOPENID'
         })
     });
 }

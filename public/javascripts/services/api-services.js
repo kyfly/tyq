@@ -50,9 +50,17 @@
                                 utl: urlBase + '/topics/:id',
                                 method: 'PUT'
                             },
-                            "create": {
-                                utl: urlBase + '/topics',
-                                method: 'POST'
+                            "distroyById": {
+                                utl: urlBase + '/topics/:id',
+                                method: 'DELETE'
+                            },
+                            "replyList": {
+                                utl: urlBase + '/topics/:id/reply',
+                                method: 'GET'
+                            },
+                            "distroyReply": {
+                                utl: urlBase + '/topics/:id/reply/:fk',
+                                method: 'DELETE'
                             }
                         });
                     R.modelName = "Topic";

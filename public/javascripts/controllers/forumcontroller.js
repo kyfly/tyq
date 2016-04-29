@@ -51,7 +51,7 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 }]);
 
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
-    Topic.find({},
+    Topic.findById({},
         function (res) {
             console.log(res);
             $scope.topics = res;
