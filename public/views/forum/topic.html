@@ -34,6 +34,7 @@
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
                             <img ng-src="{{topic.user.headImg}}" ng-click="changePage(topic.user.id)" alt="" class="circle">
+                            <span ng-show="this.topic.state.locked">已锁定</span>
                             <a ng-href="users/detail/{{topic.user.id}}/health"
                              class="title topic-name" ng-bind="topic.user.name"></a>
                             <span ng-bind="topic.created" class="topic-time dark-grey-text"></span>
@@ -59,9 +60,10 @@
                             <a class="secondary-content">
                                 <span>评论</span>
                                 <span>清理</span>
-                                <span>置顶</span>
-                                <span>锁定</span>
-                                <span>删除</span>
+                                <span ng-click="toTop()">置顶</span>
+                                <span ng-click="isLocked()" ng-show="!this.topic.state.locked">锁定</span>
+                                <span ng-click="isLocked()" ng-show="this.topic.state.locked">解锁</span>
+                                <span ng-click="topicDelete()">删除</span>
                             </a>
                         </li>
                     </ul>

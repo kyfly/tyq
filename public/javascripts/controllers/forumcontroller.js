@@ -68,9 +68,9 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 }]);
 
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
-    Topic.findById({},
+    Topic.find({},
         function (res) {
-            console.log(res);
+            //console.log(res);
             $scope.topics = res;
         });
 
@@ -78,45 +78,57 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
         window.location.href = "users/detail/"+thisId+"/health";
     };
 
+    $scope.topicDelete = function () {
+        var thisElement = this;
+        console.log(thisElement);
+        Topic.distroyById({
+            id: thisElement.topic.id
+        }, {status: 200}, function () {
+            Materialize.toast('删除话题成功！', 2000);
+            thisElement.topic.deleted = true;
+            var id = thisElement.topic.id;
+            for (var x in $scope.topics.content)
+                if ($scope.topics.content[x].id === id) {
+                    $scope.topics.content.splice(x, 1);
+                }
+        }, function () {
+            Materialize.toast('删除话题失败！', 2000);
+        });
+    };
 
-    //$scope.peopleInfo = [
-    //    {
-    //        id: "name1",
-    //        imgSrc: "/img/weixin.jpg",
-    //        name: "李畅",
-    //        time: "2016.2.9 12时18分",
-    //        title: "新人在此！！！",
-    //        content: "大家好，我是新人",
-    //        contentImg: "",
-    //        numberOfReader: "55",
-    //        numberOfLike: "55",
-    //        numberOfComment: "100"
-    //    },
-    //    {
-    //        id: "name2",
-    //        imgSrc: "/img/weixin.jpg",
-    //        name: "金老师",
-    //        time: "2016.2.9 12时16分",
-    //        title: "21岁 一型糖尿病",
-    //        content: "刚确诊了，分手了 双重打击 有没有类似于群这样的 我加一个",
-    //        contentImg: "/img/testImg1.png",
-    //        numberOfReader: "67",
-    //        numberOfLike: "44",
-    //        numberOfComment: "34"
-    //    },
-    //    {
-    //        id: "name3",
-    //        imgSrc: "/img/weixin.jpg",
-    //        name: "刘建东",
-    //        time: "2016.2.9 10时18分",
-    //        title: "测试测试",
-    //        content: "这里是一次测试，请勿回复！！",
-    //        contentImg: "",
-    //        numberOfReader: "23",
-    //        numberOfLike: "3",
-    //        numberOfComment: "0"
+    //置顶
+    //$scope.toTop = function () {
+    //    var thisElement = this;
+    //    console.log(thisElement);
+    //    function all(){
+    //        var x = thisElement.$parent.topics.content;
+    //        var y = thisElement.topic;
+    //        x.unshift(y);
+    //
     //    }
-    //];
+    //};
+
+
+    $scope.whetherLock = "锁定";
+    $scope.isLocked = function () {
+
+        console.log(this);
+        var state  = this.topic.state.locked;
+        if(state === true){
+            Materialize.toast('话题已经解锁.',2000);
+            this.topic.state.locked = false;
+            $scope.whetherLock = "锁定";
+
+        }else{
+            Materialize.toast('话题已经锁定.',2000);
+            this.topic.state.locked = true;
+            $scope.whetherLock = "解锁";
+
+        }
+    };
+
+
+
 
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
