@@ -33,8 +33,9 @@
                 <td style="padding:0;">
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
-                            <img ng-src="{{topic.user.headImg}}" alt="" class="circle">
-                            <span class="title topic-name" ng-bind="topic.user.name"></span>
+                            <img ng-src="{{topic.user.headImg}}" ng-click="changePage(topic.user.id)" alt="" class="circle">
+                            <a ng-href="users/detail/{{topic.user.id}}/health"
+                             class="title topic-name" ng-bind="topic.user.name"></a>
                             <span ng-bind="topic.created" class="topic-time dark-grey-text"></span>
                             <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
                             <p ng-bind="topic.content" class="topic-content dark-grey-text"

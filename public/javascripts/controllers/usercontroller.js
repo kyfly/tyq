@@ -1,5 +1,7 @@
 app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
-    User.find({}, function (res) {
+    User.find({
+        scope: "base"
+    }, function (res) {
         console.log(res);
         $scope.users = res;
     }, function () {

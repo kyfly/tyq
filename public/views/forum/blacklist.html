@@ -26,7 +26,7 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in blacklist.content">
+        <tr ng-repeat="user in blacklist.content"  ng-show="user.role === 0">
             <td >
                 <input type="checkbox" class="filled-in" id="{{user.id}}" ng-model="x" ng-checked="master" ng-click="chk(blacklist,x)">
                 <label for="{{user.id}}"></label>

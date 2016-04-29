@@ -1,5 +1,7 @@
 app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
-    User.find({}, function (res) {
+    User.find({
+        scope: "liveness"
+    }, function (res) {
         console.log(res);
         $scope.users = res;
     }, function () {
@@ -21,6 +23,21 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
             Materialize.toast('拉黑失败！', 2000);
         });
     };
+    $scope.setAsAdmin = function () {
+        var thisElement = this;
+        User.updateById({
+            id: thisElement.user.id
+        }, {role: 2}, function () {
+            Materialize.toast('成功设为管理员！', 2000);
+            var id = thisElement.user.id;
+            for (var x in $scope.users.content)
+                if ($scope.users.content[x].id === id) {
+                    $scope.users.content.splice(x, 1);
+                }
+        }, function () {
+            Materialize.toast('设置管理员失败！', 2000);
+        });
+    }
 }]);
 
 app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Ueditor) {
@@ -56,6 +73,10 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
             console.log(res);
             $scope.topics = res;
         });
+
+    $scope.changePage = function (thisId) {
+        window.location.href = "users/detail/"+thisId+"/health";
+    };
 
 
     //$scope.peopleInfo = [
