@@ -87,6 +87,10 @@ app.controller('UserScoreCtrl', ['$scope', function ($scope) {
 }]);
 
 app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
+    $scope.isEdit = [];
+    for (var i = 0; i < 50; i++) {
+        $scope.isEdit[i] = false;
+    }
     User.findById({
         id: $stateParams.id
     }, function (res) {
@@ -122,7 +126,35 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
     }, function (res) {
         console.log(res);
         $scope.userLog = res;
-    })
+    });
+
+    $scope.updateHealth = function () {
+        User.updateHealth({
+            id: $stateParams.id
+        },$scope.userHealth, function (res) {
+            console.log(res);
+            Materialize.toast("更新成功!", 2000);
+            for (var i = 0; i < 7; i++) {
+                $scope.isEdit[i] = false;
+            }
+        }, function () {
+            Materialize.toast("更新失败!", 2000);
+        });
+    };
+
+    $scope.updateExamine = function () {
+        User.updateExamine({
+            id: $stateParams.id
+        },$scope.userExamine, function (res) {
+            console.log(res);
+            Materialize.toast("更新成功!", 2000);
+            for (var i = 7; i < 17; i++) {
+                $scope.isEdit[i] = false;
+            }
+        }, function () {
+            Materialize.toast("更新失败!", 2000);
+        });
+    };
 }]);
 
 app.controller('UserServiceCtrl', ['$scope', function ($scope) {
