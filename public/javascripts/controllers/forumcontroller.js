@@ -74,7 +74,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
             $scope.topics = res;
         });
 
-    $scope.changePage = function (thisId) {
+    $scope.changeUserPage = function (thisId) {
         window.location.href = "users/detail/"+thisId+"/health";
     };
 
@@ -126,7 +126,6 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
 
         }
     };
-
 
 
 
