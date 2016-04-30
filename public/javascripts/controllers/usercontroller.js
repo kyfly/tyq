@@ -131,7 +131,7 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
     }, function (res) {
         console.log(res);
         $scope.userLog = res;
-    });
+});
 
     $scope.updateHealth = function () {
         User.updateHealth({
@@ -160,6 +160,13 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
             Materialize.toast("更新失败!", 2000);
         });
     };
+    $scope.month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    $scope.monthShort = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    $scope.weekdaysFull = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+    $scope.weekdaysLetter = ['日', '一', '二', '三', '四', '五', '六'];
+    $scope.today = '今天';
+    $scope.clear = '清除';
+    $scope.close = '确定';
 }]);
 
 app.controller('UserServiceCtrl', ['$scope', function ($scope) {

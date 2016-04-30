@@ -21,6 +21,7 @@ exports.find = function (req, res, next) {
 exports.findById = function (req, res, next) {
     res.send({
         id: 'ID',
+        headImg: '/img/weixin.png',
         name: 'NAME',
         phone: '8454545454',
         BGtype: '一型糖尿病',
@@ -158,18 +159,20 @@ exports.createTopics = function (req, res, next) {
 }
 exports.findTopics = function (req, res, next) {
     res.send({
-        total: 2000,
+        total: 300,
         count: 20,
         content: rq.getMore({
             id: 'ID',
-            headImg: '/img/logo.ong',
-            name: 'NAME',
-            level: 20,
-            topics: 23,
-            replies: 45,
-            points: 522,
-            role: 2,
-            openid: 'OPENIDOPENIDOPENIDOPENID'
+            content: 'CONTENT',
+            imgs: '/img/testImg1.png',
+            created: new Date(),
+            reply: 858,
+            view: 555,
+            like: 88,
+            state: {
+                locked: true,
+                istop: false
+            }
         })
     });
 }

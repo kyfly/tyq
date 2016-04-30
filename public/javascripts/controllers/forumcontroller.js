@@ -67,15 +67,15 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 
 }]);
 
-app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
+app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
     Topic.find({},
         function (res) {
             //console.log(res);
             $scope.topics = res;
         });
 
-    $scope.changePage = function (thisId) {
-        window.location.href = "users/detail/"+thisId+"/health";
+    $scope.changeUserPage = function (thisId) {
+        window.location.href = "users/" + thisId + "/usertopic";
     };
 
     $scope.topicDelete = function () {
@@ -96,38 +96,23 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', function ($scope, Topic) {
         });
     };
 
-    //置顶
-    //$scope.toTop = function () {
-    //    var thisElement = this;
-    //    console.log(thisElement);
-    //    function all(){
-    //        var x = thisElement.$parent.topics.content;
-    //        var y = thisElement.topic;
-    //        x.unshift(y);
-    //
-    //    }
-    //};
-
-
     $scope.whetherLock = "锁定";
     $scope.isLocked = function () {
 
         console.log(this);
-        var state  = this.topic.state.locked;
-        if(state === true){
-            Materialize.toast('话题已经解锁.',2000);
+        var state = this.topic.state.locked;
+        if (state === true) {
+            Materialize.toast('话题已经解锁.', 2000);
             this.topic.state.locked = false;
             $scope.whetherLock = "锁定";
 
-        }else{
-            Materialize.toast('话题已经锁定.',2000);
+        } else {
+            Materialize.toast('话题已经锁定.', 2000);
             this.topic.state.locked = true;
             $scope.whetherLock = "解锁";
 
         }
     };
-
-
 
 
     $scope.choseArr = [];//定义数组用于存放前端显示
@@ -255,5 +240,102 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
             str = str.replace(z + ',', '');//取消选中
         }
         $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
+    };
+}]);
+
+app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
+
+    User.findTopics({
+        id: $stateParams.id
+    }, function (res) {
+        console.log(res);
+        $scope.usertopics = res;
+    });
+
+    User.findById({
+            id: $stateParams.id
+        },
+        function (res) {
+            console.log(res);
+            $scope.userInfos = res;
+
+        }
+    );
+
+    $scope.changeUserPage = function (thisId) {
+        window.location.href = "users/detail/" + thisId + "/health";
+    };
+
+    $scope.topicDelete = function () {
+        var thisElement = this;
+        console.log(thisElement);
+        Topic.distroyById({
+            id: thisElement.topic.id
+        }, {status: 200}, function () {
+            Materialize.toast('删除话题成功！', 2000);
+            thisElement.topic.deleted = true;
+            var id = thisElement.topic.id;
+            for (var x in $scope.topics.content)
+                if ($scope.topics.content[x].id === id) {
+                    $scope.topics.content.splice(x, 1);
+                }
+        }, function () {
+            Materialize.toast('删除话题失败！', 2000);
+        });
+    };
+
+    $scope.whetherLock = "锁定";
+    $scope.isLocked = function () {
+
+        console.log(this);
+        var state = this.usertopic.state.locked;
+        if (state === true) {
+            Materialize.toast('话题已经解锁.', 2000);
+            this.usertopic.state.locked = false;
+            $scope.whetherLock = "锁定";
+
+        } else {
+            Materialize.toast('话题已经锁定.', 2000);
+            this.usertopic.state.locked = true;
+            $scope.whetherLock = "解锁";
+
+        }
+    };
+
+
+    $scope.choseArr = [];//定义数组用于存放前端显示
+    var str = "";//
+    var flag = '';//是否点击了全选，是为a
+    $scope.x = false;//默认未选中
+    $scope.all = function (c, v) {//全选
+        if (c == true) {
+            $scope.x = true;
+            $scope.choseArr = v;
+        } else {
+            $scope.x = false;
+            $scope.choseArr = [""];
+        }
+        flag = 'a';
+    };
+    $scope.chk = function (z, x) {//单选或者多选
+        if (flag == 'a') {//在全选的基础上操作
+            str = $scope.choseArr.join();
+        }
+        if (x == true) {//选中
+            str = str + z + ',';
+        } else {
+            str = str.replace(z + ',', '');//取消选中
+        }
+        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
+    };
+    $scope.delete = function () {// 操作CURD
+        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
+            Materialize.toast("请至少选中一条数据再操作!", 2000);
+            return;
+        }
+        for (var i = 0; i < $scope.choseArr.length; i++) {
+            //alert($scope.choseArr[i]);
+            console.log($scope.choseArr[i]);//遍历选中的id
+        }
     };
 }]);
