@@ -37,6 +37,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/dialogue',
             templateUrl: '/views/users/detail/dialogue.html'
         })
+        .state('userDetail.BG', {
+            url: '/BG',
+            templateUrl: '/views/users/detail/BGinfo.html'
+        })
         .state('forumUserlist', {
             url: '/forum/userlist',
             templateUrl: '/views/forum/userlist.html',
