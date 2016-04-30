@@ -1,3 +1,6 @@
+app.controller('LoginCtrl', ['$scope', 'User', function ($scope, User) {
+
+}]);
 app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
     User.find({
         scope: "base"

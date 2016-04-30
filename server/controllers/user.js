@@ -5,12 +5,15 @@ exports.find = function (req, res, next) {
         count: 20,
         content: rq.getMore({
             id: 'ID',
-            headImg: 'HEADIMG',
+            headImg: '/img/logo.png',
             name: 'NAME',
-            phone: 'PHONE',
-            BGtype: 'TYPE',
-            lastBG: 'LASTBGINFO',
-            points: 'POINTS',
+            phone: '17765989545',
+            BGtype: '一型糖尿病',
+            lastBG: '5mmol/L',
+            points: 89,
+            level: 5,
+            topics: 8,
+            replies: 223,
             role: 1
         })
     });
@@ -19,14 +22,15 @@ exports.findById = function (req, res, next) {
     res.send({
         id: 'ID',
         name: 'NAME',
-        phone: 'PHONE',
-        BGtype: 'TYPE',
-        lastBG: 'LASTBGINFO',
-        points: 'POINTS',
-        role: 'ROLE',
-        sex: 'SEX',
-        topics: 'TOPICCOUNT',
-        comments: 'COMMENTCOUNT'
+        phone: '8454545454',
+        BGtype: '一型糖尿病',
+        lastBG: '5mmol/L',
+        points: '89',
+        role: 1,
+        sex: '男',
+        topics: 8,
+        level: 5,
+        replies: 223
     });
 }
 exports.updateById = function (req, res, next) {
@@ -79,7 +83,7 @@ exports.findLog = function (req, res, next) {
                 unit: "g"
             }],
             remark: 'REMARK',
-            remarkImg: '[/img/logo.png]'
+            remarkImg: ['/img/logo.png']
         },{
             dinnerType: 2,
             eated: [{

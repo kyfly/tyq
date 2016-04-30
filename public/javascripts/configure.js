@@ -4,7 +4,7 @@ var app = angular.module('app', [
     'ng.ueditor',
     'ui.materialize',
     'ue.config',
-    'api.tyq'
+    'tyq.api'
 ]);
 app.config(['$locationProvider', function ($locationProvider) {
     $locationProvider.html5Mode({
