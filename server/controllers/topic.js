@@ -6,7 +6,7 @@ exports.find = function (req, res, next) {
         content: rq.getMore({
             id: 'ID',
             content: 'CONTENT',
-            imgs: '/img/testImg1.png',
+            imgs: '/img/store.jpg',
             created: new Date(),
             reply: 858,
             view: 555,
@@ -39,12 +39,12 @@ exports.replyList = function (req, res, next) {
     res.send(re.getMore({
         id: ID,
         content: 'CONTENTCONTENTCONTENTCONTENTCONTENT',
-        imgs:['/img/logo.png'],
+        imgs:['/img/store.jpg'],
         created: new Date(),
         user: {
             id: 'USERID',
             name: 'NAME',
-            headImg: '/img/logo.png'
+            headImg: '/img/store.jpg'
         }
     }));
 }

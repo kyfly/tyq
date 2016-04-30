@@ -8,3 +8,118 @@
     </div>
 </div>
 <hr class="path-line">
+<div>
+    <table class="bordered orders">
+        <thead>
+            <tr>
+                <th class="choose-row">
+                    <input
+                        type="checkbox" id="all"
+                        class="filled-in"
+                        ng-click="chooseAll()"
+                        ng-model="all">
+                    <label for="all"></label>
+                </th>
+                <th class="center">商品信息</th>
+                <th class="center order-user">订购用户</th>
+                <th class="center order-price">实付金额</th>
+                <th class="orders-operation-row center">操作</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="order in orders.content">
+            <tr class="order-info">
+                <td>
+                    <input
+                        type="checkbox"
+                        class="filled-in"
+                        id="{{order.id}}"
+                        ng-model="order.select"
+                        ng-init="order.select = false"/>
+                    <label for="{{order.id}}"></label>
+                </td>
+                <td colspan="4">
+                    <p>
+                        订单编号：<span ng-bind="order.orderNo"></span> 
+                        <span class="grey-text" ng-bind="order.created|date:'yyyy-MM-dd HH:mm:ss'"></span> 
+                        <a ng-if="!order.Logistical.company" href="#" ng-bind="'等待卖家发货'"></a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="goods-info">
+                    <img ng-src="{{order.goods.img}}">
+                    <div>
+                        <h5>
+                            <a ui-sref="detailGoods({id: order.goods.id})" ng-bind="order.goods.name"></a>
+                        </h5>
+                        <br>
+                        <h6>
+                            订购数量：<span ng-bind="order.count"></span>
+                        </h6>
+                    </div>
+                </td>
+                <td class="center">
+                    <h5>
+                        <a class="grey-text" ui-sref="userDetail({id: order.user.id})" ng-bind="order.user.name"></a>
+                    </h5>
+                    <h5>
+                        <a ui-sref="userDetail({id: order.user.id})" ng-bind="order.user.phone">
+                        </a>
+                    </h5>
+                    <a tooltipped 
+                        class="col s4 offset-s4 l2 offset-l1" 
+                        data-position="bottom" data-delay="50" 
+                        data-tooltip="{{order.user.addr}}">
+                        快递地址
+                    </a>
+                </td>
+                <td class="center" >
+                    <h5>积分：<span class="grey-text" ng-bind="order.goods.cPoint"></span></h5>
+                    <h5 ng-if="order.goods.postage" ng-bind="'包邮'"></h5>
+                </td>
+                <td class="center orders-operation-td">
+                    <a href="#orderModal" ng-if="!order.Logistical.company" ng-click="checkOrder()" class="btn blue waves-effect" modal>标记发货</a>
+                    <a href="#orderModal" ng-click="checkOrder()" ng-if="order.Logistical.company" class="btn blue waves-effect" modal>已经发货</a>
+                    <a href="#" ng-click="distroy()" class="btn grey waves-effect">删除订单</a>
+                </td>
+            </tr>
+        </tbody>
+        <div class="modal" id="orderModal">
+            <div class="modal-content">
+                <h4>标记发货</h4>
+                <div class="input-field col s12">
+                    <input id="level" type="text" 
+                    ng-model="currentOrder.Logistical.company" 
+                    class="validate" ng-disabled="currentOrder.disabled">
+                    <label for="level">物流公司</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="count" type="text" ng-model="currentOrder.Logistical.tracking" class="validate" ng-disabled="currentOrder.disabled">
+                    <label for="count">快递单号</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a ng-click="logistical()" href="#!" class="right modal-action modal-close waves-effect waves-green btn-flat">确认</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+            </div>
+        </div>
+    </table>
+</div>
+<div class="double-margin-bottom margin-top">
+    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect blue" ng-click="exchengeableMore()">导出</button>
+    <div>
+        <pagination
+                page="page"
+                page-size="orders.count"
+                total="orders.total"
+                show-prev-next="false"
+                dots="...."
+                hide-if-empty="false"
+                adjacent="2"
+                scroll-top="false"
+                pagination-action="changePage(page)"
+                class="center"></pagination>
+    </div>
+</div>

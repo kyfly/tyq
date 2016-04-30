@@ -87,6 +87,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/wechat/account.html',
             controller: 'WechatAccountCtrl'
         })
+        .state('createGoods', {
+            url: '/goods/create',
+            templateUrl: '/views/store/edit.html',
+            controller: 'StoreEditCtrl'
+        })
+        .state('editGoods', {
+            url: '/goods/:id/eidt',
+            templateUrl: '/views/store/edit.html',
+            controller: 'StoreEditCtrl'
+        })
+        
         .state('releaseOfGoods', {
             url: '/goods/release',
             templateUrl: '/views/store/release.html',
@@ -96,5 +107,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/goods/orders',
             templateUrl: '/views/store/order.html',
             controller: 'StoreOrderCtrl'
+        })
+        .state('detailGoods', {
+            url: '/goods/:id',
+            templateUrl: '/views/store/good.html',
+            controller: 'GoodDetailCtrl'
         })
 });

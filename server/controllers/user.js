@@ -5,7 +5,7 @@ exports.find = function (req, res, next) {
         count: 20,
         content: rq.getMore({
             id: 'ID',
-            headImg: '/img/logo.png',
+            headImg: '/img/store.jpg',
             name: 'NAME',
             phone: '17765989545',
             BGtype: '一型糖尿病',
@@ -83,7 +83,7 @@ exports.findLog = function (req, res, next) {
                 unit: "g"
             }],
             remark: 'REMARK',
-            remarkImg: ['/img/logo.png']
+            remarkImg: ['/img/store.jpg']
         },{
             dinnerType: 2,
             eated: [{
@@ -92,29 +92,29 @@ exports.findLog = function (req, res, next) {
                 unit: "g"
             }],
             remark: 'REMARK',
-            remarkImg: ['/img/logo.png']
+            remarkImg: ['/img/store.jpg']
         }],
         sport: [{
             time: new Date(),
             record: 'RECORD',
             rematk: 'REMARK',
-            remarkImg: ['/img/logo.png']
+            remarkImg: ['/img/store.jpg']
         },{
             time: new Date(),
             record: 'RECORD',
             rematk: 'REMARK',
-            remarkImg: ['/img/logo.png']
+            remarkImg: ['/img/store.jpg']
         }],
         ADrug: [{
             time: new Date(),
             record: 'RECORD',
             rematk: 'REMARK',
-            remarkImg: ['/img/logo.png']
+            remarkImg: ['/img/store.jpg']
         },{
             time: new Date(),
             record: 'RECORD',
             rematk: 'REMARK',
-            remarkImg: ['/img/logo.png']
+            remarkImg: ['/img/store.jpg']
         }]
     });
 }

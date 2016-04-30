@@ -1,3 +1,4 @@
+var rq = require('../lib/request');
 exports.create = function (req, res, next) {
     res.send({
         status: 200
@@ -7,10 +8,10 @@ exports.find = function (req, res, next) {
     res.send({
         total: 300,
         count: 20,
-        content: re.getMore({
+        content: rq.getMore({
             id: 'ID',
             name: 'GOODSNAME',
-            img: '/img/logo.png',
+            img: '/img/store.jpg',
             count: 20,
             restCount: 10,
             cLevel: 30,
@@ -22,12 +23,19 @@ exports.find = function (req, res, next) {
         })
     })
 }
+exports.distroyMore = function (req, res, next) {
+    console.log(req.query)
+    res.send({
+        status: 200
+    })
+}
 exports.findById = function (req, res, next) {
     res.send({
             id: 'ID',
             name: 'GOODSNAME',
-            img: '/img/logo.png',
+            img: '/img/store.jpg',
             count: 20,
+            desc: "descdescdescdescdescdescdescdescdescdescdescdescdescdescdescdesc",
             restCount: 10,
             cLevel: 30,
             cPoint: 100,
@@ -61,7 +69,7 @@ exports.findOrders = function (req, res, next) {
     res.send({
         total: 300,
         count: 20,
-        content: getMore({
+        content: rq.getMore({
             id: 'ID',
             created: new Date(),
             orderNo: 'ORDERNUMBER',
@@ -74,7 +82,7 @@ exports.findOrders = function (req, res, next) {
             goods: {
                 id: 'GOODSID',
                 name: 'GOODSNAME',
-                img: '/img/logo.png',
+                img: '/img/store.jpg',
                 cPoint: 458,
                 postage: true
             },
@@ -85,6 +93,11 @@ exports.findOrders = function (req, res, next) {
                 addr: 'ADDRESSADDRESSADDRESSADDRESSADDRESS'
             }
         })
+    })
+}
+exports.distroyOrdersMore = function (req, res, next) {
+    res.send({
+        status: 200
     })
 }
 exports.findOrderById = function (req, res, next) {
@@ -101,7 +114,7 @@ exports.findOrderById = function (req, res, next) {
             goods: {
                 id: 'GOODSID',
                 name: 'GOODSNAME',
-                img: '/img/logo.png',
+                img: '/img/store.jpg',
                 cPoint: 458,
                 postage: true
             },

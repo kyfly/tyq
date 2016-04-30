@@ -6,7 +6,7 @@ exports.find = function (req, res, next) {
         content:rq.getMore({
           "id": 'ARTICLEID',
           "title": 'TITLETITLETITLETITLE',
-          "thumb_url": '/img/logo.png',
+          "thumb_url": '/img/store.jpg',
           "author": 'AUTHOR',
           "digest": 'DIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGEST',
           "update_time": new Date(),
@@ -24,7 +24,7 @@ exports.findById = function (req, res, next) {
       "id": 'ARTICLEID',
       "title": 'TITLETITLETITLETITLE',
       "thumb_media_id": 'THUMB_MEDIA_ID',
-      "thumb_url": '/img/logo.png',
+      "thumb_url": '/img/store.jpg',
       "show_cover_pic": 1,
       "author": 'AUTHOR',
       "digest": 'DIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGESTDIGEST',

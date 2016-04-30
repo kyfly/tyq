@@ -15,6 +15,12 @@ exports.default = {
         remote: "/goods",
         desc: "获取商品列表"
     },{
+        api: "/goods",
+        method: "delete",
+        action: "distroyMore",
+        remote: "/goods",
+        desc: "删除多个商品"
+    },{
         api: "/goods/:id",
         method: "get",
         action: "findById",
@@ -48,6 +54,12 @@ exports.default = {
         api: "/orders",
         method: "get",
         action: "findOrders",
+        remote: "/orders",
+        desc: "订单列表"
+    },{
+        api: "/orders",
+        method: "delete",
+        action: "distroyOrdersMore",
         remote: "/orders",
         desc: "订单列表"
     },{

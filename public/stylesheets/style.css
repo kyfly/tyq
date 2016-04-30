@@ -54,7 +54,7 @@
 /*table的th设置--start*/
 /*全选框*/
 .choose-row {
-    width: 40px;
+    width: 50px;
     position: relative;
 }
 
@@ -67,18 +67,27 @@
 /*全选框*/
 
 /*操作列，可在这里定义自己table的最后列样式*/
-.article-operation-row {
-    width: 120px;
-}
-.article-action-td {
-    position: relative;
-}
-.article-action-td section{
-    position: absolute;
-    top: 10px;
-}
-.forum-user-operation-row{
-    width: 210px;
+@media only screen and (min-width: 603px) {
+    .article-operation-row {
+        width: 120px;
+    }
+    .article-action-td {
+        position: relative;
+    }
+    .article-action-td section{
+        position: absolute;
+        top: 10px;
+    }
+    .forum-user-operation-row{
+        width: 210px;
+    }
+
+    .goods-operation-row {
+        width: 150px;
+    }
+    .orders-operation-row {
+        width: 150px;
+    }
 }
 /*操作列*/
 /*选择列*/
@@ -98,9 +107,9 @@ td {
     padding: 5px;
 }
 
-[type="checkbox"] + label {
+/*[type="checkbox"] + label {
     padding-left: 0 !important;
-}
+}*/
 
 /*常用margin--start*/
 .margin-left {
@@ -147,6 +156,65 @@ td {
     margin-top: 10px;
 }
 /**/
+/*商品管理css-start*/
+@media only screen and (min-width: 993px) {
+    .goods-point {
+        width: 100px;
+    }
+    .goods-count {
+        width: 100px;
+    }
+    .goods-info {
+        position: relative;
+    }
+    .goods-info img {
+        width: 100px;
+        height: 100px;
+    }
+    .goods-info div {
+        position: absolute;
+        top: 0;
+        left: 110px;
+        height: 100%;
+    }
+    .goods-info div h5{
+        margin: 0;
+        margin-top: 15px;
+        font-size: 1.2rem;
+    }
+    .good-info {
+        border: 1px solid #e6e8ea;
+        padding: 10px;
+        margin: 20px 0;
+    }
+    .good-info h5 {
+        font-size: 1.2rem;
+    }
+}
+/*商品管理css-end*/
+/*订单管理-start*/
+@media only screen and (min-width: 993px) {
+    .order-user {
+        width: 200px;
+    }
+    .order-price {
+        width: 100px;
+    }
+    .orders h5 {
+        font-size: 1rem;
+
+    }
+    .orders-operation-td a{
+        margin: 5px 0;
+    }
+    .order-info label {
+        margin-top: 10px;
+    }
+    .order-info p {
+        margin: 0;
+    }
+}
+/*订单管理-end*/
 .topic-list .input-field {
     margin-top: 0;
 }
@@ -219,7 +287,7 @@ td > img {
 }
 
 td {
-    padding: 3px !important;
+    padding: 1px !important;
 }
 
 hr {
