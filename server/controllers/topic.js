@@ -7,10 +7,10 @@ exports.find = function (req, res, next) {
             id: 'ID',
             content: 'CONTENT',
             imgs: '/img/testImg1.png',
-            created: 'CTEATETIME',
-            reply: 'REPLYCOUNT',
-            view: 'VIEWCOUNT',
-            like: 'LIKECOUNT',
+            created: new Date(),
+            reply: 858,
+            view: 555,
+            like: 88,
             deleted: false,
             state: {
                 locked: true,
@@ -21,15 +21,6 @@ exports.find = function (req, res, next) {
                 name: 'NAME',
                 headImg: '/img/weixin.jpg'
             }
-            //id: 'ID',
-            //headImg: '/img/logo.ong',
-            //name: 'NAME',
-            //level: 20,
-            //topics: 23,
-            //replies: 45,
-            //points: 522,
-            //role: 2,
-            //openid: 'OPENIDOPENIDOPENIDOPENID'
         })
     });
 }

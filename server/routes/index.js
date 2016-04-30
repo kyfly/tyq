@@ -10,7 +10,10 @@ router.get('/wechat/articels', wechatCtrl.wechat);
 /*微信用户入口*/
 router.get('/wechat/users', wechatCtrl.entry);
 router.get('/usercumulate', acount.usercumulate);
-router.get('/login', acount.login);
+router.post('/login', acount.login);
+router.get('/login', function (req, res, next) {
+    res.sendfile(path.join(__dirname, '../../public/views/login.html'));
+});
 //router.get('/register', acount.register);
 
 module.exports = router;

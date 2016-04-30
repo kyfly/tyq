@@ -1,5 +1,5 @@
 (function (window, angular) {
-    var module = angular.module('api.tyq', ['ngResource']);
+    var module = angular.module('tyq.api', ['ngResource']);
     var urlBase = "/api";
     var authHeader = 'authorization';
     module.factory(
