@@ -1,6 +1,7 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        话题管理
+        <a href="/forum/topics">话题管理</a>
+        >个人话题
     </h5>
     <div class="col m6 s11 center search-box">
         <input type="text" placeholder="">
@@ -24,45 +25,45 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="topic in topics.content track by $index">
+            <tr ng-repeat="usertopic in usertopics.content">
                 <td style="position:absolute;margin-top: 25px;">
-                    <input type="checkbox" id="{{topic.id}}" class="filled-in"
-                           ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
-                    <label for="{{topic.id}}"></label>
+                    <input type="checkbox" id="{{usertopic.id}}" class="filled-in"
+                           ng-model="x" ng-checked="master" ng-click="chk(usertopic,x)">
+                    <label for="{{usertopic.id}}"></label>
                 </td>
                 <td style="padding:0;">
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
-                            <img ng-src="{{topic.user.headImg}}" ng-click="changeUserPage(topic.user.id)" alt="" class="circle">
-                            <a ng-href="users/{{topic.user.id}}/usertopic"
-                             class="title topic-name" ng-bind="topic.user.name"></a>
-                            <span ng-bind="topic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></span>
-                            <span ng-show="this.topic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
-                            <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
-                            <p ng-bind="topic.content" class="topic-content dark-grey-text"
+                            <img ng-src="{{userInfos.headImg}}" ng-click="changeUserPage(usertopic.user.id)" alt="" class="circle">
+                            <a ng-href="forum/{{usertopic.user.id}}/usertopic"
+                               class="title topic-name" ng-bind="userInfos.name"></a>
+                            <span ng-bind="usertopic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></span>
+                            <span ng-show="this.usertopic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
+                            <h6 ng-bind="usertopic.title" class="topic-title margin-top"></h6>
+                            <p ng-bind="usertopic.content" class="topic-content dark-grey-text"
                                style="padding: 5px 0"></p>
-                            <div ng-if="topic.imgs" class="topic-img">
-                                <img ng-src={{topic.imgs}} class="materialboxed responsive-img"
+                            <div ng-if="usertopic.imgs" class="topic-img">
+                                <img ng-src={{usertopic.imgs}} class="materialboxed responsive-img"
                                      materialboxed>
                             </div>
 
                             </p>
                             <div class="margin-top">
                                 <i class="mdi-action-visibility dark-grey-text"></i>
-                                <span ng-bind="topic.view"></span>
+                                <span ng-bind="usertopic.view"></span>
                                 &nbsp;
                                 <i class="mdi-action-thumb-up dark-grey-text"></i>
-                                <span ng-bind="topic.like"></span>
+                                <span ng-bind="usertopic.like"></span>
                                 &nbsp;
                                 <i class="mdi-communication-chat dark-grey-text"></i>
-                                <span ng-bind="topic.reply"></span>
+                                <span ng-bind="usertopic.reply"></span>
                             </div>
                             <a class="secondary-content">
                                 <span>评论</span>
                                 <span>清理</span>
                                 <span ng-click="toTop()">置顶</span>
-                                <span ng-click="isLocked()" ng-show="!this.topic.state.locked">锁定</span>
-                                <span ng-click="isLocked()" ng-show="this.topic.state.locked">解锁</span>
+                                <span ng-click="isLocked()" ng-show="!this.usertopic.state.locked">锁定</span>
+                                <span ng-click="isLocked()" ng-show="this.usertopic.state.locked">解锁</span>
                                 <span ng-click="topicDelete()">删除</span>
                             </a>
                         </li>

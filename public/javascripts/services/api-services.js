@@ -117,6 +117,10 @@
                             "updateLog": {
                                 url: urlBase + '/Users/:id/log',
                                 method: 'PUT'
+                            },
+                            "findTopics": {
+                                url: urlBase + '/users/:id/topics',
+                                method: 'GET'
                             }
                         });
                     R.modelName = "User";
