@@ -16,6 +16,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl:"/views/users/score.html",
             controller:"UserScoreCtrl"
         })
+        .state('userTopic', {
+            url: '/users/:id/usertopic',
+            templateUrl: '/views/forum/usertopic.html',
+            controller: 'ForumUsertopicCtrl'
+        })
         .state('userDetail',{
             url:'/users/detail/:id',
             templateUrl:"/views/users/detail.html",
