@@ -61,6 +61,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/store/release.html',
             controller: 'StoreReleaseCtrl'
         })
+
+        /*
+        订单管理
+         */
         .state('orderForGoods', {
             url: '/goods/orders',
             templateUrl: '/views/store/order.html',
