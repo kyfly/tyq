@@ -1,0 +1,37 @@
+<h5>控糖方案</h5>
+
+<div class="row double-margin-top">
+    <div class="col s12">
+        <h6 class="bold-font col s6 offset-s2">每日饮食原则</h6>
+        <hr class="col s12">
+    </div>
+    <div class="col s12 margin-top" ng-repeat="diet in userSchema.diet">
+        <div class="col s5 offset-s3">
+            <span ng-bind="diet.type"></span> ： <span ng-bind="diet.dosage"></span><span ng-bind="diet.unit"></span>
+        </div>
+        <div class="col s1">
+            <a href="">修改</a>
+        </div>
+    </div>
+</div>
+
+<div class="row double-margin-top">
+    <div class="col s12">
+        <h6 class="bold-font col s6 offset-s2">每日运动推荐</h6>
+        <hr class="col s12">
+    </div>
+    <div class="col s12 margin-top" ng-repeat="diet in userSchema.sport">
+        <div class="col s5 offset-s3">
+            <span ng-bind="diet.type"></span> ： <span ng-bind="diet.dosage"></span><span ng-bind="diet.unit"></span>
+        </div>
+        <div class="col s1">
+            <a href="">修改</a>
+        </div>
+    </div>
+    <div class="col s12 double-margin-top">
+        <div class="col s6 offset-s3">
+            <a class="btn waves-effect waves-light blue offset-s6 right margin-left">确认修改</a>
+            <a class="btn waves-effect waves-light blue offset-s6 right">添加运动</a>
+        </div>
+    </div>
+</div>

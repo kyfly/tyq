@@ -1,0 +1,72 @@
+<h5>健康信息</h5>
+<div class="row double-margin-top">
+    <div class="col s12">
+        <div class="col s7 offset-s2">
+                身高 ： <span ng-show="!isEdit[0]" ng-bind="userHealth.tops"></span><span ng-show="!isEdit[0]">cm</span>
+            <input ng-show="isEdit[0]" class="col s8 right health-modify" type="text" ng-model="userHealth.tops">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[0] = !isEdit[0]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            体重 ： <span ng-show="!isEdit[1]" ng-bind="userHealth.weight"></span><span ng-show="!isEdit[1]">kg</span>
+            <input ng-show="isEdit[1]" class="col s8 right health-modify" type="text" ng-model="userHealth.weight">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[1] = !isEdit[1]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            BMI值 ： <span ng-show="!isEdit[2]" ng-bind="userHealth.BMI"></span><span ng-show="!isEdit[2]">kg/m2</span>
+            <input ng-show="isEdit[2]" class="col s8 right health-modify" type="text" ng-model="userHealth.BMI">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[2] = !isEdit[2]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            症状 ： <span ng-show="!isEdit[3]" ng-bind="userHealth.symptoms"></span>
+            <input ng-show="isEdit[3]" class="col s8 right health-modify" type="text" ng-model="userHealth.symptoms">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[3] = !isEdit[3]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            已有并发症 ： <span ng-show="!isEdit[4]" ng-bind="userHealth.chronic"></span>
+            <input ng-show="isEdit[4]" class="col s8 right health-modify" type="text" ng-model="userHealth.chronic">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[4] = !isEdit[4]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            劳动强度 ： <span ng-show="!isEdit[5]" ng-bind="userHealth.labourIntensive"></span>
+            <input ng-show="isEdit[5]" class="col s8 right health-modify" type="text"
+                   ng-model="userHealth.labourIntensive">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[5] = !isEdit[5]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            用药情况 ： <span ng-show="!isEdit[6]" ng-bind="userHealth.medication"></span>
+            <input ng-show="isEdit[6]" class="col s8 right health-modify" type="text" ng-model="userHealth.medication">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[6] = !isEdit[6]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 double-margin-top">
+        <div class="col s6 offset-s4">
+            <a class="btn waves-effect waves-light blue offset-s6 right" ng-click="updateHealth()">确认修改</a>
+        </div>
+    </div>
+</div>

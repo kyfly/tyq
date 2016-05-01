@@ -7,10 +7,17 @@
     "model": "./apis",
     "route": "./routes",
     "view": "./views",
-    "static": "./public"
+    "static": "../public",
+    "index": "../public/views/index.html"
   },
   "remote": {
-    "domain": "dmday.cn",
+    "domain": "http://www.dmday.cn",
     "pathPrefix": "apis"
+  },
+  "wechat": {
+    "appid": "wxb54a4c0517a8584e",
+    "appsecret": "40c9a95eac50c41f4df617563cbb08ea",
+    "token": "57Wlt791UGt3VrPGzRbRLaErSXTK1wasznnUs8v1k6X",
+    "origin_id": "gh_14a53f5b6e28"
   }
 }

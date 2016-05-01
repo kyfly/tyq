@@ -1,26 +1,21 @@
-<!--ntegral management用户积分管理-->
-<!--<div>-->
-    <!--<p ng-bind="user.name"></p>-->
-    <!--o;ihdsapido A-->
-<!--</div>-->
-<div class="row">
-    <div class="col s12  wechat_title"><a ui-sref="wechatUsers">用户列表</a> > {{user.name}}的积分</div>
-    <div class="col s12 user_score_allscore">积分总量：{{user.score}}</div>
-    <div class="col s12" style="margin-top: 20px">
-        <div class="col s11 wechat_zero input-field wechat_search">
-            <input class="wechat_zero" id="search" type="text">
-        </div>
-        <div class="wechat_zero">
-            <button class="btn col s1 waves-light waves-effect blue" style="height: 45px;">搜索</button>
-        </div>
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        <a ui-sref="wechatUsers">用户列表</a>
+        > 积分详情
+    </h5>
+    <div class="col m6 s11 center search-box">
+        <input type="text">
+        <button class="btn waves-effect blue waves-light">搜索</button>
     </div>
 </div>
+<hr class="path-line">
+
 
 <div>
     <table class="centered bordered">
         <thead class="grey-text grey lighten-4">
         <tr>
-            <th>
+            <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="all">
                 <label for="all"></label>
             </th>
@@ -48,7 +43,7 @@
     </table>
 </div>
 
-<div class="margin-bottom margin-top">
+<div class="double-margin-bottom margin-top">
     <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
     <button class="btn col wechat_btn right waves-light waves-effect blue">上一页</button>
     <button class="btn col wechat_btn right waves-light waves-effect blue">下一页</button>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" href="css/dropload.css">
+</head>
+<body>
+
+    <div class="container">
+      
+   
+		<div class="search_box">
+			<form action="">
+				<input type="text" class="search" placeholder="商品搜索：请输入商品关键词">
+				<button class="search_btn"></button>
+			</form>
+		</div>
+		<div class="content_box">
+
+			<ul class="list_box">
+				<li class="list_box_li">
+					<div class="list_box_lidiv float_left">
+						<div class="list_image">
+							<img src="image/more.png" alt="详情图">
+						</div>
+						<div class="list_text">
+							<div class="text_name">
+								<div class="LV"><span>LV3</span></div>
+								<span>手机血糖测试纸</span>
+							</div>
+							<p class="text_change">兑换积分 : <span>76</span></p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="list_box_li">
+					<div class="list_box_lidiv float_right">
+						<div class="list_image">
+							<img src="image/more.png" alt="详情图">
+						</div>
+						<div class="list_text">
+							<div class="text_name">
+								<div class="LV"><span>LV3</span></div>
+								<span>手机血糖测试纸</span>
+							</div>
+							<p class="text_change">兑换积分 : <span>76</span></p>
+						</div>
+					</div>
+				</li>			
+		
+
+		
+				<li class="list_box_li">
+					<div class="list_box_lidiv float_left">
+						<div class="list_image">
+							<img src="image/more.png" alt="详情图">
+						</div>
+						<div class="list_text">
+							<div class="text_name">
+								<div class="LV"><span>LV3</span></div>
+								<span>手机血糖测试纸</span>
+							</div>
+							<p class="text_change">兑换积分 : <span>76</span></p>
+						</div>
+					</div>
+				</li>		
+				
+				<li class="list_box_li">
+					<div class="list_box_lidiv float_right">
+						<div class="list_image">
+							<img src="image/more.png" alt="详情图">
+						</div>
+						<div class="list_text">
+							<div class="text_name">
+								<div class="LV"><span>LV3</span></div>
+								<span>手机血糖测试纸</span>
+							</div>
+							<p class="text_change">兑换积分 : <span>76</span></p>
+						</div>
+					</div>
+				</li>					
+		
+
+				<li class="list_box_li">
+					<div class="list_box_lidiv float_left">
+						<div class="list_image">
+							<img src="image/more.png" alt="详情图">
+						</div>
+						<div class="list_text">
+							<div class="text_name">
+								<div class="LV"><span>LV3</span></div>
+								<span>手机血糖测试纸</span>
+							</div>
+							<p class="text_change">兑换积分 : <span>76</span></p>
+						</div>
+					</div>
+				</li>		
+				
+				<li class="list_box_li">
+					<div class="list_box_lidiv float_right">
+						<div class="list_image">
+							<img src="image/more.png" alt="详情图">
+						</div>
+						<div class="list_text">
+							<div class="text_name">
+								<div class="LV"><span>LV3</span></div>
+								<span>手机血糖测试纸（50片装）</span>
+							</div>
+							<p class="text_change">兑换积分 : <span>76</span></p>
+						</div>
+					</div>
+				</li>		
+		</div>
+
+		<div class="list_footer" id="position_list">
+			<div class="list_footer_left">
+				<div class="list_footer_img1">
+					<img src="image/list1.png" alt="">
+					<p>糖友圈</p>
+				</div>
+			</div>
+			<div class="list_footer_center">
+				<div class="list_footer_img2">
+					<img src="image/list2.png" alt="">
+				</div>
+			</div>
+			<div class="list_footer_right">
+				<div class="list_footer_img3">
+					<img src="image/list3.png" alt="">
+					<p>我的</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/dropload.min.js"></script>
+	<script>
+		$(function(){
+			$('.list_footer_img1').css('left',$('.list_footer_left').width()/2-15+'px');
+			$('.list_footer_img2').css('left',$('.list_footer_center').width()/2-20+'px');
+			$('.list_footer_img3').css('left',$('.list_footer_right').width()/2-15+'px');
+			var counter = 0;
+		    // 每页展示4个
+		    var num = 4;
+		    var pageStart = 0,pageEnd = 0;
+
+		    // dropload
+			$('.content_box').dropload({
+		        scrollArea : window,
+		        loadDownFn : function(me){
+		            $.ajax({
+		                type: 'GET',
+		                url: 'json/more.json',
+		                dataType: 'json',
+		                success: function(data){
+		                    var result = '';
+		                    counter++;
+		                    pageEnd = num * counter;
+		                    pageStart = pageEnd - num;
+
+		                    for(var i = pageStart; i < pageEnd; i++){
+		                    	// result += '<a class="item opacity" href="'+data.lists[i].link+'">'
+		                     //                    +'<img src="'+data.lists[i].pic+'" alt="">'
+		                     //                    +'<h3>'+data.lists[i].title+'</h3>'
+		                     //                    +'<span class="date">'+data.lists[i].date+'</span>'
+		                     //                +'</a>';
+		                        if(i%2==0){
+		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_left"><div class="list_image"><img src="'+data.lists[i].pic+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>LV3</span></div><span>'+data.lists[i].title+'</span></div><p class="text_change">兑换积分 : <span>'+data.lists[i].date+'</span></p></div></div></li>	';
+		                        }else{
+		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_right"><div class="list_image"><img src="'+data.lists[i].pic+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>LV3</span></div><span>'+data.lists[i].title+'</span></div><p class="text_change">兑换积分 : <span>'+data.lists[i].date+'</span></p></div></div></li>	';
+		                        }          
+
+		                        if((i + 1) >= data.lists.length){
+		                            // 锁定
+		                            me.lock();
+		                            // 无数据
+		                            me.noData();
+		                            break;
+		                        }
+		                    }
+		                    // 为了测试，延迟1秒加载
+		                    setTimeout(function(){
+		                        $('.content_box .list_box').append(result);
+		                        // 每次数据加载完，必须重置
+		                        me.resetload();
+		                    },1000);
+		                },
+		                error: function(xhr, type){
+		                    alert('Ajax error!');
+		                    // 即使加载出错，也得重置
+		                    me.resetload();
+		                }
+		            });
+		        },
+		        threshold : 50
+		    });
+
+
+
+
+		})
+	</script>
+</body>
+</html>

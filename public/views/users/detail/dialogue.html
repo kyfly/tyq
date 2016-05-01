@@ -1,0 +1,122 @@
+<h5>控糖日志</h5>
+
+<div class="container">
+    <div class="row">
+        <div input-field class="col s6 offset-s3">
+            <label for="endTime">日期选择</label>
+            <input input-date
+                   type="text"
+                   name="created"
+                   id="endTime"
+                   ng-model="endTime.date"
+                   container="body"
+                   format="yyyy/mm/dd"
+                   months-full="{{ month }}"
+                   months-short="{{ monthShort }}"
+                   weekdays-full="{{ weekdaysFull }}"
+                   weekdays-short="{{ weekdaysShort }}"
+                   weekdays-letter="{{ weekdaysLetter }}"
+                   today="today"
+                   clear="clear"
+                   close="close"
+                   select-years="16">
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <table class="centered bordered">
+            <thead class="grey-text" class="detail-thead">
+            <tr>
+                <th></th>
+                <th>饮食记录</th>
+                <th>备注</th>
+                <th>备注图片</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr class="detail-tr">
+                <td>早餐</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="detail-tr">
+                <td>午餐</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="detail-tr">
+                <td>晚餐</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="centered bordered">
+        <thead class="grey-text" class="detail-thead">
+        <tr>
+            <th></th>
+            <th>运动记录</th>
+            <th>备注</th>
+            <th>备注图片</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr class="detail-tr">
+            <td>早餐</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="detail-tr">
+            <td>午餐</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="detail-tr">
+            <td>晚餐</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+        <table class="centered bordered">
+            <thead class="grey-text" class="detail-thead">
+            <tr>
+                <th></th>
+                <th>用药记录</th>
+                <th>备注</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr class="detail-tr">
+                <td>早餐</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="detail-tr">
+                <td>午餐</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="detail-tr">
+                <td>晚餐</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

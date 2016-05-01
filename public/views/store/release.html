@@ -1,1 +1,103 @@
-<!--release商品上传-->
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        商品上传
+        <small>
+            <a ui-sref="createGoods">
+                添加商品
+            </a>
+        </small>
+    </h5>
+    <div class="col m6 s11 center search-box">
+        <input type="text" placeholder="">
+        <button class="btn waves-effect blue waves-light">搜索</button>
+    </div>
+</div>
+<hr class="path-line">
+<div class=" container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs" tabs>
+                <li class="tab col s6">
+                    <a class="active" href="#store1" ng-click="exchenge()">兑换中</a>
+                </li>
+                <li class="tab col s6">
+                    <a href="#store2" ng-click="unexchenge()">仓库中</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <table class="bordered goods">
+        <thead>
+            <tr>
+                <th class="choose-row">
+                    <input
+                            type="checkbox" id="all"
+                            class="filled-in"
+                            ng-click="chooseAll()"
+                            ng-model="all">
+                    <label for="all"></label>
+                </th>
+                <th class="center">商品信息</th>
+                <th class="goods-point center">所需积分</th>
+                <th class="goods-count center">数量</th>
+                <th class="goods-operation-row center">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="good in goods.content">
+                <td>
+                    <input
+                        type="checkbox"
+                        class="filled-in"
+                        id="{{good.id}}"
+                        ng-model="good.select"
+                        ng-init="good.select = false"/>
+                    <label for="{{good.id}}"></label>
+                </td>
+                <td class="goods-info">
+                    <img ng-src="{{good.img}}">
+                    <div>
+                        <h5 ng-bind="good.name"></h5>
+                        <br>
+                        <h6>
+                            上架时间：<span ng-bind="good.storeAt | date: 'yy-MM-dd'"></span>
+                        </h6>
+                    </div>
+                </td>
+                <td class="center" >
+                    <span ng-bind="good.cPoint"></span>
+                </td>
+                <td class="center" >
+                    <span ng-bind="good.restCount"></span>
+                    /
+                    <span ng-bind="good.count"></span>
+                </td>
+                <td class="center" >
+                    <a href="" ng-click="unexchengeable()" ng-show="exchengeableState">下架</a>
+                    <a href="" ng-click="exchengeable()" ng-show="!exchengeableState">上架</a>
+                    <a ng-click="distroy()"> | 删除 | </a>
+                    <a href="/goods/{{good.id}}/eidt">编辑</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="double-margin-bottom margin-top">
+    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect blue" ng-click="exchengeableMore()" ng-show="!exchengeableState">上架</button>
+    <button class="btn col waves-light waves-effect blue" ng-click="unexchengeableMore()" ng-show="exchengeableState">下架</button>
+    <div class="double-margin-bottom margin-top">
+        <pagination
+                page="page"
+                page-size="goods.count"
+                total="goods.total"
+                show-prev-next="false"
+                dots="...."
+                hide-if-empty="false"
+                adjacent="2"
+                scroll-top="false"
+                pagination-action="changePage(page)"
+                class="center"></pagination>
+    </div>
+</div>

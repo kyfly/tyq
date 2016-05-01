@@ -1,0 +1,100 @@
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        <a ui-sref="releaseOfGoods">
+            商品列表
+        </a>
+        >
+        编辑商品
+    </h5>
+</div>
+<hr class="path-line">
+<div class="container">
+    <div class="row">
+        <div ng-show="good.img" class="col s12 good-info">
+            <img ng-src="{{good.img}}" class="col s12 m4">
+            <div class="col s12 m6">
+                <h5 class="dark-grey-text">
+                    商品名称：
+                    <span class="blue-text" ng-bind="good.name"></span>
+                </h5>
+                <h5 class="dark-grey-text">
+                    用户等级：
+                    <span class="blue-text" ng-bind="good.cLevel"></span>
+                </h5>
+                <h5 class="dark-grey-text">
+                    商品数量：
+                    <span class="blue-text" ng-bind="good.count"></span>
+                </h5>
+                <h5 class="dark-grey-text">
+                    兑换积分：
+                    <span class="blue-text" ng-bind="good.cPoint"></span>
+                </h5>
+                <h5 class="dark-grey-text">
+                    商品价格：
+                    <span class="blue-text" ng-bind="good.price"></span>
+                </h5>
+                <h5 class="dark-grey-text">
+                    是否包邮：
+                    <span class="blue-text" ng-bind="good.postage"></span>
+                </h5>
+                <h5 class="dark-grey-text">
+                    兑换一件：
+                    <span class="blue-text" ng-bind="good.single"></span>
+                </h5>
+            </div>
+        </div>
+        <div class="file-field input-field col s6">
+            <div class="btn">
+                <span>图片</span>
+                <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input id="name" type="text" ng-model="good.name" class="validate">
+            <label for="name">商品名称</label>
+        </div>
+        
+        <div class="input-field col s12">
+            <textarea id="desc" ng-model="good.desc" class="materialize-textarea"></textarea>
+            <label for="desc">商品简介</label>
+        </div>
+        
+        <div class="col s12">
+            <h6 class="grey-text">商品说明</h6>
+            <div class="ueditor" ng-model="good.explain" config="editorConfig"></div>
+        </div>
+        <div class="input-field col s6">
+            <input id="level" type="number" ng-model="good.cLevel" class="validate">
+            <label for="level">可兑换商品用户等级</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="count" type="number" ng-model="good.count" class="validate">
+            <label for="count">商品数量</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="point" type="number" ng-model="good.cPoint" class="validate">
+            <label for="point">兑换积分</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="point" type="number" ng-model="good.price" class="validate">
+            <label for="point">商品价格</label>
+        </div>
+        <div class="col s6">
+            <input class="with-gap" type="checkbox" id="postage" ng-model="good.postage" />
+            <label for="postage">是否包邮</label>
+        </div>
+        
+        <div class="col s6">
+            <input class="with-gap" type="checkbox" id="single" ng-model="good.single"/>
+            <label for="single">仅兑换一件</label>
+        </div>
+        <div class="col s12 center margin-top">
+            <button ng-click="submit()" class="btn waves-effect waves-light " type="submit">
+                确定
+            </button>
+        </div>
+    </div>
+</div>

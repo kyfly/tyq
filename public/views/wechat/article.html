@@ -1,46 +1,19 @@
-<div class="row" style="line-height: 25px">
-	<div class="col s12 wechat_title">文章列表</div>
-	<div class="col s12 wechat_zero">
-		<div class="col s10 wechat_zero input-field wechat_search">
-			<input class="wechat_zero" id="search" type="text" placeholder="请输入作者/标题/栏目">
-		</div>
-		<div class="wechat_zero">
-			<button class="btn col s2 waves-effect waves-light blue" style="height: 45px">搜索</button>
-		</div>
-	</div>
-	<form>
-		<div class="col s12 wechat_chose margin-top" style="background: #f1f1f1">
-				<input type="checkbox" class="filled-in" id="all" ng-click="wechat_chose_all()" ng-model="chkall">
-				<label for="all" id="chose_all"></label>
-		</div>
-		<table class="border-all">
-			<tbody class="border-all">
-
-			<tr class="wechat-tr" ng-repeat="main in wechat_info">
-				<td>
-					<div class="col s1 wechat_chose_div">
-						<input class="filled-in" type="checkbox" id="{{main.id}}" ng-checked="chkall" ng-click="wechatchk(main)"/>
-						<label for="{{main.id}}" class="wechat_zero"></label>
-					</div>
-					<div>
-						<div class="col s9" ng-bind="main.title"></div>
-						<div class="col s2 ">
-							<a class="wechat_a secondary-content">| <span>同步</span></a>
-							<a class="wechat_a secondary-content">| <span>删除</span></a>
-							<a class="wechat_a secondary-content"><span>修改</span></a>
-						</div>
-						<div class="col s1" ng-bind="main.writer"></div><div class="col s3" ng-bind="main.time"></div><div class="col s1" ng-bind="main.type"></div>
-						<div class="col s12" ng-bind="main.main"></div>
-					</div>
-				</td>
-			</tr>
-
-			</tbody>
-		</table>
-	</form>
+<div class="row top-nav">
+    <h5 class="path col s12">
+        <a href="/weixin/articles">文章列表</a>
+        >文章详情
+        <a class="right" href="/weixin/articles/{{article.id}}/edit">
+            <i class="mdi-editor-mode-edit"></i>
+        </a>
+    </h5>
 </div>
-<div class="margin-top margin-bottom">
-	<button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
-	<button class="btn col wechat_btn waves-light waves-effect blue">同步</button>
-	<div class="wechat_page"></div>
-</div>
+<hr class="path-line">
+<article>
+    <h4 ng-bind="article.title"></h4>
+    <h6>
+        <span ng-bind="article.author"></span> 
+        <span ng-bind="article.update_time | date: 'yy-mm-dd'"></span> 
+        <span ng-bind="article.tags"></span>
+    </h6>
+    <div ng-bind-html="article.content"></div>
+</article>

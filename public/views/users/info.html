@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row top-nav">
     <h5 class="path col m5 s12">用户列表</h5>
     <div class="col m6 s11 center search-box">
         <input type="text">
@@ -6,17 +6,16 @@
     </div>
 </div>
 <hr class="path-line">
-<div>
+<div class="users">
     <table class="centered bordered">
         <thead class="grey-text">
         <tr>
-            <th class="choose-all">
+            <th class="choose-row">
                 <input type="checkbox" class="filled-in"
                        id="all" ng-click="chose_all()">
                 <label for="all"></label>
             </th>
-            <th>头像</th>
-            <th>名字</th>
+            <th>用户</th>
             <th>手机号码</th>
             <th>类型</th>
             <th>最新血糖</th>
@@ -26,36 +25,50 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="user in users.content" ng-show="user.role === 1">
             <td>
-                <input type="checkbox" class="filled-in" id="checkbox{{$index}}" ng-model="checkbox">
-                <label class="table-checkbox" for="checkbox{{$index}}"></label>
+                <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="{{user.id}}"
+                    ng-model="user.select"
+                    ng-init="user.select = false"/>
+                <label for="{{user.id}}"></label>
             </td>
             <td>
-                <a ng-href="users/detail/{{user.id}}">
-                    <img ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
+                <a ng-href="users/detail/{{user.id}}/health" class="user-info">
+                    <img ng-src="{{user.headImg}}" alt="" class="circle list_table_img">
+                    <span ng-bind="user.name"></span>
                 </a>
             </td>
-            <td>
-                <a ng-href="users/detail/{{user.id}}" ng-bind="user.name"></a>
-            </td>
             <td ng-bind="user.phone"></td>
-            <td ng-bind="user.type"></td>
-            <td ng-bind="user.BG"></td>
+            <td ng-bind="user.BGtype"></td>
+            <td ng-bind="user.lastBG"></td>
             <td>
-                <a ng-href="users/score/{{user.id}}" ng-bind="user.score"></a>
+                <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
             </td>
             <td>
-                <a class="wechat_a">加入黑名单</a>
+                <a href="" ng-click="moveToBlacklist()">加入黑名单</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<div class="margin-bottom margin-top">
+<div class="double-margin-bottom margin-top">
     <button class="btn col wechat_btn waves-effect waves-light blue">拉黑</button>
-    <button class="btn col wechat_btn right waves-effect waves-light blue">上一页</button>
-    <button class="btn col wechat_btn right waves-effect waves-light blue">下一页</button>
+    <div class="double-margin-bottom margin-top">
+        <pagination
+                page="1"
+                page-size="10"
+                total="200"
+                show-prev-next="false"
+                dots="...."
+                hide-if-empty="false"
+                adjacent="2"
+                scroll-top="false"
+                pagination-action="changePage(page)"
+                class="center "></pagination>
+    </div>
 </div>
 

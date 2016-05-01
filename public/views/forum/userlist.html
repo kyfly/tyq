@@ -1,70 +1,74 @@
-<!--list.html用户列表-->
-<!--<div class="row" style="font-size: 15px;line-height: 25px">-->
-    <!--<div class="col s12  wechat_title">用户列表</div>-->
-    <!--<div class="col s12">-->
-        <!--<div class="col s11 wechat_zero input-field wechat_search">-->
-            <!--<input class="wechat_zero" id="search" type="text">-->
-        <!--</div>-->
-        <!--<div class="wechat_zero">-->
-            <!--<button class="btn col s1 waves-light waves-effect blue" style="height: 45px;">搜索</button>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<div class="row">
-    <h5 class="path col m5 s12">用户列表</h5>
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        论坛用户
+    </h5>
     <div class="col m6 s11 center search-box">
-        <input type="text">
+        <input type="text" placeholder="请输入名字/积分/等级/发表/回复">
         <button class="btn waves-effect blue waves-light">搜索</button>
     </div>
 </div>
 <hr class="path-line">
-<div>
-<div>
+
+<div class="users">
     <table class="centered bordered">
         <thead class="grey-text">
         <tr>
-            <th>
+            <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="all">
                 <label for="all"></label>
             </th>
-            <th>头像</th>
-            <th>名字</th>
+            <th>用户</th>
             <th>积分</th>
             <th>等级</th>
             <th>发表</th>
             <th>回复</th>
-            <th>功能</th>
+            <th class="forum-user-operation-row">功能</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="user in users.content" ng-show="user.role === 1">
             <td>
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}">
                 <label class="table-checkbox" for="checkbox{{$index}}"></label>
             </td>
-            <td>
-                <img  ng-src="{{user.headImgUrl}}" alt="" class="circle list_table_img">
+            <td class="user-info">
+                <a ng-href="users/{{user.id}}/usertopic" class="user-info">
+                    <img ng-src="{{user.headImg}}" alt="" class="circle list_table_img">
+                    <span ng-bind="user.name"></span>
+                </a>
             </td>
-            <td ng-bind="user.name"></td>
-            <td><a ng-href="user/score/{{user.id}}" ng-bind="user.score"></a></td>
+            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a></td>
             <td ng-bind="user.level"></td>
-            <td ng-bind="user.comments"></td>
+            <td ng-bind="user.topics"></td>
             <td ng-bind="user.replies"></td>
             <td>
-                <a class="wechat_a">拉黑</a>|
-                <a class="wechat_a">设为管理员</a>|
-                <a class="wechat_a">对话</a>|
-                <a class="wechat_a">详情</a>
+                <section>
+                    <a class="wechat_a" ng-click="moveToBlacklist()">拉黑</a> |
+                    <a class="wechat_a" ng-click="setAsAdmin()">设为管理员</a> |
+                    <a class="wechat_a">对话</a> |
+                    <a class="wechat_a">详情</a>
+                </section>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<div class="margin-bottom margin-top">
-    <button class="btn col wechat_btn waves-light waves-effect blue">拉黑</button>
-    <button class="btn col wechat_btn right waves-light waves-effect blue">上一页</button>
-    <button class="btn col wechat_btn right waves-light waves-effect blue">下一页</button>
+<div class="double-margin-bottom margin-top">
+    <button class="btn col wechat_btn waves-light waves-effect blue">批量拉黑</button>
+    <div class="double-margin-bottom margin-top">
+        <pagination
+                page="1"
+                page-size="10"
+                total="200"
+                show-prev-next="false"
+                dots="...."
+                hide-if-empty="false"
+                adjacent="2"
+                scroll-top="false"
+                pagination-action="changePage(page)"
+                class="center "></pagination>
+    </div>
 </div>
 

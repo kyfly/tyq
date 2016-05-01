@@ -1,62 +1,64 @@
-<h4>公告列表</h4>
-<hr>
-<h5 class="margin-top">标题</h5>
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        公告管理
+    </h5>
+
+</div>
+<hr class="path-line">
+<h5 class="double-margin-top">标题</h5>
 <div input-field>
     <input id="name" type="text" style="margin:0" length="20" placeholder="请输入标题" required>
     <label for="name"></label>
 </div>
 
-<div>
+<div class="double-margin-top">
     <h5>正文</h5>
-    <textarea class="n_textarea " placeholder="请输入公告内容" style="resize: none"></textarea>
-    <a href="" class="btn  waves-light waves-effect blue" ng-click="">发布</a>
+    <textarea class="n_textarea" placeholder="请输入公告内容" style="resize: none"></textarea>
+    <a href="" class="btn  waves-light waves-effect blue margin-top" ng-click="">发布</a>
 </div>
-<div class="n_top">
-    <h4>公告列表</h4>
+<div class=" double-margin-top">
+    <h5 class="path">公告列表</h5>
     <hr>
     <form action="">
         <table>
             <thead>
             <tr class="">
-                <th><input type="checkbox" class="filled-in" id="all"/>
-                    <label for="all"></label></th>
-                <th data-field="date" style=""> 发布日期</th>
+                <th> <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
+                            ng-click="all(master,notice)">
+                    <label for="topic-top" id="chose_all"></label></th>
+                <th data-field="date" style="" class="path"> 发布日期</th>
             </tr>
             </thead>
-            </body>
-            <tr class="n_tr">
+            <tbody>
+            <tr class="n_tr"ng-repeat="notice  in noticeList">
                 <td>
-                    <input class="filled-in" type="checkbox" id="art_1"/>
-                    <label for="art_1" class=""></label>
+                    <input class="filled-in" type="checkbox" id="{{notice.id}}"
+                           ng-model="x" ng-checked="master" ng-click="chk(notice,x)">
+                    <label for="{{notice.id}}" class=""></label>
                 </td>
-                <td>2015.0422</td>
-                <td clss="center">这是一次测试</td>
-                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-                <td class="right">修改|删除</td>
-            </tr>
-            <tr class="n_tr">
-                <td>
-                    <input class="filled-in" type="checkbox" id="art_2"/>
-                    <label for="art_2" class=""></label>
-                </td>
-                <td>2015.0422</td>
-                <td clss="center">情人最后难免沦为朋友</td>
-                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-
-                <td class="right">修改|删除</td>
-            </tr>
-            <tr class="n_tr">
-                <td>
-                    <input class="filled-in" type="checkbox" id="art_3"/>
-                    <label for="art_3" class=""></label>
-                </td>
-                <td>2015.0422</td>
-                <td clss="center">一生何求</td>
+                <td ng-bind="notice.time"></td>
+                <td clss="center" ng-bind="notice.content"></td>
                 <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
                 <td class="right">修改|删除</td>
             </tr>
             </tbody>
         </table>
     </form>
+    <div class="double-margin-bottom margin-top">
+        <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
+        <div class="double-margin-bottom margin-top">
+            <pagination
+                    page="1"
+                    page-size="10"
+                    total="200"
+                    show-prev-next="true"
+                    dots="...."
+                    hide-if-empty="false"
+                    adjacent="2"
+                    scroll-top="false"
+                    pagination-action="changePage(page)"
+                    class="center "></pagination>
+        </div>
+    </div>
 
 </div>

@@ -16,7 +16,7 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
             {
                 id: 'sidebarWechatArticle',
                 name: '文章管理',
-                url: '/weixin/article'
+                url: '/weixin/articles'
             }]
     }, {
         name: '用户管理',

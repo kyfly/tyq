@@ -1,81 +1,91 @@
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        话题管理
+    </h5>
+    <div class="col m6 s11 center search-box">
+        <input type="text" placeholder="">
+        <button class="btn waves-effect blue waves-light">搜索</button>
+    </div>
+</div>
+<hr class="path-line">
 <div>
-    <div class="topic-list row">
-        <h5>话题列表</h5>
-        <div class="col s12 wechat_zero">
-            <div class="col s11 wechat_zero input-field wechat_search">
-                <input class="wechat_zero" id="search" type="text" placeholder="请输入作者/标题/栏目">
-            </div>
-            <div class="wechat_zero">
-                <button class="btn col s1 waves-effect waves-light blue" style="height: 45px">搜索</button>
-            </div>
+    <div>
+        <div class="col s12 topic-choose-all margin-top">
+            <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
+                   ng-click="all(master,peopleInfo)">
+            <label for="topic-top" id="chose_all"></label>
         </div>
 
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th style="padding: 0;width: 20px"></th>
+                <th style="padding: 0"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="topic in topics.content track by $index">
+                <td style="position:absolute;margin-top: 25px;">
+                    <input type="checkbox" id="{{topic.id}}" class="filled-in"
+                           ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
+                    <label for="{{topic.id}}"></label>
+                </td>
+                <td style="padding:0;">
+                    <ul class="collection margin-bottom" style="border: 0">
+                        <li class="collection-item avatar" style="padding-bottom: 0">
+                            <img ng-src="{{topic.user.headImg}}" ng-click="changeUserPage(topic.user.id)" alt="" class="circle">
+                            <a ng-href="users/{{topic.user.id}}/usertopic"
+                             class="title topic-name" ng-bind="topic.user.name"></a>
+                            <span ng-bind="topic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></span>
+                            <span ng-show="this.topic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
+                            <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
+                            <p ng-bind="topic.content" class="topic-content dark-grey-text"
+                               style="padding: 5px 0"></p>
+                            <div ng-if="topic.imgs" class="topic-img">
+                                <img ng-src={{topic.imgs}} class="materialboxed responsive-img"
+                                     materialboxed>
+                            </div>
 
-        <div>
-            <div class="col s12 topic-choose-all margin-top" style="background: #f1f1f1;" >
-                <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                       ng-click="all(master,peopleInfo)">
-                <label for="topic-top" id="chose_all"></label>
-            </div>
-
-            <table class="bordered">
-                <thead>
-                <tr>
-                    <th style="padding: 0;width: 20px"></th>
-                    <th style="padding: 0"></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr ng-repeat="personInfo in peopleInfo">
-                    <td style="position:absolute;margin-top: 25px;">
-                        <input type="checkbox" id="{{personInfo.id}}" class="filled-in"
-                               ng-model="x" ng-checked="master" ng-click="chk(personInfo,x)">
-                        <label for="{{personInfo.id}}"></label>
-                    </td>
-                    <td style="padding:0;">
-                        <ul class="collection" style="border: 0;margin-bottom: 0">
-                            <li class="collection-item avatar" style="padding-bottom: 0">
-                                <img ng-src="{{personInfo.imgSrc}}" alt="" class="circle">
-                                <span class="title topic-name" ng-bind="personInfo.name"></span>
-                                    <span ng-bind="personInfo.time" class="topic-time"></span>
-
-                                <h6 ng-bind="personInfo.title" class="topic-title"></h6>
-                                <p ng-bind="personInfo.content" class="topic-content" style="padding: 5px 0"></p>
-                                <div class="topic-img">
-                                    <img ng-src={{personInfo.contentImg}} class="materialboxed responsive-img" materialboxed
-                                         ng-show="personInfo.contentImg">
-                                </div>
-
-                                </p>
-                                <div>
-                                    <i class="mdi-action-visibility topic-icon-color"
-                                       ng-bind="personInfo.numberOfReader"></i>
-                                    &nbsp;
-                                    <i class="mdi-action-thumb-up topic-icon-color"
-                                       ng-bind="personInfo.numberOfLike"></i>
-                                    &nbsp;
-                                    <i class="mdi-communication-chat topic-icon-color"
-                                       ng-bind="personInfo.numberOfComment"></i>
-                                </div>
-                                <a class="secondary-content">
-                                    <span>评论</span>
-                                    <span>清理</span>
-                                    <span>置顶</span>
-                                    <span>锁定</span>
-                                    <span>删除</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="margin-bottom margin-top">
-            <button class="topic-del-btn btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">删除</button>
-            <div class="change-page"></div>
+                            </p>
+                            <div class="margin-top">
+                                <i class="mdi-action-visibility dark-grey-text"></i>
+                                <span ng-bind="topic.view"></span>
+                                &nbsp;
+                                <i class="mdi-action-thumb-up dark-grey-text"></i>
+                                <span ng-bind="topic.like"></span>
+                                &nbsp;
+                                <i class="mdi-communication-chat dark-grey-text"></i>
+                                <span ng-bind="topic.reply"></span>
+                            </div>
+                            <a class="secondary-content">
+                                <span>评论</span>
+                                <span>清理</span>
+                                <span ng-click="toTop()">置顶</span>
+                                <span ng-click="isLocked()" ng-show="!this.topic.state.locked">锁定</span>
+                                <span ng-click="isLocked()" ng-show="this.topic.state.locked">解锁</span>
+                                <span ng-click="topicDelete()">删除</span>
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="double-margin-bottom margin-top">
+        <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">批量删除</button>
+        <div class="double-margin-bottom margin-top">
+            <pagination
+                    page="1"
+                    page-size="10"
+                    total="200"
+                    show-prev-next="true"
+                    dots="...."
+                    hide-if-empty="false"
+                    adjacent="2"
+                    scroll-top="false"
+                    pagination-action="changePage(page)"
+                    class="center"></pagination>
         </div>
     </div>
 </div>

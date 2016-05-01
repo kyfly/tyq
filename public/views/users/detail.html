@@ -1,12 +1,16 @@
-<div class="row">
-    <div class="col s12  wechat_title"><a ui-sref="wechatUsers">用户列表</a> > {{user.name}}的详情</div>
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        <a ui-sref="wechatUsers">用户列表</a>
+        > 用户详情
+    </h5>
 </div>
-<hr>
+<hr class="path-line">
 <table class="centered">
     <thead class="detail-thead">
     <tr class="detail-tr">
         <th>名字</th>
         <th>性别</th>
+        <th>联系方式</th>
         <th>发表话题数</th>
         <th>回复数</th>
         <th>积分</th>
@@ -17,13 +21,42 @@
     <tr class="detail-tr">
         <td ng-bind="user.name"></td>
         <td ng-bind="user.sex"></td>
-        <td ng-bind="user.comments"></td>
+        <td ng-bind="user.phone"></td>
+        <td ng-bind="user.topics"></td>
         <td ng-bind="user.replies"></td>
         <td>
-            <a ng-href="users/score/{{user.id}}" ng-bind="user.score"></a>
+            <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
         </td>
-        <td ng-bind="user.BG"></td>
+        <td><a ui-sref="userDetail.BG" ng-bind="user.lastBG"></a></td>
     </tr>
     </tbody>
 </table>
-<hr>
+<hr class="margin-bottom">
+<div class="row">
+    <div class="col s3 detail-item detail-border center">
+        <a ui-sref="userDetail.health">
+            <img src="/img/health.png">
+            <p class="black-text">健康信息</p>
+        </a>
+    </div>
+    <div class="col s3 detail-item detail-border center">
+        <a ui-sref="userDetail.check">
+            <img src="/img/check.png">
+            <p class="black-text">检查数据</p>
+        </a>
+    </div>
+    <div class="col s3 detail-item detail-border center">
+        <a ui-sref="userDetail.scheme">
+            <img src="/img/scheme.png">
+            <p class="black-text">控糖方案</p>
+        </a>
+    </div>
+    <div class="col s3 detail-item center">
+        <a ui-sref="userDetail.dialogue">
+            <img src="/img/dialogue.png">
+            <p class="black-text">控糖日志</p>
+        </a>
+    </div>
+</div>
+<hr class="double-margin-top">
+<div class="double-margin-top double-margin-bottom" ui-view=""></div>

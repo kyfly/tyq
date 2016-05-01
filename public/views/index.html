@@ -12,39 +12,44 @@
     <link href="/lib/materialize/css/materialize.css" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
 </head>
-<body ng-controller="IndexCtrl">
+<body class="light-grey" ng-controller="IndexCtrl">
 <nav id="navBar" class="blue">
-    <div class="nav-wrapper">
-        <a href="" data-activates="sideBar" 
-            class="left brand-logo button-collapse">
-            <img src="/img/logo1.png">
+    <div class="nav-wrapper container">
+        <a href="" data-activates="sideBar"
+           class="left brand-logo button-collapse">
+            <img src="/img/logo.png">
         </a>
-        <a href="" data-activates="sideBar" 
-            class="left brand-logo">
-            <img src="/img/logo1.png">
+        <a href="" data-activates="sideBar"
+           class="left brand-logo">
+            <img src="/img/logo.png">
         </a>
         <ul class="right">
             <li><a href="">管理员</a></li>
+            <li>
+                <a href=""><i class="mdi-action-settings-power"></i></a>
+            </li>
         </ul>
     </div>
 </nav>
-
-<!--侧边导航-->
-<ul class="side-nav fixed" id="sideBar">
-    <div ng-repeat="sidebar in sidebars">
-        <h2 class="navTitle">
-            <i ng-class="sidebar.icon"></i>
-            <span ng-bind="sidebar.name"></span>
-        </h2>
-        <li id="{{sub.id}}" ng-class="{active: path == sub.url}" class="bold" ng-repeat="sub in sidebar.subM">
-            <a class="waves-effect" ng-href="{{sub.url}}" ng-bind="sub.name"></a>
-        </li>
-    </div>
-</ul>
-<main>
-    
-    <div class="container">
-        <div class="col s12" ui-view=""></div>
+<main class="container">
+    <ul class="side-nav" id="sideBar">
+        <div ng-repeat="sidebar in sidebars">
+            <h2 class="navTitle margin-top">
+                <i ng-class="sidebar.icon"></i>
+                <span ng-bind="sidebar.name"></span>
+            </h2>
+            <li id="{{sub.id}}" class="bold"
+                ng-class="{active: path == sub.url}"
+                ng-repeat="sub in sidebar.subM">
+                <a class="waves-effect"
+                   ng-href="{{sub.url}}" ng-bind="sub.name">
+                </a>
+            </li>
+        </div>
+    </ul>
+    <div class="view-box">
+        <div class="view-line show-on-large"></div>
+        <div ui-view=""></div>
     </div>
 </main>
 <script src="/lib/components.min.js"></script>
@@ -54,6 +59,8 @@
 <script src="/lib/angular-ueditor/angular-ueditor.min.js"></script>
 <script src="/javascripts/services/ueditor-services.js"></script>
 
+<script src="/javascripts/services/api-services.js"></script>
+
 <script src="/javascripts/configure.js"></script>
 <script src="/javascripts/route.js"></script>
 <script src="/javascripts/controllers/indexcontroller.js"></script>
@@ -62,7 +69,6 @@
 <script src="/javascripts/controllers/wechatcontroller.js"></script>
 <script src="/javascripts/controllers/storecontroller.js"></script>
 
-<script src="/lib/jquery/jquery.page.js"></script>
 <script>
     $(".button-collapse").sideNav();
 </script>
