@@ -56,9 +56,10 @@ app.controller('StoreReleaseCtrl',
             getGoods(false, $scope.page)
             $scope.exchengeableState = false;
         }
-        $scope.distroy = function () {
+        $scope.destroy = function () {
             var id = this.good.id;
-            Store.distroyById({id: id}, function (res) {
+        }
+            Store.destroyById({ id: id }, function (res) {
                 deleteGood(id);
             });
             getGoods($scope.exchengeableState, $scope.page)
@@ -71,9 +72,9 @@ app.controller('StoreReleaseCtrl',
             var id = this.good.id;
             exchengeable([id], false);
         }
-        $scope.distroyMore = function () {
+        $scope.destroyMore = function () {
             var ids = batchAction();
-            Store.distroyMore({ids: ids}, function (res) {
+            Store.destroyMore({ids: ids}, function (res) {
                 deleteGoods(ids);
             });
             getGoods($scope.exchengeableState, $scope.page)
@@ -141,7 +142,7 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
             order.select = !order.select;
         });
     }
-    $scope.distroy = function () {
+    $scope.destroy = function () {
         var id = this.order.id;
         Store.destroyOrderById({id: id}, function (res) {
             getOrders($scope.page);
@@ -149,15 +150,17 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
     }
     $scope.logistical = function () {
         Store.updateOrderById({
+            id: $scope.currentOrder.id
+        }, {
             Logistical: $scope.currentOrder.Logistical
         }, function (res) {
             console.log(res);
             getOrders($scope.page);
         });
     }
-    $scope.distroyMore = function () {
+    $scope.destroyMore = function () {
         var ids = batchAction();
-        Store.distroyOrdersMore({ids: ids}, function (res) {
+        Store.destroyOrdersMore({ids: ids}, function (res) {
             console.log(res);
             getOrders($scope.page);
         })

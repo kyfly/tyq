@@ -41,13 +41,13 @@ exports.default = {
     },{
         api: "/news/:id",
         method: "delete",
-        action: "distroyById",
+        action: "destroyById",
         remote: "/wechat/articles/:id",
         desc: "删除一条图文信息"
     },{
         api: "/news",
         method: "delete",
-        action: "distroyMore",
+        action: "destroyMore",
         remote: "/wechat/articles",
         desc: "删除多条图文信息"
     }],

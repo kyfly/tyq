@@ -69,6 +69,18 @@ exports.default = {
         remote: "/users/:id/analysis",
         desc: "用户血糖分析"
     },{
+        api: "/users/:id/points",
+        method: "get",
+        action: "findPoints",
+        remote: "/users/:id/points",
+        desc: "用户积分变化列表"
+    },{
+        api: "/users/:id/points/:fk",
+        method: "get",
+        action: "destroyPoints",
+        remote: "/users/:id/points/:fk",
+        desc: "删除用户积分变化记录"
+    },{
         api: "/users/:id/messages",
         method: "post",
         action: "createMessages",
@@ -89,7 +101,7 @@ exports.default = {
     },{
         api: "/users/:id/topics",
         method: "delete",
-        action: "distroyTopics",
+        action: "destroyTopics",
         remote: "/users/:id/topics",
         desc: "清理用户发布的所有话题"
     },{
@@ -107,7 +119,7 @@ exports.default = {
     },{
         api: "/users/:id/express",
         method: "delete",
-        action: "distroyExpress",
+        action: "destroyExpress",
         remote: "/users/:id/express",
         desc: "用户删除快递信息"
     },{
