@@ -121,6 +121,10 @@
                         "findTopics": {
                             url: urlBase + '/Users/:id/topics',
                             method: 'GET'
+                        },
+                        "destroyTopics": {
+                            url: urlBase + '/Users/:id/topics/:fk',
+                            method: 'DELETE'
                         }
                     });
                 R.modelName = "User";
