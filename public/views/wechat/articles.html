@@ -45,12 +45,14 @@
             <h5>
                 <a class="" href="/weixin/articles/{{article.id}}" ng-bind="article.title"></a>
             </h5>
-            <h6>
-                <span ng-bind="article.author"></span> 
+            <h6 class="dark-grey-text">
+                <span ng-bind="article.author"></span>
+                <span>&nbsp;</span>
                 <span ng-bind="article.update_time | date: 'yy-mm-dd'"></span> 
+                <span>&nbsp;</span>
                 <span ng-bind="article.tags"></span>
             </h6>
-            <p ng-bind="article.digest"></p>
+            <p  class="dark-grey-text" ng-bind="article.digest"></p>
         </td>
         <td class="article-action-td">
             <section>

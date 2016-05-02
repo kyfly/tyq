@@ -81,7 +81,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     $scope.topicDelete = function () {
         var thisElement = this;
         console.log(thisElement);
-        Topic.distroyById({
+        Topic.destroyById({
             id: thisElement.topic.id
         }, {status: 200}, function () {
             Materialize.toast('删除话题成功！', 2000);
@@ -269,7 +269,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     $scope.topicDelete = function () {
         var thisElement = this;
         console.log(thisElement);
-        Topic.distroyById({
+        Topic.destroyById({
             id: thisElement.topic.id
         }, {status: 200}, function () {
             Materialize.toast('删除话题成功！', 2000);

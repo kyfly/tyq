@@ -15,9 +15,11 @@
 }
 
 .path {
-    color: #717171
+    color: #717171;
 }
-
+.path-line {
+    border: 0;
+}
 /*搜索框--start*/
 .search-box {
     position: relative;
@@ -26,7 +28,7 @@
 }
 
 .search-box input {
-    border: 1px solid #9e9e9e !important;
+    border: 1px solid #717171 !important;
     border-radius: 5px !important;
     margin: 0 !important;
     height: 30px !important;
@@ -44,7 +46,8 @@
     right: -14px;
     height: 34px;
     border-radius: 0 5px 5px 0;
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.18), 
+                0 0px 0px 0 rgba(0, 0, 0, 0.15);
 }
 .top-nav .right {
     font-size: 1.3rem;
@@ -63,7 +66,9 @@
     position: absolute;
     top: 17px;
 }
-
+thead tr {
+    background: #e6e8ea;
+}
 /*全选框*/
 
 /*操作列，可在这里定义自己table的最后列样式*/
@@ -159,10 +164,10 @@ td {
 /*商品管理css-start*/
 @media only screen and (min-width: 993px) {
     .goods-point {
-        width: 100px;
+        width: 80px;
     }
     .goods-count {
-        width: 100px;
+        width: 80px;
     }
     .goods-info {
         position: relative;
@@ -170,6 +175,7 @@ td {
     .goods-info img {
         width: 100px;
         height: 100px;
+        padding: 5px;
     }
     .goods-info div {
         position: absolute;
@@ -177,7 +183,8 @@ td {
         left: 110px;
         height: 100%;
     }
-    .goods-info div h5{
+}
+.goods-info div h5{
         margin: 0;
         margin-top: 15px;
         font-size: 1.2rem;
@@ -190,15 +197,23 @@ td {
     .good-info h5 {
         font-size: 1.2rem;
     }
-}
+    .tabs .tab a {
+        color: #444;
+    }
+    .tabs .tab a:hover  {
+        color: #444;
+    }
+    /*.tabs .indicator {
+        background: blue;
+    }*/
 /*商品管理css-end*/
 /*订单管理-start*/
 @media only screen and (min-width: 993px) {
     .order-user {
-        width: 200px;
+        width: 150px;
     }
     .order-price {
-        width: 100px;
+        width: 80px;
     }
     .orders h5 {
         font-size: 1rem;
@@ -318,6 +333,14 @@ body {
 }
 a{
     cursor: pointer;
+    color: #717171;
+}
+tr {
+    border-bottom: 1px solid #e6e8ea !important;
+}
+button {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.18), 
+                0 0px 0px 0 rgba(0, 0, 0, 0.15) !important;
 }
 html {
     padding-bottom: 50px;
@@ -419,6 +442,7 @@ nav ul {
         background: #fff;
         padding-bottom: 0 !important;
         height: 100%;
+        min-height: 770px;
         box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16),
         0 0px 0px 0 rgba(0, 0, 0, 0.12) !important;
     }
@@ -426,7 +450,7 @@ nav ul {
     main {
         margin-top: 100px !important;
         position: relative;
-        min-height: 100%;
+        min-height: 770px;
     }
 
     #navBar {

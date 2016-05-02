@@ -19,7 +19,7 @@ app.controller(
 	$scope.synchronize = function () {
 		console.log(this)
 	}
-	$scope.distroy = function () {
+	$scope.destroy = function () {
 		var articles = $scope.articles.content;
 		var id = this.article.id;
 		articles.forEach(function (article, index) {
@@ -28,7 +28,7 @@ app.controller(
 			}
 		});
 	}
-	$scope.distroyMore = function () {
+	$scope.destroyMore = function () {
 		var more = batchAction();
 		console.log(more)
 	}

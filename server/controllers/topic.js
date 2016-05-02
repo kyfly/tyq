@@ -30,7 +30,7 @@ exports.findById = function (req, res, next) {
 exports.updateById = function (req, res, next) {
     res.send();
 }
-exports.distroyById = function (req, res, next) {
+exports.destroyById = function (req, res, next) {
     res.send({
         status: 200
     });
@@ -48,7 +48,7 @@ exports.replyList = function (req, res, next) {
         }
     }));
 }
-exports.distroyReply = function (req, res, next) {
+exports.destroyReply = function (req, res, next) {
     res.send({
         status: 200
     });
@@ -70,7 +70,7 @@ exports.updatePublishById = function (req, res, next) {
         status: 200
     });
 }
-exports.distroyPublishById = function (req, res, next) {
+exports.destroyPublishById = function (req, res, next) {
     res.send({
         status: 200
     });

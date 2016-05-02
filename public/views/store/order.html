@@ -89,18 +89,24 @@
             <div class="modal-content">
                 <h4>标记发货</h4>
                 <div class="input-field col s12">
-                    <input id="level" type="text" 
+                    <input id="company" type="text" 
                     ng-model="currentOrder.Logistical.company" 
-                    class="validate" ng-disabled="currentOrder.disabled">
-                    <label for="level">物流公司</label>
+                    ng-disabled="currentOrder.disabled">
+                    <label for="company">物流公司</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="count" type="text" ng-model="currentOrder.Logistical.tracking" class="validate" ng-disabled="currentOrder.disabled">
-                    <label for="count">快递单号</label>
+                    <input id="tracking" type="text" ng-model="currentOrder.Logistical.tracking" 
+                    ng-disabled="currentOrder.disabled">
+                    <label for="tracking">快递单号</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="addr" type="text" ng-model="currentOrder.user.addr"
+                    ng-disabled="true">
+                    <label for="addr">快递地址</label>
                 </div>
             </div>
             <div class="modal-footer">
-                <a ng-click="logistical()" href="#!" class="right modal-action modal-close waves-effect waves-green btn-flat">确认</a>
+                <a ng-click="logistical()" href="#!" class="right modal-action modal-close waves-effect waves-green btn-flat" ng-disabled="currentOrder.disabled">确认</a>
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
             </div>
         </div>
