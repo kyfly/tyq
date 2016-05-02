@@ -66,7 +66,7 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
         icon: 'mdi-action-shopping-cart',
         subM: [{
             id: 'sidebarReleaseOfGoods',
-            name: '商品上传',
+            name: '商品管理',
             url: '/goods/release'
         },
             {

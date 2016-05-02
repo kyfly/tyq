@@ -36,7 +36,7 @@
                             <img ng-src="{{topic.user.headImg}}" ng-click="changeUserPage(topic.user.id)" alt="" class="circle">
                             <a ng-href="users/{{topic.user.id}}/usertopic"
                              class="title topic-name black-text" ng-bind="topic.user.name"></a>
-                            <span ng-show="this.topic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
+                            <span tooltipped data-position="bottom" data-delay="0" data-tooltip="已锁定" ng-show="this.topic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
                             <div ng-bind="topic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></div>
                             <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
                             <p ng-bind="topic.content" class="topic-content dark-grey-text"
