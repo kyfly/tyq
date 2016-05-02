@@ -13,7 +13,6 @@
     <h6 class="path col m4 s12">
         积分总量 : {{user.points}}
     </h6>
-    <a
 </div>
 <hr class="path-line">
 
@@ -24,8 +23,8 @@
         <tr>
             <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="score-top" ng-model="master"
-                       ng-click="all(master,peopleInfo)">
-                <label for="score-top" id="chose_all"></label>
+                       ng-click="all(master,changeItem)">
+                <label for="score-top"></label>
             </th>
             <th>时间</th>
             <th>变化</th>
@@ -37,9 +36,9 @@
         <tbody>
         <tr ng-repeat="changeItem in changeItems.content">
             <td class="checkbox-td">
-                <input type="checkbox" id="check{{$index}}" class="filled-in"
-                       ng-model="x" ng-checked="master" ng-click="chk(checkbox,x)">
-                <label for="check{{$index}}"></label>
+                <input type="checkbox" id="{{changeItem.id}}" class="filled-in"
+                       ng-model="x" ng-checked="master" ng-click="chk(changeItem,x)">
+                <label for="{{changeItem.id}}"></label>
             </td>
             <td ng-bind="changeItem.created| date: 'yyyy-MM-dd HH:mm:ss'"></td>
             <td ng-bind="changeItem.count"></td>
