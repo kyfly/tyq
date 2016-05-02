@@ -11,7 +11,7 @@
 
 <div class="users">
     <table class="centered bordered">
-        <thead class="grey-text">
+        <thead class="dark-grey-text">
         <tr>
             <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="all">
@@ -38,11 +38,11 @@
                     <span ng-bind="user.name"></span>
                 </a>
             </td>
-            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a></td>
+            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.points" class="blue-text"></a></td>
             <td ng-bind="user.level"></td>
             <td ng-bind="user.topics"></td>
             <td ng-bind="user.replies"></td>
-            <td>
+            <td class="small-text">
                 <section>
                     <a class="wechat_a" ng-click="moveToBlacklist()">拉黑</a> |
                     <a class="wechat_a" ng-click="setAsAdmin()">设为管理员</a> |
