@@ -66,7 +66,9 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
     }
 
 }]);
-
+/*
+话题管理
+ */
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
     $scope.page = 1;
     var getTopic = function (page) {

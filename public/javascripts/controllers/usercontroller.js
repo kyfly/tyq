@@ -56,38 +56,46 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
 /*
  用户积分
  */
-app.controller('UserScoreCtrl', ['$scope', function ($scope) {
-    $scope.user = {
-        id: 2,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 300,
-        changeItems: [{
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }]
-    };
+app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($scope,User, $stateParams) {
+   var userId = $stateParams.id;
+   User.findById({
+       id:userId
+   },function(res){
+       console.log(res);
+       $scope.user = res;
+   });
+    User.findPoints ({
+        id: userId
+    },function(res){
+        console.log(res);
+        $scope.changeItems = res;
+    });
 
+    $scope.choseArr = [];//定义数组用于存放前端显示
+    var str = "";//
+    var flag = '';//是否点击了全选，是为a
+    $scope.x = false;//默认未选中
+    $scope.all = function (c, v) {//全选
+        if (c == true) {
+            $scope.x = true;
+            $scope.choseArr = v;
+        } else {
+            $scope.x = false;
+            $scope.choseArr = [""];
+        }
+        flag = 'a';
+    };
+    $scope.chk = function (z, x) {//单选或者多选
+        if (flag == 'a') {//在全选的基础上操作
+            str = $scope.choseArr.join();
+        }
+        if (x == true) {//选中
+            str = str + z + ',';
+        } else {
+            str = str.replace(z + ',', '');//取消选中
+        }
+        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
+    };
 
 }]);
 
