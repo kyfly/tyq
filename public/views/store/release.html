@@ -1,6 +1,6 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        商品上传
+        商品管理
         <small>
             <a ui-sref="createGoods">
                 添加商品
@@ -12,9 +12,9 @@
         <button class="btn waves-effect blue waves-light">搜索</button>
     </div>
 </div>
-<hr class="path-line">
-<div class="">
-    <div class="row">
+<hr>
+<div style="margin-top: -5px !important">
+    <div class="row" style="font-size: 16px">
         <div class="col s12">
             <ul class="tabs" tabs>
                 <li class="tab col s6">
@@ -27,8 +27,8 @@
         </div>
     </div>
     
-    <table class="bordered goods">
-        <thead>
+    <table class="bordered goods margin-top">
+        <thead class="dark-grey-text">
             <tr>
                 <th class="choose-row">
                     <input
@@ -38,7 +38,7 @@
                             ng-model="all">
                     <label for="all"></label>
                 </th>
-                <th class="center">商品信息</th>
+                <th>商品信息</th>
                 <th class="goods-point center">所需积分</th>
                 <th class="goods-count center">数量</th>
                 <th class="goods-operation-row center">操作</th>
@@ -62,9 +62,9 @@
                             <a ui-sref="detailGoods({id: good.id})" ng-bind="good.name"></a>
                         </h5>
                         <br>
-                        <h6>
+                        <p>
                             上架时间：<span ng-bind="good.storeAt | date: 'yy-MM-dd'"></span>
-                        </h6>
+                        </p>
                     </div>
                 </td>
                 <td class="center" >
@@ -78,7 +78,7 @@
                 <td class="center" >
                     <a href="" ng-click="unexchengeable()" ng-show="exchengeableState">下架</a>
                     <a href="" ng-click="exchengeable()" ng-show="!exchengeableState">上架</a>
-                    <a ng-click="distroy()"> | 删除 | </a>
+                    <a ng-click="destroy()"> | 删除 | </a>
                     <a href="/goods/{{good.id}}/eidt">编辑</a>
                 </td>
             </tr>
@@ -86,7 +86,7 @@
     </table>
 </div>
 <div class="double-margin-bottom margin-top">
-    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect grey" ng-click="destroyMore()">删除</button>
     <button class="btn col waves-light waves-effect blue" ng-click="exchengeableMore()" ng-show="!exchengeableState">上架</button>
     <button class="btn col waves-light waves-effect blue" ng-click="unexchengeableMore()" ng-show="exchengeableState">下架</button>
     <div class="double-margin-bottom margin-top">

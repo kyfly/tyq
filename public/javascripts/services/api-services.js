@@ -51,7 +51,7 @@
                             url: urlBase + '/publish/:id',
                             method: 'POST'
                         },
-                        "distroyPublishById":{
+                        "destroyPublishById":{
                             url:urlBase+'/publish/:id',
                             method:'DELETE'
                         }
@@ -109,6 +109,10 @@
                         },
                         "findById": {
                             url: urlBase + '/Users/:id',
+                            method: 'GET'
+                        },
+                        "findPoints":{
+                            url:urlBase + '/users/:id/points',
                             method: 'GET'
                         },
                         "updateById": {

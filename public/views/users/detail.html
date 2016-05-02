@@ -1,12 +1,12 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        <a ui-sref="wechatUsers">用户列表</a>
+        <a class="blue-text" ui-sref="wechatUsers">用户列表</a>
         > 用户详情
     </h5>
 </div>
 <hr class="path-line">
 <table class="centered">
-    <thead class="detail-thead">
+    <thead class="detail-thead dark-grey-text">
     <tr class="detail-tr">
         <th>名字</th>
         <th>性别</th>
@@ -27,33 +27,37 @@
         <td>
             <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
         </td>
-        <td><a ui-sref="userDetail.BG" ng-bind="user.lastBG"></a></td>
+        <td><a class="blue-text" ui-sref="userDetail.BG" ng-bind="user.lastBG"></a></td>
     </tr>
     </tbody>
 </table>
-<hr class="margin-bottom">
+<hr class="double-margin-bottom">
 <div class="row">
     <div class="col s3 detail-item detail-border center">
         <a ui-sref="userDetail.health">
-            <img src="/img/health.png">
+            <img ng-show="state !== 'userDetail.health'" src="/img/health.png">
+            <img ng-show="state === 'userDetail.health'" src="/img/health_dark.png">
             <p class="black-text">健康信息</p>
         </a>
     </div>
     <div class="col s3 detail-item detail-border center">
         <a ui-sref="userDetail.check">
-            <img src="/img/check.png">
+            <img ng-show="state !== 'userDetail.check'" src="/img/check.png">
+            <img ng-show="state === 'userDetail.check'" src="/img/check_dark.png">
             <p class="black-text">检查数据</p>
         </a>
     </div>
     <div class="col s3 detail-item detail-border center">
         <a ui-sref="userDetail.scheme">
-            <img src="/img/scheme.png">
+            <img ng-show="state !== 'userDetail.scheme'" src="/img/scheme.png">
+            <img ng-show="state === 'userDetail.scheme'" src="/img/scheme_dark.png">
             <p class="black-text">控糖方案</p>
         </a>
     </div>
     <div class="col s3 detail-item center">
         <a ui-sref="userDetail.dialogue">
-            <img src="/img/dialogue.png">
+            <img ng-show="state !== 'userDetail.dialogue'" src="/img/dialogue.png">
+            <img ng-show="state === 'userDetail.dialogue'" src="/img/dialogue_dark.png">
             <p class="black-text">控糖日志</p>
         </a>
     </div>

@@ -1,9 +1,9 @@
 <div class="row top-nav">
     <h5 class="path col s12">
-        <a href="/weixin/articles">文章列表</a>
+        <a class="blue-text" href="/weixin/articles">文章列表</a>
         >文章详情
-        <a class="right" href="/weixin/articles/{{article.id}}/edit">
-            <i class="mdi-editor-mode-edit"></i>
+        <a class="right blue-text" href="/weixin/articles/{{article.id}}/edit">
+            <i class="mdi-editor-mode-edit"></i> 编辑
         </a>
     </h5>
 </div>
@@ -15,5 +15,5 @@
         <span ng-bind="article.update_time | date: 'yy-mm-dd'"></span> 
         <span ng-bind="article.tags"></span>
     </h6>
-    <div ng-bind-html="article.content"></div>
+    <div class="double-margin-top" ng-bind-html="article.content"></div>
 </article>

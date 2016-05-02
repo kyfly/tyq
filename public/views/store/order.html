@@ -10,7 +10,7 @@
 <hr class="path-line">
 <div>
     <table class="bordered orders">
-        <thead>
+        <thead class="dark-grey-text">
             <tr>
                 <th class="choose-row">
                     <input
@@ -20,7 +20,7 @@
                         ng-model="all">
                     <label for="all"></label>
                 </th>
-                <th class="center">商品信息</th>
+                <th>商品信息</th>
                 <th class="center order-user">订购用户</th>
                 <th class="center order-price">实付金额</th>
                 <th class="orders-operation-row center">操作</th>
@@ -39,9 +39,9 @@
                 </td>
                 <td colspan="4">
                     <p>
-                        订单编号：<span ng-bind="order.orderNo"></span> 
-                        <span class="grey-text" ng-bind="order.created|date:'yyyy-MM-dd HH:mm:ss'"></span> 
-                        <a ng-if="!order.Logistical.company" href="#" ng-bind="'等待卖家发货'"></a>
+                        订单编号：<span ng-bind="order.orderNo"></span>&nbsp;&nbsp;&nbsp;
+                        <span class="grey-text" ng-bind="order.created|date:'yyyy-MM-dd HH:mm:ss'"></span>&nbsp;&nbsp;&nbsp;
+                        <a class="blue-text" ng-if="order.Logistical.company" href="" ng-bind="'等待卖家发货'"></a>
                     </p>
                 </td>
             </tr>
@@ -54,19 +54,19 @@
                             <a ui-sref="detailGoods({id: order.goods.id})" ng-bind="order.goods.name"></a>
                         </h5>
                         <br>
-                        <h6>
+                        <p>
                             订购数量：<span ng-bind="order.count"></span>
-                        </h6>
+                        </p>
                     </div>
                 </td>
                 <td class="center">
-                    <h5>
+                    <p>
                         <a class="grey-text" ui-sref="userDetail({id: order.user.id})" ng-bind="order.user.name"></a>
-                    </h5>
-                    <h5>
+                    </p>
+                    <p>
                         <a ui-sref="userDetail({id: order.user.id})" ng-bind="order.user.phone">
                         </a>
-                    </h5>
+                    </p>
                     <a tooltipped 
                         class="col s4 offset-s4 l2 offset-l1" 
                         data-position="bottom" data-delay="50" 
@@ -75,20 +75,20 @@
                     </a>
                 </td>
                 <td class="center" >
-                    <h5>积分：<span class="grey-text" ng-bind="order.goods.cPoint"></span></h5>
-                    <h5 ng-if="order.goods.postage" ng-bind="'包邮'"></h5>
+                    <p>积分：<span class="grey-text" ng-bind="order.goods.cPoint"></span></p>
+                    <p ng-if="order.goods.postage" ng-bind="'包邮'"></p>
                 </td>
                 <td class="center orders-operation-td">
                     <a href="#orderModal" ng-if="!order.Logistical.company" ng-click="checkOrder()" class="btn blue waves-effect" modal>标记发货</a>
                     <a href="#orderModal" ng-click="checkOrder()" ng-if="order.Logistical.company" class="btn blue waves-effect" modal>已经发货</a>
-                    <a href="#" ng-click="distroy()" class="btn grey waves-effect">删除订单</a>
+                    <a href="#" ng-click="destroy()" class="btn grey waves-effect">删除订单</a>
                 </td>
             </tr>
         </tbody>
         <div class="modal" id="orderModal">
             <div class="modal-content">
                 <h4>标记发货</h4>
-                <div class="input-field col s12">
+                <div class="input-field col s12 double-margin-top">
                     <input id="company" type="text" 
                     ng-model="currentOrder.Logistical.company" 
                     ng-disabled="currentOrder.disabled">
@@ -113,7 +113,7 @@
     </table>
 </div>
 <div class="double-margin-bottom margin-top">
-    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect grey" ng-click="destroyMore()">删除</button>
     <button class="btn col waves-light waves-effect blue" ng-click="exchengeableMore()">导出</button>
     <div>
         <pagination

@@ -22,7 +22,7 @@
             <th>等级</th>
             <th>发表</th>
             <th>回复</th>
-            <th class="forum-user-operation-row">功能</th>
+            <th class="forum-user-operation-row">操作</th>
         </tr>
         </thead>
 
@@ -42,7 +42,7 @@
             <td ng-bind="user.level"></td>
             <td ng-bind="user.topics"></td>
             <td ng-bind="user.replies"></td>
-            <td class="small-text">
+            <td>
                 <section>
                     <a class="wechat_a" ng-click="moveToBlacklist()">拉黑</a> |
                     <a class="wechat_a" ng-click="setAsAdmin()">设为管理员</a> |

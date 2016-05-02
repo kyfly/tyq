@@ -1,6 +1,6 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        <a ui-sref="releaseOfGoods">
+        <a class="blue-text" ui-sref="releaseOfGoods">
             商品列表
         </a>
         >
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="file-field input-field col s6">
-            <div class="btn">
+            <div class="btn blue">
                 <span>图片</span>
                 <input type="file">
             </div>
@@ -79,20 +79,20 @@
             <label for="point">兑换积分</label>
         </div>
         <div class="input-field col s6">
-            <input id="point" type="number" ng-model="good.price" class="validate">
+            <input id="price" type="number" ng-model="good.price" class="validate">
             <label for="point">商品价格</label>
         </div>
         <div class="col s6">
-            <input class="with-gap" type="checkbox" id="postage" ng-model="good.postage" />
+            <input class="with-gap filled-in" type="checkbox" id="postage" ng-model="good.postage" />
             <label for="postage">是否包邮</label>
         </div>
         
         <div class="col s6">
-            <input class="with-gap" type="checkbox" id="single" ng-model="good.single"/>
+            <input class="with-gap filled-in" type="checkbox" id="single" ng-model="good.single"/>
             <label for="single">仅兑换一件</label>
         </div>
-        <div class="col s12 center margin-top">
-            <button ng-click="submit()" class="btn waves-effect waves-light " type="submit">
+        <div class="col s12 margin-top">
+            <button ng-click="submit()" class="btn waves-effect waves-light blue right" type="submit">
                 确定
             </button>
         </div>

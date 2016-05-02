@@ -66,7 +66,9 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
     }
 
 }]);
-
+/*
+话题管理
+ */
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
     $scope.page = 1;
     var getTopic = function (page) {
@@ -184,7 +186,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
     $scope.deleteNotice = function () {
         var thisNotice = this.notice;
         console.log(thisNotice);
-        Notice.distroyPublishById({
+        Notice.destroyPublishById({
             id: thisNotice.id
         }, function () {
             Materialize.toast('删除成功！', 2000);
