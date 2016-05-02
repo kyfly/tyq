@@ -68,29 +68,50 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 }]);
 
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
-    Topic.find({},
-        function (res) {
-            //console.log(res);
+    $scope.page = 1;
+    var getTopic = function (page) {
+        $scope.all = false;
+        Topic.find({
+            page: page
+        }, function (res) {
             $scope.topics = res;
         });
+    };
+
+    $scope.changePage = function (page){
+        getTopic(page);
+    };
+
+    getTopic($scope.page);
 
     $scope.changeUserPage = function (thisId) {
         window.location.href = "users/" + thisId + "/usertopic";
     };
 
+    //清理
+    $scope.clearTopic = function () {
+        var thisElement = this;
+        console.log(thisElement);
+        User.destroyTopics({
+                id: thisElement.topic.user.id
+            }, function(){
+                Materialize.toast('清理该用户话题成功',2000);
+                getTopic($scope.page);
+            }, function () {
+                Materialize.toast('清理话题失败！', 2000);
+            }
+        );
+    };
+
+
     $scope.topicDelete = function () {
         var thisElement = this;
         console.log(thisElement);
-        Topic.distroyById({
+        Topic.destroyById({
             id: thisElement.topic.id
-        }, {status: 200}, function () {
+        }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            thisElement.topic.deleted = true;
-            var id = thisElement.topic.id;
-            for (var x in $scope.topics.content)
-                if ($scope.topics.content[x].id === id) {
-                    $scope.topics.content.splice(x, 1);
-                }
+            getTopic($scope.page);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });
@@ -291,7 +312,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     $scope.topicDelete = function () {
         var thisElement = this;
         console.log(thisElement);
-        Topic.distroyById({
+        Topic.destroyById({
             id: thisElement.topic.id
         }, {status: 200}, function () {
             Materialize.toast('删除话题成功！', 2000);

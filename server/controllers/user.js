@@ -119,6 +119,39 @@ exports.findLog = function (req, res, next) {
         }]
     });
 }
+exports.findPoints = function (req, res, next) {
+    res.send({
+        total: 2000,
+        count: 20,
+        content: [{
+            id: 1,
+            created: new Date(),
+            count: 2,
+            reason: {
+                message: 'MESSAGE',
+                goodId: 1
+            }
+        },{
+            id: 2,
+            created: new Date(),
+            count: 3,
+            reason: {
+                message: 'MESSAGE',
+                goodId: 2
+            }
+        },{
+            id: 3,
+            created: new Date(),
+            count: 3,
+            reason: {
+                message: 'MESSAGE'
+            }
+        }]
+    });
+}
+exports.destroyPoints = function (req, res, next) {
+    res.send({status: 200})
+}
 exports.findSchema = function (req, res, next) {
     res.send({
         diet: [{
@@ -145,7 +178,22 @@ exports.updateSchema = function (req, res, next) {
     res.send(req.body)
 }
 exports.findAnalysis = function (req, res, next) {
-    res.send()
+    res.send([{
+        day: 1,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 2,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 3,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 4,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 5,
+        BG: [2,3,4,5,6,6,8,8]
+    }])
 }
 exports.createMessages = function (req, res, next) {
     res.send({
@@ -176,7 +224,7 @@ exports.findTopics = function (req, res, next) {
         })
     });
 }
-exports.distroyTopics = function (req, res, next) {
+exports.destroyTopics = function (req, res, next) {
     res.send({
         status: 200
     })
@@ -213,7 +261,7 @@ exports.createExpress = function (req, res, next) {
         status: 200
     })
 }
-exports.distroyExpress = function (req, res, next) {
+exports.destroyExpress = function (req, res, next) {
     res.send({
         status: 200
     })

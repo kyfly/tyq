@@ -48,12 +48,12 @@ exports.synchronizeMore = function (req, res, next) {
         status: 200
     })
 }
-exports.distroyById = function (req, res, next) {
+exports.destroyById = function (req, res, next) {
     res.send({
         status: 200
     })
 }
-exports.distroyMore = function (req, res, next) {
+exports.destroyMore = function (req, res, next) {
     res.send({
         status: 200
     })

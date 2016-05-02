@@ -35,9 +35,9 @@
                         <li class="collection-item avatar" style="padding-bottom: 0">
                             <img ng-src="{{topic.user.headImg}}" ng-click="changeUserPage(topic.user.id)" alt="" class="circle">
                             <a ng-href="users/{{topic.user.id}}/usertopic"
-                             class="title topic-name" ng-bind="topic.user.name"></a>
-                            <span ng-bind="topic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></span>
+                             class="title topic-name black-text" ng-bind="topic.user.name"></a>
                             <span ng-show="this.topic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
+                            <div ng-bind="topic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></div>
                             <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
                             <p ng-bind="topic.content" class="topic-content dark-grey-text"
                                style="padding: 5px 0"></p>
@@ -58,12 +58,12 @@
                                 <span ng-bind="topic.reply"></span>
                             </div>
                             <a class="secondary-content">
-                                <span>评论</span>
-                                <span>清理</span>
-                                <span ng-click="toTop()">置顶</span>
-                                <span ng-click="isLocked()" ng-show="!this.topic.state.locked">锁定</span>
-                                <span ng-click="isLocked()" ng-show="this.topic.state.locked">解锁</span>
-                                <span ng-click="topicDelete()">删除</span>
+                                <span class="dark-grey-text">评论 | </span>
+                                <span class="dark-grey-text" ng-click="clearTopic()">清理 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text">置顶 | </span>
+                                <span ng-click="isLocked()" class="dark-grey-text" ng-show="!this.topic.state.locked">锁定 | </span>
+                                <span ng-click="isLocked()" class="dark-grey-text" ng-show="this.topic.state.locked">解锁 | </span>
+                                <span ng-click="topicDelete()" class="dark-grey-text">删除</span>
                             </a>
                         </li>
                     </ul>
@@ -76,9 +76,9 @@
         <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">批量删除</button>
         <div class="double-margin-bottom margin-top">
             <pagination
-                    page="1"
-                    page-size="10"
-                    total="200"
+                    page="page"
+                    page-size="topics.count"
+                    total="topics.total"
                     show-prev-next="true"
                     dots="...."
                     hide-if-empty="false"

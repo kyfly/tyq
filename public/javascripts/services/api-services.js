@@ -79,7 +79,7 @@
                             utl: urlBase + '/topics/:id',
                             method: 'PUT'
                         },
-                        "distroyById": {
+                        "destroyById": {
                             utl: urlBase + '/topics/:id',
                             method: 'DELETE'
                         },
@@ -87,7 +87,7 @@
                             utl: urlBase + '/topics/:id/reply',
                             method: 'GET'
                         },
-                        "distroyReply": {
+                        "destroyReply": {
                             utl: urlBase + '/topics/:id/reply/:fk',
                             method: 'DELETE'
                         }
@@ -150,6 +150,10 @@
                         "findTopics": {
                             url: urlBase + '/Users/:id/topics',
                             method: 'GET'
+                        },
+                        "destroyTopics": {
+                            url: urlBase + '/Users/:id/topics/:fk',
+                            method: 'DELETE'
                         }
                     });
                 R.modelName = "User";
@@ -171,7 +175,7 @@
                     url: urlBase + "/goods",
                     method: "GET"
                 },
-                "distroyMore": {
+                "destroyMore": {
                     url: urlBase + "/goods",
                     method: "DELETE"
                 },
@@ -183,7 +187,7 @@
                     url: urlBase + "/goods/:id",
                     method: "PUT" 
                 },
-                "distroyById": {
+                "destroyById": {
                     url: urlBase + "/goods/:id",
                     method: "DELETE"
                 },
@@ -199,7 +203,7 @@
                     url: urlBase + "/orders",
                     method: "GET"
                 },
-                "distroyOrdersMore": {
+                "destroyOrdersMore": {
                     url: urlBase + "/orders",
                     method: "DELETE"
                 },

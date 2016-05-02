@@ -23,7 +23,7 @@ exports.default = {
     },{
         api: "/topics/:id",
         method: "delete",
-        action: "distroyById",
+        action: "destroyById",
         remote: "/topics/:id",
         desc: "删除话题"
     },{
@@ -35,7 +35,7 @@ exports.default = {
     },{
         api: "/topics/:id/reply/:fk",
         method: "delete",
-        action: "distroyReply",
+        action: "destroyReply",
         remote: "/topics/:id/reply/:fk",
         desc: "删除话题回复"
     },{
@@ -59,7 +59,7 @@ exports.default = {
     },{
         api: "/publish/:id",
         method: "delete",
-        action: "distroyPublishById",
+        action: "destroyPublishById",
         remote: "/publish/:id",
         desc: "删除公告"
     }],

@@ -23,7 +23,7 @@ exports.find = function (req, res, next) {
         })
     })
 }
-exports.distroyMore = function (req, res, next) {
+exports.destroyMore = function (req, res, next) {
     console.log(req.query)
     res.send({
         status: 200
@@ -50,7 +50,7 @@ exports.updateById = function (req, res, next) {
         status: 200
     })
 }
-exports.distroyById = function (req, res, next) {
+exports.destroyById = function (req, res, next) {
     res.send({
         status: 200
     })
@@ -95,7 +95,7 @@ exports.findOrders = function (req, res, next) {
         })
     })
 }
-exports.distroyOrdersMore = function (req, res, next) {
+exports.destroyOrdersMore = function (req, res, next) {
     res.send({
         status: 200
     })
