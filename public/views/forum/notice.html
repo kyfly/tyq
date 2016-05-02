@@ -29,6 +29,9 @@
                     <label for="topic-top" id="chose_all"></label>
                 </th>
                 <th>发布日期</th>
+                <th></th>
+                <th></th>
+
             </tr>
             </thead>
             <tbody>
@@ -40,11 +43,11 @@
                 </td>
                 <td ng-bind="notice.created"></td>
                 <td clss="center" ng-bind="notice.title"></td>
-                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-                <td>
+                <td class="center small-text">
                     <section>
-                        <a ng-click="editNotice()">修改</a>|
-                        <a ng-click="deleteNotice()">删除</a>
+                        <a ng-click="editNotice()">修改</a> |
+                        <a ng-click="deleteNotice()">删除</a> |
+                        <a ng-click="topNotice()">置顶</a>
                     </section></td>
             </tr>
             </tbody>
@@ -52,19 +55,7 @@
     </form>
     <div class="double-margin-bottom margin-top">
         <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
-        <div class="double-margin-bottom margin-top">
-            <pagination
-                    page="1"
-                    page-size="10"
-                    total="200"
-                    show-prev-next="true"
-                    dots="...."
-                    hide-if-empty="false"
-                    adjacent="2"
-                    scroll-top="false"
-                    pagination-action="changePage(page)"
-                    class="center "></pagination>
-        </div>
+
     </div>
 
 </div>
