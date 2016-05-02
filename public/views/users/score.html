@@ -13,7 +13,7 @@
 
 <div>
     <table class="centered bordered">
-        <thead class="grey-text grey lighten-4">
+        <thead class="grey-text">
         <tr>
             <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="all">
@@ -28,7 +28,7 @@
 
         <tbody>
         <tr ng-repeat="changeItem in user.changeItems">
-            <td >
+            <td class="checkbox-td">
                 <input type="checkbox" class="filled-in" id="checkbox{{$index}}">
                 <label for="checkbox{{$index}}"></label>
             </td>
@@ -36,7 +36,7 @@
             <td ng-bind="changeItem.change"></td>
             <td ng-bind="changeItem.reason"></td>
             <td>
-                <a class="wechat_a">删除</a>
+                <a>删除</a>
             </td>
         </tr>
         </tbody>
@@ -44,9 +44,9 @@
 </div>
 
 <div class="double-margin-bottom margin-top">
-    <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
-    <button class="btn col wechat_btn right waves-light waves-effect blue">上一页</button>
-    <button class="btn col wechat_btn right waves-light waves-effect blue">下一页</button>
+    <button class="btn col waves-light waves-effect blue">删除</button>
+    <button class="btn col right waves-light waves-effect blue">上一页</button>
+    <button class="btn col right waves-light waves-effect blue">下一页</button>
 </div>
 
 
