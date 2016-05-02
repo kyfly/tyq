@@ -583,3 +583,7 @@ nav ul {
 .checkbox-td {
     padding-top: 10px !important;
 }
+
+.small-text {
+    font-size: 12px;
+}

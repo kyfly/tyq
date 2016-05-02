@@ -8,7 +8,7 @@
 <hr class="path-line">
 <div class="users">
     <table class="centered bordered">
-        <thead class="grey-text">
+        <thead class="dark-grey-text">
         <tr>
             <th class="choose-row">
                 <input type="checkbox" class="filled-in"
@@ -45,9 +45,9 @@
             <td ng-bind="user.BGtype"></td>
             <td ng-bind="user.lastBG"></td>
             <td>
-                <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
+                <a class="blue-text" ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
             </td>
-            <td>
+            <td class="small-text">
                 <a href="" ng-click="moveToBlacklist()">加入黑名单</a>
             </td>
         </tr>
