@@ -13,7 +13,6 @@
 .detail-thead {
     border: none;
 }
-
 .path {
     color: #717171;
 }
@@ -59,6 +58,8 @@
 .choose-row {
     width: 50px;
     position: relative;
+    text-align: left !important;
+    padding-left: 7px;
 }
 
 .choose-row label {
@@ -236,14 +237,6 @@ td {
 
 .n_textarea {
     height: 130px;
-}
-
-.n_top {
-    margin-top: 40px;
-}
-
-.n_tr {
-    border-bottom: solid 1px #d4d4d4;
 }
 
 .list_table_img {
@@ -585,4 +578,8 @@ nav ul {
 
 .health-modify {
     margin-top: -10px !important;
+}
+
+.checkbox-td {
+    padding-top: 10px !important;
 }
