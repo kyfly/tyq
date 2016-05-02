@@ -29,7 +29,7 @@ app.controller('StoreReleaseCtrl',
             ids.forEach(function (id) {
                 deleteGood(id);
             });
-        }
+        };
         var exchengeable = function (ids, exchengeable) {
             Store.store({
                 goods: ids,
@@ -38,55 +38,54 @@ app.controller('StoreReleaseCtrl',
                 deleteGoods(ids);
             });
             getGoods(!exchengeable, $scope.page)
-        }
+        };
         $scope.page = 1;
         $scope.exchengeableState = true;
         $scope.chooseAll = function () {
             $scope.goods.content.forEach(function (good) {
                 good.select = !good.select;
             });
-        }
+        };
         $scope.exchenge = function () {
             $scope.page = 1;
             getGoods(true, $scope.page)
             $scope.exchengeableState = true;
-        }
+        };
         $scope.unexchenge = function () {
             $scope.page = 1;
             getGoods(false, $scope.page)
             $scope.exchengeableState = false;
-        }
+        };
         $scope.destroy = function () {
             var id = this.good.id;
-        }
             Store.destroyById({ id: id }, function (res) {
                 deleteGood(id);
             });
             getGoods($scope.exchengeableState, $scope.page)
-        }
+        };
         $scope.exchengeable = function () {
             var id = this.good.id;
             exchengeable([id], true);
-        }
+        };
         $scope.unexchengeable = function () {
             var id = this.good.id;
             exchengeable([id], false);
-        }
+        };
         $scope.destroyMore = function () {
             var ids = batchAction();
             Store.destroyMore({ids: ids}, function (res) {
                 deleteGoods(ids);
             });
             getGoods($scope.exchengeableState, $scope.page)
-        }
+        };
         $scope.exchengeableMore = function () {
             var ids = batchAction();
             exchengeable(ids, true);
-        }
+        };
         $scope.unexchengeableMore = function () {
             var ids = batchAction();
             exchengeable(ids, false);
-        }
+        };
         getGoods(true, $scope.page);
     }]);
 app.controller('GoodDetailCtrl',

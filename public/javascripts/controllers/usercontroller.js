@@ -56,38 +56,20 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
 /*
  用户积分
  */
-app.controller('UserScoreCtrl', ['$scope', function ($scope) {
-    $scope.user = {
-        id: 2,
-        headImgUrl: "/img/weixin.jpg",
-        name: "sm",
-        score: 20,
-        level: 20,
-        comments: 20,
-        replies: 300,
-        changeItems: [{
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }, {
-            time: "2016-04-06 12:44",
-            change: 1,
-            reason: "签到"
-        }]
-    };
-
+app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($scope,User, $stateParams) {
+   var userId = $stateParams.id;
+   User.findById({
+       id:userId
+   },function(res){
+       console.log(res);
+       $scope.user = res;
+   });
+    User.findPoints ({
+        id: userId
+    },function(res){
+        console.log(res);
+        $scope.changeItems = res;
+    });
 
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
