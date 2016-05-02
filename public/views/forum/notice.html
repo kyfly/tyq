@@ -20,18 +20,20 @@
     <h5 class="path">公告列表</h5>
     <hr>
     <form action="">
-        <table>
-            <thead>
-            <tr class="">
-                <th> <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                            ng-click="all(master,notice)">
-                    <label for="topic-top" id="chose_all"></label></th>
-                <th data-field="date" style="" class="path"> 发布日期</th>
+        <table class="centered bordered">
+            <thead class="grey-text">
+            <tr>
+                <th class="choose-row">
+                    <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
+                           ng-click="all(master,notice)">
+                    <label for="topic-top" id="chose_all"></label>
+                </th>
+                <th>发布日期</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="n_tr"ng-repeat="notice  in noticeList">
-                <td>
+            <tr ng-repeat="notice  in noticeList">
+                <td class="checkbox-td">
                     <input class="filled-in" type="checkbox" id="{{notice.id}}"
                            ng-model="x" ng-checked="master" ng-click="chk(notice,x)">
                     <label for="{{notice.id}}" class=""></label>
@@ -39,7 +41,7 @@
                 <td ng-bind="notice.time"></td>
                 <td clss="center" ng-bind="notice.content"></td>
                 <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-                <td class="right">修改|删除</td>
+                <td>修改|删除</td>
             </tr>
             </tbody>
         </table>
