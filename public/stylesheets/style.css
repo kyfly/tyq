@@ -13,12 +13,15 @@
 .detail-thead {
     border: none;
 }
+
 .path {
     color: #717171;
 }
+
 .path-line {
     border: 0;
 }
+
 /*搜索框--start*/
 .search-box {
     position: relative;
@@ -45,13 +48,15 @@
     right: -14px;
     height: 34px;
     border-radius: 0 5px 5px 0;
-    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.18), 
-                0 0px 0px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.18),
+    0 0px 0px 0 rgba(0, 0, 0, 0.15);
 }
+
 .top-nav .right {
     font-size: 1.3rem;
     margin-right: 30px;
 }
+
 /*搜索框--end*/
 /*table的th设置--start*/
 /*全选框*/
@@ -67,9 +72,11 @@
     position: absolute;
     top: 17px;
 }
+
 thead tr {
-    background: #e6e8ea;
+    background: #e6e8ea !important;
 }
+
 /*全选框*/
 
 /*操作列，可在这里定义自己table的最后列样式*/
@@ -77,30 +84,36 @@ thead tr {
     .article-operation-row {
         width: 120px;
     }
+
     .article-action-td {
         position: relative;
     }
-    .article-action-td section{
+
+    .article-action-td section {
         position: absolute;
         top: 10px;
     }
-    .forum-user-operation-row{
+
+    .forum-user-operation-row {
         width: 210px;
     }
 
     .goods-operation-row {
         width: 150px;
     }
+
     .orders-operation-row {
         width: 150px;
     }
 }
+
 /*操作列*/
 /*选择列*/
 td {
     padding: 3px !important;
     position: relative;
 }
+
 /*选择列*/
 /*table的th设置--end*/
 /*分页css*/
@@ -140,44 +153,55 @@ td {
 
 /*常用margin--end*/
 /*微信文章css--start*/
-.articles {}
+.articles {
+}
+
 .articles td [type="checkbox"] + label {
     padding-left: 0 !important;
     position: absolute;
     top: 20px;
 }
+
 .articles h5 a {
     color: #444;
 }
+
 .articles .save {
     font-size: 1.3rem;
     margin-right: 30px;
 }
+
 /*微信文章css--end*/
 /**/
-.user-info *{
-    vertical-align:middle
+.user-info * {
+    vertical-align: middle
 }
-.users tr td label{
+
+.users tr td label {
     margin-top: 10px;
 }
+
 /**/
 /*商品管理css-start*/
 @media only screen and (min-width: 993px) {
     .goods-point {
         width: 80px;
     }
+
     .goods-count {
         width: 80px;
     }
+
     .goods-info {
         position: relative;
     }
+
     .goods-info img {
         width: 100px;
         height: 100px;
         padding: 5px;
     }
+
     .goods-info div {
         position: absolute;
         top: 0;
@@ -185,51 +209,63 @@ td {
         height: 100%;
     }
 }
-.goods-info div h5{
-        margin: 0;
-        margin-top: 15px;
-        font-size: 1.2rem;
-    }
-    .good-info {
-        border: 1px solid #e6e8ea;
-        padding: 10px;
-        margin: 20px 0;
-    }
-    .good-info h5 {
-        font-size: 1.2rem;
-    }
-    .tabs .tab a {
-        color: #444;
-    }
-    .tabs .tab a:hover  {
-        color: #444;
-    }
-    /*.tabs .indicator {
-        background: blue;
-    }*/
+
+.goods-info div h5 {
+    margin: 0;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.good-info {
+    border: 1px solid #e6e8ea;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.good-info h5 {
+    font-size: 1.2rem;
+}
+
+.tabs .tab a {
+    color: #444;
+}
+
+.tabs .tab a:hover {
+    color: #444;
+}
+
+/*.tabs .indicator {
+    background: blue;
+}*/
 /*商品管理css-end*/
 /*订单管理-start*/
 @media only screen and (min-width: 993px) {
     .order-user {
         width: 150px;
     }
+
     .order-price {
         width: 80px;
     }
+
     .orders h5 {
         font-size: 1rem;
 
     }
-    .orders-operation-td a{
+
+    .orders-operation-td a {
         margin: 5px 0;
     }
+
     .order-info label {
         margin-top: 10px;
     }
+
     .order-info p {
         margin: 0;
     }
 }
+
 /*订单管理-end*/
 .topic-list .input-field {
     margin-top: 0;
@@ -281,6 +317,7 @@ td {
     position: absolute;
     margin-top: 14px;
 }
+
 table {
     table-layout: fixed;
 }
@@ -289,6 +326,7 @@ td {
     word-break: break-all;
     word-wrap: break-word;
 }
+
 td > img {
     width: 50px;
     height: 50px;
@@ -322,19 +360,24 @@ hr {
 body {
     font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";
     padding-bottom: 50px;
-    word-break:break-all;
+    word-break: break-all;
+    font-size: 12px;
 }
-a{
+
+a {
     cursor: pointer;
     color: #717171;
 }
+
 tr {
     border-bottom: 1px solid #e6e8ea !important;
 }
+
 button {
-    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.18), 
-                0 0px 0px 0 rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.18),
+    0 0px 0px 0 rgba(0, 0, 0, 0.15) !important;
 }
+
 html {
     padding-bottom: 50px;
 }
@@ -582,4 +625,9 @@ nav ul {
 
 .checkbox-td {
     padding-top: 10px !important;
+}
+
+[type="checkbox"].filled-in:checked + label:after {
+    border: 2px solid #54adff !important;
+    background-color: #54adff !important;
 }

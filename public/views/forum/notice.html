@@ -21,7 +21,7 @@
     <hr>
     <form action="">
         <table class="centered bordered">
-            <thead class="grey-text">
+            <thead class="dark-grey-text">
             <tr>
                 <th class="choose-row">
                     <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
@@ -29,6 +29,9 @@
                     <label for="topic-top" id="chose_all"></label>
                 </th>
                 <th>发布日期</th>
+                <th></th>
+                <th></th>
+
             </tr>
             </thead>
             <tbody>
@@ -38,29 +41,21 @@
                            ng-model="x" ng-checked="master" ng-click="chk(notice,x)">
                     <label for="{{notice.id}}" class=""></label>
                 </td>
-                <td ng-bind="notice.time"></td>
-                <td clss="center" ng-bind="notice.content"></td>
-                <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-                <td>修改|删除</td>
+                <td ng-bind="notice.created"></td>
+                <td clss="center" ng-bind="notice.title"></td>
+                <td class="center small-text">
+                    <section>
+                        <a ng-click="editNotice()">修改</a> |
+                        <a ng-click="deleteNotice()">删除</a> |
+                        <a ng-click="topNotice()">置顶</a>
+                    </section></td>
             </tr>
             </tbody>
         </table>
     </form>
     <div class="double-margin-bottom margin-top">
         <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
-        <div class="double-margin-bottom margin-top">
-            <pagination
-                    page="1"
-                    page-size="10"
-                    total="200"
-                    show-prev-next="true"
-                    dots="...."
-                    hide-if-empty="false"
-                    adjacent="2"
-                    scroll-top="false"
-                    pagination-action="changePage(page)"
-                    class="center "></pagination>
-        </div>
+
     </div>
 
 </div>

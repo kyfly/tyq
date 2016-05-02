@@ -70,29 +70,50 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 话题管理
  */
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
-    Topic.find({},
-        function (res) {
-            //console.log(res);
+    $scope.page = 1;
+    var getTopic = function (page) {
+        $scope.all = false;
+        Topic.find({
+            page: page
+        }, function (res) {
             $scope.topics = res;
         });
+    };
+
+    $scope.changePage = function (page){
+        getTopic(page);
+    };
+
+    getTopic($scope.page);
 
     $scope.changeUserPage = function (thisId) {
         window.location.href = "users/" + thisId + "/usertopic";
     };
+
+    //清理
+    $scope.clearTopic = function () {
+        var thisElement = this;
+        console.log(thisElement);
+        User.destroyTopics({
+                id: thisElement.topic.user.id
+            }, function(){
+                Materialize.toast('清理该用户话题成功',2000);
+                getTopic($scope.page);
+            }, function () {
+                Materialize.toast('清理话题失败！', 2000);
+            }
+        );
+    };
+
 
     $scope.topicDelete = function () {
         var thisElement = this;
         console.log(thisElement);
         Topic.destroyById({
             id: thisElement.topic.id
-        }, {status: 200}, function () {
+        }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            thisElement.topic.deleted = true;
-            var id = thisElement.topic.id;
-            for (var x in $scope.topics.content)
-                if ($scope.topics.content[x].id === id) {
-                    $scope.topics.content.splice(x, 1);
-                }
+            getTopic($scope.page);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });
@@ -154,20 +175,52 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
 }]);
 
-app.controller('ForumNoticeCtrl', ['$scope', function ($scope) {
-    $scope.noticeList = [{
-        id: 0,
-        time: "2015.0422",
-        content: "这是一次测试"
-    }, {
-        id: 1,
-        time: "2015.0522",
-        content: "另外一次测试"
-    }, {
-        id: 2,
-        time: "2016.0422",
-        content: "最后次测试"
-    }];
+app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice) {
+    Notice.publish(function (res) {
+            console.log(res);
+            $scope.noticeList = res;
+        }
+    );
+    $scope.deleteNotice = function () {
+        var thisNotice = this.notice;
+        console.log(thisNotice);
+        Notice.distroyPublishById({
+            id: thisNotice.id
+        }, function () {
+            Materialize.toast('删除成功！', 2000);
+            Notice.publish(function (res) {
+                    $scope.noticeList = res;
+                }
+            );
+        }, function () {
+            Materialize.toast('删除失败！', 2000);
+        });
+    };
+    $scope.editNotice = function () {
+        var thisNotice=this.notice;
+        Notice.updatePublishById(
+            {id:thisNotice.id},
+            function(){
+
+            }
+        )
+
+    }
+
+
+    //$scope.noticeList = [{
+    //    id: 0,
+    //    time: "2015.0422",
+    //    content: "这是一次测试"
+    //}, {
+    //    id: 1,
+    //    time: "2015.0522",
+    //    content: "另外一次测试"
+    //}, {
+    //    id: 2,
+    //    time: "2016.0422",
+    //    content: "最后次测试"
+    //}];
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a

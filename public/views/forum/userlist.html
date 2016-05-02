@@ -11,7 +11,7 @@
 
 <div class="users">
     <table class="centered bordered">
-        <thead class="grey-text">
+        <thead class="dark-grey-text">
         <tr>
             <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="all">
@@ -22,7 +22,7 @@
             <th>等级</th>
             <th>发表</th>
             <th>回复</th>
-            <th class="forum-user-operation-row">功能</th>
+            <th class="forum-user-operation-row">操作</th>
         </tr>
         </thead>
 
@@ -38,7 +38,7 @@
                     <span ng-bind="user.name"></span>
                 </a>
             </td>
-            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a></td>
+            <td><a ng-href="users/score/{{user.id}}" ng-bind="user.points" class="blue-text"></a></td>
             <td ng-bind="user.level"></td>
             <td ng-bind="user.topics"></td>
             <td ng-bind="user.replies"></td>
