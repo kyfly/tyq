@@ -193,6 +193,16 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
         }, function () {
             Materialize.toast('删除失败！', 2000);
         });
+    };
+    $scope.editNotice = function () {
+        var thisNotice=this.notice;
+        Notice.updatePublishById(
+            {id:thisNotice.id},
+            function(){
+
+            }
+        )
+
     }
 
 
