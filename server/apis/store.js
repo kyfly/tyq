@@ -17,7 +17,7 @@ exports.default = {
     },{
         api: "/goods",
         method: "delete",
-        action: "distroyMore",
+        action: "destroyMore",
         remote: "/goods",
         desc: "删除多个商品"
     },{
@@ -35,7 +35,7 @@ exports.default = {
     },{
         api: "/goods/:id",
         method: "delete",
-        action: "distroyById",
+        action: "destroyById",
         remote: "/goods/:id",
         desc: "删除商品"
     },{
@@ -59,7 +59,7 @@ exports.default = {
     },{
         api: "/orders",
         method: "delete",
-        action: "distroyOrdersMore",
+        action: "destroyOrdersMore",
         remote: "/orders",
         desc: "订单列表"
     },{
