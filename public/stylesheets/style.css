@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.detail-tr {
+    border-bottom: none !important;
+}
+
 .detail-tr > td, .detail-tr > th {
     padding: 30px !important;
 }
@@ -429,12 +433,23 @@ html, body, .wrap {
 /*常用颜色*/
 
 /* label focus color */
-.input-field input[type=text]:focus + label {
+input:focus + label {
     color: #54adff !important;
 }
 
 /* label underline focus color */
-.input-field input[type=text]:focus {
+input:focus {
+    border-bottom: 1px solid #54adff !important;
+    box-shadow: 0 1px 0 0 #54adff !important;
+}
+
+/* label focus color */
+textarea:focus + label {
+    color: #54adff !important;
+}
+
+/* label underline focus color */
+textarea:focus {
     border-bottom: 1px solid #54adff !important;
     box-shadow: 0 1px 0 0 #54adff !important;
 }

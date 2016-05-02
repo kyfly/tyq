@@ -36,14 +36,14 @@
                 <label for="{{user.id}}"></label>
             </td>
             <td>
-                <a ng-href="users/detail/{{user.id}}/health" class="user-info">
+                <a ng-href="users/detail/{{user.id}}" class="user-info">
                     <img ng-src="{{user.headImg}}" alt="" class="circle list_table_img">
                     <span ng-bind="user.name"></span>
                 </a>
             </td>
             <td ng-bind="user.phone"></td>
             <td ng-bind="user.BGtype"></td>
-            <td ng-bind="user.lastBG"></td>
+            <td ng-bind="user.lastBG" class="blue-text"></td>
             <td>
                 <a class="blue-text" ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
             </td>

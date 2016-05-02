@@ -184,7 +184,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
     $scope.deleteNotice = function () {
         var thisNotice = this.notice;
         console.log(thisNotice);
-        Notice.distroyPublishById({
+        Notice.destroyPublishById({
             id: thisNotice.id
         }, function () {
             Materialize.toast('删除成功！', 2000);

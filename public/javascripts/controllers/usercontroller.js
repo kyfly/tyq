@@ -100,6 +100,9 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
 }]);
 
 app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
+    $scope.$on('$stateChangeStart', function (evt, next) {
+       $scope.state = next.name;
+    });
     $scope.isEdit = [];
     for (var i = 0; i < 50; i++) {
         $scope.isEdit[i] = false;

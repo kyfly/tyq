@@ -1,6 +1,6 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        商品上传
+        商品管理
         <small>
             <a ui-sref="createGoods">
                 添加商品
@@ -78,7 +78,7 @@
                 <td class="center" >
                     <a href="" ng-click="unexchengeable()" ng-show="exchengeableState">下架</a>
                     <a href="" ng-click="exchengeable()" ng-show="!exchengeableState">上架</a>
-                    <a ng-click="distroy()"> | 删除 | </a>
+                    <a ng-click="destroy()"> | 删除 | </a>
                     <a href="/goods/{{good.id}}/eidt">编辑</a>
                 </td>
             </tr>
@@ -86,7 +86,7 @@
     </table>
 </div>
 <div class="double-margin-bottom margin-top">
-    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect grey" ng-click="destroyMore()">删除</button>
     <button class="btn col waves-light waves-effect blue" ng-click="exchengeableMore()" ng-show="!exchengeableState">上架</button>
     <button class="btn col waves-light waves-effect blue" ng-click="unexchengeableMore()" ng-show="exchengeableState">下架</button>
     <div class="double-margin-bottom margin-top">

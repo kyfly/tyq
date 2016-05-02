@@ -51,7 +51,7 @@
                             url: urlBase + '/publish/:id',
                             method: 'POST'
                         },
-                        "distroyPublishById":{
+                        "destroyPublishById":{
                             url:urlBase+'/publish/:id',
                             method:'DELETE'
                         }
