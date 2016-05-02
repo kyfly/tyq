@@ -106,6 +106,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/store/edit.html',
             controller: 'StoreEditCtrl'
         })
+        .state('editNotice', {
+            url: '/forum/notices/:id/eidt',
+            templateUrl: '/views/forum/editNotice.html',
+            controller: 'ForumNoticeEditCtrl'
+        })
         
         .state('releaseOfGoods', {
             url: '/goods/release',

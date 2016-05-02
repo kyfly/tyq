@@ -172,7 +172,9 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         }
     };
 }]);
+app.controller('ForumNoticeEditCtrl', ['$scope', 'Notice', function ($scope, Notice) {
 
+}]);
 app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice) {
     Notice.publish(function (res) {
             console.log(res);
