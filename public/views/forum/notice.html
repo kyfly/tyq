@@ -38,10 +38,14 @@
                            ng-model="x" ng-checked="master" ng-click="chk(notice,x)">
                     <label for="{{notice.id}}" class=""></label>
                 </td>
-                <td ng-bind="notice.time"></td>
-                <td clss="center" ng-bind="notice.content"></td>
+                <td ng-bind="notice.created"></td>
+                <td clss="center" ng-bind="notice.title"></td>
                 <td><i class="material-icons">arrow_upward</i><i class="material-icons">arrow_downward</i></td>
-                <td>修改|删除</td>
+                <td>
+                    <section>
+                        <a ng-click="editNotice()">修改</a>|
+                        <a ng-click="deleteNotice()">删除</a>
+                    </section></td>
             </tr>
             </tbody>
         </table>

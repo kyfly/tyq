@@ -30,6 +30,35 @@
             R.modelName = "Article";
             return R;
         }])
+        .factory(
+        'Notice',
+        ['ExpressResource', 'LoopBackAuth', '$injector',
+            function (Resource, LoopBackAuth, $injector) {
+                var R = Resource(
+                    urlBase + '/publish/:id',
+                    {'id': '@id'},
+                    {
+                        "publish": {
+                            url: urlBase + '/publish',
+                            method: 'GET',
+                            isArray: true
+                        },
+                        "createPublish": {
+                            url: urlBase + '/publish',
+                            method: 'POST'
+                        },
+                        "updatePublishById": {
+                            url: urlBase + '/publish/:id',
+                            method: 'POST'
+                        },
+                        "distroyPublishById":{
+                            url:urlBase+'/publish/:id',
+                            method:'DELETE'
+                        }
+                    });
+                R.modelName = "Notice";
+                return R;
+            }])
     .factory(
         'Topic',
         ['ExpressResource', 'LoopBackAuth', '$injector',
