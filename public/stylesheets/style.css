@@ -361,6 +361,7 @@ body {
     font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";
     padding-bottom: 50px;
     word-break: break-all;
+    font-size: 12px;
 }
 
 a {
@@ -624,10 +625,6 @@ nav ul {
 
 .checkbox-td {
     padding-top: 10px !important;
-}
-
-.small-text {
-    font-size: 12px;
 }
 
 [type="checkbox"].filled-in:checked + label:after {
