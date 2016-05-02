@@ -642,6 +642,11 @@ nav ul {
     padding-top: 10px !important;
 }
 
+
+.small-text {
+    font-size: 12px;
+}
+
 [type="checkbox"].filled-in:checked + label:after {
     border: 2px solid #54adff !important;
     background-color: #54adff !important;
@@ -650,3 +655,4 @@ nav ul {
 .indicator {
     background-color: #54adff !important;
 }
+

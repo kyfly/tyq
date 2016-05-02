@@ -10,22 +10,20 @@
 <hr class="path-line">
 <div>
     <div>
-        <div class="col s12 topic-choose-all margin-top light-grey">
-            <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                   ng-click="all(master,peopleInfo)">
-            <label for="topic-top" id="chose_all"></label>
-        </div>
-
         <table class="bordered">
             <thead class="dark-grey-text">
             <tr>
-                <th style="padding: 0;width: 20px"></th>
-                <th style="padding: 0"></th>
+                <th class="choose-row">
+                    <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
+                           ng-click="all(master,peopleInfo)">
+                    <label for="topic-top" id="chose_all"></label>
+                </th>
+                <th style="padding-left: 20px">话题列表</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="topic in topics.content track by $index">
-                <td style="position:absolute;margin-top: 25px;">
+            <tr ng-repeat="topic in topics.content">
+                <td style="position:absolute;margin-top: 25px;margin-left: 5px">
                     <input type="checkbox" id="{{topic.id}}" class="filled-in"
                            ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
                     <label for="{{topic.id}}"></label>
