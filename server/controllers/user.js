@@ -120,7 +120,7 @@ exports.findLog = function (req, res, next) {
     });
 }
 exports.findPoints = function (req, res, next) {
-    {
+    res.send({
         total: 2000,
         count: 20,
         content: [{
@@ -147,7 +147,7 @@ exports.findPoints = function (req, res, next) {
                 message: 'MESSAGE'
             }
         }]
-    }
+    });
 }
 exports.destroyPoints = function (req, res, next) {
     res.send({status: 200})
