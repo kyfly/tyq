@@ -1,9 +1,9 @@
-app.controller('StoreReleaseCtrl', 
+app.controller('StoreReleaseCtrl',
     ['$scope', 'Store', function ($scope, Store) {
         var getGoods = function (exchengeable, page) {
             $scope.all = false;
             Store.find({
-                exchengeable: exchengeable, 
+                exchengeable: exchengeable,
                 page: page
             }, function (res) {
                 $scope.goods = res;
@@ -12,7 +12,7 @@ app.controller('StoreReleaseCtrl',
         var batchAction = function () {
             var goods = $scope.goods.content;
             var ids = [];
-            for(var x in goods) if (goods[x].select === true) {
+            for (var x in goods) if (goods[x].select === true) {
                 ids.push(goods[x].id)
             }
             return ids;
@@ -58,7 +58,7 @@ app.controller('StoreReleaseCtrl',
         }
         $scope.distroy = function () {
             var id = this.good.id;
-            Store.distroyById({ id: id }, function (res) {
+            Store.distroyById({id: id}, function (res) {
                 deleteGood(id);
             });
             getGoods($scope.exchengeableState, $scope.page)
@@ -87,7 +87,7 @@ app.controller('StoreReleaseCtrl',
             exchengeable(ids, false);
         }
         getGoods(true, $scope.page);
-}]);
+    }]);
 app.controller('GoodDetailCtrl',
     ['$scope', '$stateParams', 'Store', '$sce', function ($scope, $stateParams, Store, $sce) {
         var id = $stateParams.id;
@@ -95,8 +95,8 @@ app.controller('GoodDetailCtrl',
             res.explain = $sce.trustAsHtml(res.explain);
             $scope.good = res;
         });
-}]);
-app.controller('StoreEditCtrl', 
+    }]);
+app.controller('StoreEditCtrl',
     ['$scope', '$stateParams', 'Store', 'Ueditor', function ($scope, $stateParams, Store, ueditor) {
         var id = $stateParams.id;
         $scope.editorConfig = ueditor.config;
@@ -112,7 +112,7 @@ app.controller('StoreEditCtrl',
                 console.log(res)
             })
         }
-}]);
+    }]);
 app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
     var getOrders = function (page) {
         $scope.all = false;
@@ -123,7 +123,7 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
     var batchAction = function () {
         var orders = $scope.orders.content;
         var ids = [];
-        for(var x in orders) if (orders[x].select === true) {
+        for (var x in orders) if (orders[x].select === true) {
             ids.push(orders[x].id)
         }
         return ids;
@@ -164,39 +164,6 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
     }
     $scope.exchengeableMore = function () {
 
-<<<<<<< HEAD
-
-/*
-订单管理
- */
-app.controller('StoreOrderCtrl', ['$scope', function ($scope) {
-
-    $scope.trades = [{
-        orderId: "PO4518115456164651",
-        orderDate: "2016-4-22 12:15:28",
-        orderState: "等待卖家发货",
-        orderDesc: "九安电子血压计，孝敬父母必备神器！",
-        orderPeo: "李畅",
-        orderPhone: "18906623306"
-   },{
-        orderId: "PO4518115456164651",
-        orderDate: "2016-4-22 12:15:28",
-        orderState: "等待卖家发货",
-        orderDesc: "九安电子血压计，孝敬父母必备神器！",
-        orderPeo: "李畅",
-        orderPhone: "18906623306"
-    },{
-        orderId: "PO4518115456164651",
-        orderDate: "2016-4-22 12:15:28",
-        orderState: "等待卖家发货",
-        orderDesc: "九安电子血压计，孝敬父母必备神器！",
-        orderPeo: "李畅",
-        orderPhone: "18906623306"
-    }];
-
-
-=======
     }
     getOrders($scope.page);
->>>>>>> 3400498320c97a292d94a622b1b6c71c8e8b1f5b
 }]);

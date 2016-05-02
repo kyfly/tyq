@@ -16,8 +16,11 @@
         <thead class="grey-text">
         <tr>
             <th class="choose-row">
-                <input type="checkbox" class="filled-in" id="all">
-                <label for="all"></label>
+                <!--<input type="checkbox" class="filled-in" id="all">-->
+                <input type="checkbox" class="filled-in" id="score-top" ng-model="master"
+                       ng-click="all(master,peopleInfo)">
+                <!--<label for="all"></label>-->
+                <label for="score-top" id="chose_all"></label>
             </th>
             <th>时间</th>
             <th>变化</th>
@@ -29,8 +32,9 @@
         <tbody>
         <tr ng-repeat="changeItem in user.changeItems">
             <td class="checkbox-td">
-                <input type="checkbox" class="filled-in" id="checkbox{{$index}}">
-                <label for="checkbox{{$index}}"></label>
+                <input type="checkbox" id="check{{$index}}" class="filled-in"
+                       ng-model="x" ng-checked="master" ng-click="chk(checkbox,x)">
+                <label for="check{{$index}}"></label>
             </td>
             <td ng-bind="changeItem.time"></td>
             <td ng-bind="changeItem.change"></td>
@@ -43,10 +47,27 @@
     </table>
 </div>
 
+<!--<div class="double-margin-bottom margin-top">-->
+    <!--<button class="btn col waves-light waves-effect blue">删除</button>-->
+    <!--<button class="btn col right waves-light waves-effect blue">上一页</button>-->
+    <!--<button class="btn col right waves-light waves-effect blue">下一页</button>-->
+<!--</div>-->
+
 <div class="double-margin-bottom margin-top">
-    <button class="btn col waves-light waves-effect blue">删除</button>
-    <button class="btn col right waves-light waves-effect blue">上一页</button>
-    <button class="btn col right waves-light waves-effect blue">下一页</button>
+    <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">删除</button>
+    <div class="double-margin-bottom margin-top">
+        <pagination
+                page="1"
+                page-size="10"
+                total="200"
+                show-prev-next="true"
+                dots="...."
+                hide-if-empty="false"
+                adjacent="2"
+                scroll-top="false"
+                pagination-action="changePage(page)"
+                class="center"></pagination>
+    </div>
 </div>
 
 

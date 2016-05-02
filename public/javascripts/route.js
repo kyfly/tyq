@@ -61,6 +61,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/forum/publish.html',
             controller: 'ForumPublishCtrl'
         })
+    /*
+     话题管理
+     */
         .state('forumTopic', {
             url: '/forum/topics',
             templateUrl: '/views/forum/topic.html',
