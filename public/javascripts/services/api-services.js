@@ -111,6 +111,10 @@
                             url: urlBase + '/Users/:id',
                             method: 'GET'
                         },
+                        "findPoints":{
+                            url:urlBase + '/users/:id/points',
+                            method: 'GET'
+                        },
                         "updateById": {
                             utl: urlBase + '/Users/:id',
                             method: 'PUT'

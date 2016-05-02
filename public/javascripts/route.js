@@ -61,6 +61,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/forum/publish.html',
             controller: 'ForumPublishCtrl'
         })
+    /*
+     话题管理
+     */
         .state('forumTopic', {
             url: '/forum/topics',
             templateUrl: '/views/forum/topic.html',
@@ -112,6 +115,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/store/release.html',
             controller: 'StoreReleaseCtrl'
         })
+
+        /*
+        订单管理
+         */
         .state('orderForGoods', {
             url: '/goods/orders',
             templateUrl: '/views/store/order.html',
