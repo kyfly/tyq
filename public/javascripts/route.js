@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'UserServiceCtrl'
         })
         .state('userScore',{
-            url:'/users/score/:id',
+            url:'/users/:id/score',
             templateUrl:"/views/users/score.html",
             controller:"UserScoreCtrl"
         })

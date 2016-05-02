@@ -25,7 +25,7 @@
         <td ng-bind="user.topics"></td>
         <td ng-bind="user.replies"></td>
         <td>
-            <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
+            <a ng-href="users/{{user.id}}/score" ng-bind="user.points"></a>
         </td>
         <td><a ui-sref="userDetail.BG" ng-bind="user.lastBG"></a></td>
     </tr>

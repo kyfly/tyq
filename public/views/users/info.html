@@ -45,7 +45,7 @@
             <td ng-bind="user.BGtype"></td>
             <td ng-bind="user.lastBG"></td>
             <td>
-                <a class="blue-text" ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
+                <a class="blue-text" ng-href="users/{{user.id}}/score" ng-bind="user.points"></a>
             </td>
             <td>
                 <a href="" ng-click="moveToBlacklist()">加入黑名单</a>

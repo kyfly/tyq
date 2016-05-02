@@ -111,9 +111,19 @@
                             url: urlBase + '/Users/:id',
                             method: 'GET'
                         },
+                        /*
+                        查看积分
+                         */
                         "findPoints":{
                             url:urlBase + '/users/:id/points',
                             method: 'GET'
+                        },
+                        /*
+                        删除积分记录
+                         */
+                        "destroyPoints":{
+                            url:urlBase+'/users/:id/points/:fk',
+                            method:'GET'
                         },
                         "updateById": {
                             utl: urlBase + '/Users/:id',
