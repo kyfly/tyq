@@ -2,14 +2,23 @@ app.controller('LoginCtrl', ['$scope', 'User', function ($scope, User) {
 
 }]);
 app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
-    User.find({
-        scope: "base"
-    }, function (res) {
-        console.log(res);
-        $scope.users = res;
-    }, function () {
-        Materialize.toast("获取用户列表失败!", 2000);
-    });
+    $scope.page = 1;
+    var getUsers = function (page) {
+        User.find({
+            scope: "base",
+            page: page
+        }, function (res) {
+            console.log(res);
+            $scope.users = res;
+        }, function () {
+            Materialize.toast("获取用户列表失败!", 2000);
+        });
+    };
+    getUsers($scope.page);
+
+    $scope.changePage = function (page) {
+        getUsers(page);
+    };
 
     $scope.moveToBlacklist = function () {
         var thisElement = this;
