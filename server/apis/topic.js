@@ -19,7 +19,7 @@ exports.default = {
         method: "put",
         action: "updateById",
         remote: "/topics/:id",
-        desc: "话题详情"
+        desc: "话题详情修改"
     },{
         api: "/topics/:id",
         method: "delete",

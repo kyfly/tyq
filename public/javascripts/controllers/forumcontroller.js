@@ -86,14 +86,9 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
 
     getTopic($scope.page);
 
-    $scope.changeUserPage = function (thisId) {
-        window.location.href = "users/" + thisId + "/usertopic";
-    };
-
     //清理
     $scope.clearTopic = function () {
         var thisElement = this;
-        console.log(thisElement);
         User.destroyTopics({
                 id: thisElement.topic.user.id
             }, function(){
@@ -105,10 +100,9 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         );
     };
 
-
+    //删除
     $scope.topicDelete = function () {
         var thisElement = this;
-        console.log(thisElement);
         Topic.destroyById({
             id: thisElement.topic.id
         }, function () {
@@ -119,24 +113,64 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         });
     };
 
-    $scope.whetherLock = "锁定";
+
+    //锁定
     $scope.isLocked = function () {
-
-        console.log(this);
-        var state = this.topic.state.locked;
+         var that = this;
+        var state = that.topic.state.locked;
         if (state === true) {
-            Materialize.toast('话题已经解锁.', 2000);
-            this.topic.state.locked = false;
-            $scope.whetherLock = "锁定";
-
+            Topic.updateById({
+                id: that.topic.id
+            },{
+                state:{
+                    locked: false
+                }
+            }, function () {
+                Materialize.toast('话题已经解锁', 2000);
+                that.topic.state.locked = false;
+            });
         } else {
-            Materialize.toast('话题已经锁定.', 2000);
-            this.topic.state.locked = true;
-            $scope.whetherLock = "解锁";
-
+            Topic.updateById({
+                id: that.topic.id
+            },{
+                state:{
+                    locked: true
+                }
+            }, function () {
+                Materialize.toast('话题已经锁定', 2000);
+                that.topic.state.locked = true;
+            });
         }
     };
 
+    //置顶
+    $scope.toTop = function () {
+        var thisElement = this;
+        var state = thisElement.topic.state.istop;
+        if (state === true) {
+            Topic.updateById({
+                id: thisElement.topic.id
+            },{
+                state:{
+                    istop: false
+                }
+            }, function () {
+                Materialize.toast('已经取消置顶', 2000);
+                thisElement.topic.state.istop = false;
+            });
+        } else {
+            Topic.updateById({
+                id: thisElement.topic.id
+            },{
+                state:{
+                    istop: true
+                }
+            }, function () {
+                Materialize.toast('话题已经置顶', 2000);
+                thisElement.topic.state.istop = true;
+            });
+        }
+    };
 
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
@@ -300,62 +334,119 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
     };
 }]);
 
+//用户个人话题
 app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
+    $scope.page = 1;
+    var getTopic = function (page) {
+        $scope.all = false;
+        User.findTopics({
+            page: page,
+            id: $stateParams.id
+        }, function (res) {
+            console.log(res);
+            $scope.usertopics = res;
+        });
+    };
 
-    User.findTopics({
-        id: $stateParams.id
-    }, function (res) {
-        console.log(res);
-        $scope.usertopics = res;
-    });
+    $scope.changePage = function (page){
+        getTopic(page);
+    };
+
+    getTopic($scope.page);
 
     User.findById({
             id: $stateParams.id
         },
         function (res) {
-            console.log(res);
             $scope.userInfos = res;
-
         }
     );
 
-    $scope.changeUserPage = function (thisId) {
-        window.location.href = "users/detail/" + thisId + "/health";
-    };
-
-    $scope.topicDelete = function () {
+    //清理
+    $scope.clearTopic = function () {
         var thisElement = this;
         console.log(thisElement);
+        User.destroyTopics({
+                id: thisElement.usertopic.id
+            }, function(){
+                Materialize.toast('清理该用户话题成功',2000);
+                getTopic($scope.page);
+            }, function () {
+                Materialize.toast('清理话题失败！', 2000);
+            }
+        );
+    };
+
+    //删除
+    $scope.topicDelete = function () {
+        var thisElement = this;
         Topic.destroyById({
-            id: thisElement.topic.id
-        }, {status: 200}, function () {
+            id: thisElement.usertopic.id
+        }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            thisElement.topic.deleted = true;
-            var id = thisElement.topic.id;
-            for (var x in $scope.topics.content)
-                if ($scope.topics.content[x].id === id) {
-                    $scope.topics.content.splice(x, 1);
-                }
+            getTopic($scope.page);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });
     };
 
-    $scope.whetherLock = "锁定";
+
+    //锁定
     $scope.isLocked = function () {
-
-        console.log(this);
-        var state = this.usertopic.state.locked;
+        var that = this;
+        console.log(that);
+        var state = that.usertopic.state.locked;
         if (state === true) {
-            Materialize.toast('话题已经解锁.', 2000);
-            this.usertopic.state.locked = false;
-            $scope.whetherLock = "锁定";
-
+            Topic.updateById({
+                id: that.usertopic.id
+            },{
+                state:{
+                    locked: false
+                }
+            }, function () {
+                Materialize.toast('话题已经解锁', 2000);
+                that.usertopic.state.locked = false;
+            });
         } else {
-            Materialize.toast('话题已经锁定.', 2000);
-            this.usertopic.state.locked = true;
-            $scope.whetherLock = "解锁";
+            Topic.updateById({
+                id: that.usertopic.id
+            },{
+                state:{
+                    locked: true
+                }
+            }, function () {
+                Materialize.toast('话题已经锁定', 2000);
+                that.usertopic.state.locked = true;
+            });
+        }
+    };
 
+    //置顶
+    $scope.toTop = function () {
+        var thisElement = this;
+        var state = thisElement.usertopic.state.istop;
+        if (state === true) {
+            Topic.updateById({
+                id: thisElement.usertopic.id
+            },{
+                state:{
+                    istop: false
+                }
+            }, function () {
+                Materialize.toast('已经取消置顶', 2000);
+                thisElement.usertopic.state.istop = false;
+            });
+        } else {
+            Topic.updateById({
+                id: thisElement.usertopic.id
+            },{
+                state:{
+                    istop: true
+                }
+            }, function () {
+                Materialize.toast('话题已经置顶', 2000);
+                thisElement.usertopic.state.istop = true;
+            });
         }
     };
 

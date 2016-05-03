@@ -15,7 +15,7 @@
             <tr>
                 <th class="choose-row">
                     <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                           ng-click="all(master,peopleInfo)">
+                           ng-click="all(master,topics)">
                     <label for="topic-top" id="chose_all"></label>
                 </th>
                 <th style="padding-left: 20px">话题列表</th>
@@ -31,13 +31,15 @@
                 <td style="padding:0;">
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
-                            <img ng-src="{{topic.user.headImg}}" ng-click="changeUserPage(topic.user.id)" alt=""
-                                 class="circle">
+                            <a ng-href="users/{{topic.user.id}}/usertopic"><img ng-src="{{topic.user.headImg}}" class="circle"></a>
                             <a ng-href="users/{{topic.user.id}}/usertopic"
                                class="title topic-name black-text" ng-bind="topic.user.name"></a>
                             <span ng-click="isLocked()" tooltipped data-position="bottom" data-delay="0"
                                   data-tooltip="已锁定" ng-show="this.topic.state.locked"
                                   class="mdi-action-lock-outline orange-text margin-left" style="cursor: pointer"></span>
+                            <span ng-click="totop()" tooltipped data-position="bottom" data-delay="0"
+                                  data-tooltip="已置顶" ng-show="this.topic.state.istop"
+                                  class="mdi-editor-vertical-align-top orange-text margin-left" style="cursor: pointer"></span>
                             <div ng-bind="topic.created | date: 'yyyy-MM-dd HH:mm:ss'"
                                  class="topic-time dark-grey-text"></div>
                             <h6 ng-bind="topic.title" class="topic-title margin-top"></h6>
@@ -61,8 +63,9 @@
                             </div>
                             <a class="secondary-content">
                                 <span class="dark-grey-text">评论 | </span>
-                                <span class="dark-grey-text" ng-click="clearTopic()">清理 | </span>
-                                <span ng-click="toTop()" class="dark-grey-text">置顶 | </span>
+                                <span ng-click="clearTopic()" class="dark-grey-text" >清理 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text" ng-show="!this.topic.state.istop">置顶 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text" ng-show="this.topic.state.istop">取消置顶 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text" ng-show="!this.topic.state.locked">锁定 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text" ng-show="this.topic.state.locked">解锁 | </span>
                                 <span ng-click="topicDelete()" class="dark-grey-text">删除</span>
