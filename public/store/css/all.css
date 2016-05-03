@@ -155,10 +155,14 @@ li{
 .list_footer_img1,.list_footer_img3{
 	position: absolute;
 	width: 30px;
+	left: 50%;
+	margin-left: -15px;
 	height: 40px;
 }
 .list_footer_img2{
 	position: absolute;
+	left: 50%;
+	margin-left: -20px;
 	width: 40px;
 	height: 40px;
 }
