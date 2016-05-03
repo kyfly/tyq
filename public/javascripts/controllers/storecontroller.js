@@ -58,7 +58,7 @@ app.controller('StoreReleaseCtrl',
         };
         $scope.destroy = function () {
             var id = this.good.id;
-            Store.destroyById({ id: id }, function (res) {
+            Store.destroyById({id: id}, function (res) {
                 deleteGood(id);
             });
             getGoods($scope.exchengeableState, $scope.page)

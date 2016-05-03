@@ -1,12 +1,21 @@
 app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
-    User.find({
-        scope: "liveness"
-    }, function (res) {
-        console.log(res);
-        $scope.users = res;
-    }, function () {
-        Materialize.toast("获取用户列表失败!", 2000);
-    });
+    $scope.page = 1;
+    var getUsers = function (page) {
+        User.find({
+            scope: "liveness",
+            page: page
+        }, function (res) {
+            console.log(res);
+            $scope.users = res;
+        }, function () {
+            Materialize.toast("获取用户列表失败!", 2000);
+        });
+    };
+    getUsers($scope.page);
+
+    $scope.changePage = function (page) {
+        getUsers(page);
+    };
 
     $scope.moveToBlacklist = function () {
         var thisElement = this;
@@ -14,11 +23,7 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
             id: thisElement.user.id
         }, {role: 0}, function () {
             Materialize.toast('拉黑成功！', 2000);
-            var id = thisElement.user.id;
-            for (var x in $scope.users.content)
-                if ($scope.users.content[x].id === id) {
-                    $scope.users.content.splice(x, 1);
-                }
+            getUsers($scope.page);
         }, function () {
             Materialize.toast('拉黑失败！', 2000);
         });
@@ -29,11 +34,7 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
             id: thisElement.user.id
         }, {role: 2}, function () {
             Materialize.toast('成功设为管理员！', 2000);
-            var id = thisElement.user.id;
-            for (var x in $scope.users.content)
-                if ($scope.users.content[x].id === id) {
-                    $scope.users.content.splice(x, 1);
-                }
+            getUsers($scope.page);
         }, function () {
             Materialize.toast('设置管理员失败！', 2000);
         });
@@ -72,7 +73,6 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
     $scope.page = 1;
     var getTopic = function (page) {
-        $scope.all = false;
         Topic.find({
             page: page
         }, function (res) {
@@ -241,22 +241,8 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
             }
         )
 
-    }
+    };
 
-
-    //$scope.noticeList = [{
-    //    id: 0,
-    //    time: "2015.0422",
-    //    content: "这是一次测试"
-    //}, {
-    //    id: 1,
-    //    time: "2015.0522",
-    //    content: "另外一次测试"
-    //}, {
-    //    id: 2,
-    //    time: "2016.0422",
-    //    content: "最后次测试"
-    //}];
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a
@@ -284,12 +270,22 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
     };
 }]);
 app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {
-    User.find({}, function (res) {
-        console.log(res);
-        $scope.blacklist = res;
-    }, function () {
-        Materialize.toast("获取黑名单列表失败!", 2000);
-    });
+    $scope.page = 1;
+    var getBlacklist = function (page) {
+        User.find({
+            page: page
+        }, function (res) {
+            console.log(res);
+            $scope.blacklist = res;
+        }, function () {
+            Materialize.toast("获取黑名单列表失败!", 2000);
+        });
+    };
+    getBlacklist($scope.page);
+
+    $scope.changePage = function (page) {
+        getBlacklist(page);
+    };
 
     $scope.removeFromBlacklist = function () {
         var thisElement = this;
@@ -297,11 +293,7 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
             id: thisElement.user.id
         }, {role: 1}, function () {
             Materialize.toast('恢复成功！', 2000);
-            var id = thisElement.user.id;
-            for (var x in $scope.blacklist.content)
-                if ($scope.blacklist.content[x].id === id) {
-                    $scope.blacklist.content.splice(x, 1);
-                }
+            getBlacklist($scope.page);
         }, function () {
             Materialize.toast('恢复失败！', 2000);
         });
@@ -337,6 +329,7 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
 //用户个人话题
 app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
     $scope.page = 1;
+
     var getTopic = function (page) {
         $scope.all = false;
         User.findTopics({
@@ -348,12 +341,12 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
         });
     };
 
+
     $scope.changePage = function (page){
         getTopic(page);
     };
 
     getTopic($scope.page);
-
     User.findById({
             id: $stateParams.id
         },
