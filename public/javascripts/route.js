@@ -46,6 +46,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/BG',
             templateUrl: '/views/users/detail/BGinfo.html'
         })
+        /*
+         话题管理
+         */
         .state('forumUserlist', {
             url: '/forum/userlist',
             templateUrl: '/views/forum/userlist.html',
@@ -61,9 +64,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/forum/publish.html',
             controller: 'ForumPublishCtrl'
         })
-    /*
-     话题管理
-     */
         .state('forumTopic', {
             url: '/forum/topics',
             templateUrl: '/views/forum/topic.html',
@@ -73,6 +73,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/forum/notices',
             templateUrl: '/views/forum/notice.html',
             controller: 'ForumNoticeCtrl'
+        })
+        .state('forumReply', {
+            url: '/forum/topic/:id/replies',
+            templateUrl: '/views/forum/reply.html',
+            controller: 'ForumReplyCtrl'
         })
         .state('wechatArticles', {
             url: '/weixin/articles',

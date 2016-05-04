@@ -36,10 +36,10 @@ exports.destroyById = function (req, res, next) {
     });
 }
 exports.replyList = function (req, res, next) {
-    res.send(re.getMore({
-        id: ID,
+    res.send(rq.getMore({
+        id: 'ID',
         content: 'CONTENTCONTENTCONTENTCONTENTCONTENT',
-        imgs:['/img/store.jpg'],
+        imgs: '/img/store.jpg',
         created: new Date(),
         user: {
             id: 'USERID',

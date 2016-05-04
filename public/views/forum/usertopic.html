@@ -16,7 +16,7 @@
             <tr>
                 <th class="choose-row">
                     <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                           ng-click="all(master,peopleInfo)">
+                           ng-click="all(master,usertopics)">
                     <label for="topic-top" id="chose_all"></label>
                 </th>
                 <th style="padding-left: 20px">用户个人话题列表</th>
@@ -61,15 +61,15 @@
                                 <i class="mdi-communication-chat dark-grey-text"></i>
                                 <span ng-bind="usertopic.reply"></span>
                             </div>
-                            <a class="secondary-content">
-                                <span class="dark-grey-text">评论 | </span>
+                            <span class="secondary-content">
+                                <a ng-href="/forum/topic/{{usertopic.id}}/replies" class="dark-grey-text">评论 | </a>
                                 <span ng-click="clearTopic()" class="dark-grey-text">清理 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text" ng-show="!this.usertopic.state.istop">置顶 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text" ng-show="this.usertopic.state.istop">取消置顶 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text" ng-show="!this.usertopic.state.locked">锁定 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text" ng-show="this.usertopic.state.locked">解锁 |</span>
                                 <span ng-click="topicDelete()" class="dark-grey-text">删除</span>
-                            </a>
+                            </span>
                         </li>
                     </ul>
                 </td>
