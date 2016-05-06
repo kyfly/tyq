@@ -2,171 +2,157 @@
     var module = angular.module('tyq.api', ['ngResource']);
     var urlBase = "/api";
     var authHeader = 'authorization';
-    module.factory(
-    'Article',
-    ['ExpressResource', 'LoopBackAuth', '$injector',
-        function (Resource, LoopBackAuth, $injector) {
-            var R = Resource(
-                urlBase + '/news/:id',
-                {'id': '@id'},
-                {
-                    "find": {
-                        url: urlBase + '/news',
-                        method: 'GET'
-                    },
-                    "findById": {
-                        url: urlBase + '/news/:id',
-                        method: 'GET'
-                    },
-                    "updateById": {
-                        utl: urlBase + '/news/:id',
-                        method: 'PUT'
-                    },
-                    "create": {
-                        utl: urlBase + '/news',
-                        method: 'POST'
-                    }
-                });
-            R.modelName = "Article";
-            return R;
-        }])
-        .factory(
-        'Notice',
-        ['ExpressResource', 'LoopBackAuth', '$injector',
-            function (Resource, LoopBackAuth, $injector) {
-                var R = Resource(
-                    urlBase + '/publish/:id',
-                    {'id': '@id'},
-                    {
-                        "publish": {
-                            url: urlBase + '/publish',
-                            method: 'GET',
-                            isArray: true
-                        },
-                        "createPublish": {
-                            url: urlBase + '/publish',
-                            method: 'POST'
-                        },
-                        "updatePublishById": {
-                            url: urlBase + '/publish/:id',
-                            method: 'POST'
-                        },
-                        "destroyPublishById":{
-                            url:urlBase+'/publish/:id',
-                            method:'DELETE'
-                        }
-                    });
-                R.modelName = "Notice";
-                return R;
-            }])
-    .factory(
-        'Topic',
-        ['ExpressResource', 'LoopBackAuth', '$injector',
-            function (Resource, LoopBackAuth, $injector) {
-                var R = Resource(
-                    urlBase + '/topics/:id',
-                    {'id': '@id'},
-                    {
-                        "find": {
-                            url: urlBase + '/topics',
-                            method: 'GET'
-                        },
-                        "findById": {
-                            url: urlBase + '/topics/:id',
-                            method: 'GET'
-                        },
-                        "updateById": {
-                            utl: urlBase + '/topics/:id',
-                            method: 'PUT'
-                        },
-                        "destroyById": {
-                            utl: urlBase + '/topics/:id',
-                            method: 'DELETE'
-                        },
-                        "replyList": {
-                            utl: urlBase + '/topics/:id/reply',
-                            method: 'GET'
-                        },
-                        "destroyReply": {
-                            utl: urlBase + '/topics/:id/reply/:fk',
-                            method: 'DELETE'
-                        }
-                    });
-                R.modelName = "Topic";
-                return R;
-            }])
-    .factory(
-        'User',
-        ['ExpressResource', 'LoopBackAuth', '$injector',
-            function (Resource, LoopBackAuth, $injector) {
-                var R = Resource(
-                    urlBase + '/Users/:id',
-                    {'id': '@id'},
-                    {
-                        "find": {
-                            url: urlBase + '/Users',
-                            method: 'GET'
-                        },
-                        "findById": {
-                            url: urlBase + '/Users/:id',
-                            method: 'GET'
-                        },
-                        "findPoints":{
-                            url:urlBase + '/users/:id/points',
-                            method: 'GET'
-                        },
-                        "updateById": {
-                            utl: urlBase + '/Users/:id',
-                            method: 'PUT'
-                        },
-                        "findHealth": {
-                            url: urlBase + '/Users/:id/health',
-                            method: 'GET'
-                        },
-                        "updateHealth": {
-                            url: urlBase + '/Users/:id/health',
-                            method: 'PUT'
-                        },
-                        "findExamine": {
-                            url: urlBase + '/Users/:id/examine',
-                            method: 'GET'
-                        },
-                        "updateExamine": {
-                            url: urlBase + '/Users/:id/examine',
-                            method: 'PUT'
-                        },
-                        "findSchema": {
-                            url: urlBase + '/Users/:id/schema',
-                            method: 'GET'
-                        },
-                        "updateSchema": {
-                            url: urlBase + '/Users/:id/schema',
-                            method: 'PUT'
-                        },
-                        "findLog": {
-                            url: urlBase + '/Users/:id/log',
-                            method: 'GET'
-                        },
-                        "updateLog": {
-                            url: urlBase + '/Users/:id/log',
-                            method: 'PUT'
-                        },
-                        "findTopics": {
-                            url: urlBase + '/Users/:id/topics',
-                            method: 'GET'
-                        },
-                        "destroyTopics": {
-                            url: urlBase + '/Users/:id/topics/:fk',
-                            method: 'DELETE'
-                        }
-                    });
-                R.modelName = "User";
-                return R;
-            }])
-    .factory(
-    'Store',
-    ['ExpressResource', 'LoopBackAuth', '$injector',
-    function (Resource, LoopBackAuth, $injector) {
+    module.factory('Article', ['ExpressResource', function (Resource) {
+        var R = Resource(
+            urlBase + '/news/:id',
+            {'id': '@id'},
+            {
+                "find": {
+                    url: urlBase + '/news',
+                    method: 'GET'
+                },
+                "findById": {
+                    url: urlBase + '/news/:id',
+                    method: 'GET'
+                },
+                "updateById": {
+                    utl: urlBase + '/news/:id',
+                    method: 'PUT'
+                },
+                "create": {
+                    utl: urlBase + '/news',
+                    method: 'POST'
+                }
+            });
+        R.modelName = "Article";
+        return R;
+    }])
+    .factory('Notice',
+    ['ExpressResource', function (Resource) {
+        var R = Resource(
+            urlBase + '/publish/:id',
+            {'id': '@id'},
+            {
+                "publish": {
+                    url: urlBase + '/publish',
+                    method: 'GET',
+                    isArray: true
+                },
+                "createPublish": {
+                    url: urlBase + '/publish',
+                    method: 'POST'
+                },
+                "updatePublishById": {
+                    url: urlBase + '/publish/:id',
+                    method: 'POST'
+                },
+                "destroyPublishById":{
+                    url:urlBase+'/publish/:id',
+                    method:'DELETE'
+                }
+            });
+        R.modelName = "Notice";
+        return R;
+    }])
+    .factory('Topic', ['ExpressResource',function (Resource) {
+        var R = Resource(
+            urlBase + '/topics/:id',
+            {'id': '@id'},
+            {
+                "find": {
+                    url: urlBase + '/topics',
+                    method: 'GET'
+                },
+                "findById": {
+                    url: urlBase + '/topics/:id',
+                    method: 'GET'
+                },
+                "updateById": {
+                    utl: urlBase + '/topics/:id',
+                    method: 'PUT'
+                },
+                "destroyById": {
+                    utl: urlBase + '/topics/:id',
+                    method: 'DELETE'
+                },
+                "replyList": {
+                    utl: urlBase + '/topics/:id/reply',
+                    method: 'GET'
+                },
+                "destroyReply": {
+                    utl: urlBase + '/topics/:id/reply/:fk',
+                    method: 'DELETE'
+                }
+            });
+        R.modelName = "Topic";
+        return R;
+    }])
+    .factory('User', ['ExpressResource',function (Resource) {
+        var R = Resource(
+            urlBase + '/Users/:id',
+            {'id': '@id'},
+            {
+                "find": {
+                    url: urlBase + '/Users',
+                    method: 'GET'
+                },
+                "findById": {
+                    url: urlBase + '/Users/:id',
+                    method: 'GET'
+                },
+                "findPoints":{
+                    url:urlBase + '/users/:id/points',
+                    method: 'GET'
+                },
+                "updateById": {
+                    utl: urlBase + '/Users/:id',
+                    method: 'PUT'
+                },
+                "findHealth": {
+                    url: urlBase + '/Users/:id/health',
+                    method: 'GET'
+                },
+                "updateHealth": {
+                    url: urlBase + '/Users/:id/health',
+                    method: 'PUT'
+                },
+                "findExamine": {
+                    url: urlBase + '/Users/:id/examine',
+                    method: 'GET'
+                },
+                "updateExamine": {
+                    url: urlBase + '/Users/:id/examine',
+                    method: 'PUT'
+                },
+                "findSchema": {
+                    url: urlBase + '/Users/:id/schema',
+                    method: 'GET'
+                },
+                "updateSchema": {
+                    url: urlBase + '/Users/:id/schema',
+                    method: 'PUT'
+                },
+                "findLog": {
+                    url: urlBase + '/Users/:id/log',
+                    method: 'GET'
+                },
+                "updateLog": {
+                    url: urlBase + '/Users/:id/log',
+                    method: 'PUT'
+                },
+                "findTopics": {
+                    url: urlBase + '/Users/:id/topics',
+                    method: 'GET'
+                },
+                "destroyTopics": {
+                    url: urlBase + '/Users/:id/topics/:fk',
+                    method: 'DELETE'
+                }
+            });
+        R.modelName = "User";
+        return R;
+    }])
+    .factory('Store', ['ExpressResource',function (Resource) {
         var R = Resource(
             urlBase + '/Users/:id',
             {'id': '@id'},
@@ -227,11 +213,11 @@
         R.modelName = "Store";
         return R;
     }])
-    .factory('LoopBackAuth', function () {
+    .factory('ExpressAuth', function () {
         var props = ['accessTokenId', 'currentUserId'];
-        var propsPrefix = '$LoopBack$';
+        var propsPrefix = '$Express$';
 
-        function LoopBackAuth() {
+        function ExpressAuth() {
             var self = this;
             props.forEach(function (name) {
                 self[name] = load(name);
@@ -240,7 +226,7 @@
             this.currentUserData = null;
         }
 
-        LoopBackAuth.prototype.save = function () {
+        ExpressAuth.prototype.save = function () {
             var self = this;
             var storage = this.rememberMe ? window.localStorage : window.sessionStorage;
             props.forEach(function (name) {
@@ -248,26 +234,26 @@
             });
         };
 
-        LoopBackAuth.prototype.setUser = function (accessTokenId, userId, userData) {
+        ExpressAuth.prototype.setUser = function (accessTokenId, userId, userData) {
             this.accessTokenId = accessTokenId;
             this.currentUserId = userId;
             this.currentUserData = userData;
         };
 
-        LoopBackAuth.prototype.clearUser = function () {
+        ExpressAuth.prototype.clearUser = function () {
             this.accessTokenId = null;
             this.currentUserId = null;
             this.currentUserData = null;
         };
 
-        LoopBackAuth.prototype.clearStorage = function () {
+        ExpressAuth.prototype.clearStorage = function () {
             props.forEach(function (name) {
                 save(sessionStorage, name, null);
                 save(localStorage, name, null);
             });
         };
 
-        return new LoopBackAuth();
+        return new ExpressAuth();
 
         // Note: LocalStorage converts the value to string
         // We are using empty string as a marker for null/undefined values.
@@ -283,10 +269,10 @@
         }
     })
     .config(['$httpProvider', function ($httpProvider) {
-        $httpProvider.interceptors.push('LoopBackAuthRequestInterceptor');
+        $httpProvider.interceptors.push('ExpressAuthRequestInterceptor');
     }])
-    .factory('LoopBackAuthRequestInterceptor', ['$q', '$rootScope', 'LoopBackAuth',
-        function ($q, $rootScope, LoopBackAuth) {
+    .factory('ExpressAuthRequestInterceptor', ['$q', '$rootScope', 'ExpressAuth',
+        function ($q, $rootScope, ExpressAuth) {
             return {
                 'request': function (config) {
 
@@ -294,10 +280,9 @@
                     if (config.url.substr(0, urlBase.length) !== urlBase) {
                         return config;
                     }
-                    if (LoopBackAuth.accessTokenId) {
+                    if (ExpressAuth.accessTokenId) {
                         config.params = config.params || {};
-                        config.params.access_token = LoopBackAuth.accessTokenId;
-                        config.headers[authHeader] = LoopBackAuth.accessTokenId;
+                        config.headers[authHeader] = ExpressAuth.accessTokenId;
                     } else if (config.__isGetCurrentUser__) {
                         // Return a stub 401 error for User.getCurrent() when
                         // there is no user logged in

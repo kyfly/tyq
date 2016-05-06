@@ -1,9 +1,23 @@
 var wechatAPI = require('wechat-api');
 var webot = require('weixin-robot');
 module.exports = function (webot) {
-    webot.set('你好', function(info) {
-        console.log(info.req.body)
-        return ['你也好', '你好', '很高兴认识你'];
+    webot.beforeReply(function (info, next) {
+        setTimeout(function () {
+            info.reply = [{
+                            "title": 'TITLETITLETITLETITLE',
+                            "picUrl": 'http://39.181.24.218/img/store.jpg',
+                            "description": "sadadasdasda"
+                        },{
+                            "title": 'TITLETITLETITLETITLE',
+                            "picUrl": 'http://39.181.24.218/img/store.jpg',
+                            "description": "sadadasdasda",
+                            "url": "www.baidu.com"
+                        }];
+            next();
+        }, 100)
+    });
+    webot.set(/.+/, function (info) {
+        return info.reply;
     });
 }
 /* 

@@ -34,7 +34,7 @@
 }
 
 .search-box input {
-    border: 1px solid #717171 !important;
+    border: 1px solid #DFDFDF !important;
     border-radius: 5px !important;
     margin: 0 !important;
     height: 30px !important;
@@ -42,7 +42,7 @@
 }
 
 .search-box input:focus {
-    border: 1px solid #9e9e9e !important;
+    border: 1px solid #54adff  !important;
     box-shadow: 0 0px 0 0 #26a69a !important;
 }
 
@@ -68,7 +68,7 @@
     width: 50px;
     position: relative;
     text-align: left !important;
-    padding-left: 7px;
+    padding-left: 8px;
 }
 
 .choose-row label {
@@ -76,7 +76,9 @@
     position: absolute;
     top: 17px;
 }
-
+[type="checkbox"].filled-in:not(:checked) + label:after {
+    border: 2px solid #717171;
+}
 thead tr {
     background: #e6e8ea !important;
 }
@@ -164,6 +166,7 @@ td {
     padding-left: 0 !important;
     position: absolute;
     top: 20px;
+    left: 8px;
 }
 
 .articles h5 a {
