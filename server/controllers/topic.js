@@ -25,10 +25,30 @@ exports.find = function (req, res, next) {
     });
 }
 exports.findById = function (req, res, next) {
-    res.send();
+    res.send({
+            id: 'ID',
+            content: 'CONTENT',
+            imgs: '/img/store.jpg',
+            created: new Date(),
+            reply: 858,
+            view: 555,
+            like: 88,
+            deleted: false,
+            state: {
+                locked: true,
+                istop: false
+            },
+            user: {
+                id: 'USERID',
+                name: 'NAME',
+                headImg: '/img/weixin.jpg'
+            }
+        });
 }
 exports.updateById = function (req, res, next) {
-    res.send();
+    res.send({
+        status: 200
+    });
 }
 exports.destroyById = function (req, res, next) {
     res.send({
@@ -69,6 +89,14 @@ exports.updatePublishById = function (req, res, next) {
     res.send({
         status: 200
     });
+}
+exports.findPublishById = function (req, res, next) {
+    res.send(rq.getMore({
+        id: 'ID',
+        title: 'TITLE',
+        content: "CONTENT",
+        created: new Date(),
+    }));
 }
 exports.destroyPublishById = function (req, res, next) {
     res.send({

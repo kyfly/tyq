@@ -52,7 +52,13 @@ exports.default = {
         desc: "发布公告"
     },{
         api: "/publish/:id",
-        method: "post",
+        method: "get",
+        action: "findPublishById",
+        remote: "/publish/:id",
+        desc: "公告详情"
+    },{
+        api: "/publish/:id",
+        method: "put",
         action: "updatePublishById",
         remote: "/publish/:id",
         desc: "编辑公告"
