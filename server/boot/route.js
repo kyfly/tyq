@@ -19,20 +19,5 @@ function loadRoute(app) {
   });
   app.use('/ue/uploads', upload(app));
   app.use('/api', apiRoutes(app));
-  app.use('*', notFount);
-  app.use(error);
-}
-function notFount (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-}
-
-function error (req, res, next) {
-  res.status(err.status || 500);
-  res.send({
-    message: err.message,
-    error: req.app.get('env') === 'development'? err : {}
-  });
 }
 exports.setup = loadRoute;

@@ -1,7 +1,7 @@
 {
   "restApiRoot": "/api",
-  "host": "127.0.0.1",
-  "port": 3000,
+  "host": "39.181.24.218",
+  "port": 80,
   "source": {
     "controller": "./controllers",
     "model": "./apis",
@@ -17,15 +17,8 @@
   "wechat": {
     "appid": "wx2f80d605a372f3b0",
     "appsecret": "6d72d051698398d45008b2b74b3ff4d5",
-    "token": "",
+    "token": "weixin",
     "origin_id": "gh_6c1dc30d6e33",
-    "encodingAESKey":"itNEh6d5VXQAP6svTBZptIaQr2YPhyXXxQiTV8agrYb"
-  },
-  "wechatTest":{
-    "appid": "wxb54a4c0517a8584e",
-    "appsecret": "40c9a95eac50c41f4df617563cbb08ea",
-    "token": "57Wlt791UGt3VrPGzRbRLaErSXTK1wasznnUs8v1k6X",
-    "origin_id": "gh_14a53f5b6e28",
-    "encodingAESKey":""
+    "encodingAESKey":"57Wlt791UGt3VrPGzRbRLaErSXTK1wasznnUs8v1k6X"
   }
 }

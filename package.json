@@ -18,6 +18,7 @@
     "morgan": "~1.6.1",
     "request-promise": "^2.0.1",
     "serve-favicon": "~2.3.0",
-    "wechat-api": "^1.27.1"
+    "wechat-api": "^1.27.1",
+    "weixin-robot": "^0.5.10"
   }
 }
