@@ -108,7 +108,7 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
 
 }]);
 
-app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', '$timeout', function ($scope, User, $stateParams, $timeout) {
+app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
     $scope.month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
     $scope.monthShort = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
     $scope.weekdaysFull = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
