@@ -108,14 +108,20 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
 
 }]);
 
-app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
+app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', '$timeout', function ($scope, User, $stateParams, $timeout) {
+    $scope.month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    $scope.monthShort = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    $scope.weekdaysFull = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+    $scope.weekdaysLetter = ['日', '一', '二', '三', '四', '五', '六'];
+    $scope.today = '今天';
+    $scope.clear = '清除';
+    $scope.close = '确定';
+    $scope.isEdit = [];
+    $scope.sportEdit = [];
     $scope.$on('$stateChangeStart', function (evt, next) {
         $scope.state = next.name;
     });
-    $scope.isEdit = [];
-    for (var i = 0; i < 50; i++) {
-        $scope.isEdit[i] = false;
-    }
+
     User.findById({
         id: $stateParams.id
     }, function (res) {
@@ -162,14 +168,14 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
         month: new Date().getMonth() + 1
     };
     $scope.findAnalysis = function () {
-        if( $scope.selectTime.year &&  $scope.selectTime.month){
+        if ($scope.selectTime.year && $scope.selectTime.month) {
             User.findAnalysis({
                 id: $stateParams.id,
-                year:  $scope.selectTime.year,
-                mon:  $scope.selectTime.month
+                year: $scope.selectTime.year,
+                mon: $scope.selectTime.month
             }, function (res) {
                 $scope.BGAnalysis = res;
-                console.log(res,'血糖分析')
+                console.log(res, '血糖分析')
             });
         }
     };
@@ -201,13 +207,36 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
             Materialize.toast("更新失败!", 2000);
         });
     };
-    $scope.month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-    $scope.monthShort = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-    $scope.weekdaysFull = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-    $scope.weekdaysLetter = ['日', '一', '二', '三', '四', '五', '六'];
-    $scope.today = '今天';
-    $scope.clear = '清除';
-    $scope.close = '确定';
+
+    $scope.updateSchema = function () {
+        User.updateSchema({
+            id: $stateParams.id
+        }, $scope.userSchema, function (res) {
+            console.log(res);
+            Materialize.toast("更新成功!", 2000);
+            for (var i = 17; i < 22; i++) {
+                $scope.isEdit[i] = false;
+            }
+            for (var j = 0; j < $scope.sportEdit.length; j++) {
+                $scope.sportEdit[j] = false;
+            }
+        }, function () {
+            Materialize.toast("更新失败!", 2000);
+        });
+    };
+
+    $scope.addSportName = {};
+    $scope.addSport = function () {
+        $scope.userSchema.sport.push({
+            dosage: $scope.addSportName.dosage,
+            type: $scope.addSportName.type,
+            unit: $scope.addSportName.unit
+        });
+    };
+
+    $scope.deleteSport = function ($index) {
+        $scope.userSchema.sport.splice($index, 1);
+    };
 
 }]);
 
