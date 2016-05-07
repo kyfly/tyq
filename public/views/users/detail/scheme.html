@@ -67,6 +67,7 @@
         <h6 class="bold-font col s6 offset-s2">每日运动推荐</h6>
         <hr class="col s12">
     </div>
+    <p class="col s7 offset-s2 margin-top" ng-show="userSchema.sport.length === 0">暂无运动推荐</p>
     <div class="col s12 margin-top" ng-repeat="sport in userSchema.sport">
         <div class="col s7 offset-s2">
             <span ng-bind="sport.type"></span> ：
