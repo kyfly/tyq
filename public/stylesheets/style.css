@@ -433,6 +433,10 @@ html, body, .wrap {
     color: #ff8d37 !important;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /*常用颜色*/
 
 /* label focus color */

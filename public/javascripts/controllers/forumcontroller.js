@@ -68,7 +68,7 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Uedit
 
 }]);
 /*
-话题管理
+ 话题管理
  */
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
     $scope.page = 1;
@@ -81,7 +81,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         });
     };
 
-    $scope.changePage = function (page){
+    $scope.changePage = function (page) {
         getTopic(page);
     };
 
@@ -92,8 +92,8 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         var thisElement = this;
         User.destroyTopics({
                 id: thisElement.topic.user.id
-            }, function(){
-                Materialize.toast('清理该用户话题成功',2000);
+            }, function () {
+                Materialize.toast('清理该用户话题成功', 2000);
                 getTopic($scope.page);
             }, function () {
                 Materialize.toast('清理话题失败！', 2000);
@@ -117,13 +117,13 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
 
     //锁定
     $scope.isLocked = function () {
-         var that = this;
+        var that = this;
         var state = that.topic.state.locked;
         if (state === true) {
             Topic.updateById({
                 id: that.topic.id
-            },{
-                state:{
+            }, {
+                state: {
                     locked: false
                 }
             }, function () {
@@ -133,8 +133,8 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         } else {
             Topic.updateById({
                 id: that.topic.id
-            },{
-                state:{
+            }, {
+                state: {
                     locked: true
                 }
             }, function () {
@@ -151,8 +151,8 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         if (state === true) {
             Topic.updateById({
                 id: thisElement.topic.id
-            },{
-                state:{
+            }, {
+                state: {
                     istop: false
                 }
             }, function () {
@@ -162,8 +162,8 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         } else {
             Topic.updateById({
                 id: thisElement.topic.id
-            },{
-                state:{
+            }, {
+                state: {
                     istop: true
                 }
             }, function () {
@@ -234,10 +234,10 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
         });
     };
     $scope.editNotice = function () {
-        var thisNotice=this.notice;
+        var thisNotice = this.notice;
         Notice.updatePublishById(
-            {id:thisNotice.id},
-            function(){
+            {id: thisNotice.id},
+            function () {
 
             }
         )
@@ -343,7 +343,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     };
 
 
-    $scope.changePage = function (page){
+    $scope.changePage = function (page) {
         getTopic(page);
     };
 
@@ -362,8 +362,8 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
         console.log(thisElement);
         User.destroyTopics({
                 id: thisElement.usertopic.id
-            }, function(){
-                Materialize.toast('清理该用户话题成功',2000);
+            }, function () {
+                Materialize.toast('清理该用户话题成功', 2000);
                 getTopic($scope.page);
             }, function () {
                 Materialize.toast('清理话题失败！', 2000);
@@ -393,8 +393,8 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
         if (state === true) {
             Topic.updateById({
                 id: that.usertopic.id
-            },{
-                state:{
+            }, {
+                state: {
                     locked: false
                 }
             }, function () {
@@ -404,8 +404,8 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
         } else {
             Topic.updateById({
                 id: that.usertopic.id
-            },{
-                state:{
+            }, {
+                state: {
                     locked: true
                 }
             }, function () {
@@ -422,8 +422,8 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
         if (state === true) {
             Topic.updateById({
                 id: thisElement.usertopic.id
-            },{
-                state:{
+            }, {
+                state: {
                     istop: false
                 }
             }, function () {
@@ -433,8 +433,8 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
         } else {
             Topic.updateById({
                 id: thisElement.usertopic.id
-            },{
-                state:{
+            }, {
+                state: {
                     istop: true
                 }
             }, function () {
@@ -483,7 +483,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
 }]);
 
 //回复管理
-app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams',function ($scope, Topic, User,$stateParams) {
+app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
 
     var getReply = function () {
         $scope.all = false;
