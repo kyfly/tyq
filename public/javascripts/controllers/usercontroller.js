@@ -65,17 +65,17 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
 /*
  用户积分
  */
-app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($scope,User, $stateParams) {
-   var userId = $stateParams.id;
-   User.findById({
-       id:userId
-   },function(res){
-       console.log(res);
-       $scope.user = res;
-   });
-    User.findPoints ({
+app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
+    var userId = $stateParams.id;
+    User.findById({
         id: userId
-    },function(res){
+    }, function (res) {
+        console.log(res);
+        $scope.user = res;
+    });
+    User.findPoints({
+        id: userId
+    }, function (res) {
         console.log(res);
         $scope.changeItems = res;
     });
@@ -110,7 +110,7 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
 
 app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
     $scope.$on('$stateChangeStart', function (evt, next) {
-       $scope.state = next.name;
+        $scope.state = next.name;
     });
     $scope.isEdit = [];
     for (var i = 0; i < 50; i++) {
@@ -151,12 +151,33 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
     }, function (res) {
         console.log(res);
         $scope.userLog = res;
-});
+    });
+
+    $scope.selectItems = {
+        years: ['2014', '2015', '2016'],
+        months: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+    };
+    $scope.selectTime = {
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1
+    };
+    $scope.findAnalysis = function () {
+        if( $scope.selectTime.year &&  $scope.selectTime.month){
+            User.findAnalysis({
+                id: $stateParams.id,
+                year:  $scope.selectTime.year,
+                mon:  $scope.selectTime.month
+            }, function (res) {
+                $scope.BGAnalysis = res;
+                console.log(res,'血糖分析')
+            });
+        }
+    };
 
     $scope.updateHealth = function () {
         User.updateHealth({
             id: $stateParams.id
-        },$scope.userHealth, function (res) {
+        }, $scope.userHealth, function (res) {
             console.log(res);
             Materialize.toast("更新成功!", 2000);
             for (var i = 0; i < 7; i++) {
@@ -170,7 +191,7 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
     $scope.updateExamine = function () {
         User.updateExamine({
             id: $stateParams.id
-        },$scope.userExamine, function (res) {
+        }, $scope.userExamine, function (res) {
             console.log(res);
             Materialize.toast("更新成功!", 2000);
             for (var i = 7; i < 17; i++) {
@@ -187,6 +208,7 @@ app.controller('UserDetailCtrl', ['$scope', 'User', '$stateParams', function ($s
     $scope.today = '今天';
     $scope.clear = '清除';
     $scope.close = '确定';
+
 }]);
 
 app.controller('UserServiceCtrl', ['$scope', function ($scope) {
