@@ -1,11 +1,9 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
         文章列表
-        <small>
-            <a ui-sref="wechatArticleCreate">
-                <i class="mdi-editor-mode-edit"></i>
-            </a>
-        </small>
+        <a class="blue-text" ui-sref="wechatArticleCreate">
+            <i class="mdi-editor-mode-edit"></i>
+        </a>
     </h5>
     <div class="col m6 s11 center search-box">
         <input type="text" placeholder="请输入作者/标题/栏目">
@@ -57,7 +55,7 @@
         <td class="article-action-td">
             <section>
                 <a ng-click="synchronize()">同步</a>
-                <a ng-click="distroy()"> | 删除 | </a>
+                <a ng-click="destroy()"> | 删除 | </a>
                 <a href="/weixin/articles/{{article.id}}/edit">修改</a>
             </section>
         </td>
@@ -65,8 +63,9 @@
     </tbody>
 </table>
 <div class="double-margin-bottom margin-top">
-    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect grey" ng-click="destroyMore()">删除</button>
     <button class="btn col waves-light waves-effect blue" ng-click="synchronizeMore()">同步</button>
+    <button class="btn col waves-light waves-effect blue right" ui-sref="wechatArticleCreate">新建</button>
     <div class="double-margin-bottom margin-top">
         <pagination
                 page="1"

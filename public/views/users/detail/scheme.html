@@ -5,12 +5,59 @@
         <h6 class="bold-font col s6 offset-s2">每日饮食原则</h6>
         <hr class="col s12">
     </div>
-    <div class="col s12 margin-top" ng-repeat="diet in userSchema.diet">
-        <div class="col s5 offset-s3">
-            <span ng-bind="diet.type"></span> ： <span ng-bind="diet.dosage"></span><span ng-bind="diet.unit"></span>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            谷署 ： <span ng-show="!isEdit[17]" ng-bind="userExamine.GDM.fasting"></span>
+            <span ng-show="!isEdit[17]">g</span>
+            <input ng-show="isEdit[17]" class="col s8 right health-modify" type="text"
+                   ng-model="userExamine.GDM.fasting">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="isEdit[17] = !isEdit[17]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            果蔬 ： <span ng-show="!isEdit[18]" ng-bind="userExamine.GDM.fasting"></span>
+            <span ng-show="!isEdit[18]">g</span>
+            <input ng-show="isEdit[18]" class="col s8 right health-modify" type="text"
+                   ng-model="userExamine.GDM.fasting">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[18] = !isEdit[18]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            鱼肉蛋 ： <span ng-show="!isEdit[19]" ng-bind="userExamine.GDM.fasting"></span>
+            <span ng-show="!isEdit[19]">g</span>
+            <input ng-show="isEdit[19]" class="col s8 right health-modify" type="text"
+                   ng-model="userExamine.GDM.fasting">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[19] = !isEdit[19]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            豆乳 ： <span ng-show="!isEdit[20]" ng-bind="userExamine.GDM.fasting"></span>
+            <span ng-show="!isEdit[20]">g</span>
+            <input ng-show="isEdit[20]" class="col s8 right health-modify" type="text"
+                   ng-model="userExamine.GDM.fasting">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[20] = !isEdit[20]">修改</a>
+        </div>
+    </div>
+    <div class="col s12 margin-top">
+        <div class="col s7 offset-s2">
+            油脂 ： <span ng-show="!isEdit[21]" ng-bind="userExamine.GDM.fasting"></span>
+            <span ng-show="!isEdit[21]">g</span>
+            <input ng-show="isEdit[21]" class="col s8 right health-modify" type="text"
+                   ng-model="userExamine.GDM.fasting">
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="isEdit[21] = !isEdit[21]">修改</a>
         </div>
     </div>
 </div>
@@ -20,18 +67,48 @@
         <h6 class="bold-font col s6 offset-s2">每日运动推荐</h6>
         <hr class="col s12">
     </div>
-    <div class="col s12 margin-top" ng-repeat="diet in userSchema.sport">
-        <div class="col s5 offset-s3">
-            <span ng-bind="diet.type"></span> ： <span ng-bind="diet.dosage"></span><span ng-bind="diet.unit"></span>
+    <p class="col s7 offset-s2 margin-top" ng-show="userSchema.sport.length === 0">暂无运动推荐</p>
+    <div class="col s12 margin-top" ng-repeat="sport in userSchema.sport">
+        <div class="col s7 offset-s2">
+            <span ng-bind="sport.type"></span> ：
+            <span ng-show="!sportEdit[$index]" ng-bind="sport.dosage"></span>
+            <span ng-show="!sportEdit[$index]" ng-bind="sport.unit"></span>
+            <input ng-show="sportEdit[$index]" class="col s8 right health-modify" type="text"
+                   ng-model="sport.dosage">
         </div>
         <div class="col s1">
-            <a href="">修改</a>
+            <a href="" ng-click="sportEdit[$index] = !sportEdit[$index]">修改</a>
+        </div>
+        <div class="col s1">
+            <a href="" ng-click="deleteSport($index)">删除</a>
         </div>
     </div>
     <div class="col s12 double-margin-top">
         <div class="col s6 offset-s3">
-            <a class="btn waves-effect waves-light blue offset-s6 right margin-left">确认修改</a>
-            <a class="btn waves-effect waves-light blue offset-s6 right">添加运动</a>
+            <a class="btn waves-effect waves-light blue offset-s6 right margin-left" ng-click="updateSchema()">确认修改</a>
+            <a class="btn waves-effect waves-light blue offset-s6 right" href='#addSport' modal>添加运动</a>
+        </div>
+    </div>
+    <div id="addSport" class="modal">
+        <div class="modal-content">
+            <h4>添加运动</h4>
+            <div input-field class="double-margin-top">
+                <input type="text" ng-model="addSportName.type">
+                <label>运动名称</label>
+            </div>
+            <div input-field class="double-margin-top">
+                <input type="text" ng-model="addSportName.dosage">
+                <label>运动量</label>
+            </div>
+            <div input-field class="double-margin-top">
+                <input type="text" ng-model="addSportName.unit">
+                <label>运动单位</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="modal-action modal-close waves-effect blue btn right margin-left"
+               ng-click="addSport()">确定</a>
+            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat right">取消</a>
         </div>
     </div>
 </div>

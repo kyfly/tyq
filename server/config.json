@@ -10,14 +10,16 @@
     "static": "../public",
     "index": "../public/views/index.html"
   },
+  "ignoreUrl": ["/wechat/users"],
   "remote": {
     "domain": "http://www.dmday.cn",
     "pathPrefix": "apis"
   },
   "wechat": {
-    "appid": "wxb54a4c0517a8584e",
-    "appsecret": "40c9a95eac50c41f4df617563cbb08ea",
-    "token": "57Wlt791UGt3VrPGzRbRLaErSXTK1wasznnUs8v1k6X",
-    "origin_id": "gh_14a53f5b6e28"
+    "appid": "wx2f80d605a372f3b0",
+    "appsecret": "6d72d051698398d45008b2b74b3ff4d5",
+    "token": "weixin",
+    "origin_id": "gh_6c1dc30d6e33",
+    "encodingAESKey":"57Wlt791UGt3VrPGzRbRLaErSXTK1wasznnUs8v1k6X"
   }
 }

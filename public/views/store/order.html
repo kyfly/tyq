@@ -81,7 +81,7 @@
                 <td class="center orders-operation-td">
                     <a href="#orderModal" ng-if="!order.Logistical.company" ng-click="checkOrder()" class="btn blue waves-effect" modal>标记发货</a>
                     <a href="#orderModal" ng-click="checkOrder()" ng-if="order.Logistical.company" class="btn blue waves-effect" modal>已经发货</a>
-                    <a href="#" ng-click="distroy()" class="btn grey waves-effect">删除订单</a>
+                    <a href="#" ng-click="destroy()" class="btn grey waves-effect">删除订单</a>
                 </td>
             </tr>
         </tbody>
@@ -113,7 +113,7 @@
     </table>
 </div>
 <div class="double-margin-bottom margin-top">
-    <button class="btn col waves-light waves-effect grey" ng-click="distroyMore()">删除</button>
+    <button class="btn col waves-light waves-effect grey" ng-click="destroyMore()">删除</button>
     <button class="btn col waves-light waves-effect blue" ng-click="exchengeableMore()">导出</button>
     <div>
         <pagination

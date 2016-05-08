@@ -3,16 +3,18 @@ var router = express.Router();
 var path = require('path');
 var wechatCtrl = require('../controllers/wechat');
 var acount = require('../controllers/acount');
+
 router.get('/', function (req, res, next) {
-    res.sendfile(path.join(__dirname, '../../public/views/index.html'));
+    res.sendfile(path.join(req.app.root, req.app.get('source').index));
+});
+router.get(/^\/(weixin|users|forum|goods)/i, function (req, res, next) {
+    res.sendfile(path.join(req.app.root, req.app.get('source').index));
 });
 router.get('/wechat/articels', wechatCtrl.wechat);
-/*微信用户入口*/
-router.get('/wechat/users', wechatCtrl.entry);
 router.get('/usercumulate', acount.usercumulate);
 router.post('/login', acount.login);
 router.get('/login', function (req, res, next) {
-    res.sendfile(path.join(__dirname, '../../public/views/login.html'));
+    res.sendfile(path.join(req.app.root, '../public/views/login.html'));
 });
 //router.get('/register', acount.register);
 

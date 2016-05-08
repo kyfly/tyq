@@ -1,5 +1,44 @@
 <h5>血糖记录</h5>
 
 <div class="container">
+    <div class="row">
+        <p class="col s1 offset-s2">年份</p>
+        <select ng-change="findAnalysis()" class="col s2 browser-default" ng-model="selectTime.year">
+            <option ng-repeat="year in selectItems.years">{{year}}</option>
+        </select>
+        <p class="col s1 offset-s1">月份</p>
+        <select ng-change="findAnalysis()" class="col s2 browser-default" ng-model="selectTime.month">
+            <option ng-repeat="month in selectItems.months">{{month}}</option>
+        </select>
+    </div>
+    <table class="centered bordered margin-top">
+        <thead class="dark-grey-text">
+        <tr>
+            <th></th>
+            <th>凌晨三点</th>
+            <th>早餐前</th>
+            <th>早餐后</th>
+            <th>午餐前</th>
+            <th>午餐后</th>
+            <th>晚餐前</th>
+            <th>晚餐后</th>
+            <th>睡觉前</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="BG in BGAnalysis">
+            <td class="BG-td" ng-bind="$index + 1"></td>
+            <td class="BG-td"><span ng-bind="BG.BG[0]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[1]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[2]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[3]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[4]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[5]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[6]"></span>mmol/L</td>
+            <td class="BG-td"><span ng-bind="BG.BG[7]"></span>mmol/L</td>
+        </tr>
+        </tbody>
+    </table>
 
 </div>

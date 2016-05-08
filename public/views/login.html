@@ -75,8 +75,10 @@
             $scope.submit = function () {
                 $http.post('/login', $scope.user)
                 .success(function (res) {
-                    window.localStorage.ExpressToken = res;
-                    window.location.href = '/'
+                    window.localStorage.ExpressToken = JSON.stringify(res);
+                    window.localStorage.$Express$accessTokenId = res.id;
+                    window.localStorage.$Express$currentUserId = res.userId;
+                    //window.location.href = '/'
                 })
                 .error(function (err) {
                     console.log(err)

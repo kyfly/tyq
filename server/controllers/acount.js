@@ -1,10 +1,15 @@
+var crypto = require('crypto');
+
 exports.login = function (req, res, next) {
-    res.send({
-        id: "sjdhdhedhDKWKAkdskdlcKAKW4DVFD23SF4",
-        token: "DOFI424tgrb5RDS4r4ghbEDFHEIOFHEUdsfv3r2g2g4g4sfI",
+    var token = {
+        id: req.app.id ++,
         created: "2015-12-02T04:05:00.396Z",
         ttl: 7200
-    });
+    }
+    var sha1 = crypto.createHash('sha1');
+    sha1.update(token.id.toString());
+    token.token = sha1.digest('hex');
+    res.send(token);
 }
 exports.register = function (req, res, next) {
     

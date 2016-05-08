@@ -1,6 +1,6 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        <a href="/forum/topics">话题管理</a>
+        <a href="/forum/topics" class="blue-text">话题管理</a>
         >个人话题
     </h5>
     <div class="col m6 s11 center search-box">
@@ -11,22 +11,20 @@
 <hr class="path-line">
 <div>
     <div>
-        <div class="col s12 topic-choose-all margin-top">
-            <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                   ng-click="all(master,peopleInfo)">
-            <label for="topic-top" id="chose_all"></label>
-        </div>
-
         <table class="bordered">
             <thead class="dark-grey-text">
             <tr>
-                <th style="padding: 0;width: 20px"></th>
-                <th style="padding: 0"></th>
+                <th class="choose-row">
+                    <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
+                           ng-click="all(master,usertopics)">
+                    <label for="topic-top" id="chose_all"></label>
+                </th>
+                <th style="padding-left: 20px">用户个人话题列表</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="usertopic in usertopics.content">
-                <td style="position:absolute;margin-top: 25px;">
+                <td style="position:absolute;margin-top: 25px;margin-left: 5px">
                     <input type="checkbox" id="{{usertopic.id}}" class="filled-in"
                            ng-model="x" ng-checked="master" ng-click="chk(usertopic,x)">
                     <label for="{{usertopic.id}}"></label>
@@ -34,11 +32,18 @@
                 <td style="padding:0;">
                     <ul class="collection margin-bottom" style="border: 0">
                         <li class="collection-item avatar" style="padding-bottom: 0">
-                            <img ng-src="{{userInfos.headImg}}" ng-click="changeUserPage(usertopic.user.id)" alt="" class="circle">
-                            <a ng-href="forum/{{usertopic.user.id}}/usertopic"
-                               class="title topic-name" ng-bind="userInfos.name"></a>
-                            <span ng-bind="usertopic.created | date: 'yyyy-MM-dd HH:mm:ss'" class="topic-time dark-grey-text"></span>
-                            <span ng-show="this.usertopic.state.locked" class="mdi-action-lock-outline orange-text margin-left"></span>
+                            <img ng-src="{{userInfos.headImg}}" class="circle">
+                            <span class="title topic-name black-text" ng-bind="userInfos.name"></span>
+                            <span ng-click="isLocked()" tooltipped data-position="bottom" data-delay="0"
+                                  data-tooltip="已锁定" ng-show="this.usertopic.state.locked"
+                                  class="mdi-action-lock-outline orange-text margin-left"
+                                  style="cursor: pointer"></span>
+                            <span ng-click="totop()" tooltipped data-position="bottom" data-delay="0"
+                                  data-tooltip="已置顶" ng-show="this.usertopic.state.istop"
+                                  class="mdi-editor-vertical-align-top orange-text margin-left"
+                                  style="cursor: pointer"></span>
+                            <div ng-bind="usertopic.created | date: 'yyyy-MM-dd HH:mm:ss'"
+                                 class="topic-time dark-grey-text"></div>
                             <h6 ng-bind="usertopic.title" class="topic-title margin-top"></h6>
                             <p ng-bind="usertopic.content" class="topic-content dark-grey-text"
                                style="padding: 5px 0"></p>
@@ -58,14 +63,19 @@
                                 <i class="mdi-communication-chat dark-grey-text"></i>
                                 <span ng-bind="usertopic.reply"></span>
                             </div>
-                            <a class="secondary-content">
-                                <span>评论</span>
-                                <span>清理</span>
-                                <span ng-click="toTop()">置顶</span>
-                                <span ng-click="isLocked()" ng-show="!this.usertopic.state.locked">锁定</span>
-                                <span ng-click="isLocked()" ng-show="this.usertopic.state.locked">解锁</span>
-                                <span ng-click="topicDelete()">删除</span>
-                            </a>
+                            <span class="secondary-content">
+                                <a ng-href="/forum/topic/{{usertopic.id}}/replies" class="dark-grey-text">评论 | </a>
+                                <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
+                                      ng-show="!this.usertopic.state.istop">置顶 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
+                                      ng-show="this.usertopic.state.istop">取消置顶 | </span>
+                                <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
+                                      ng-show="!this.usertopic.state.locked">锁定 | </span>
+                                <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
+                                      ng-show="this.usertopic.state.locked">解锁 |</span>
+                                <span ng-click="topicDelete()" class="dark-grey-text cursor-pointer">删除</span>
+                            </span>
                         </li>
                     </ul>
                 </td>
@@ -77,10 +87,10 @@
         <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">批量删除</button>
         <div class="double-margin-bottom margin-top">
             <pagination
-                    page="1"
-                    page-size="10"
-                    total="200"
-                    show-prev-next="true"
+                    page="page"
+                    page-size="usertopics.count"
+                    total="usertopics.total"
+                    show-prev-next="false"
                     dots="...."
                     hide-if-empty="false"
                     adjacent="2"

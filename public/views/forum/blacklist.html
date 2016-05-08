@@ -13,7 +13,7 @@
         <thead class="dark-grey-text">
         <tr>
             <th class="choose-row">
-                <input type="checkbox" class="filled-in" id="all" ng-click="all(master,blacklist)"ng-model="master">
+                <input type="checkbox" class="filled-in" id="all" ng-click="all(master,blacklist)" ng-model="master">
                 <label for="all"></label>
             </th>
             <th>用户</th>
@@ -26,7 +26,7 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="user in blacklist.content"  ng-show="user.role === 0">
+        <tr ng-repeat="user in blacklist.content" ng-show="user.role === 0">
             <td >
                 <input type="checkbox" class="filled-in" id="{{user.id}}" ng-model="x" ng-checked="master" ng-click="chk(blacklist,x)">
                 <label for="{{user.id}}"></label>
@@ -53,15 +53,15 @@
 <div class="double-margin-bottom margin-top">
     <button class="btn col wechat_btn waves-light waves-effect blue ">恢复</button>
     <pagination
-            page="1"
+            page="page"
             page-size="10"
             total="200"
-            show-prev-next="true"
+            show-prev-next="false"
             dots="...."
             hide-if-empty="false"
             adjacent="2"
             scroll-top="false"
             pagination-action="changePage(page)"
-            class="center "></pagination>
+            class="center"></pagination>
 </div>
 

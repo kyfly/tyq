@@ -5,9 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var boot = require('./boot');
-
 var app = express();
-
+app.id = 1;
 app.use(favicon(path.join(__dirname, '../public', 'img/icon.jpg')))
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -15,6 +14,4 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.root = __dirname;
 boot.setup(app);
-
-
 module.exports = app;
