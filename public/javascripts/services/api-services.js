@@ -44,11 +44,15 @@
                         },
                         "updatePublishById": {
                             url: urlBase + '/publish/:id',
-                            method: 'POST'
+                            method: 'put'
                         },
                         "destroyPublishById": {
                             url: urlBase + '/publish/:id',
                             method: 'DELETE'
+                        },
+                        "findPublishById": {
+                            url: urlBase + '/publish/:id',
+                            method: 'GET'
                         }
                     });
                 R.modelName = "Notice";
