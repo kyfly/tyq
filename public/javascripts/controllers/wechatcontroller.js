@@ -1,8 +1,11 @@
 app.controller(
 'WechatArticlesCtrl', ['$scope', 'Article', function ($scope, Article) {
-	Article.find(function (articles) {
-		$scope.articles = articles;
-	});
+	var getArticles = function (page) {
+		Article.find({page: page}, function (articles) {
+			$scope.articles = articles;
+		});
+	}
+	
 	$scope.chooseAll = function () {
 		$scope.articles.content.forEach(function (article) {
 			article.select = !article.select;
@@ -37,9 +40,9 @@ app.controller(
 		console.log(more)
 	}
 	$scope.changePage = function (page) {
-		console.log(page)
-		//$scope.articles = getArticles();
+		getArticles(page);
 	}
+	getArticles(1);
 }]);
 app.controller(
 'WechatArticleCtrl', 

@@ -80,13 +80,13 @@ exports.default = {
         action: "destroyPoints",
         remote: "/users/:id/points/:fk",
         desc: "删除用户积分变化记录"
-    },{
+    },/*{
         api: "/users/:id/messages",
         method: "post",
         action: "createMessages",
         remote: "/users/:id/messages",
         desc: "用户发送消息"
-    },{
+    }*/,{
         api: "/users/:id/topics",
         method: "post",
         action: "createTopics",
