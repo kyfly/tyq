@@ -36,10 +36,12 @@
                             <span class="title topic-name black-text" ng-bind="userInfos.name"></span>
                             <span ng-click="isLocked()" tooltipped data-position="bottom" data-delay="0"
                                   data-tooltip="已锁定" ng-show="this.usertopic.state.locked"
-                                  class="mdi-action-lock-outline orange-text margin-left" style="cursor: pointer"></span>
+                                  class="mdi-action-lock-outline orange-text margin-left"
+                                  style="cursor: pointer"></span>
                             <span ng-click="totop()" tooltipped data-position="bottom" data-delay="0"
                                   data-tooltip="已置顶" ng-show="this.usertopic.state.istop"
-                                  class="mdi-editor-vertical-align-top orange-text margin-left" style="cursor: pointer"></span>
+                                  class="mdi-editor-vertical-align-top orange-text margin-left"
+                                  style="cursor: pointer"></span>
                             <div ng-bind="usertopic.created | date: 'yyyy-MM-dd HH:mm:ss'"
                                  class="topic-time dark-grey-text"></div>
                             <h6 ng-bind="usertopic.title" class="topic-title margin-top"></h6>
@@ -63,12 +65,16 @@
                             </div>
                             <span class="secondary-content">
                                 <a ng-href="/forum/topic/{{usertopic.id}}/replies" class="dark-grey-text">评论 | </a>
-                                <span ng-click="clearTopic()" class="dark-grey-text">清理 | </span>
-                                <span ng-click="toTop()" class="dark-grey-text" ng-show="!this.usertopic.state.istop">置顶 | </span>
-                                <span ng-click="toTop()" class="dark-grey-text" ng-show="this.usertopic.state.istop">取消置顶 | </span>
-                                <span ng-click="isLocked()" class="dark-grey-text" ng-show="!this.usertopic.state.locked">锁定 | </span>
-                                <span ng-click="isLocked()" class="dark-grey-text" ng-show="this.usertopic.state.locked">解锁 |</span>
-                                <span ng-click="topicDelete()" class="dark-grey-text">删除</span>
+                                <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
+                                      ng-show="!this.usertopic.state.istop">置顶 | </span>
+                                <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
+                                      ng-show="this.usertopic.state.istop">取消置顶 | </span>
+                                <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
+                                      ng-show="!this.usertopic.state.locked">锁定 | </span>
+                                <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
+                                      ng-show="this.usertopic.state.locked">解锁 |</span>
+                                <span ng-click="topicDelete()" class="dark-grey-text cursor-pointer">删除</span>
                             </span>
                         </li>
                     </ul>

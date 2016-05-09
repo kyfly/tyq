@@ -339,10 +339,6 @@ td > img {
     height: 50px;
 }
 
-td {
-    padding: 1px !important;
-}
-
 hr {
     border-top: 1px solid #dddddd;
     border-right: none;
@@ -431,6 +427,10 @@ html, body, .wrap {
 
 .orange-text {
     color: #ff8d37 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /*常用颜色*/
@@ -657,5 +657,9 @@ nav ul {
 
 .indicator {
     background-color: #54adff !important;
+}
+
+.BG-td {
+    padding: 10px !important;
 }
 
