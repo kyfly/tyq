@@ -86,6 +86,10 @@
                     "destroyReply": {
                         utl: urlBase + '/topics/:id/reply/:fk',
                         method: 'DELETE'
+                    },
+                    "createTopic":{
+                        utl: urlBase+'/topic',
+                        method: 'POST'
                     }
                 });
             R.modelName = "Topic";

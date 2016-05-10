@@ -104,3 +104,8 @@ exports.destroyPublishById = function (req, res, next) {
         status: 200
     });
 }
+exports.createTopic=function(req,res,next){
+    res.send({
+        status: 200
+    });
+}

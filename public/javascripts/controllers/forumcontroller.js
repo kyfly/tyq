@@ -45,12 +45,20 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($sco
     $scope.editorConfig = Ueditor.config;
     $scope.publishItem = {};
     $scope.publishTopic = function () {
-        var content = $scope.publishEditorContent;
+        var content = $scope.publishItem.content;
         var title = $scope.publishItem.title;
 
         if (!content || !title) {
             Materialize.toast('文章标题和内容都不能为空', 2000);
             return;
+        }
+        else {
+            Topic.createTopic($scope.publishItem, function (res) {
+                Materialize.toast('发布成功', 2000);
+                $scope.publishItem = {};
+            }, function (res) {
+                Materialize.toast('发布失败', 2000);
+            })
         }
         console.log(content);
         console.log(title);
@@ -247,7 +255,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
             notice, function (res) {
                 Materialize.toast('置顶成功', 2000);
                 get();
-                         }, function (res) {
+            }, function (res) {
                 Materialize.toast('置顶失败！', 2000);
             }
         )
