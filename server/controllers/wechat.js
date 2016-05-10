@@ -3,6 +3,32 @@ var webot = require('weixin-robot');
 var config = require('../config')
 var api = new wechatAPI(config.wechat.appid, config.wechat.appsecret);
 module.exports = function (webot) {
+    //订阅事件
+    webot.set('subscribe', {
+        pattern: function(info) {
+            return info.event === 'subscribe';
+        },
+        handler: function(info) {
+            var openid = info.uid;
+            api.getUser(openid, function(err,res){
+                var user = {};
+                user.openid = res.openid;
+                user.nickname = res.nickname;
+                user.sex = res.sex;
+                user.province = res.province;
+                user.city = res.city;
+                user.country = res.country;
+                user.headimgurl = res.headimgurl;
+                //这是啥
+                //user.privilege = res.rivilege;
+                //user.unionid = res.unionid;
+                console.log(user);
+            });
+        }
+    });
+    
+    
+    //自动回复
     webot.beforeReply(function (info, next) {
         setTimeout(function () {
             info.reply = [{
@@ -36,5 +62,9 @@ module.exports.wechat = function (req, res, next) {
     });
 }
 module.exports.messages = function (req, res, next) {
-    
+    api.sendText(req.body.id, req.body.message, function(err,res){
+        console.log(err,res);
+        if(!err)
+            res.send('succeed');
+    });
 }
