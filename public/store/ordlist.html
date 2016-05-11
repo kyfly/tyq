@@ -14,108 +14,108 @@
 			全部订单
 		</nav>
 		<div class="ordlist_center">
-			<ul>
-				<li>
-					<header>
-						<div class="ordlist_healeft float_left">
-							<div class="ordlist_order">
-								<div>订单 :　</div><div>13123124125423523525</div>
-							</div>
-							<div class="ordlist_date">
-								<div>日期 :　</div><div>2016-04-15</div>　　<div>16:43:42</div>
-							</div>
-						</div>
-						<div class="ordlist_hearight float_right">
-							已发货
-						</div>
-					</header>	
-					<div class="order_center_top ordlist_center_list">				
-						<div class="img_box float_left">
-							<img src="image/more.png" alt="">
-						</div>					
-						<div class="order_center_name float_left">
-								怡成血糖仪试纸25套(独立包装试纸)
-						</div>					
-						<div class="order_center_change float_right">
-							<div class="order_center_left">兑换积分 : <span>5<span></div>					
-							<div class="order_center_right float_right">x <span>1<span></div>
-						</div>				
-					</div>
-					<footer class="ordlist_footer">
-						<div class="detail_order float_right">订单详情</div>
-						<div class="dele_order float_right">删除订单</div>				
-					</footer>
-				</li>
-
-				<li>
-					<header>
-						<div class="ordlist_healeft float_left">
-							<div class="ordlist_order">
-								<div>订单 :　</div><div>13123124125423523525</div>
-							</div>
-							<div class="ordlist_date">
-								<div>日期 :　</div><div>2016-04-15</div>　　<div>16:43:42</div>
-							</div>
-						</div>
-						<div class="ordlist_hearight float_right">
-							待发货
-						</div>
-					</header>	
-					<div class="order_center_top ordlist_center_list">				
-						<div class="img_box float_left">
-							<img src="image/more.png" alt="">
-						</div>					
-						<div class="order_center_name float_left">
-								怡成血糖仪试纸25套(独立包装试纸)
-						</div>					
-						<div class="order_center_change float_right">
-							<div class="order_center_left">兑换积分 : <span>5<span></div>					
-							<div class="order_center_right float_right">x <span>1<span></div>
-						</div>				
-					</div>
-					<footer class="ordlist_footer">
-						<div class="detail_order float_right">订单详情</div>
-						<div class="dele_order float_right">删除订单</div>				
-					</footer>
-				</li>
-
-				<li>
-					<header>
-						<div class="ordlist_healeft float_left">
-							<div class="ordlist_order">
-								<div>订单 :　</div><div>13123124125423523525</div>
-							</div>
-							<div class="ordlist_date">
-								<div>日期 :　</div><div>2016-04-15</div>　　<div>16:43:42</div>
-							</div>
-						</div>
-						<div class="ordlist_hearight float_right">
-							已收货
-						</div>
-					</header>	
-					<div class="order_center_top ordlist_center_list">				
-						<div class="img_box float_left">
-							<img src="image/more.png" alt="">
-						</div>					
-						<div class="order_center_name float_left">
-								怡成血糖仪试纸25套(独立包装试纸)
-						</div>					
-						<div class="order_center_change float_right">
-							<div class="order_center_left">兑换积分 : <span>5<span></div>					
-							<div class="order_center_right float_right">x <span>1<span></div>
-						</div>				
-					</div>
-					<footer class="ordlist_footer">
-						<div class="detail_order float_right">订单详情</div>
-						<div class="dele_order float_right">删除订单</div>				
-					</footer>
-				</li>
-			</ul>
+			<ul></ul>
 		</div>
 	</div>
-	
 
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="js/my_all.js"></script>
+	<script>
+	$(function(){
+		$(".ordlist_hearight:contains('已收货')").css('color','#b3b3b3')
+		.parents('li').find('.ordlist_footer .dele_order').css('display','block');
+		$('.dele_order').click(function(event) {
+			/* Act on the event */
+			$(this).parents('li').remove();
+		});
+		$('.detail_order').click(function(event) {
+			/* Act on the event */
+			window.location.href='orderform_detail.html';
+		});
+
+
+		//监听滚动条
+		var page = 0
+		$.ajax({
+			url: '/api/orders?access_token=ACCESSTOKEN&page='+page,
+			type: 'GET',
+			dataType: 'json',
+			data: {param1: 'value1'},
+			success:function(data){
+				console.log(data.content[0].created);
+				for(var i =0 ;i< data.count;i++){
+					var oLi = '<li>\
+					<header>\
+					<div class="ordlist_healeft float_left">\
+					<div class="ordlist_order">\
+					<div>订单 :　</div><div>'+data.content[i].id+'</div>\
+					</div>\
+					<div class="ordlist_date">\
+					<div>日期 :　</div><div>'+data.content[i].created+'</div>\
+					</div>\
+					</div>\
+					<div class="ordlist_hearight float_right">'+data.content[i].state+'</div>\
+					</header>\
+					<div class="order_center_top ordlist_center_list">\
+					<div class="img_box float_left">\
+					<img src="image/more.png" alt="">\
+					</div>\
+					<div class="order_center_name float_left">'+data.content[i].goods.name+'</div>\
+					<div class="order_center_change float_right">\
+					<div class="order_center_left">兑换积分 : <span>'+data.content[i].cPoint+'<span></div>\
+					<div class="order_center_right float_right">x <span>'+data.content[i].count+'<span></div>\
+					</div>\
+					</div>\
+					<footer class="ordlist_footer">\
+					<div class="detail_order float_right">订单详情</div>\
+					<div class="dele_order float_right">删除订单</div>\
+					</footer>\
+					</li>';
+					$('.ordlist_center ul').append(oLi);
+					$('.img_box img').attr('src',data.content[i].goods.img);
+				}
+
+				
+				
+			},
+			error:function(){
+
+			}
+		});
+		$(window).scroll(function(event) {
+			/* Act on the event */
+			if($('.ordlist_center ul')[0].scrollHeight-$('body').scrollTop()-$(window).height()<= 150){  //
+				page++;
+				$.ajax({
+					url: '/api/orders?access_token=ACCESSTOKEN&page='+page,
+					type: 'GET',
+					dataType: 'json',
+					data: {param1: 'value1'},
+					success:function(data){
+						console.log(data.content[0].created);
+						for(var i =0 ;i< data.count;i++){
+							var oLi = '<li>\<header>\<div class="ordlist_healeft float_left">\<div class="ordlist_order">\<div>订单 :　</div><div>'+data.content[i].id+'</div>\</div>\<div class="ordlist_date">\<div>日期 :　</div><div>'+data.content[i].created+'</div>\</div>\</div>\<div class="ordlist_hearight float_right">'+data.content[i].state+'</div>\</header>\<div class="order_center_top ordlist_center_list">\<div class="img_box float_left">\<img src="image/more.png" alt="">\</div>\<div class="order_center_name float_left">'+data.content[i].goods.name+'</div>\<div class="order_center_change float_right">\<div class="order_center_left">兑换积分 : <span>'+data.content[i].cPoint+'<span></div>\<div class="order_center_right float_right">x <span>'+data.content[i].count+'<span></div>\</div>\</div>\<footer class="ordlist_footer">\<div class="detail_order float_right">订单详情</div>\<div class="dele_order float_right">删除订单</div>\</footer>\</li>';
+							$('.ordlist_center ul').append(oLi);
+							$('.img_box img').attr('src',data.content[i].goods.img);
+						}
+
+						
+						
+					},
+					error:function(){
+
+					}
+				});
+				
+			}
+
+		});
+
+		
+		
+		
+
+	});
+	</script>
 </body>
 </html>

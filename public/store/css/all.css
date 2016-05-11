@@ -28,6 +28,7 @@ li{
 	background-color: #ff6d00;
 	display: inline-block;
 	text-align: center;
+	margin-right:3px;
 }
 .LV span{
 	color: #fff;
@@ -80,8 +81,12 @@ li{
 	height: 20px;
 	background: url('../image/search1.png') no-repeat center;
 }
+.search_btn:focus{
+	outline: none;
+}
 .content_box{
 	width: 100%;
+	padding-bottom: 50px;
 	/*border: 1px solid #000;*/
 }
 
@@ -108,8 +113,6 @@ li{
 	height: 190px;
 	width: 49.3%;
 	display: inline-block;
-	margin-top: 10px;
-	
 }
 
 .list_image{
@@ -127,19 +130,19 @@ li{
 	line-height: 14px;
 }
 .text_name{
-	height: 50px;
+	height: 40px;
 	font-size: 1.2rem;
 }
 .text_change{
-	height: 15px;
+	height: 20px;
 	color: #fc8815;
 }
 .list_footer{
 	width: 100%;
-	height: 50px;
+	height: 51px;
 	border-top:1px solid #ccc;
 	position: fixed;
-	bottom: 0px;
+	bottom: -1px;
 	left: 0px;
 	z-index: 900;
 	background-color: #fff;
@@ -251,10 +254,10 @@ label{
 	border: 1px solid #efefef;
 }
 .goods_LV{
-	height: 18px;
+	height: 17px;
 	width: 28px;
-	line-height: 17px;
-	margin-top: -2px;
+	line-height: 18px;
+	margin-top: -3px;
 	margin-right: 5px;
 }
 .goods_name h5{
@@ -318,6 +321,8 @@ label{
 	height: 200px;
 }
 .detail_text_one,.detail_text_two{
+	/*英文，中文都折行*/
+	word-wrap:break-word;
 	width: 100%;
 	padding: 0px 10px;
 }
@@ -507,6 +512,7 @@ h6{
 .order_footer_top,.order_footer_center,.order_footer_bottom,.order_footer_res,.order_footer_express,.order_footer_orderid{
 	width: 100%;
 	padding: 3px;
+
 	
 }
 .order_footer_center .left,.order_footer_center .right,.order_footer_top .left,.order_footer_top .right,.order_footer_express .left,.order_footer_orderid .left,.order_footer_express .right,.order_footer_orderid .right{
@@ -520,6 +526,7 @@ h6{
 .order_footer_bottom .right{
 	width: 70%;
 	display: inline-block;
+	word-wrap:break-word;
 }
 .order_footer_other{
 	padding: 10px;
@@ -693,7 +700,9 @@ h6{
 	background-color: #f0f0f0;
 	padding-bottom: 50px; 
 }
-
+ul.my_address_list{
+	margin-bottom: 50px;
+}
 .my_address_list li{
 	background-color: #fff;
 	border-top: 1px solid #ccc;
@@ -712,6 +721,7 @@ h6{
 	padding: 10px 30px 10px 10px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #ccc;
+	word-wrap:break-word;
 }
 .my_address_center .LV{
 	height: 16px;

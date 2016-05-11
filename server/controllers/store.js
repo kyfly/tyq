@@ -7,7 +7,7 @@ exports.create = function (req, res, next) {
 exports.find = function (req, res, next) {
     res.send({
         total: 300,
-        count: 20,
+        count: 10,
         content: rq.getMore({
             id: 'ID',
             name: 'GOODSNAME',

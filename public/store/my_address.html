@@ -10,54 +10,51 @@
 </head>
 <body>
 	<div class="container-fluid my_address">
-		<ul class="my_address_list">
-			<li>
-				<header>
-					<div class="my_address_username float_left">程悦</div>
-					<div class="my_address_phone float_right">13732260477</div>
-				</header>
-				<div class="my_address_center">
-					<div class="LV float_left"><span>默认</span></div>浙江省杭州市西湖区文二西路716号西溪乐谷创意产业园2号楼2楼江省杭州市西湖区文二西路716号西溪乐谷创意产业园2号楼2楼
-				</div>
-				<footer>
-					<div class="my_address_dele">删除</div>
-					<div class="my_address_stand">|</div>
-					<div class="my_address_editor">编辑</div>
-				</footer>
-			</li>
-			<li>
-				<header>
-					<div class="my_address_username float_left">程悦</div>
-					<div class="my_address_phone float_right">13732260477</div>
-				</header>
-				<div class="my_address_center">
-					浙江省杭州市西湖区文二西路716号西溪乐谷创意产业园2号楼2楼
-				</div>
-				<footer>
-					<div class="my_address_dele">删除</div>
-					<div class="my_address_stand">|</div>
-					<div class="my_address_editor">编辑</div>
-				</footer>
-			</li>
-			<li>
-				<header>
-					<div class="my_address_username float_left">程悦</div>
-					<div class="my_address_phone float_right">13732260477</div>
-				</header>
-				<div class="my_address_center">
-					浙江省杭州市西湖区文二西路716号西溪乐谷创意产业园2号楼2楼
-				</div>
-				<footer>
-					<div class="my_address_dele">删除</div>
-					<div class="my_address_stand">|</div>
-					<div class="my_address_editor">编辑</div>
-				</footer>
-			</li>
-		</ul>
+		<ul class="my_address_list"></ul>
 		<div class="detail_btn">添加新地址</div>
 	</div>
 
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="js/my_all.js"></script>
+	<script>
+	$(function(){
+		$('.my_address_editor').click(function(event) {
+			/* Act on the event */
+			window.location.href="edit_address.html";
+		});
+		$('.my_address_dele').click(function(event) {
+			/* Act on the event */
+			$(this).parents('li').remove();
+		});
+
+		$.ajax({
+			url: '/api/users/ID/express?access_token=ACCESSTOKEN',
+			type: 'GET',
+			dataType: 'json',
+			data: {param1: 'value1'},
+			success:function(data){
+				for(var i =0 ;i < data.length;i++){
+					var oLi = '<li><header><div class="my_address_username float_left">'+data[i].name+'</div><div class="my_address_phone float_right">'+data[i].phone+'</div></header><div class="my_address_center">'+data[i].addr+'</div><footer><div class="my_address_dele">删除</div><div class="my_address_stand">|</div><div class="my_address_editor">编辑</div></footer></li>';
+					$('.my_address_list').append(oLi);
+					if(data[i].default){
+						var oDiv = '<div class="LV float_left"><span>默认</span></div>';
+						$('.my_address_list .my_address_center').prepend(oDiv);
+					}
+				}
+
+				
+			},
+			error:function(){
+
+			}
+
+		})
+		
+		
+
+
+
+	});
+	</script>
 </body>
 </html>
