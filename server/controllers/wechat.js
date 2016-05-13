@@ -1,6 +1,7 @@
 var wechatAPI = require('wechat-api');
 var webot = require('weixin-robot');
-var config = require('../config')
+var config = require('../config');
+var q = require('q');
 var api = new wechatAPI(config.wechat.appid, config.wechat.appsecret);
 module.exports = function (webot) {
     //订阅事件
@@ -52,19 +53,89 @@ module.exports = function (webot) {
     获取永久文章列表
  */
 module.exports.wechat = function (req, res, next) {
-    var type = req.body.type || 'news';
     var offset = req.body.offset || 0;
     var count = req.body.count || 10;
-    api.getMaterials(type, offset, count, function(err,result,gotten){
-        res.send(result.item[0].content.news_item[0].content.replace(/data\-src\=\".+?\"/, '/img.logo.png'));
-        var a = `<section class="" style=" text-align: center; margin-top: 10px; margin-bottom: 10px;  box-sizing: border-box; "><img style="box-sizing: border-box; vertical-align: middle;" data-src="http://mmbiz.qpic.cn/mmbiz/ROXq2b6NlicgzZNMB6Rcbls82mwnd5xQM57OJUoDk2JdU7wYLicZPqC00TRfLxKjMLvssiclTHicRibwkgicaDDCeNicg/0?wx_fmt=png" class="" data-type="png" data-ratio="0.6675" data-w="400"  /></section>`
-        console.log(/data/.test(a))
-    });
+    getMaterials(offset, count)
+    .then(function (items) {
+        res.send(items)
+    }, function (err) {
+        res.send(err)
+    })
 }
 module.exports.messages = function (req, res, next) {
     api.sendText(req.body.id, req.body.message, function(err,res){
-        console.log(err,res);
         if(!err)
             res.send('succeed');
     });
+}
+
+function pullNews () {
+    var type = 'news';
+    q.all([
+        getTotal(),
+        getOffset()
+    ])
+    .then (function (result) {
+        var total = result[0],
+            offset = result[1],
+            count = 10,
+            mFun = [];
+        while(offset < total) {
+            offset = offset + count;
+            mFun.push(getMaterials (offset, count))
+        };
+        return q.all(mFun);
+    })
+    .then(function (news) {
+        console.log(news.length)
+    }, function (err) {
+        console.log(err)
+    })
+    
+}
+function getTotal() {
+    return q.Promise(function(resolve, reject, notify) {
+        api.getMaterialCount(function (err, result, res) {
+            if (err) {
+                reject(err);
+            }
+            resolve(result.news_count);
+        });
+    })
+}
+function getOffset() {
+    return q.Promise(function(resolve, reject, notify) {
+        setTimeout(function () {
+            resolve(492)
+        }, 1000)
+    })
+}
+function getMaterials (offset, count) {
+    function urlFormat (html) {
+        return html.replace(/data-src\=\"/g, 'src="/img?url=')
+    }
+    function newsFormat (news, updated, newsItem) {
+        for (var i = news.length - 1; i >= 0; i--) {
+            news[i].content = urlFormat(news[i].content);
+            news[i].updated = new Date(updated * 1000);
+            newsItem.push(news[i]);
+        }
+        return newsItem;
+    }
+    function newsResult (resultItems) {
+        var newsItem = [];
+        for (var i = resultItems.length - 1; i >= 0; i--) {
+            newsFormat(resultItems[i].content.news_item, resultItems[i].content.update_time, newsItem);
+        }
+        return newsItem;
+    }
+    return q.Promise(function(resolve, reject, notify) {
+        api.getMaterials('news', offset, count, function(err,result,gotten){
+            if (err) {
+                reject(err)
+            } else {
+                resolve(newsResult(result.item))
+            }
+        });
+    })
 }
