@@ -339,10 +339,6 @@ td > img {
     height: 50px;
 }
 
-td {
-    padding: 1px !important;
-}
-
 hr {
     border-top: 1px solid #dddddd;
     border-right: none;
@@ -661,5 +657,9 @@ nav ul {
 
 .indicator {
     background-color: #54adff !important;
+}
+
+.BG-td {
+    padding: 10px !important;
 }
 

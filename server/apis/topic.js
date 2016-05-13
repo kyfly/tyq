@@ -9,6 +9,12 @@ exports.default = {
         remote: "/topics",
         desc: "话题列表"
     },{
+        api: "/topics",
+        method: "post",
+        action: "createTopic",
+        remote: "/topics",
+        desc: "发表话题"
+    },{
         api: "/topics/:id",
         method: "get",
         action: "findById",

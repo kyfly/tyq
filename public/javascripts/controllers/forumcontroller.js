@@ -41,19 +41,28 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
     }
 }]);
 
-app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', function ($scope, Ueditor) {
+app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($scope, Ueditor, Topic) {
     $scope.editorConfig = Ueditor.config;
     $scope.publishItem = {};
     $scope.publishTopic = function () {
-        var content = $scope.publishEditorContent;
+        var content = $scope.publishItem.content;
         var title = $scope.publishItem.title;
 
         if (!content || !title) {
             Materialize.toast('文章标题和内容都不能为空', 2000);
             return;
         }
+        else {
+            Topic.createTopic($scope.publishItem, function (res) {
+                Materialize.toast('发布成功', 2000);
+                $scope.publishItem = {};
+            }, function (res) {
+                Materialize.toast('发布失败', 2000);
+            })
+        }
         console.log(content);
         console.log(title);
+
         //$http({
         //    url: '/ue/uploads?dir=user&id=' + $scope.$currentUser.id + '&action=uploadtext',
         //    method: "post",
@@ -209,15 +218,68 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         }
     };
 }]);
-app.controller('ForumNoticeEditCtrl', ['$scope', 'Notice', function ($scope, Notice) {
+app.controller('ForumNoticeEditCtrl', ['$scope', 'Notice', '$stateParams', '$location', function ($scope, Notice, $stateParams, $location) {
+    console.log($stateParams.id);
+    var id = $stateParams.id;
+    Notice.findPublishById({id: id},
+        function (res) {
+            $scope.notice = res;
+        });
+    $scope.updateNotice = function () {
+        $scope.notice.updated = new Date();
+        Notice.updatePublishById({id: id},
+            $scope.notice, function (res) {
+                Materialize.toast('修改成功！', 2000);
+                $location.path('/forum/notices');
+            }, function (res) {
+                Materialize.toast('修改失败！', 2000);
+            }
+        )
+    }
 
 }]);
-app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice) {
-    Notice.publish(function (res) {
-            console.log(res);
-            $scope.noticeList = res;
+app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function ($scope, Notice, $stateParams) {
+    var get = function () {
+        Notice.publish(function (res) {
+                $scope.noticeList = res;
+                console.log(res);
+            }
+        )
+    };
+    get();
+    $scope.topNotice = function () {
+        var notice = this.notice;
+        console.log(this)
+        notice.updated = new Date();
+        Notice.updatePublishById({id: notice.id},
+            notice, function (res) {
+                Materialize.toast('置顶成功', 2000);
+                get();
+            }, function (res) {
+                Materialize.toast('置顶失败！', 2000);
+            }
+        )
+    }
+    $scope.publishNtc = {};
+    $scope.publishNotice = function () {
+        if (!$scope.publishNtc.content || !$scope.publishNtc.title) {
+            Materialize.toast('公告标题和内容都不能为空', 2000);
+            return;
         }
-    );
+        else {
+            Notice.createPublish($scope.publishNtc, function (res) {
+
+                Materialize.toast('发布成功', 2000);
+                get();
+                $scope.publishNtc = {};
+
+            }, function (res) {
+                Materialize.toast('发布失败', 2000);
+            })
+
+        }
+
+    }
     $scope.deleteNotice = function () {
         var thisNotice = this.notice;
         console.log(thisNotice);
@@ -232,16 +294,6 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', function ($scope, Notice)
         }, function () {
             Materialize.toast('删除失败！', 2000);
         });
-    };
-    $scope.editNotice = function () {
-        var thisNotice = this.notice;
-        Notice.updatePublishById(
-            {id: thisNotice.id},
-            function () {
-
-            }
-        )
-
     };
 
     $scope.choseArr = [];//定义数组用于存放前端显示
