@@ -193,6 +193,21 @@ exports.findAnalysis = function (req, res, next) {
     },{
         day: 5,
         BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 6,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 7,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 8,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 9,
+        BG: [2,3,4,5,6,6,8,8]
+    },{
+        day: 10,
+        BG: [2,3,4,5,6,6,8,8]
     }])
 }
 // exports.createMessages = function (req, res, next) {

@@ -1,13 +1,15 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">
-        <a class="blue-text" ui-sref="wechatUsers">用户列表</a>
-        > 用户详情
+        <a class="blue-text back" ui-sref="wechatUsers">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </a>
+        用户详情
     </h5>
 </div>
 <hr class="path-line">
 <table class="centered">
     <thead class="detail-thead dark-grey-text">
-    <tr class="detail-tr">
+    <tr>
         <th>名字</th>
         <th>性别</th>
         <th>联系方式</th>
@@ -19,15 +21,19 @@
     </thead>
     <tbody>
     <tr class="detail-tr">
-        <td ng-bind="user.name"></td>
+        <td class="nowrap" ng-bind="user.name"></td>
         <td ng-bind="user.sex"></td>
-        <td ng-bind="user.phone"></td>
+        <td class="nowrap" ng-bind="user.phone"></td>
         <td ng-bind="user.topics"></td>
         <td ng-bind="user.replies"></td>
         <td>
             <a ng-href="users/score/{{user.id}}" ng-bind="user.points"></a>
         </td>
-        <td><a class="blue-text" ui-sref="userDetail.BG" ng-bind="user.lastBG"></a></td>
+        <td class="nowrap" >
+            <a class="blue-text" 
+            ng-href="/users/{{user.id}}/BG" 
+            ng-bind="user.lastBG"></a>
+        </td>
     </tr>
     </tbody>
 </table>

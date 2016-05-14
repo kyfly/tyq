@@ -1,4 +1,11 @@
-<h5>血糖记录</h5>
+<div class="row top-nav">
+    <h5 class="path col m5 s12">
+        <a class="blue-text back" ui-sref="wechatUsers">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </a>
+        血糖记录(单位：mmol/L)
+    </h5>
+</div>
 
 <div class="container">
     <div class="row">
@@ -28,15 +35,33 @@
 
         <tbody>
         <tr ng-repeat="BG in BGAnalysis">
-            <td class="BG-td" ng-bind="$index + 1"></td>
-            <td class="BG-td"><span ng-bind="BG.BG[0]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[1]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[2]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[3]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[4]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[5]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[6]"></span>mmol/L</td>
-            <td class="BG-td"><span ng-bind="BG.BG[7]"></span>mmol/L</td>
+            <td class="BG-td" ng-bind="$index + 1">
+                <span>{{selectTime.year}} {{selectTime.month}} {{BG.day}}</span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[0]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[1]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[2]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[3]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[4]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[5]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[6]"></span>
+            </td>
+            <td class="BG-td">
+                <span ng-bind="BG.BG[7]"></span>
+            </td>
         </tr>
         </tbody>
     </table>

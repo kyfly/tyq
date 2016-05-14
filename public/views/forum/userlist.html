@@ -59,16 +59,17 @@
     <button class="btn col wechat_btn waves-light waves-effect blue">批量拉黑</button>
     <div class="double-margin-bottom margin-top">
         <pagination
-                page="page"
-                page-size="users.count"
-                total="users.total"
-                show-prev-next="false"
-                dots="...."
-                hide-if-empty="false"
-                adjacent="2"
-                scroll-top="false"
-                pagination-action="changePage(page)"
-                class="center "></pagination>
+            ng-show="users.total > users.count"
+            page="page"
+            page-size="users.count"
+            total="users.total"
+            show-prev-next="false"
+            dots="...."
+            hide-if-empty="false"
+            adjacent="2"
+            scroll-top="false"
+            pagination-action="changePage(page)"
+            class="center "></pagination>
     </div>
 </div>
 

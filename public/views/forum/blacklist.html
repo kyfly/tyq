@@ -53,6 +53,7 @@
 <div class="double-margin-bottom margin-top">
     <button class="btn col wechat_btn waves-light waves-effect blue ">恢复</button>
     <pagination
+            ng-show="users.total > users.count"
             page="page"
             page-size="10"
             total="200"

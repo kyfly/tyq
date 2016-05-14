@@ -18,7 +18,12 @@
                            ng-click="all(master,topics)">
                     <label for="topic-top" id="chose_all"></label>
                 </th>
-                <th style="padding-left: 20px">话题列表</th>
+                <th style="padding-left: 20px">
+                    <a href="">最新</a>
+                    <a href="">最热</a>
+                    <a href="">精选</a>
+                    <a href="">提问</a>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -67,6 +72,7 @@
                             <span class="secondary-content">
                                 <a ng-href="/forum/topic/{{topic.id}}/replies" class="dark-grey-text">评论 | </a>
                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
+                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">修改标签 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
                                       ng-show="!this.topic.state.istop">置顶 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
