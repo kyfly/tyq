@@ -23,13 +23,8 @@ app.controller('IndexCtrl', ['$scope', function ($scope) {
         icon: 'mdi-social-person',
         subM: [
             {
-                id: 'sidebarUserService',
-                name: '平台客服',
-                url: '/users/service'
-            },
-            {
                 id: 'sidebarUserInfo',
-                name: '平台用户',
+                name: '用户列表',
                 url: '/users/wechat'
             }]
     }, {
