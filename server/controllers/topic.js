@@ -78,6 +78,7 @@ exports.publish = function (req, res, next) {
         id: 'ID',
         title: 'TITLE',
         created: new Date(),
+        updated: new Date()
     }));
 }
 exports.createPublish = function (req, res, next) {
@@ -91,14 +92,19 @@ exports.updatePublishById = function (req, res, next) {
     });
 }
 exports.findPublishById = function (req, res, next) {
-    res.send(rq.getMore({
+    res.send({
         id: 'ID',
         title: 'TITLE',
         content: "CONTENT",
         created: new Date(),
-    }));
+    });
 }
 exports.destroyPublishById = function (req, res, next) {
+    res.send({
+        status: 200
+    });
+}
+exports.createTopic=function(req,res,next){
     res.send({
         status: 200
     });

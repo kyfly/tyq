@@ -12,8 +12,6 @@
 <body>
 
     <div class="container">
-      
-   
 		<div class="search_box">
 			<form action="">
 				<input type="text" class="search" placeholder="商品搜索：请输入商品关键词">
@@ -21,100 +19,7 @@
 			</form>
 		</div>
 		<div class="content_box">
-
-			<ul class="list_box">
-				<li class="list_box_li">
-					<div class="list_box_lidiv float_left">
-						<div class="list_image">
-							<img src="image/more.png" alt="详情图">
-						</div>
-						<div class="list_text">
-							<div class="text_name">
-								<div class="LV"><span>LV3</span></div>
-								<span>手机血糖测试纸</span>
-							</div>
-							<p class="text_change">兑换积分 : <span>76</span></p>
-						</div>
-					</div>
-				</li>
-				
-				<li class="list_box_li">
-					<div class="list_box_lidiv float_right">
-						<div class="list_image">
-							<img src="image/more.png" alt="详情图">
-						</div>
-						<div class="list_text">
-							<div class="text_name">
-								<div class="LV"><span>LV3</span></div>
-								<span>手机血糖测试纸</span>
-							</div>
-							<p class="text_change">兑换积分 : <span>76</span></p>
-						</div>
-					</div>
-				</li>			
-		
-
-		
-				<li class="list_box_li">
-					<div class="list_box_lidiv float_left">
-						<div class="list_image">
-							<img src="image/more.png" alt="详情图">
-						</div>
-						<div class="list_text">
-							<div class="text_name">
-								<div class="LV"><span>LV3</span></div>
-								<span>手机血糖测试纸</span>
-							</div>
-							<p class="text_change">兑换积分 : <span>76</span></p>
-						</div>
-					</div>
-				</li>		
-				
-				<li class="list_box_li">
-					<div class="list_box_lidiv float_right">
-						<div class="list_image">
-							<img src="image/more.png" alt="详情图">
-						</div>
-						<div class="list_text">
-							<div class="text_name">
-								<div class="LV"><span>LV3</span></div>
-								<span>手机血糖测试纸</span>
-							</div>
-							<p class="text_change">兑换积分 : <span>76</span></p>
-						</div>
-					</div>
-				</li>					
-		
-
-				<li class="list_box_li">
-					<div class="list_box_lidiv float_left">
-						<div class="list_image">
-							<img src="image/more.png" alt="详情图">
-						</div>
-						<div class="list_text">
-							<div class="text_name">
-								<div class="LV"><span>LV3</span></div>
-								<span>手机血糖测试纸</span>
-							</div>
-							<p class="text_change">兑换积分 : <span>76</span></p>
-						</div>
-					</div>
-				</li>		
-				
-				<li class="list_box_li">
-					<div class="list_box_lidiv float_right">
-						<div class="list_image">
-							<img src="image/more.png" alt="详情图">
-						</div>
-						<div class="list_text">
-							<div class="text_name">
-								<div class="LV"><span>LV3</span></div>
-								<span>手机血糖测试纸（50片装）</span>
-							</div>
-							<p class="text_change">兑换积分 : <span>76</span></p>
-						</div>
-					</div>
-				</li>		
+			<ul class="list_box"></ul>	
 		</div>
 
 		<div class="list_footer" id="position_list">
@@ -139,72 +44,67 @@
 
 	</div>
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/dropload.min.js"></script>
 	<script>
 		$(function(){
-			//$('.list_footer_img1').css('left',$('.list_footer_left').width()/2-15+'px');
-			//$('.list_footer_img2').css('left',$('.list_footer_center').width()/2-20+'px');
-			//$('.list_footer_img3').css('left',$('.list_footer_right').width()/2-15+'px');
-			var counter = 0;
-		    // 每页展示4个
-		    var num = 4;
-		    var pageStart = 0,pageEnd = 0;
+			//先加载一页
+			page = 0;
+            $.ajax({
+                type: 'GET',
+                url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
+                dataType: 'json',
+                success: function(data){
+                	var result = '';
+                    for(var i = 0; i < data.count; i++){
+                        if(i%2 == 0){
+                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_left"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
+                        }else{
+                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_right"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
+                        }  
+                    }        
 
-		    // dropload
-			$('.content_box').dropload({
-		        scrollArea : window,
-		        loadDownFn : function(me){
-		            $.ajax({
+                    $('.content_box .list_box').append(result);
+                },
+                error: function(){
+                    alert('Ajax error!');
+                }
+            });
+			//监听滚动条
+			$(window).scroll(function() {
+				//console.log($('.content_box')[0].scrollHeight);
+				//console.log($('body').scrollTop());
+				//console.log($(window).height());
+				/* Act on the event */
+				if($('.content_box')[0].scrollHeight-$('body').scrollTop()-$(window).height()<= 150){  //
+					//console.log(1);
+					page = page++;
+					$.ajax({
 		                type: 'GET',
-		                url: 'json/more.json',
+		                url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
 		                dataType: 'json',
 		                success: function(data){
-		                    var result = '';
-		                    counter++;
-		                    pageEnd = num * counter;
-		                    pageStart = pageEnd - num;
-
-		                    for(var i = pageStart; i < pageEnd; i++){
-		                    	// result += '<a class="item opacity" href="'+data.lists[i].link+'">'
-		                     //                    +'<img src="'+data.lists[i].pic+'" alt="">'
-		                     //                    +'<h3>'+data.lists[i].title+'</h3>'
-		                     //                    +'<span class="date">'+data.lists[i].date+'</span>'
-		                     //                +'</a>';
-		                        if(i%2==0){
-		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_left"><div class="list_image"><img src="'+data.lists[i].pic+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>LV3</span></div><span>'+data.lists[i].title+'</span></div><p class="text_change">兑换积分 : <span>'+data.lists[i].date+'</span></p></div></div></li>	';
+		                	var result = '';
+		                    for(var i = 0; i < data.count; i++){
+		                        if(i%2 == 0){
+		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_left"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
 		                        }else{
-		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_right"><div class="list_image"><img src="'+data.lists[i].pic+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>LV3</span></div><span>'+data.lists[i].title+'</span></div><p class="text_change">兑换积分 : <span>'+data.lists[i].date+'</span></p></div></div></li>	';
-		                        }          
+		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_right"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
+		                        }  
+		                    }        
 
-		                        if((i + 1) >= data.lists.length){
-		                            // 锁定
-		                            me.lock();
-		                            // 无数据
-		                            me.noData();
-		                            break;
-		                        }
-		                    }
-		                    // 为了测试，延迟1秒加载
-		                    setTimeout(function(){
-		                        $('.content_box .list_box').append(result);
-		                        // 每次数据加载完，必须重置
-		                        me.resetload();
-		                    },1000);
+		                    $('.content_box .list_box').append(result);
 		                },
-		                error: function(xhr, type){
+		                error: function(){
 		                    alert('Ajax error!');
-		                    // 即使加载出错，也得重置
-		                    me.resetload();
 		                }
 		            });
-		        },
-		        threshold : 50
-		    });
+					
+				}
+			});
+			
 
+  
+   		 });
 
-
-
-		})
 	</script>
 </body>
 </html>

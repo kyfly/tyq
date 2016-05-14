@@ -158,10 +158,15 @@
                         },
                         "destroyTopics": {
                             url: urlBase + '/Users/:id/topics/:fk',
+                            method: 'put'
                         },
                         "destroyPublishById": {
                             url: urlBase + '/publish/:id',
                             method: 'DELETE'
+                        },
+                        "findPublishById": {
+                            url: urlBase + '/publish/:id',
+                            method: 'GET'
                         }
                     });
                 R.modelName = "Notice";
@@ -195,6 +200,10 @@
                     "destroyReply": {
                         utl: urlBase + '/topics/:id/reply/:fk',
                         method: 'DELETE'
+                    },
+                    "createTopic":{
+                        utl: urlBase+'/topic',
+                        method: 'POST'
                     }
                 });
             R.modelName = "Topic";

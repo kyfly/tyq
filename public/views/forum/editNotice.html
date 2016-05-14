@@ -7,12 +7,12 @@
 <hr class="path-line">
 <h5 class="double-margin-top">标题</h5>
 <div input-field>
-    <input id="name" type="text" style="margin:0" length="20" placeholder="请输入标题" value="{{}}"required>
+    <input id="name" type="text" style="margin:0" length="20" placeholder="请输入标题" ng-model="notice.title" required>
     <label for="name"></label>
 </div>
 
 <div class="double-margin-top">
     <h5>正文</h5>
-    <textarea class="n_textarea" placeholder="请输入公告内容" style="resize: none"></textarea>
-    <a href="" class="btn  waves-light waves-effect blue margin-top" ng-click="">发布</a>
+    <textarea class="n_textarea" placeholder="请输入公告内容" style="resize: none" ng-model="notice.content"></textarea>
+    <a href="" class="btn  waves-light waves-effect blue margin-top" ng-click="updateNotice()">发布</a>
 </div>

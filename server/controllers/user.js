@@ -195,11 +195,11 @@ exports.findAnalysis = function (req, res, next) {
         BG: [2,3,4,5,6,6,8,8]
     }])
 }
-exports.createMessages = function (req, res, next) {
-    res.send({
-        status: 200
-    })
-}
+// exports.createMessages = function (req, res, next) {
+//     res.send({
+//         status: 200
+//     })
+// }
 exports.createTopics = function (req, res, next) {
     res.send({
         status: 200
