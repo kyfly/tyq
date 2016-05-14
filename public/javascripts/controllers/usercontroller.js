@@ -73,6 +73,7 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
         console.log(res);
         $scope.user = res;
     });
+
     User.findPoints({
         id: userId
     }, function (res) {
@@ -81,8 +82,8 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
     });
 
     //删除用户信息记录
-    User.destroyPoints({
-    });
+   // User.destroyPoints({
+    //});
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a
