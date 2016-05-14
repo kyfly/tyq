@@ -8,8 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/all.css">
 </head>
-<body style="background-color:#efefef">
-	<div class="container-fluid goods_all">
+<body>
+	<nav class="navbar navbar-fixed-top">
+		<a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-chevron-left"></span></a>	商品详情
+	</nav>
+	<div class="container-fluid goods_all all_padtop">
 		<div class="goods_content">
 			<div class="goods_img">
 				<img src="image/01.jpg" alt="图片">
@@ -45,7 +48,6 @@
 
 					</div>
 				</div>
-				<!-- <div class="goods_comment">评论 <span>(7)</span><span class="glyphicon glyphicon-chevron-right goods_span" aria-hidden="true"></div> -->
 		</div>
 		<div class="goods_panel">
 			<div class="goods_panel_top">
@@ -77,77 +79,9 @@
 	</div>
 
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/my_all.js"></script>
+	<script type="text/javascript" src="js/goods.js"></script>
 	<script>
-	$(function(){
-		//
-		var num =Number($('.goods_pcount').text());
-
-
-		
-		$('.goods_footer').click(function(event) {
-			/* Act on the event */
-			var isComfirm = $('.goods_footer').text().trim();
-			if(isComfirm=='确 定'){	
-				window.location.href = "comfirm_address.html?Onum="+num;
-			}else{
-				var oDiv = $('<div class="shade"></div>')
-				$('body').prepend(oDiv);
-				$('.goods_panel').css('display','block');
-				$('.goods_footer').text('确 定');
-			}
-		});
-		$('.goods_psub').click(function(event) {
-			/* Act on the event */		
-			if(num>0){
-				num--;
-				$('.goods_pcount').text(num);
-				$('.goods_ptext p:nth-of-type(2) span').text(num);
-			}else{
-				return false;
-			}
-		});
-		$('.goods_padd').click(function(event) {
-			/* Act on the event */		
-				num++;
-				$('.goods_pcount').text(num);
-				$('.goods_ptext p:nth-of-type(2) span').text(num);
-		});
-
-		$('.goods_pexit').click(function(event) {
-			/* Act on the event */
-			$(this).parents('.goods_panel').css('display','none');
-			$('.shade').css('display','none');
-			$('.goods_footer').text('立即兑换');
-		});
-		
-		$.ajax({
-			url: '/api/goods/ID?access_token=ACCESSTOKEN',
-			type: 'GET',
-			dataType: 'json',
-			data: {param1: 'value1'},
-			success:function(data){
-				$('.goods_img img').attr('src',data.img);
-				$('.detail_img img').attr('src',data.img);
-				$('.goods_pimg img').attr('src',data.img);	
-
-				$('.goods_name h5').text(data.name);
-				$('.detail_text_one').html(data.desc);
-				$('.detail_text_two').html(data.explain);
-				$('.LV span').text(data.cLevel);
-				$('.goods_left span').text(data.count);
-
-				$('.goods_point span').text(data.cPoint);
-				$('.goods_ppoint span').text(data.cPoint);
-
-
-			},
-			error:function(){
-
-			}
-		})
-		
-	});
+	
 	</script>
 </body>
 </html>

@@ -7,11 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/all.css">
-	<link rel="stylesheet" href="css/dropload.css">
 </head>
 <body>
-
-    <div class="container">
+	<nav class="navbar navbar-fixed-top">
+		<span class="glyphicon glyphicon-chevron-left"></span>	商品列表
+	</nav>
+    <div class="container all_padtop">
 		<div class="search_box">
 			<form action="">
 				<input type="text" class="search" placeholder="商品搜索：请输入商品关键词">
@@ -44,67 +45,6 @@
 
 	</div>
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script>
-		$(function(){
-			//先加载一页
-			page = 0;
-            $.ajax({
-                type: 'GET',
-                url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
-                dataType: 'json',
-                success: function(data){
-                	var result = '';
-                    for(var i = 0; i < data.count; i++){
-                        if(i%2 == 0){
-                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_left"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
-                        }else{
-                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_right"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
-                        }  
-                    }        
-
-                    $('.content_box .list_box').append(result);
-                },
-                error: function(){
-                    alert('Ajax error!');
-                }
-            });
-			//监听滚动条
-			$(window).scroll(function() {
-				//console.log($('.content_box')[0].scrollHeight);
-				//console.log($('body').scrollTop());
-				//console.log($(window).height());
-				/* Act on the event */
-				if($('.content_box')[0].scrollHeight-$('body').scrollTop()-$(window).height()<= 150){  //
-					//console.log(1);
-					page = page++;
-					$.ajax({
-		                type: 'GET',
-		                url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
-		                dataType: 'json',
-		                success: function(data){
-		                	var result = '';
-		                    for(var i = 0; i < data.count; i++){
-		                        if(i%2 == 0){
-		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_left"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
-		                        }else{
-		                        	result += '<li class="list_box_li"><div class="list_box_lidiv float_right"><div class="list_image"><img src="'+data.content[i].img+'" alt="详情图"></div><div class="list_text"><div class="text_name"><div class="LV"><span>'+data.content[i].cLevel+'</span></div><span>'+data.content[i].name+'</span></div><p class="text_change">兑换积分 : <span>'+data.content[i].price+'</span></p></div></div></li>	';
-		                        }  
-		                    }        
-
-		                    $('.content_box .list_box').append(result);
-		                },
-		                error: function(){
-		                    alert('Ajax error!');
-		                }
-		            });
-					
-				}
-			});
-			
-
-  
-   		 });
-
-	</script>
+	<script type="text/javascript" src="js/list.js"></script>
 </body>
 </html>
