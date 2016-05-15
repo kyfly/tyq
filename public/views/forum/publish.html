@@ -10,12 +10,20 @@
         <input id="name" type="text" style="margin:0" ng-model="publishItem.title" length="20" required>
         <label for="name">请输入文章标题</label>
     </div>
-    <div class="margin-top">
-        <div class="ueditor" ng-model="publishItem.content" config="editorConfig"></div>
+    <div class="double-margin-top">
+        <h5 class="path">内容</h5>
+        <hr>
+        <textarea class="publish_textarea" style="resize: none" ng-model="publishItem.content"></textarea>
     </div>
 </div>
-<div class="margin-top double-margin-bottom">
-    <a tooltipped data-position="bottom" data-delay="0" data-tooltip="您可以使用秀米制作文案然后粘贴到该编辑器中"
-       class="waves-effect waves-light btn left blue" href="http://xiumi.us/#/studio/papers" target="_blank">使用秀米制作</a>
-    <a href="" class="btn waves-light waves-effect blue right" ng-click="publishTopic()">发布</a>
+<div>
+    <div class=""  >
+        <a class="btn blue wave right " style="height: 42px" >发布</a>
+    </div>
+    <div class="file-field " style="height:42px">
+        <a class="btn blue wave">图片</a>
+        <input type="file" style="width: 96px"ng-model="publishItem.img">
+    </div>
+    <img ng-src="{{publishItem.img}}">
 </div>
+

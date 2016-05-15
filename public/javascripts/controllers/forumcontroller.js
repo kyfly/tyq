@@ -42,39 +42,19 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
 }]);
 
 app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($scope, Ueditor, Topic) {
-    $scope.editorConfig = Ueditor.config;
-    $scope.publishItem = {};
-    $scope.publishTopic = function () {
-        var content = $scope.publishItem.content;
-        var title = $scope.publishItem.title;
-
-        if (!content || !title) {
-            Materialize.toast('文章标题和内容都不能为空', 2000);
-            return;
+$scope.publishItem={};
+    $scope.publishTopic=function() {
+        if (!$scope.publishItem.title || !$scope.publishItem.content) {
+            Materialize.toast('标题和内容不能为空！', 2000);
         }
-        else {
-            Topic.createTopic($scope.publishItem, function (res) {
-                Materialize.toast('发布成功', 2000);
-                $scope.publishItem = {};
-            }, function (res) {
-                Materialize.toast('发布失败', 2000);
-            })
+        else{
+            Topic.createTopic($scope.publishItem,function(res){
+                Materialize.toast('发布成功！', 2000);
+            },function(res){
+                Materialize.toast('发布失败！', 2000);
+            });
         }
-        console.log(content);
-        console.log(title);
-
-        //$http({
-        //    url: '/ue/uploads?dir=user&id=' + $scope.$currentUser.id + '&action=uploadtext',
-        //    method: "post",
-        //    data: {
-        //        'content': $scope.articleEditorContent
-        //    }
-        //}).success(function (res) {
-        //
-        //
-        //});
     }
-
 }]);
 /*
  话题管理
@@ -321,6 +301,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
         }
         $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
     };
+
 }]);
 app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.page = 1;
