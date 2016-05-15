@@ -9,7 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="css/all.css">
 </head>
 <body>
-	<div class="container-fluid order_detail">
+	<nav class="navbar navbar-fixed-top">
+		<a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-chevron-left"></span></a>	订单详情
+	</nav>
+	<div class="container-fluid order_detail all_padtop">
 		<header>
 			<div class="order_top">
 				<div class="order_top_left">订单状态 :　</div>
@@ -74,34 +77,6 @@
 		</footer>
 	</div>
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script>
-	$(function(){
-		$.ajax({
-			url: '/api/orders/ID?access_token=ACCESSTOKEN',
-			type: 'GET',
-			dataType: 'json',
-			data: {param1: 'value1'},
-			success:function(data){
-				$('.order_top_right').text(data.state);
-				$('.img_box img').attr('src',data.goods.img);
-				$('.order_center_top .order_center_name').text(data.goods.name);
-				$('.order_center_change .order_center_left span').text(data.goods.cPoint);
-				$('.order_center_bottom .order_center_left span').text(data.goods.cPoint*$('.order_center_change .order_center_right span').text());
-				$('.order_center_bottom .order_center_right span').text(data.Logistical.tracking);
-				$('.order_footer_top .right').text(data.user.name);
-				$('.order_footer_center .right').text(data.user.phone);
-				$('.order_footer_bottom .right').text(data.user.addr);
-				$('.order_footer_express .right').text(data.Logistical.company);
-				$('.order_footer_orderid .right').text(data.Logistical.tracking);
-
-			},
-			error:function(){
-
-			}
-		});
-		
-		
-	});
-	</script>
+	<script type="text/javascript" src="js/orderform_detail.js"></script>
 </body>
 </html>
