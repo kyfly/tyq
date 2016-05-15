@@ -64,7 +64,7 @@
                                 <span ng-bind="usertopic.reply"></span>
                             </div>
                             <span class="secondary-content">
-                                <a ng-href="/forum/topic/{{usertopic.id}}/replies" class="dark-grey-text">评论 | </a>
+                                <a ng-href="/forum/topics/{{usertopic.id}}/reply" class="dark-grey-text">评论 | </a>
                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
                                       ng-show="!this.usertopic.state.istop">置顶 | </span>
