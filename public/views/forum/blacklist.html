@@ -3,8 +3,8 @@
         黑名单
     </h5>
     <div class="col m6 s11 center search-box">
-        <input type="text" placeholder="">
-        <button class="btn waves-effect blue waves-light">搜索</button>
+        <input type="text" placeholder="" ng-model="search.content">
+        <button class="btn waves-effect blue waves-light" ng-click="searchUsers()">搜索</button>
     </div>
 </div>
 <hr class="path-line">
@@ -55,8 +55,8 @@
     <pagination
             ng-show="users.total > users.count"
             page="page"
-            page-size="10"
-            total="200"
+            page-size="users.count"
+            total="total"
             show-prev-next="false"
             dots="...."
             hide-if-empty="false"
