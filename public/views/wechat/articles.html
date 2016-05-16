@@ -6,8 +6,8 @@
         </a>
     </h5>
     <div class="col m6 s11 center search-box">
-        <input type="text" placeholder="请输入作者/标题/栏目">
-        <button class="btn waves-effect blue waves-light">
+        <input type="text" placeholder="请输入作者/标题/栏目" ng-model="search.content">
+        <button class="btn waves-effect blue waves-light" ng-click="searchArticles()">
             搜索
         </button>
     </div>

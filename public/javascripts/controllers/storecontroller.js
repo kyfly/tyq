@@ -1,14 +1,21 @@
 app.controller('StoreReleaseCtrl',
     ['$scope', 'Store', function ($scope, Store) {
-        var getGoods = function (exchengeable, page) {
+        $scope.search = {};
+        var getGoods = function (exchengeable, page, search) {
             $scope.all = false;
             Store.find({
                 exchengeable: exchengeable,
-                page: page
+                page: page,
+                search: search
             }, function (res) {
                 $scope.goods = res;
             });
         }
+
+        $scope.searchGoods = function () {
+            getGoods($scope.exchengeableState, $scope.page, $scope.search.content);
+        };
+
         var batchAction = function () {
             var goods = $scope.goods.content;
             var ids = [];
@@ -114,9 +121,12 @@ app.controller('StoreEditCtrl',
         }
     }]);
 app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
-    var getOrders = function (page) {
+    var getOrders = function (page, search) {
         $scope.all = false;
-        Store.orders({page: page}, function (res) {
+        Store.orders({
+            page: page,
+            search: search
+        }, function (res) {
             $scope.orders = res;
         })
     }
@@ -129,6 +139,10 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
         return ids;
     }
     $scope.page = 1;
+
+    $scope.searchOrders = function () {
+        getOrders($scope.page, $scope.search.content);
+    };
 
     $scope.checkOrder = function () {
         $scope.currentOrder = this.order;

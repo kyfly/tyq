@@ -3,8 +3,8 @@
         论坛用户
     </h5>
     <div class="col m6 s11 center search-box">
-        <input type="text" placeholder="请输入名字/积分/等级/发表/回复">
-        <button class="btn waves-effect blue waves-light">搜索</button>
+        <input type="text" placeholder="请输入名字/积分/等级/发表/回复" ng-model="search.content">
+        <button class="btn waves-effect blue waves-light" ng-click="searchUsers()">搜索</button>
     </div>
 </div>
 <hr class="path-line">
@@ -47,7 +47,7 @@
                     <a class="wechat_a" ng-click="moveToBlacklist()">拉黑</a> |
                     <a class="wechat_a" ng-click="setAsAdmin()">设为管理员</a> |
                     <a class="wechat_a">对话</a> |
-                    <a class="wechat_a">详情</a>
+                    <a class="wechat_a" ng-href="users/detail/{{user.id}}">详情</a>
                 </section>
             </td>
         </tr>
