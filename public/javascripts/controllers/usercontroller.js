@@ -19,7 +19,7 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
     getUsers($scope.page);
 
     $scope.changePage = function (page) {
-        getUsers(page);
+        getUsers(page, $scope.search.content);
     };
 
     $scope.searchUsers = function () {
@@ -32,7 +32,7 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
             id: thisElement.user.id
         }, {role: 0}, function () {
             Materialize.toast('拉黑成功！', 2000);
-            getUsers($scope.page);
+            getUsers($scope.page, $scope.search.content);
         }, function () {
             Materialize.toast('拉黑失败！', 2000);
         });

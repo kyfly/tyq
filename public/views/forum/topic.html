@@ -94,6 +94,7 @@
         <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">批量删除</button>
         <div class="double-margin-bottom margin-top">
             <pagination
+                    ng-show="topics.total > topics.count"
                     page="page"
                     page-size="topics.count"
                     total="topics.total"
