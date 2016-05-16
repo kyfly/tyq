@@ -567,7 +567,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
 
 //回复管理
 app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
-
+    
     var getReply = function () {
         $scope.all = false;
         Topic.replyList({
