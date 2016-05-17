@@ -1,7 +1,7 @@
 app.controller(
     'WechatArticlesCtrl', ['$scope', 'Article', function ($scope, Article) {
         $scope.search = {};
-        $scope.page = 1
+        $scope.page = 1;
         var getArticles = function (page, search) {
             Article.find({
                 page: page,
@@ -9,7 +9,7 @@ app.controller(
             }, function (articles) {
                 $scope.articles = articles;
             });
-        }
+        };
 
         $scope.searchArticles = function () {
             getArticles($scope.page, $scope.search.content);
@@ -19,7 +19,7 @@ app.controller(
             $scope.articles.content.forEach(function (article) {
                 article.select = !article.select;
             });
-        }
+        };
         var batchAction = function () {
             var articles = $scope.articles.content;
             var ids = [];
@@ -27,10 +27,10 @@ app.controller(
                 ids.push(articles[x].id)
             }
             return ids;
-        }
+        };
         $scope.synchronize = function () {
             console.log(this)
-        }
+        };
         $scope.destroy = function () {
             var articles = $scope.articles.content;
             var id = this.article.id;
@@ -39,19 +39,19 @@ app.controller(
                     articles.splice(index, 1);
                 }
             });
-        }
+        };
         $scope.destroyMore = function () {
             var more = batchAction();
             console.log(more)
-        }
+        };
         $scope.synchronizeMore = function () {
             var more = batchAction();
             console.log(more)
-        }
+        };
         $scope.changePage = function (page) {
-            getArticles(page);
-        }
-        getArticles(1);
+            getArticles(page, $scope.search.content);
+        };
+        getArticles(1, $scope.search.content);
     }]);
 app.controller(
     'WechatArticleCtrl',

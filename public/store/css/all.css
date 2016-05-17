@@ -9,6 +9,7 @@ body,html{
 	height: 100%;
 	font-size: 10px;
 	font-family: 微软雅黑;
+	word-wrap:break-word;
 }
 .navbar{
 	width: 100%;
@@ -448,7 +449,6 @@ h6{
 .order_detail{ 
 	background-color: #f0f0f0;
 	height: 100%;
-	padding-top: 10px;
 }
 .order_detail header{
 	width: 100%;
@@ -532,8 +532,12 @@ h6{
 .order_footer_top,.order_footer_center,.order_footer_bottom,.order_footer_res,.order_footer_express,.order_footer_orderid{
 	width: 100%;
 	padding: 3px;
+	
 
 	
+}
+.order_footer_express .right{
+	word-wrap:break-word;
 }
 .order_footer_center .left,.order_footer_center .right,.order_footer_top .left,.order_footer_top .right,.order_footer_express .left,.order_footer_orderid .left,.order_footer_express .right,.order_footer_orderid .right{
 	display: inline-block;
@@ -583,6 +587,9 @@ h6{
 	font-size: 1.5rem;
 	padding: 10px 0px;
 }
+.comfirm_add{
+	word-wrap:break-word;
+}
 .comfirm_top .comfirm_next{
 	height: 85px;
 	line-height: 85px;
@@ -612,7 +619,6 @@ h6{
 	border-bottom: 1px solid #ccc;
 }
 .ordlist_center{
-	padding-top: 50px;/*用margin-top不行*/
 	background-color: #f0f0f0;
 }
 .ordlist_center ul li{
@@ -656,6 +662,10 @@ h6{
 	border: 1px solid #f68b24;
 	color: #f68b24; 
 	display: none;
+}
+.detail_order a{
+	color: #ccc;
+	text-decoration: none;
 }
 
 /*第二个订单列表*/
@@ -737,6 +747,7 @@ ul.my_address_list{
 	line-height: 30px;
 	height: 30px;
 }
+
 .my_address_center{
 	padding: 10px 30px 10px 10px;
 	padding-bottom: 10px;
@@ -747,6 +758,7 @@ ul.my_address_list{
 	height: 16px;
 	margin-right: 3px;
 }
+
 .my_address_list footer{
 	padding: 10px 20px 10px 10px;
 	color: #adadad;
@@ -757,4 +769,8 @@ ul.my_address_list{
 	float: right;
 	line-height: 20px;
 	width: 26px;
+}
+.my_address_editor a{
+	color: #adadad;
+	text-decoration: none;
 }
