@@ -12,6 +12,7 @@ exports.find = function (req, res, next) {
             view: 555,
             like: 88,
             deleted: false,
+            type: 1,
             state: {
                 locked: true,
                 istop: false
