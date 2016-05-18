@@ -40,7 +40,7 @@ $(function(){
 	$(window).scroll(function() {
 
 		if($('.content_box')[0].scrollHeight-$('body').scrollTop()-$(window).height()<= 150){  
-			page = page++;
+			page = ++page;
 			$.ajax({
                 type: 'GET',
                 url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
