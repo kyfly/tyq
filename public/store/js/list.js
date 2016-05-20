@@ -1,6 +1,12 @@
 $(function(){
+    //固定底部的导航
     var winHeight = $(window).height();
     $('#position_list').css('top',winHeight-50+'px');
+
+    //获取用户的ID,暂时还没有，之后改
+    var userId = 13083104;
+    console.log('搜索框还没有匹配&&导航没有效果');
+
 	//先加载一页
 	page = 0;
     $.ajax({
@@ -21,7 +27,7 @@ $(function(){
             $('.list_box_li').click(function(event) {
 				/* Act on the event */
 				//跳转到商品详情
-				window.location.href = "goods.html?id="+$(this).attr('index');
+				window.location.href = "goods.html?id="+$(this).attr('index')+"&userId="+userId;
 				//console.log($(this).attr('index'));
 
 			});
@@ -34,7 +40,7 @@ $(function(){
 	$(window).scroll(function() {
 
 		if($('.content_box')[0].scrollHeight-$('body').scrollTop()-$(window).height()<= 150){  
-			page = page++;
+			page = ++page;
 			$.ajax({
                 type: 'GET',
                 url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
@@ -61,8 +67,7 @@ $(function(){
 		$('.list_box_li').click(function(event) {
 			/* Act on the event */
 			//跳转到商品详情
-			window.location.href = "goods.html?id="+$(this).attr('index');
-			//console.log($(this).attr('index'));
+			window.location.href = "goods.html?id="+$(this).attr('index')+"&userId="+userId;
 
 		});
 	});

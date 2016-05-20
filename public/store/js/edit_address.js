@@ -2,12 +2,28 @@ $(function(){
 	var winHeight = $(window).height();
 	$('#position_edit_address').css('top',winHeight-40+'px');
 
-	var name = $('form .form-group:nth-of-type(1) input');
-	var tel = $('form .form-group:nth-of-type(2) input');
-	var detailAds = $('form .form-group textarea');
+	var hrefVar = function(key){
+	    var sear = location.search;
+	    var reg = new RegExp(".*" + key + "=((?:(?!(&|\b)).)*).*", "g");
+	    return sear.replace(reg, "$1");
+	}
+	var userName = hrefVar('userName'),
+		userPhone = hrefVar('userPhone'),
+		userAddr = hrefVar('userAddr'),
+		userDefault = hrefVar('default'),
+		userId = hrefVar('userId');
+
+
+	var name = $('form .form-group:nth-of-type(1) input').val(userName);
+	var tel = $('form .form-group:nth-of-type(2) input').val(userPhone);
+	var detailAds = $('form .form-group textarea').val(userAddr);
 	var btn = $('.detail_btn');
 	var addr = null;
-	var checkbox_d = 0;
+	var checkbox_d = userDefault;
+	if(checkbox_d == "true"){
+		$('.checkbox label').find('.samll_check img').show();
+		$('.checkbox input').prop('checked',true);
+	}
 
 	$('.checkbox label').click(function(event) {
 		if(checkbox_d){
@@ -22,6 +38,7 @@ $(function(){
 			return false;
 		}	
 	});
+
 	$(".selectList").each(function(){
         var url = "area.json";
         var areaJson;
@@ -119,6 +136,7 @@ $(function(){
 			}
 		}
 	};
+
 	btn.click(function(event) {
 		/* Act on the event */
 		var errorMeg = validataFunc();  
@@ -126,6 +144,8 @@ $(function(){
 			alert(errorMeg);
 			return false;   //阻止表单提交
 		}
+		
+
 		addr = $('.selectList select:nth-of-type(1) option').val()+$('.selectList select:nth-of-type(2) option').val()+$('.selectList select:nth-of-type(3) option').val()+detailAds.val();
 		//console.log(addr);
 		checkbox_d = $('.checkbox input').prop('checked');

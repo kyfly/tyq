@@ -77,7 +77,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'ForumNoticeCtrl'
         })
         .state('forumReply', {
-            url: '/forum/topic/:id/replies',
+            url: '/forum/topics/:id/reply',
             templateUrl: '/views/forum/reply.html',
             controller: 'ForumReplyCtrl'
         })

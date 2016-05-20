@@ -2,6 +2,14 @@ $(function(){
 	var winHeight = $(window).height();
 	$('#position_bottom').css('top',winHeight-40+'px');
 
+	var hrefVar = function(key){
+	    var sear = location.search;
+	    var reg = new RegExp(".*" + key + "=((?:(?!(&|\b)).)*).*", "g");
+	    return sear.replace(reg, "$1");
+	}
+	var userId = hrefVar('userId');
+
+
 	var name = $('form .form-group:nth-of-type(1) input');
 	var tel = $('form .form-group:nth-of-type(2) input');
 	var detailAds = $('form .form-group textarea');
@@ -22,6 +30,7 @@ $(function(){
 			return false;
 		}	
 	});
+	console.log('省份的数据还没有，表单验证有用户不为空，手机号格式匹配和街道信息不为空，后面两个暂时注释掉了')
 	$(".selectList").each(function(){
         var url = "area.json";
         var areaJson;
@@ -127,24 +136,27 @@ $(function(){
 			return false;   //阻止表单提交
 		}
 		addr = $('.selectList select:nth-of-type(1) option').val()+$('.selectList select:nth-of-type(2) option').val()+$('.selectList select:nth-of-type(3) option').val()+detailAds.val();
-		//console.log(addr);
 		checkbox_d = $('.checkbox input').prop('checked');
-		console.log(checkbox_d);
-		alert('添加');
+		//console.log(checkbox_d);
+		
+
+		$.ajax({
+			url:'/api/users/'+userId+'/express?access_token=ACCESSTOKEN',
+			type: 'POST',
+			dataType: 'json',
+			data: {name: name.val(),phone:tel.val(),addr:addr,default:checkbox_d},
+			success:function(){
+				console.log('添加成功');
+				window.location.href = "my_address.html?userId="+userId;
+
+			},
+			error:function(){
+
+			}
+		});
 	});
 
 
 	
-	$.ajax({
-		url:'/api/users/ID/express?access_token=ACCESSTOKEN',
-		type: 'POST',
-		dataType: 'json',
-		data: {name: name.val(),phone:tel.val(),addr:addr,default:checkbox_d},
-		success:function(){
-
-		},
-		error:function(){
-
-		}
-	})
+	
 });
