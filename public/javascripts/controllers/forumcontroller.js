@@ -43,7 +43,9 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
 
 app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($scope, Ueditor, Topic) {
 $scope.publishItem={};
+
     $scope.publishTopic=function() {
+        console.dir($scope.publishItem.imgUrl);
         if (!$scope.publishItem.title || !$scope.publishItem.content) {
             Materialize.toast('标题和内容不能为空！', 2000);
         }

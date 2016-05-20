@@ -16,14 +16,20 @@
         <textarea class="publish_textarea" style="resize: none" ng-model="publishItem.content"></textarea>
     </div>
 </div>
-<div>
-    <div class=""  >
-        <a class="btn blue wave right " style="height: 42px" >发布</a>
+<div class="" style="height: 100px">
+    <div class="left"style="height:50px;">
+        <div class="file-field input-field col s6 margin-top">
+                <a class="btn wave">图片</a>
+                <input type="file" accept="image/* "ng-model="publishItem.imgUrl" id="topicImg" multiple>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" >
+            </div>
+        </div>
+        <div>Progessing (in Bytes): <span id="bytesRead">
+ </span> / <span id="bytesTotal"></span>
+        </div>
     </div>
-    <div class="file-field " style="height:42px">
-        <a class="btn blue wave">图片</a>
-        <input type="file" style="width: 96px"ng-model="publishItem.img">
+    <div class="right margin-top" style="height: 50px;">
+        <a class="btn wave right" ng-click="publishTopic()" style="height: 42px">发布</a>
     </div>
-    <img ng-src="{{publishItem.img}}">
 </div>
-
