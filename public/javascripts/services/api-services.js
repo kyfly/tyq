@@ -114,7 +114,7 @@
                          */
                         "destroyPoints":{
                             url:urlBase+'/users/:id/points/:fk',
-                            method:'GET'
+                            method:'DELETE'
                         },
                         "updateById": {
                             utl: urlBase + '/Users/:id',

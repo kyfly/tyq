@@ -81,9 +81,23 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
         $scope.changeItems = res;
     });
 
-    //删除用户信息记录
-   // User.destroyPoints({
-    //});
+    //删除用户积分记录
+    User.destroyPoints({
+
+    });
+
+    $scope.pointsDelete = function(){
+        var thisElement = this ;
+        User.destroyPoints({
+            id:userId,
+            fk:thisElement.content.id
+        },function(){
+            Materialize.toast('删除话题成功！', 2000);
+            //getTopic($scope.page);
+        }, function () {
+            Materialize.toast('删除话题失败！', 2000);
+        });
+    };
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a
