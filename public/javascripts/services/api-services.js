@@ -153,6 +153,9 @@
                         url: urlBase + '/users/:id/points/:fk',
                         method: 'DELETE'
                     },
+                    /*
+                    修改用户信息
+                     */
                     "updateById": {
                         url: urlBase + '/Users/:id',
                         method: 'PUT'
