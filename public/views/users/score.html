@@ -7,7 +7,7 @@
 
 <div class="row top-nav">
     <h6 class="path col m4 s12">
-        积分总量 : {{user.points}}
+        积分总量 : {{user.points}} <a href='#addSport' modal>更改积分</a>
     </h6>
 </div>
 <hr class="path-line">
@@ -19,8 +19,8 @@
         <tr>
             <th class="choose-row">
                 <input type="checkbox" class="filled-in" id="score-top" ng-model="master"
-                       ng-click="all(master,peopleInfo)">
-                <label for="score-top" id="chose_all"></label>
+                       ng-click="all(master,changeItem)">
+                <label for="score-top"></label>
             </th>
             <th>时间</th>
             <th>变化</th>
@@ -32,15 +32,15 @@
         <tbody>
         <tr ng-repeat="changeItem in changeItems.content">
             <td class="checkbox-td">
-                <input type="checkbox" id="check{{$index}}" class="filled-in"
-                       ng-model="x" ng-checked="master" ng-click="chk(checkbox,x)">
-                <label for="check{{$index}}"></label>
+                <input type="checkbox" id="{{changeItem.id}}" class="filled-in"
+                       ng-model="x" ng-checked="master" ng-click="chk(changeItem,x)">
+                <label for="{{changeItem.id}}"></label>
             </td>
             <td ng-bind="changeItem.created| date: 'yyyy-MM-dd HH:mm:ss'"></td>
-            <td ng-bind="changeItem.count"></td>
+            <td ng-bind="changeItem.count" ng-click="aa()"></td>
             <td ng-bind="changeItem.reason.message"></td>
             <td>
-                <a>删除</a>
+                <a ng-click="pointsDelete()">删除</a>
             </td>
         </tr>
         </tbody>
@@ -51,10 +51,11 @@
     <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">删除</button>
     <div class="double-margin-bottom margin-top">
         <pagination
-                page="1"
-                page-size="10"
-                total="200"
-                show-prev-next="true"
+                ng-show="changeItems.total > changeItems.count"
+                page="page"
+                page-size="changeItems.count"
+                total="changeItems.total"
+                show-prev-next="false"
                 dots="...."
                 hide-if-empty="false"
                 adjacent="2"
@@ -63,5 +64,28 @@
                 class="center"></pagination>
     </div>
 </div>
+
+<!--修改积分弹出框-->
+<div id="addSport" class="modal">
+    <div class="modal-content">
+        <h4>修改积分</h4>
+        <div class="row" style="margin-top: 40px" >
+            <div class="col s6 topic-title"> <label>原来积分</label></div>
+            <div class="col s6 topic-title"> {{user.points}}</label></div>
+        </div>
+        <hr>
+        <div input-field class="double-margin-top">
+            <input type="number" ng-model="user.newPoint">
+            <label>修改积分</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect blue btn right margin-left"
+           ng-click="updatePoints()">确定</a>
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat right">取消</a>
+    </div>
+</div>
+</div>
+
 
 

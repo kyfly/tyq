@@ -44,7 +44,7 @@
                         },
                         "updatePublishById": {
                             url: urlBase + '/publish/:id',
-                            method: 'put'
+                            method: 'POST'
                         },
                         "destroyPublishById": {
                             url: urlBase + '/publish/:id',
@@ -58,6 +58,42 @@
                 R.modelName = "Notice";
                 return R;
             }])
+        .factory(
+            'Topic',
+            ['ExpressResource', 'LoopBackAuth', '$injector',
+                function (Resource, LoopBackAuth, $injector) {
+                    var R = Resource(
+                        urlBase + '/topics/:id',
+                        {'id': '@id'},
+                        {
+                            "find": {
+                                url: urlBase + '/topics',
+                                method: 'GET'
+                            },
+                            "findById": {
+                                url: urlBase + '/topics/:id',
+                                method: 'GET'
+                            },
+                            "updateById": {
+                                utl: urlBase + '/topics/:id',
+                                method: 'PUT'
+                            },
+                            "destroyById": {
+                                utl: urlBase + '/topics/:id',
+                                method: 'DELETE'
+                            },
+                            "replyList": {
+                                utl: urlBase + '/topics/:id/reply',
+                                method: 'GET'
+                            },
+                            "destroyReply": {
+                                utl: urlBase + '/topics/:id/reply/:fk',
+                                method: 'DELETE'
+                            }
+                        });
+                    R.modelName = "Topic";
+                    return R;
+                }])
         .factory('Topic', ['ExpressResource', function (Resource) {
             var R = Resource(
                 urlBase + '/topics/:id',
@@ -88,8 +124,9 @@
                         url: urlBase + '/topics/:id/reply/:fk',
                         method: 'DELETE'
                     },
+
                     "createTopic":{
-                        url: urlBase+'/topic',
+                        url: urlBase+'/topics',
                         method: 'POST'
                     }
                 });
@@ -113,6 +150,13 @@
                         url: urlBase + '/users/:id/points',
                         method: 'GET'
                     },
+                    "destroyPoints": {
+                        url: urlBase + '/users/:id/points/:fk',
+                        method: 'DELETE'
+                    },
+                    /*
+                    修改用户信息
+                     */
                     "updateById": {
                         url: urlBase + '/Users/:id',
                         method: 'PUT'
