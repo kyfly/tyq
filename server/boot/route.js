@@ -13,7 +13,7 @@ function loadRoute(app) {
   app.use('/', routes);
   app.use('/ue/uploads', upload(app));
   app.use('/api', apiRoutes(app));
-  app.use('*', notFount);
+  //app.use('*', notFount);
   app.use(error);
 }
 function notFount (req, res, next) {
@@ -26,6 +26,7 @@ function notFount (req, res, next) {
 }
 
 function error (err, req, res, next) {
+  console.log(err)
   if (req.app.get('ignoreUrl').toString().indexOf(req.baseUrl) !== -1) {
     return next();
   }
