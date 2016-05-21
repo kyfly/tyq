@@ -3,10 +3,6 @@
         <a class="blue-text" ui-sref="wechatUsers">用户列表</a>
         > 积分详情
     </h5>
-    <div class="col m6 s11 center search-box">
-        <input type="text">
-        <button class="btn waves-effect blue waves-light">搜索</button>
-    </div>
 </div>
 
 <div class="row top-nav">
@@ -56,28 +52,16 @@
     <div class="double-margin-bottom margin-top">
         <pagination
                 ng-show="changeItems.total > changeItems.count"
-                page="1"
-                page-size="changeItems.total"
-                total="200"
-                show-prev-next="true"
+                page="page"
+                page-size="changeItems.count"
+                total="changeItems.total"
+                show-prev-next="false"
                 dots="...."
                 hide-if-empty="false"
                 adjacent="2"
                 scroll-top="false"
                 pagination-action="changePage(page)"
                 class="center"></pagination>
-
-        ng-show="topics.total > topics.count"
-        page="page"
-        page-size="topics.count"
-        total="topics.total"
-        show-prev-next="false"
-        dots="...."
-        hide-if-empty="false"
-        adjacent="2"
-        scroll-top="false"
-        pagination-action="changePage(page)"
-        class="center"></pagination>
     </div>
 </div>
 
