@@ -16,7 +16,10 @@ module.exports = function typ(req, res, next) {
             'content-type': 'application/json'
         }
     }, function (err, response, data) {
-        //console.log(data, err)
+        if (err) {
+            next('接口调用失败');
+            return
+        }
         if (data.error) {
             req.model.controller[req.api.action](req, res, next)
         } else if (typeof data === 'object') {

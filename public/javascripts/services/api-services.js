@@ -58,42 +58,6 @@
                 R.modelName = "Notice";
                 return R;
             }])
-        .factory(
-            'Topic',
-            ['ExpressResource', 'LoopBackAuth', '$injector',
-                function (Resource, LoopBackAuth, $injector) {
-                    var R = Resource(
-                        urlBase + '/topics/:id',
-                        {'id': '@id'},
-                        {
-                            "find": {
-                                url: urlBase + '/topics',
-                                method: 'GET'
-                            },
-                            "findById": {
-                                url: urlBase + '/topics/:id',
-                                method: 'GET'
-                            },
-                            "updateById": {
-                                utl: urlBase + '/topics/:id',
-                                method: 'PUT'
-                            },
-                            "destroyById": {
-                                utl: urlBase + '/topics/:id',
-                                method: 'DELETE'
-                            },
-                            "replyList": {
-                                utl: urlBase + '/topics/:id/reply',
-                                method: 'GET'
-                            },
-                            "destroyReply": {
-                                utl: urlBase + '/topics/:id/reply/:fk',
-                                method: 'DELETE'
-                            }
-                        });
-                    R.modelName = "Topic";
-                    return R;
-                }])
         .factory('Topic', ['ExpressResource', function (Resource) {
             var R = Resource(
                 urlBase + '/topics/:id',

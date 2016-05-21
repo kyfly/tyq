@@ -12,10 +12,10 @@
         <div class="file-field input-field col s6">
             <div class="btn blue">
                 <span>图片</span>
-                <input type="file">
+                <input type="file" id="goodImg">
             </div>
             <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+                <input class="file-path validate" ng-model="tem" ng-change="uploadImg()" type="text">
             </div>
         </div>
         <div class="input-field col s6">
