@@ -50,9 +50,19 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', '$timeout', function ($sc
     }
 }]);
 
-app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($scope, Ueditor, Topic) {
+app.controller('ForumPublishCtrl', ['$scope', 'Topic','FileUploader', function ($scope, Topic, FileUploader) {
 $scope.publishItem={};
-
+    var uploader = $scope.uploader = new FileUploader({
+        url: 'upload.php'
+    });
+    // FILTERS
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }});
+console.log(uploader.queue[0]);
     $scope.publishTopic=function() {
         console.dir($scope.publishItem.imgUrl);
         if (!$scope.publishItem.title || !$scope.publishItem.content) {
