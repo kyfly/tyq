@@ -69,6 +69,7 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
  */
 app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
     var userId = $stateParams.id;
+    //console.log(userId);
     User.findById({
         id: userId
     }, function (res) {
@@ -84,18 +85,25 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
     });
 
     //删除用户积分记录
-    User.destroyPoints({
+    //User.destroyPoints({
+    //
+    //});
 
-    });
+    $scope.aa = function(){
+        var thisElement = this;
+        console.log(thisElement.changeItem.id);
 
+    };
+
+    console.log(User.findxxx)
     $scope.pointsDelete = function(){
         var thisElement = this ;
+
         User.destroyPoints({
             id:userId,
-            fk:thisElement.content.id
+            fk:thisElement.changeItem.id
         },function(){
             Materialize.toast('删除话题成功！', 2000);
-            //getTopic($scope.page);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });

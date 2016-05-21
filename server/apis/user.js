@@ -76,7 +76,7 @@ exports.default = {
         desc: "用户积分变化列表"
     },{
         api: "/users/:id/points/:fk",
-        method: "get",
+        method: "delete",
         action: "destroyPoints",
         remote: "/users/:id/points/:fk",
         desc: "删除用户积分变化记录"

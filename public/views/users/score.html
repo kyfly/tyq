@@ -3,6 +3,10 @@
         <a class="blue-text" ui-sref="wechatUsers">用户列表</a>
         > 积分详情
     </h5>
+    <div class="col m6 s11 center search-box">
+        <input type="text">
+        <button class="btn waves-effect blue waves-light">搜索</button>
+    </div>
 </div>
 
 <div class="row top-nav">
@@ -37,10 +41,10 @@
                 <label for="{{changeItem.id}}"></label>
             </td>
             <td ng-bind="changeItem.created| date: 'yyyy-MM-dd HH:mm:ss'"></td>
-            <td ng-bind="changeItem.count"></td>
+            <td ng-bind="changeItem.count" ng-click="aa()"></td>
             <td ng-bind="changeItem.reason.message"></td>
             <td>
-                <a>删除</a>
+                <a ng-click="pointsDelete()">删除</a>
             </td>
         </tr>
         </tbody>
