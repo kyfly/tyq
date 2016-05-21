@@ -76,11 +76,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/forum/notice.html',
             controller: 'ForumNoticeCtrl'
         })
-        .state('forumReply', {
-            url: '/forum/topics/:id/reply',
-            templateUrl: '/views/forum/reply.html',
-            controller: 'ForumReplyCtrl'
-        })
         .state('wechatArticles', {
             url: '/weixin/articles',
             templateUrl: '/views/wechat/articles.html',
