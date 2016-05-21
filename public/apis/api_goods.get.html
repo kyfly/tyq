@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兑换中商品列表、仓库中商品列表</title>
+</head>
+
+<body>
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#兑换中商品列表" target="_blank">兑换中商品列表：exchengeable=true</a><br />
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#仓库中商品列表" target="_blank">仓库中商品列表：exchengeable=false</a><br />
+说明：由于时间限制，对提交过来的数据没有做过验证，提交来的时候注意下，每页最多20条记录
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$.ajax({
+  url:"http://cms.dmday.cn/api/goods?access_token=ca94c0c0f825d29247455737d5e07056&exchengeable=true&page=1&search=1",
+  type:"GET",
+  dataType:"json",
+  success: function(json){
+	  /*
+	 	返回：
+		 {"total":"2","count":"2","content":[{"id":"4","name":"\u79ef\u5206\u5546\u57ce\u5546\u54c11110111","img":"http:\/\/img.dmday.cn\/upload\/1122\/111\/234234.png","count":"500","restCount":"500","cLevel":"0","cPoint":"0","single":"1","price":"19.90","postage":"1","storeAt":"0"},{"id":"3","name":"\u79ef\u5206\u5546\u57ce\u5546\u54c11110111","img":"http:\/\/img.dmday.cn\/upload\/1122\/111\/234234.png","count":"500","restCount":"500","cLevel":"0","cPoint":"0","single":"1","price":"19.90","postage":"1","storeAt":"0"}]}
+		 
+		 或者：
+		 {"total":"0","count":0,"content":null}
+	  */
+	  alert(json.total);
+	  alert(json.count);
+	  alert(json.content);
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>
