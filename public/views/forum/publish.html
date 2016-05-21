@@ -10,12 +10,52 @@
         <input id="name" type="text" style="margin:0" ng-model="publishItem.title" length="20" required>
         <label for="name">请输入文章标题</label>
     </div>
-    <div class="margin-top">
-        <div class="ueditor" ng-model="publishItem.content" config="editorConfig"></div>
+    <div class="double-margin-top">
+        <h5 class="path">内容</h5>
+        <hr>
+        <textarea class="publish_textarea" style="resize: none" ng-model="publishItem.content"></textarea>
     </div>
 </div>
-<div class="margin-top double-margin-bottom">
-    <a tooltipped data-position="bottom" data-delay="0" data-tooltip="您可以使用秀米制作文案然后粘贴到该编辑器中"
-       class="waves-effect waves-light btn left blue" href="http://xiumi.us/#/studio/papers" target="_blank">使用秀米制作</a>
-    <a href="" class="btn waves-light waves-effect blue right" ng-click="publishTopic()">发布</a>
+<div class="" style="padding: 0" >
+    <div class="left"style="height:50px;">
+        <div class="file-field input-field col s6 margin-top">
+                <a class="btn wave">图片</a>
+            <input type="file" nv-file-select="" uploader="uploader" multiple  />
+        </div>
+    </div>
+    <div class="right margin-top" style="height: 50px;">
+        <a class="btn wave right" ng-click="publishTopic()" style="height: 42px">发布</a>
+    </div>
 </div>
+<table class="table">
+    <tbody>
+    <tr ng-repeat="item in uploader.queue">
+        <td>
+            <strong>{{ item.file.name }}</strong>
+            <!-- Image preview -->
+            <!--auto height-->
+            <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+            <!--auto width-->
+            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100}"></div>
+            <!--fixed width and height -->
+            <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+        </td>
+        <td></td>
+        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+        <td ng-show="uploader.isHTML5">
+            <div class="progress" style="margin-bottom: 0;">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+            </div>
+        </td>
+        <td></td>
+        <td class="right">
+            <button type="button" class="btn right " ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                <span class=""></span> 上传
+            </button>
+            <button type="button" class="btn margin-top right" ng-click="myremove()">
+                <span class=""></span> 移除
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>

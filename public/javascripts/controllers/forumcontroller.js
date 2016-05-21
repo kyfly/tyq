@@ -50,40 +50,46 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', '$timeout', function ($sc
     }
 }]);
 
-app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($scope, Ueditor, Topic) {
-    $scope.editorConfig = Ueditor.config;
+app.controller('ForumPublishCtrl', ['$scope', 'Topic','FileUploader', function ($scope, Topic, FileUploader) {
     $scope.publishItem = {};
+    $scope.publishItem.img = [];
+    var uploader = $scope.uploader = new FileUploader({
+        url: '/ue/uploads?action=uploadimage'
+    });
+    // FILTERS
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function (item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
+    console.log(uploader);
+    uploader.onSuccessItem = function (fileItem, response, status, headers) {
+        //console.info('onSuccessItem', fileItem, response, status, headers);
+        Materialize.toast('上传成功', 2000);
+        console.log(response.url);
+        $scope.publishItem.img.push(response.url);
+    };
+    $scope.myremove = function () {
+        $scope.uploader.queue[this.$index].remove();
+        $scope.publishItem.img.splice(this.$index, 1);
+    };
     $scope.publishTopic = function () {
-        var content = $scope.publishItem.content;
-        var title = $scope.publishItem.title;
-
-        if (!content || !title) {
-            Materialize.toast('文章标题和内容都不能为空', 2000);
-            return;
+        if(!$scope.publishItem.title||!$scope.publishItem.content){
+            Materialize.toast('标题和内容不能为空', 2000);
         }
         else {
-            Topic.createTopic($scope.publishItem, function (res) {
-                Materialize.toast('发布成功', 2000);
-                $scope.publishItem = {};
-            }, function (res) {
-                Materialize.toast('发布失败', 2000);
-            })
+            Topic.createTopic(
+                {id:localStorage.$Express$currentUserId},
+                $scope.publishItem,function(){
+                    Materialize.toast('发布成功', 2000);
+                },function(){
+                    Materialize.toast('发布失败', 2000);
+                }
+            )
         }
-        console.log(content);
-        console.log(title);
-
-        //$http({
-        //    url: '/ue/uploads?dir=user&id=' + $scope.$currentUser.id + '&action=uploadtext',
-        //    method: "post",
-        //    data: {
-        //        'content': $scope.articleEditorContent
-        //    }
-        //}).success(function (res) {
-        //
-        //
-        //});
-    }
-
+    };
 }]);
 /*
  话题管理
@@ -96,8 +102,19 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             page: page,
             search: search
         }, function (res) {
-            console.log(res);
+            //console.log(res);
             $scope.topics = res;
+        });
+    };
+
+   $scope.getReply = function () {
+        //console.log(this);
+        //$scope.all = false;
+        Topic.replyList({
+            id: this.topic.id
+        }, function (res) {
+            //console.log(res);
+                $scope.replies = res;
         });
     };
 
@@ -336,6 +353,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
         }
         $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
     };
+
 }]);
 app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.page = 1;
@@ -528,73 +546,6 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     };
 
 
-    $scope.choseArr = [];//定义数组用于存放前端显示
-    var str = "";//
-    var flag = '';//是否点击了全选，是为a
-    $scope.x = false;//默认未选中
-    $scope.all = function (c, v) {//全选
-        if (c == true) {
-            $scope.x = true;
-            $scope.choseArr = v;
-        } else {
-            $scope.x = false;
-            $scope.choseArr = [""];
-        }
-        flag = 'a';
-    };
-    $scope.chk = function (z, x) {//单选或者多选
-        if (flag == 'a') {//在全选的基础上操作
-            str = $scope.choseArr.join();
-        }
-        if (x == true) {//选中
-            str = str + z + ',';
-        } else {
-            str = str.replace(z + ',', '');//取消选中
-        }
-        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
-    };
-    $scope.delete = function () {// 操作CURD
-        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
-            Materialize.toast("请至少选中一条数据再操作!", 2000);
-            return;
-        }
-        for (var i = 0; i < $scope.choseArr.length; i++) {
-            //alert($scope.choseArr[i]);
-            console.log($scope.choseArr[i]);//遍历选中的id
-        }
-    };
-}]);
-
-//回复管理
-app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
-    
-    var getReply = function () {
-        $scope.all = false;
-        Topic.replyList({
-            id: $stateParams.id
-        }, function (res) {
-            console.log(res);
-            $scope.replies = res;
-        });
-    };
-
-    getReply();
-
-    //删除
-    $scope.topicDelete = function () {
-        var thisElement = this;
-        Topic.destroyById({
-            id: thisElement.topic.id
-        }, function () {
-            Materialize.toast('删除话题成功！', 2000);
-            getReply();
-        }, function () {
-            Materialize.toast('删除话题失败！', 2000);
-        });
-    };
-
-
-    //全选
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a

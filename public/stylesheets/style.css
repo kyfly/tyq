@@ -290,6 +290,9 @@ td {
 .n_textarea {
     height: 130px;
 }
+.publish_textarea{
+    height:400px;
+}
 
 .list_table_img {
     width: 40px;

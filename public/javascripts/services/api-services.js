@@ -124,8 +124,9 @@
                         url: urlBase + '/topics/:id/reply/:fk',
                         method: 'DELETE'
                     },
-                    "createTopic": {
-                        url: urlBase + '/topic',
+
+                    "createTopic":{
+                        url: urlBase+'/topics',
                         method: 'POST'
                     }
                 });
