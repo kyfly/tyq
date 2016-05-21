@@ -89,7 +89,7 @@
                         method: 'DELETE'
                     },
                     "createTopic":{
-                        url: urlBase+'/topic',
+                        url: urlBase+'/topics',
                         method: 'POST'
                     }
                 });

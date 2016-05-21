@@ -51,31 +51,45 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', '$timeout', function ($sc
 }]);
 
 app.controller('ForumPublishCtrl', ['$scope', 'Topic','FileUploader', function ($scope, Topic, FileUploader) {
-$scope.publishItem={};
+    $scope.publishItem = {};
+    $scope.publishItem.img = [];
     var uploader = $scope.uploader = new FileUploader({
-        url: 'upload.php'
+        url: '/ue/uploads?action=uploadimage'
     });
     // FILTERS
     uploader.filters.push({
         name: 'imageFilter',
-        fn: function(item /*{File|FileLikeObject}*/, options) {
+        fn: function (item /*{File|FileLikeObject}*/, options) {
             var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
             return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-        }});
-console.log(uploader.queue[0]);
-    $scope.publishTopic=function() {
-        console.dir($scope.publishItem.imgUrl);
-        if (!$scope.publishItem.title || !$scope.publishItem.content) {
-            Materialize.toast('标题和内容不能为空！', 2000);
         }
-        else{
-            Topic.createTopic($scope.publishItem,function(res){
-                Materialize.toast('发布成功！', 2000);
-            },function(res){
-                Materialize.toast('发布失败！', 2000);
-            });
+    });
+    console.log(uploader);
+    uploader.onSuccessItem = function (fileItem, response, status, headers) {
+        //console.info('onSuccessItem', fileItem, response, status, headers);
+        Materialize.toast('上传成功', 2000);
+        console.log(response.url);
+        $scope.publishItem.img.push(response.url);
+    };
+    $scope.myremove = function () {
+        $scope.uploader.queue[this.$index].remove();
+        $scope.publishItem.img.splice(this.$index, 1);
+    };
+    $scope.publishTopic = function () {
+        if(!$scope.publishItem.title||!$scope.publishItem.content){
+            Materialize.toast('标题和内容不能为空', 2000);
         }
-    }
+        else {
+            Topic.createTopic(
+                {id:localStorage.$Express$currentUserId},
+                $scope.publishItem,function(){
+                    Materialize.toast('发布成功', 2000);
+                },function(){
+                    Materialize.toast('发布失败', 2000);
+                }
+            )
+        }
+    };
 }]);
 /*
  话题管理
