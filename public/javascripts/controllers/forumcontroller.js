@@ -102,8 +102,19 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             page: page,
             search: search
         }, function (res) {
-            console.log(res);
+            //console.log(res);
             $scope.topics = res;
+        });
+    };
+
+   $scope.getReply = function () {
+        //console.log(this);
+        //$scope.all = false;
+        Topic.replyList({
+            id: this.topic.id
+        }, function (res) {
+            //console.log(res);
+                $scope.replies = res;
         });
     };
 
@@ -535,73 +546,6 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     };
 
 
-    $scope.choseArr = [];//定义数组用于存放前端显示
-    var str = "";//
-    var flag = '';//是否点击了全选，是为a
-    $scope.x = false;//默认未选中
-    $scope.all = function (c, v) {//全选
-        if (c == true) {
-            $scope.x = true;
-            $scope.choseArr = v;
-        } else {
-            $scope.x = false;
-            $scope.choseArr = [""];
-        }
-        flag = 'a';
-    };
-    $scope.chk = function (z, x) {//单选或者多选
-        if (flag == 'a') {//在全选的基础上操作
-            str = $scope.choseArr.join();
-        }
-        if (x == true) {//选中
-            str = str + z + ',';
-        } else {
-            str = str.replace(z + ',', '');//取消选中
-        }
-        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
-    };
-    $scope.delete = function () {// 操作CURD
-        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
-            Materialize.toast("请至少选中一条数据再操作!", 2000);
-            return;
-        }
-        for (var i = 0; i < $scope.choseArr.length; i++) {
-            //alert($scope.choseArr[i]);
-            console.log($scope.choseArr[i]);//遍历选中的id
-        }
-    };
-}]);
-
-//回复管理
-app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
-    
-    var getReply = function () {
-        $scope.all = false;
-        Topic.replyList({
-            id: $stateParams.id
-        }, function (res) {
-            console.log(res);
-            $scope.replies = res;
-        });
-    };
-
-    getReply();
-
-    //删除
-    $scope.topicDelete = function () {
-        var thisElement = this;
-        Topic.destroyById({
-            id: thisElement.topic.id
-        }, function () {
-            Materialize.toast('删除话题成功！', 2000);
-            getReply();
-        }, function () {
-            Materialize.toast('删除话题失败！', 2000);
-        });
-    };
-
-
-    //全选
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a

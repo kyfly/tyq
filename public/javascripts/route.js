@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'UserServiceCtrl'
         })
         .state('userScore',{
-            url:'/users/score/:id',
+            url:'/users/:id/score',
             templateUrl:"/views/users/score.html",
             controller:"UserScoreCtrl"
         })
@@ -75,11 +75,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/forum/notices',
             templateUrl: '/views/forum/notice.html',
             controller: 'ForumNoticeCtrl'
-        })
-        .state('forumReply', {
-            url: '/forum/topics/:id/reply',
-            templateUrl: '/views/forum/reply.html',
-            controller: 'ForumReplyCtrl'
         })
         .state('wechatArticles', {
             url: '/weixin/articles',
