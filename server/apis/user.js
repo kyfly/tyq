@@ -86,7 +86,7 @@ exports.default = {
         action: "createMessages",
         remote: "/users/:id/messages",
         desc: "用户发送消息"
-    }*/,{
+    },*/{
         api: "/users/:id/topics",
         method: "post",
         action: "createTopics",

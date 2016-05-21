@@ -89,20 +89,19 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
     //
     //});
 
-    $scope.aa = function(){
+    $scope.aa = function () {
         var thisElement = this;
         console.log(thisElement.changeItem.id);
 
     };
 
-    console.log(User.findxxx)
-    $scope.pointsDelete = function(){
-        var thisElement = this ;
-
+    console.log(User.findxxx);
+    $scope.pointsDelete = function () {
+        var thisElement = this;
         User.destroyPoints({
-            id:userId,
-            fk:thisElement.changeItem.id
-        },function(){
+            id: userId,
+            fk: thisElement.changeItem.id
+        }, function () {
             Materialize.toast('删除话题成功！', 2000);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
