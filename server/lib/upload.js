@@ -8,73 +8,35 @@ var guid = 1000;
 var app;
 function upload(server) {
   app = server;
-  //AliYun = new AliYun(server);
-    return function (req, res, next) {
-        var query = req.query;
-        if (query.dir !== 'ue' && (!query.dir || !query.id) && req.query.action !== 'config') {
-          throw {
-            "status": "500",
-            "msg":"dir & id 是必须的参数"
-          };
-          return;
-        }
-        switch (req.query.action) {
-          case 'config':
-            res.setHeader('Content-Type', 'application/json');
-            res.sendFile(path.join(__dirname, '../../public/lib/ueditor/config.json'));
-            break;
-            // case 'uploadimage':
-            // uploadfile(req, res);
-            // break;
-          // case 'uploadtext':
-          //   uploadText(req, res);
-          //   break;
-          //   case 'listimage':
-          //   listfile(req, res, '.jpg,.jpeg,.png,.gif,.ico,.bmp');
-          //   break;
-          //   case 'uploadfile':
-          //   uploadfile(req, res);
-          //   break;
-          //   case 'uploadvideo':
-          //   uploadfile(req, res);
-          //   break;
-          //   case 'listfile':
-          //   listfile(req, res, [".png", ".jpg", ".jpeg", ".gif", ".bmp",
-          //       ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
-          //       ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
-          //       ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
-          //       ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml"].join(','));
-          //   break;
-        }
-    }
-}
-var uploadText = function (req, res) {
-  var content = req.body.content;
-  var query = req.query;
-  if (!req.body.content) {
-    throw {
-      "status": "500",
-      "msg":"content is not defined"
-    };
-    return;
+  AliYun = new AliYun(server);
+  return function (req, res, next) {
+      var query = req.query;
+      switch (req.query.action) {
+        case 'config':
+          res.setHeader('Content-Type', 'application/json');
+          res.sendFile(path.join(__dirname, '../../public/lib/ueditor/config.json'));
+          break;
+          case 'uploadimage':
+          uploadfile(req, res);
+          break;
+          case 'listimage':
+          listfile(req, res, '.jpg,.jpeg,.png,.gif,.ico,.bmp');
+          break;
+          case 'uploadfile':
+          uploadfile(req, res);
+          break;
+          case 'uploadvideo':
+          uploadfile(req, res);
+          break;
+          case 'listfile':
+          listfile(req, res, [".png", ".jpg", ".jpeg", ".gif", ".bmp",
+              ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+              ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
+              ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
+              ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml"].join(','));
+          break;
+      }
   }
-  var file = query.dir + '/' + query.id + '/html' + '/' +getFileName('.html');
-  AliYun.putObject({
-    fileName: file,
-    data: req.body.content,
-    contentType: 'text/html'
-  }, function (err, data) {
-    if (err) {
-      throw err;
-    } else {
-      res.send({
-        'url': app.get('oss').rootUrl + file,
-        'title': '',
-        'original': file,
-        'state': 'SUCCESS'
-      });
-    }
-  });
 }
 var uploadfile = function (req, res) {
   var busboy = new Busboy({headers: req.headers});
@@ -87,7 +49,6 @@ var uploadfile = function (req, res) {
       if (req.query.action === 'uploadimage')
       {
         url = app.get('oss').imgUrl + url;
-
       } else {
         url = app.get('oss').rootUrl + url;
       }
@@ -124,7 +85,7 @@ var save = function (file, filename, mimetype, req, callback) {
   file.pipe(fs.createWriteStream(saveTo));
   file.on('end', function() {
     fs.readFile(saveTo,function(err,data){
-      var file = query.dir + '/' + query.id + '/' + fileType + '/' + realName;
+      var file = 'typ/' + fileType + '/' + realName;
       AliYun.putObject({
         fileName: file,
         data: data,
@@ -145,7 +106,7 @@ var getFileName = function(extname) {
 var listfile = function (req, res, fileType) {
   var query = req.query;
   var urlRoot = app.get('oss').rootUrl;
-  var file = query.dir + '/' + query.id + '/';
+  var file = 'tyq';
   AliYun.listObjects( file, function (err, list) {
     var r = {};
     if (err) {

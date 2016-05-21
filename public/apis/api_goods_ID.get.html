@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>获取商品详情</title>
+</head>
+
+<body>
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#商品详情" target="_blank">原说明文档</a><br />
+说明：由于时间限制，对提交过来的数据没有做过验证，提交来的时候注意下
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$.ajax({
+  url:"http://cms.dmday.cn/api/goods/4?access_token=ca94c0c0f825d29247455737d5e07056",
+  type:"GET",
+  dataType:"json",
+  success: function(json){
+	  if(json.status==200){
+		/*
+	 	返回：
+		 {"id":"4","name":"\u79ef\u5206\u5546\u57ce\u5546\u54c11110111","img":"http:\/\/img.dmday.cn\/upload\/1122\/111\/234234.png","desc":"\u79ef\u5206\u5546\u57ce\u5546\u54c1\u7b80\u5355\u8bf4\u660e223232","explain":"\u79ef\u5206\u5546\u57ce\u5546\u54c1\u63cf\u8ff0234i239i2","count":"500","cLevel":"0","cPoint":"0","single":"1","price":"19.90","postage":"1"}
+		*/
+		alert("OK");
+	  }else{
+		/*
+			返回：{"error":{"code":CODE,"message":"MESSAGE","description":"DESCRIPTION"}}
+			CODE、MESSAGE、DESCRIPTION分别为：
+			100001、没有权限、ACCESS_TOKEN错误，请重新获取ACCESS_TOKEN
+			100002、没有权限、ACCESS_TOKEN已经过期，请重新获取ACCESS_TOKEN
+			100003、商品不存在、该商品不存在或者已经被删除
+		*/
+		alert(json.error.code);
+		alert(json.error.message);
+		alert(json.error.description);
+	  };
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>

@@ -7,94 +7,99 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <script src="/lib/angular/angular.min.js"></script>
+    <link href="../lib/materialize/css/materialize.min.css" rel="stylesheet">
+    <link href="../stylesheets/style.css" rel="stylesheet">
     <style type="text/css">
         body {
-            margin: 0
+            margin: 0;
+            font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";
         }
+
         .typ-login {
             position: absolute;
             height: 100%;
             width: 100%;
-            background: #fff;
             overflow: hidden;
-            background: #888;
         }
-        .typ-login form {
-            margin: 20px;
-            margin-top: 25%;
-            background: #999;
-            padding: 20px;
+
+        .form-area {
+            margin-top: 20%;
         }
-        @media only screen and (min-width: 603px) {
-            .typ-login {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 450px;
-                height: 300px;
-                margin: -150px 0 0 -225px; 
-            }
-            .typ-login form {
-                margin: 20px;
-                padding: 20px;
-            }
-        }
-        .typ-login form h5 {
-            text-align: center;
-            color: #fff;
-            margin: 1rem;
-            font-size: 1.3rem;
-        }
+
         .typ-login input {
             display: block;
             width: 100%;
-            height: 30px;
-            line-height: 30px;
+            height: 40px;
+            line-height: 40px;
             margin: 20px 0;
-            border-radius: 5px;
-            border: 0;
+            border-radius: 4px;
+            font-size: 15px;
+            border: 1px solid #CACACA !important;
             text-indent: 1em;
         }
-        .typ-login form button{
+
+        .typ-login button {
+            display: block;
             width: 100%;
             height: 40px;
-            margin-top: 10px;
-            border: 0;
-            border-radius: 5px;
-            background: green;
-            color: #fff;
-            font-size: 1.2rem;
+            line-height: 40px;
+            border-radius: 4px;
+            font-size: 15px;
         }
+
         input:focus {
             outline: none;
         }
+
     </style>
     <script type="text/javascript">
         var app = window.angular.module('typ.login', [])
-        .controller('LoginController', function ($scope, $http) {
-            $scope.submit = function () {
-                $http.post('/login', $scope.user)
-                .success(function (res) {
-                    window.localStorage.ExpressToken = JSON.stringify(res);
-                    window.localStorage.$Express$accessTokenId = res.id;
-                    window.localStorage.$Express$currentUserId = res.userId;
-                    //window.location.href = '/'
-                })
-                .error(function (err) {
-                    console.log(err)
+                .controller('LoginController', function ($scope, $http) {
+                    $scope.submit = function () {
+                        $http.post('/login', $scope.user)
+                                .success(function (res) {
+                                    window.localStorage.ExpressToken = JSON.stringify(res);
+                                    window.localStorage.$Express$accessTokenId = res.id;
+                                    window.localStorage.$Express$currentUserId = res.userId;
+                                    alert('登陆成功！');
+                                    //window.location.href = '/'
+                                })
+                                .error(function (err) {
+                                    console.log(err)
+                                });
+                    }
                 });
-            }
-        });
     </script>
 </head>
 <body>
-    <div class="typ-login" ng-controller="LoginController">
-        <form ng-submit="submit()">
-            <h5>糖友圈管理平台</h5>
-            <input ng-model="user.name" placeholder="请输入用户名/手机号/邮箱" autofocus="" required=""></input>
-            <input ng-model="user.password" placeholder="请输入密码" required=""></input>
-            <button type="submit">登录</button>
-        </form>
+<div class="typ-login light-grey" ng-controller="LoginController">
+    <div class="row form-area">
+        <div class="col s12 m6 offset-m3">
+            <div class="card">
+                <div class="card-content white-text">
+                    <span class="card-title dark-grey-text">糖友圈管理平台登陆</span>
+                    <form ng-submit="submit()">
+                        <input class="col s12 dark-grey-text" ng-model="user.name"
+                               placeholder="请输入用户名/手机号/邮箱" autofocus=""
+                               required="">
+                        <input class="col s12 dark-grey-text" ng-model="user.password" placeholder="请输入密码"
+                               required="">
+                        <button type="submit"
+                                class="col s12 waves-light waves-effect blue btn margin-top double-margin-bottom">登录
+                        </button>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </div>
+
+    <!--<form class="light-grey" ng-submit="submit()">-->
+    <!--<h5>糖友圈管理平台</h5>-->
+    <!--<input ng-model="user.name" placeholder="请输入用户名/手机号/邮箱" autofocus="" required="">-->
+    <!--<input ng-model="user.password" placeholder="请输入密码" required="">-->
+    <!--<button type="submit" class="waves-light waves-effect blue btn">登录</button>-->
+    <!--</form>-->
+</div>
 </body>
 </html>

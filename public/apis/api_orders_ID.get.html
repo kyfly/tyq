@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>获取订单详情</title>
+</head>
+
+<body>
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#订单详情" target="_blank">原说明文档</a><br />
+说明：由于时间限制，对提交过来的数据没有做过验证，提交来的时候注意下
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$.ajax({
+  url:"http://cms.dmday.cn/api/orders/1?access_token=ca94c0c0f825d29247455737d5e07056",
+  type:"GET",
+  dataType:"json",
+  success: function(json){
+	  if(json.status==200){
+		/*
+	 	返回：
+		 {"status":200,"content":{"id":"1","created":"0","orderNo":"1","state":"1","count":"0","Logistical":{"tracking":"TRACKINGNUMBER","company":"COMPANY"},"goods":{"id":"0","name":"","img":"","cPoint":"0","postage":"0"},"user":{"id":"0","name":null,"phone":null,"addr":null}}}
+		 
+		 
+		 数据没有填充，所以就一个格式，created是时间戳，有需要日期格式的，说下替换下就行
+		 
+		*/
+		alert("OK");
+	  }else{
+		/*
+			返回：{"error":{"code":CODE,"message":"MESSAGE","description":"DESCRIPTION"}}
+			CODE、MESSAGE、DESCRIPTION分别为：
+			100001、没有权限、ACCESS_TOKEN错误，请重新获取ACCESS_TOKEN
+			100002、没有权限、ACCESS_TOKEN已经过期，请重新获取ACCESS_TOKEN
+			100003、订单不存在、该订单不存在或者已经被删除
+		*/
+		alert(json.error.code);
+		alert(json.error.message);
+		alert(json.error.description);
+	  };
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>
