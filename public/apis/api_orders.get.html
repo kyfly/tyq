@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单列表</title>
+</head>
+
+<body>
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#订单列表" target="_blank">原说明文档</a><br>
+说明：由于时间限制，对提交过来的数据没有做过验证，提交来的时候注意下，每页最多20条记录，search的是orderNo
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$.ajax({
+  url:"http://cms.dmday.cn/api/orders?access_token=ca94c0c0f825d29247455737d5e07056&page=1&search=1",
+  type:"GET",
+  dataType:"json",
+  success: function(json){	  
+	  /*
+	 	返回：
+		 {
+    total: 300,
+    count: 20,
+    content: [{
+        id: ID,
+        created: CREATETIME,
+        orderNo: ORDERNUMBER,
+        state: STATECODE,
+        count: COUNT,
+        Logistical: {
+            tracking： TRACKINGNUMBER,
+            company: COMPANY
+        },
+        goods: {
+            id: GOODSID,
+            name: GOODSNAME,
+            img: GOODSIMG,
+            cPoint: USERPOINT,
+            postage: TRUE
+        },
+        user: {
+            id: USERID,
+            name: USERNAME,
+            phone: USERPHONE,
+            addr: ADDRESS
+        }
+    }]
+}
+
+（暂无测试数据）
+
+		 
+		 或者：
+		 {"total":"0","count":0,"content":[]}
+	  */
+	  alert(json.total);
+	  alert(json.count);
+	  alert(json.content);
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>根据用户名密码获取ACCESS_TOKEN的接口</title>
+</head>
+
+<body>
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+data='{"username": "liu","password": "liu654123"}';
+$.ajax({
+  url:"http://cms.dmday.cn/api/admin",
+  type:"POST",
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+  data:data,
+  success: function(json){
+    if(json.status==200){
+		/*
+			返回{"status":200,"access_token":"ACCESS_TOKEN","express_time":"EXPRESS_TIME"}
+			ACCESS_TOKEN：32位小写md5值，比如e50940ea9dedb2ce91b3636d807efac1，过期时间为2小时
+			EXPRESS_TIME：ACCESS_TOKEN过期时间戳，比如1472894908
+		*/
+		alert(json.access_token);
+		alert(json.express_time);
+	}else{
+		/*
+			返回：{"error":{"code":CODE,"message":"MESSAGE","description":"DESCRIPTION"}}
+			CODE、MESSAGE、DESCRIPTION分别为：
+			100001、数据提交有误、提交的数据有误，请确认提交的是JSON格式数据，再重新提交
+			100002、管理员用户名不能为空、管理员用户名不能为空，请重新提交
+			100003、管理员密码不能为空、管理员密码不能为空，请重新提交
+			100004、管理员用户不存在、该管理员用户不存在或者已经被删除
+			100005、密码错误、管理员密码有误，请重新输入
+			100006、该管理员已经被锁定、该管理员已经被锁定，无法获取ACCESS_TOKEN
+			100007、ACCESS_TOKEN生成失败、由于未知原因导致ACCESS_TOKEN生成失败，请重试
+		*/
+		alert(json.error.code);
+		alert(json.error.message);
+		alert(json.error.description);
+	}
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>

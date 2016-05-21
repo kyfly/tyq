@@ -21,5 +21,14 @@
     "token": "weixin",
     "origin_id": "gh_6c1dc30d6e33",
     "encodingAESKey":"57Wlt791UGt3VrPGzRbRLaErSXTK1wasznnUs8v1k6X"
+  },
+  "oss": {
+    "key": "ILhh2EX7UnN2UI1t",
+    "bucket": "whereru-beta",
+    "secret": "L46bpHJOvK4BRxgvWf7RnllvaOq1sq",
+    "endpoint": "http://oss-cn-hangzhou.aliyuncs.com",
+    "allowOrigin": "http://localhost:3000",
+    "rootUrl": "http://oss.etuan.org/",
+    "imgUrl": "http://cdn-img.etuan.org/"
   }
 }

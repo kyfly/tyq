@@ -69,19 +69,42 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
  */
 app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($scope, User, $stateParams) {
     var userId = $stateParams.id;
+    $scope.page = 1;
+    //console.log(userId);
     User.findById({
         id: userId
     }, function (res) {
         console.log(res);
         $scope.user = res;
     });
-    User.findPoints({
-        id: userId
-    }, function (res) {
-        console.log(res);
-        $scope.changeItems = res;
-    });
 
+    var getPoints = function (page) {
+        User.findPoints({
+            id: userId,
+            page: page
+        }, function (res) {
+            console.log(res);
+            $scope.changeItems = res;
+        });
+    };
+    getPoints($scope.page);
+
+    $scope.changePage = function (page) {
+        getPoints(page);
+    };
+
+    $scope.pointsDelete = function () {
+        var thisElement = this;
+        User.destroyPoints({
+            id: userId,
+            fk: thisElement.changeItem.id
+        }, function () {
+            Materialize.toast('删除记录成功！', 2000);
+            getPoints($scope.page);
+        }, function () {
+            Materialize.toast('删除记录失败！', 2000);
+        });
+    };
     $scope.choseArr = [];//定义数组用于存放前端显示
     var str = "";//
     var flag = '';//是否点击了全选，是为a

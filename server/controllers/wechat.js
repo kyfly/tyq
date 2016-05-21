@@ -1,6 +1,7 @@
 var wechatAPI = require('wechat-api');
 var webot = require('weixin-robot');
 var config = require('../config');
+var request = require('request');
 var q = require('q');
 var api = new wechatAPI(config.wechat.appid, config.wechat.appsecret);
 module.exports = function (webot) {
@@ -57,7 +58,7 @@ module.exports.wechat = function (req, res, next) {
     var count = req.body.count || 10;
     getMaterials(offset, count)
     .then(function (items) {
-        res.send(items)
+        res.send(items[0].content)
     }, function (err) {
         res.send(err)
     })
@@ -68,7 +69,9 @@ module.exports.messages = function (req, res, next) {
             res.send('succeed');
     });
 }
-
+module.exports.img = function (req, res, next) {
+    request(req.query.url).pipe(res);
+}
 function pullNews () {
     var type = 'news';
     q.all([

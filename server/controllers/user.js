@@ -126,7 +126,7 @@ exports.findPoints = function (req, res, next) {
         content: [{
             id: 1,
             created: new Date(),
-            count: 2,
+            count: 1,
             reason: {
                 message: 'MESSAGE',
                 goodId: 1
@@ -134,7 +134,7 @@ exports.findPoints = function (req, res, next) {
         },{
             id: 2,
             created: new Date(),
-            count: 3,
+            count: 2,
             reason: {
                 message: 'MESSAGE',
                 goodId: 2
@@ -143,6 +143,55 @@ exports.findPoints = function (req, res, next) {
             id: 3,
             created: new Date(),
             count: 3,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 4,
+            created: new Date(),
+            count: 4,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 5,
+            created: new Date(),
+            count: 5,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 6,
+            created: new Date(),
+            count: 6,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 7,
+            created: new Date(),
+            count: 7,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 8,
+            created: new Date(),
+            count: 8,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 9,
+            created: new Date(),
+            count: 9,
+            reason: {
+                message: 'MESSAGE'
+            }
+        },{
+            id: 10,
+            created: new Date(),
+            count: 10,
             reason: {
                 message: 'MESSAGE'
             }

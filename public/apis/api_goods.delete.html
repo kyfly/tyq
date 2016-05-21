@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>删除多个商品</title>
+</head>
+
+<body>
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#删除多个商品" target="_blank">原说明文档</a><br />
+说明：由于时间限制，对提交过来的商品数据没有做过验证，提交来的注意下
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$.ajax({
+  url:"http://cms.dmday.cn/api/goods?access_token=ca94c0c0f825d29247455737d5e07056&ids[]=1&ids[]=2",
+  type:"DELETE",
+  dataType:"json",
+  success: function(json){
+	  if(json.status==200){
+		/*
+			成功删除返回{"status":200}
+		*/
+		alert("ok");
+	  }else{
+		/*
+			返回：{"error":{"code":CODE,"message":"MESSAGE","description":"DESCRIPTION"}}
+			CODE、MESSAGE、DESCRIPTION分别为：
+			100001、没有权限、ACCESS_TOKEN错误，请重新获取ACCESS_TOKEN
+			100002、没有权限、ACCESS_TOKEN已经过期，请重新获取ACCESS_TOKEN
+			100003、数据提交有误、请确认提交来的数据是数组格式，请重新提交
+			100004、数据提交有误、请确认提交来的数据是数组格式且不能为空，请重新提交
+			100005、删除失败、没有这些商品或者商品删除失败，请重新提交
+		*/
+		alert(json.error.code);
+		alert(json.error.message);
+		alert(json.error.description);
+	  };
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>

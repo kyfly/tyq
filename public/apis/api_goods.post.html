@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商品上传</title>
+</head>
+
+<body>
+<a href="https://github.com/realywithoutname/tyq/blob/master/商城管理.md#商品上传" target="_blank">原说明文档</a><br />
+说明：由于时间限制，对提交过来的数据没有做过验证，提交来的时候注意下
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+data='{    "name": "积分商城商品1110111",    "desc": "积分商城商品简单说明223232",    "explain": "积分商城商品描述234i239i2",    "img": "http://img.dmday.cn/upload/1122/111/234234.png",    "count": 500,    "cLevel": 2,    "cPoint": 25,    "single": "TRUE",    "price": 19.9,    "postage": "TRUE"}';
+$.ajax({
+  url:"http://cms.dmday.cn/api/goods?access_token=ca94c0c0f825d29247455737d5e07056",
+  type:"POST",
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+  data:data,
+  success: function(json){
+	  if(json.status==200){
+		/*
+			返回{"status":200,"id":"ID"}
+			ID：商品ID
+		*/
+		alert(json.id);
+	  }else{
+		/*
+			返回：{"error":{"code":CODE,"message":"MESSAGE","description":"DESCRIPTION"}}
+			CODE、MESSAGE、DESCRIPTION分别为：
+			100001、没有权限、ACCESS_TOKEN错误，请重新获取ACCESS_TOKEN
+			100002、没有权限、ACCESS_TOKEN已经过期，请重新获取ACCESS_TOKEN
+			100003、数据提交有误、提交的数据有误，请确认提交的是JSON格式数据，再重新提交
+			100004、商品添加失败、由于未知原因导致商品添加失败，请重试
+		*/
+		alert(json.error.code);
+		alert(json.error.message);
+		alert(json.error.description);
+	  };
+  },
+  error:function(){
+	alert('error');  
+  }
+})
+</script>
+</body>
+</html>

@@ -13,6 +13,7 @@ router.get(/^\/(weixin|users|forum|goods)/i, function (req, res, next) {
 router.get('/wechat/articels', wechatCtrl.wechat);
 router.get('/wechat/messages', wechatCtrl.messages);
 router.get('/usercumulate', acount.usercumulate);
+router.get('/img', wechatCtrl.img);
 router.post('/login', acount.login);
 router.get('/login', function (req, res, next) {
     res.sendfile(path.join(req.app.root, '../public/views/login.html'));
