@@ -1,8 +1,8 @@
 <div class="row top-nav">
     <h5 class="path col m5 s12">用户列表</h5>
     <div class="col m6 s11 center search-box">
-        <input type="text">
-        <button class="btn waves-effect blue waves-light">搜索</button>
+        <input type="text" ng-model="search.content">
+        <button class="btn waves-effect blue waves-light" ng-click="searchUsers()">搜索</button>
     </div>
 </div>
 <hr class="path-line">
@@ -43,7 +43,9 @@
             </td>
             <td ng-bind="user.phone"></td>
             <td ng-bind="user.BGtype"></td>
-            <td ng-bind="user.lastBG" class="blue-text"></td>
+            <td>
+                <a ng-bind="user.lastBG"  class="blue-text" ng-href="/users/{{user.id}}/BG"></a>
+            </td>
             <td>
                 <a class="blue-text" ng-href="users/{{user.id}}/score" ng-bind="user.points"></a>
             </td>
@@ -59,6 +61,7 @@
     <button class="btn col wechat_btn waves-effect waves-light blue">拉黑</button>
     <div class="double-margin-bottom margin-top">
         <pagination
+                ng-show="users.total > users.count"
                 page="page"
                 page-size="users.count"
                 total="users.total"

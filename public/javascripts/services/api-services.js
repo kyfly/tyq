@@ -16,11 +16,11 @@
                         method: 'GET'
                     },
                     "updateById": {
-                        utl: urlBase + '/news/:id',
+                        url: urlBase + '/news/:id',
                         method: 'PUT'
                     },
                     "create": {
-                        utl: urlBase + '/news',
+                        url: urlBase + '/news',
                         method: 'POST'
                     }
                 });
@@ -186,23 +186,24 @@
                         method: 'GET'
                     },
                     "updateById": {
-                        utl: urlBase + '/topics/:id',
+                        url: urlBase + '/topics/:id',
                         method: 'PUT'
                     },
                     "destroyById": {
-                        utl: urlBase + '/topics/:id',
+                        url: urlBase + '/topics/:id',
                         method: 'DELETE'
                     },
                     "replyList": {
-                        utl: urlBase + '/topics/:id/reply',
-                        method: 'GET'
+                        url: urlBase + '/topics/:id/reply',
+                        method: 'GET',
+                        isArray: true
                     },
                     "destroyReply": {
-                        utl: urlBase + '/topics/:id/reply/:fk',
+                        url: urlBase + '/topics/:id/reply/:fk',
                         method: 'DELETE'
                     },
                     "createTopic":{
-                        utl: urlBase+'/topic',
+                        url: urlBase+'/topic',
                         method: 'POST'
                     }
                 });
@@ -227,7 +228,7 @@
                         method: 'GET'
                     },
                     "updateById": {
-                        utl: urlBase + '/Users/:id',
+                        url: urlBase + '/Users/:id',
                         method: 'PUT'
                     },
                     "findHealth": {

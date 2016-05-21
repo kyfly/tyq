@@ -26,6 +26,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl:"/views/users/detail.html",
             controller:"UserDetailCtrl"
         })
+        .state('userBGDetail', {
+            url: '/users/:id/BG',
+            templateUrl: '/views/users/detail/BGinfo.html',
+            controller:"UserDetailCtrl"
+        })
         .state('userDetail.health', {
             url: '/health',
             templateUrl: '/views/users/detail/health.html'
@@ -42,10 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/dialogue',
             templateUrl: '/views/users/detail/dialogue.html'
         })
-        .state('userDetail.BG', {
-            url: '/BG',
-            templateUrl: '/views/users/detail/BGinfo.html'
-        })
+        
         /*
          话题管理
          */
@@ -75,7 +77,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'ForumNoticeCtrl'
         })
         .state('forumReply', {
-            url: '/forum/topic/:id/replies',
+            url: '/forum/topics/:id/reply',
             templateUrl: '/views/forum/reply.html',
             controller: 'ForumReplyCtrl'
         })

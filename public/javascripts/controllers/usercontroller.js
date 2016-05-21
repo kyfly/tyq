@@ -3,10 +3,12 @@ app.controller('LoginCtrl', ['$scope', 'User', function ($scope, User) {
 }]);
 app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.page = 1;
-    var getUsers = function (page) {
+    $scope.search = {};
+    var getUsers = function (page, search) {
         User.find({
             scope: "base",
-            page: page
+            page: page,
+            search: search
         }, function (res) {
             console.log(res);
             $scope.users = res;
@@ -17,7 +19,11 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
     getUsers($scope.page);
 
     $scope.changePage = function (page) {
-        getUsers(page);
+        getUsers(page, $scope.search.content);
+    };
+
+    $scope.searchUsers = function () {
+        getUsers($scope.page, $scope.search.content);
     };
 
     $scope.moveToBlacklist = function () {
@@ -26,11 +32,7 @@ app.controller('UserInfoCtrl', ['$scope', 'User', function ($scope, User) {
             id: thisElement.user.id
         }, {role: 0}, function () {
             Materialize.toast('拉黑成功！', 2000);
-            var id = thisElement.user.id;
-            for (var x in $scope.users.content)
-                if ($scope.users.content[x].id === id) {
-                    $scope.users.content.splice(x, 1);
-                }
+            getUsers($scope.page, $scope.search.content);
         }, function () {
             Materialize.toast('拉黑失败！', 2000);
         });

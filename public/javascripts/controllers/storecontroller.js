@@ -1,14 +1,25 @@
 app.controller('StoreReleaseCtrl',
     ['$scope', 'Store', function ($scope, Store) {
-        var getGoods = function (exchengeable, page) {
+        $scope.search = {};
+        var getGoods = function (exchengeable, page, search) {
             $scope.all = false;
             Store.find({
                 exchengeable: exchengeable,
-                page: page
+                page: page,
+                search: search
             }, function (res) {
                 $scope.goods = res;
             });
-        }
+        };
+
+        $scope.changePage = function (page) {
+            getGoods($scope.exchengeableState, page, $scope.search.content)
+        };
+
+        $scope.searchGoods = function () {
+            getGoods($scope.exchengeableState, $scope.page, $scope.search.content);
+        };
+
         var batchAction = function () {
             var goods = $scope.goods.content;
             var ids = [];
@@ -16,7 +27,7 @@ app.controller('StoreReleaseCtrl',
                 ids.push(goods[x].id)
             }
             return ids;
-        }
+        };
         var deleteGood = function (id) {
             var goods = $scope.goods.content;
             goods.forEach(function (good, index) {
@@ -24,7 +35,7 @@ app.controller('StoreReleaseCtrl',
                     goods.splice(index, 1);
                 }
             });
-        }
+        };
         var deleteGoods = function (ids) {
             ids.forEach(function (id) {
                 deleteGood(id);
@@ -37,7 +48,7 @@ app.controller('StoreReleaseCtrl',
             }, function (res) {
                 deleteGoods(ids);
             });
-            getGoods(!exchengeable, $scope.page)
+            getGoods(!exchengeable, $scope.page, $scope.search.content)
         };
         $scope.page = 1;
         $scope.exchengeableState = true;
@@ -48,12 +59,12 @@ app.controller('StoreReleaseCtrl',
         };
         $scope.exchenge = function () {
             $scope.page = 1;
-            getGoods(true, $scope.page)
+            getGoods(true, $scope.page, $scope.search.content);
             $scope.exchengeableState = true;
         };
         $scope.unexchenge = function () {
             $scope.page = 1;
-            getGoods(false, $scope.page)
+            getGoods(false, $scope.page, $scope.search.content);
             $scope.exchengeableState = false;
         };
         $scope.destroy = function () {
@@ -86,7 +97,7 @@ app.controller('StoreReleaseCtrl',
             var ids = batchAction();
             exchengeable(ids, false);
         };
-        getGoods(true, $scope.page);
+        getGoods(true, $scope.page, $scope.search.content);
     }]);
 app.controller('GoodDetailCtrl',
     ['$scope', '$stateParams', 'Store', '$sce', function ($scope, $stateParams, Store, $sce) {
@@ -114,12 +125,21 @@ app.controller('StoreEditCtrl',
         }
     }]);
 app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
-    var getOrders = function (page) {
+    $scope.search = {};
+    var getOrders = function (page, search) {
         $scope.all = false;
-        Store.orders({page: page}, function (res) {
+        Store.orders({
+            page: page,
+            search: search
+        }, function (res) {
             $scope.orders = res;
         })
-    }
+    };
+
+    $scope.changePage = function (page) {
+        getOrders(page, $scope.search.content);
+    };
+
     var batchAction = function () {
         var orders = $scope.orders.content;
         var ids = [];
@@ -127,26 +147,30 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
             ids.push(orders[x].id)
         }
         return ids;
-    }
+    };
     $scope.page = 1;
+
+    $scope.searchOrders = function () {
+        getOrders($scope.page, $scope.search.content);
+    };
 
     $scope.checkOrder = function () {
         $scope.currentOrder = this.order;
         if (this.order.Logistical.company) {
             $scope.currentOrder.disabled = true;
         }
-    }
+    };
     $scope.chooseAll = function () {
         $scope.orders.content.forEach(function (order) {
             order.select = !order.select;
         });
-    }
+    };
     $scope.destroy = function () {
         var id = this.order.id;
         Store.destroyOrderById({id: id}, function (res) {
-            getOrders($scope.page);
+            getOrders($scope.page, $scope.search.content);
         });
-    }
+    };
     $scope.logistical = function () {
         Store.updateOrderById({
             id: $scope.currentOrder.id
@@ -154,18 +178,18 @@ app.controller('StoreOrderCtrl', ['$scope', 'Store', function ($scope, Store) {
             Logistical: $scope.currentOrder.Logistical
         }, function (res) {
             console.log(res);
-            getOrders($scope.page);
+            getOrders($scope.page, $scope.search.content);
         });
-    }
+    };
     $scope.destroyMore = function () {
         var ids = batchAction();
         Store.destroyOrdersMore({ids: ids}, function (res) {
             console.log(res);
-            getOrders($scope.page);
+            getOrders($scope.page, $scope.search.content);
         })
-    }
+    };
     $scope.exchengeableMore = function () {
 
-    }
-    getOrders($scope.page);
+    };
+    getOrders($scope.page, $scope.search.content);
 }]);

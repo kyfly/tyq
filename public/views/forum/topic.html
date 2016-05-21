@@ -3,8 +3,8 @@
         话题管理
     </h5>
     <div class="col m6 s11 center search-box">
-        <input type="text" placeholder="">
-        <button class="btn waves-effect blue waves-light">搜索</button>
+        <input type="text" placeholder="" ng-model="search.content">
+        <button class="btn waves-effect blue waves-light" ng-click="searchTopics()">搜索</button>
     </div>
 </div>
 <hr class="path-line">
@@ -18,7 +18,12 @@
                            ng-click="all(master,topics)">
                     <label for="topic-top" id="chose_all"></label>
                 </th>
-                <th style="padding-left: 20px">话题列表</th>
+                <th style="padding-left: 20px">
+                    <a href="">最新</a>
+                    <a href="">最热</a>
+                    <a href="">精选</a>
+                    <a href="">提问</a>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -65,8 +70,9 @@
                                 <span ng-bind="topic.reply"></span>
                             </div>
                             <span class="secondary-content">
-                                <a ng-href="/forum/topic/{{topic.id}}/replies" class="dark-grey-text">评论 | </a>
+                                <a ng-href="/forum/topics/{{topic.id}}/reply" class="dark-grey-text">评论 | </a>
                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
+                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">修改标签 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
                                       ng-show="!this.topic.state.istop">置顶 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
@@ -88,6 +94,7 @@
         <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="delete()">批量删除</button>
         <div class="double-margin-bottom margin-top">
             <pagination
+                    ng-show="topics.total > topics.count"
                     page="page"
                     page-size="topics.count"
                     total="topics.total"

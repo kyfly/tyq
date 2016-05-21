@@ -1,9 +1,11 @@
-app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
+app.controller('ForumUserlistCtrl', ['$scope', 'User', '$timeout', function ($scope, User, $timeout) {
     $scope.page = 1;
-    var getUsers = function (page) {
+    $scope.search = {};
+    var getUsers = function (page, search) {
         User.find({
             scope: "liveness",
-            page: page
+            page: page,
+            search: search
         }, function (res) {
             console.log(res);
             $scope.users = res;
@@ -14,7 +16,14 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', function ($scope, User) {
     getUsers($scope.page);
 
     $scope.changePage = function (page) {
-        getUsers(page);
+        getUsers(page, $scope.search.content);
+    };
+
+    $scope.searchUsers = function () {
+        getUsers($scope.page, $scope.search.content);
+        $timeout(function () {
+            $scope.users.count = 1000;
+        }, 300);
     };
 
     $scope.moveToBlacklist = function () {
@@ -81,9 +90,11 @@ app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($sco
  */
 app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, Topic, User) {
     $scope.page = 1;
-    var getTopic = function (page) {
+    $scope.search = {};
+    var getTopic = function (page, search) {
         Topic.find({
-            page: page
+            page: page,
+            search: search
         }, function (res) {
             console.log(res);
             $scope.topics = res;
@@ -91,10 +102,14 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
 
     $scope.changePage = function (page) {
-        getTopic(page);
+        getTopic(page, $scope.search.content);
     };
 
     getTopic($scope.page);
+
+    $scope.searchTopics = function () {
+        getTopic($scope.page, $scope.search.content);
+    };
 
     //清理
     $scope.clearTopic = function () {
@@ -324,9 +339,16 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
 }]);
 app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.page = 1;
-    var getBlacklist = function (page) {
+    $scope.search = {};
+    var getBlacklist = function (page, search) {
         User.find({
-            page: page
+            page: page,
+            filter: {
+                where: {
+                    role: 0
+                }
+            },
+            search: search
         }, function (res) {
             console.log(res);
             $scope.blacklist = res;
@@ -337,7 +359,11 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
     getBlacklist($scope.page);
 
     $scope.changePage = function (page) {
-        getBlacklist(page);
+        getBlacklist(page, $scope.search.content);
+    };
+
+    $scope.searchUsers = function () {
+        getBlacklist($scope.page, $scope.search.content);
     };
 
     $scope.removeFromBlacklist = function () {
@@ -346,7 +372,7 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
             id: thisElement.user.id
         }, {role: 1}, function () {
             Materialize.toast('恢复成功！', 2000);
-            getBlacklist($scope.page);
+            getBlacklist($scope.page, $scope.search.content);
         }, function () {
             Materialize.toast('恢复失败！', 2000);
         });
@@ -382,12 +408,13 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
 //用户个人话题
 app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
     $scope.page = 1;
-
-    var getTopic = function (page) {
+    $scope.search = {};
+    var getTopic = function (page, search) {
         $scope.all = false;
         User.findTopics({
             page: page,
-            id: $stateParams.id
+            id: $stateParams.id,
+            search: search
         }, function (res) {
             console.log(res);
             $scope.usertopics = res;
@@ -396,10 +423,14 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
 
 
     $scope.changePage = function (page) {
-        getTopic(page);
+        getTopic(page, $scope.search.content);
     };
 
-    getTopic($scope.page);
+    $scope.searchTopics = function () {
+        getTopic($scope.page, $scope.search.content);
+    };
+
+    getTopic($scope.page, $scope.search.content);
     User.findById({
             id: $stateParams.id
         },
@@ -416,7 +447,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
                 id: thisElement.usertopic.id
             }, function () {
                 Materialize.toast('清理该用户话题成功', 2000);
-                getTopic($scope.page);
+                getTopic($scope.page, $scope.search.content);
             }, function () {
                 Materialize.toast('清理话题失败！', 2000);
             }
@@ -430,7 +461,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
             id: thisElement.usertopic.id
         }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            getTopic($scope.page);
+            getTopic($scope.page, $scope.search.content);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });
@@ -536,7 +567,7 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
 
 //回复管理
 app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
-
+    
     var getReply = function () {
         $scope.all = false;
         Topic.replyList({
@@ -556,7 +587,7 @@ app.controller('ForumReplyCtrl', ['$scope', 'Topic', 'User', '$stateParams', fun
             id: thisElement.topic.id
         }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            getReply($scope.page);
+            getReply();
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });

@@ -1,24 +1,6 @@
 $(function(){
-
-	//商品详情
-	
-
-
-	
-
-
-	//订单列表
-	
-
-	//无订单状态
-	$('.ordlisttwo_center .ordlisttwo_center_no').css('left',$('body').width()/2-57+'px');
-	$('.ordlisttwo_center .ordlisttwo_center_btn').css('left',$('body').width()/2-50+'px');
-	$(window).resize(function(event) {
-
-		$('.ordlisttwo_center .ordlisttwo_center_no').css('left',$('body').width()/2-57+'px');
-		$('.ordlisttwo_center .ordlisttwo_center_btn').css('left',$('body').width()/2-50+'px');
-	});
-
+	var winHeight = $(window).height();
+	$('#position_comfirm_addresstwo').css('top',winHeight-50+'px');
 	//确认收货地址
 	$('.comfirm_footer_two').click(function(event) {
 		/* Act on the event */
@@ -46,21 +28,4 @@ $(function(){
 			window.location.href = 'add_address.html';
 		}
 	});
-
-	// 我的地址
-	
-
-
-	// 最底下按钮的定位
-	//add_address
-	var winHeight = $(window).height();
-	$('#position_bottom').css('top',winHeight-40+'px');
-	$('#position_edit_address').css('top',winHeight-40+'px');
-	$('#position_comfirm_address').css('top',winHeight-50+'px');
-	$('#position_comfirm_addresstwo').css('top',winHeight-50+'px');
-	$('#position_list').css('top',winHeight-50+'px');
-	
-	
-	
-
 });
