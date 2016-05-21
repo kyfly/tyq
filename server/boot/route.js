@@ -12,7 +12,7 @@ function loadRoute(app) {
   });
   app.use('/', routes);
   app.use('/ue/uploads', upload(app));
-  app.use('/api', apiRoutes(app));
+  app.use('/apis', apiRoutes(app));
   //app.use('*', notFount);
   app.use(error);
 }

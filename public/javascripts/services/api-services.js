@@ -1,6 +1,6 @@
 (function (window, angular) {
     var module = angular.module('tyq.api', ['ngResource']);
-    var urlBase = "/api";
+    var urlBase = "/apis";
     var authHeader = 'authorization';
     module.factory('Article', ['ExpressResource', function (Resource) {
             var R = Resource(
@@ -296,6 +296,7 @@
                         }
                         if (ExpressAuth.accessTokenId) {
                             config.params = config.params || {};
+                            config.params.access_token = ExpressAuth.accessTokenId;
                             config.headers[authHeader] = ExpressAuth.accessTokenId;
                         } else if (config.__isGetCurrentUser__) {
                             // Return a stub 401 error for User.getCurrent() when

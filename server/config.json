@@ -12,8 +12,8 @@
   },
   "ignoreUrl": ["/wechat/users"],
   "remote": {
-    "domain": "http://www.dmday.cn",
-    "pathPrefix": "apis"
+    "domain": "http://cms.dmday.cn",
+    "pathPrefix": "api"
   },
   "wechat": {
     "appid": "wx2f80d605a372f3b0",
