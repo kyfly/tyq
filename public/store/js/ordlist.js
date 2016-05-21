@@ -2,10 +2,17 @@ $(function(){
 	$(".ordlist_hearight:contains('已收货')").css('color','#b3b3b3')
 	.parents('li').find('.ordlist_footer .dele_order').css('display','block');
 
+	var hrefVar = function(key){
+	    var sear = location.search;
+	    var reg = new RegExp(".*" + key + "=((?:(?!(&|\b)).)*).*", "g");
+	    return sear.replace(reg, "$1");
+	}
+	var userId = hrefVar('userId');
+	console.log(userId);
 
 	var page = 0
 	$.ajax({
-		url: '/api/orders?access_token=ACCESSTOKEN&page='+page,
+		url: '/api/users/'+userId+'/orders?access_token=ACCESSTOKEN&page='+page,
 		type: 'GET',
 		dataType: 'json',
 		success:function(data){
@@ -74,7 +81,7 @@ $(function(){
 		if($('.ordlist_center ul')[0].scrollHeight-$('body').scrollTop()-$(window).height()<= 150){  //
 			page++;
 			$.ajax({
-				url: '/api/orders?access_token=ACCESSTOKEN&page='+page,
+				url: '/api/users/'+userId+'/orders?access_token=ACCESSTOKEN&page='+page,
 				type: 'GET',
 				dataType: 'json',
 				data: {param1: 'value1'},

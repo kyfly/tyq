@@ -28,21 +28,7 @@ $(function(){
 		}
 	});
 
-	//数量的选择
-	$('.goods_psub').click(function(event) {	
-		if(num>0){
-			num--;
-			$('.goods_pcount').text(num);
-			$('.goods_ptext p:nth-of-type(2) span').text(num);
-		}else{
-			return false;
-		}
-	});
-	$('.goods_padd').click(function(event) {	
-			num++;
-			$('.goods_pcount').text(num);
-			$('.goods_ptext p:nth-of-type(2) span').text(num);
-	});
+	
 
 
 	$('.goods_pexit').click(function(event) {
@@ -58,15 +44,16 @@ $(function(){
 		dataType: 'json',
 		data: {count: num},
 		success:function(data){
+			console.log(data);
 			$('.goods_img img').attr('src',data.img);
 			$('.detail_img img').attr('src',data.img);
 			$('.goods_pimg img').attr('src',data.img);	
 
 			$('.goods_name h5').text(data.name);
 			$('.detail_text_one').html(data.desc);
-			$('.detail_text_two').text(data.explain);
+			//$('.detail_text_two').text(data.explain);
 			$('.LV span').text(data.cLevel);
-			$('.goods_left span').text(data.count);
+			$('.goods_left span').text(data.restCount);
 
 			$('.goods_point span').text(data.cPoint);
 			$('.goods_ppoint span').text(data.cPoint);
@@ -75,6 +62,27 @@ $(function(){
 			}else{
 				$('.goods_content .goods_over .goods_right span').text('不包邮');
 			}
+
+			//数量的选择
+			$('.goods_psub').click(function(event) {	
+				if(num>0&&!data.single){
+					num--;
+					$('.goods_pcount').text(num);
+					$('.goods_ptext p:nth-of-type(2) span').text(num);
+				}else{
+					alert('本商品只能兑换一件');
+					return false;
+				}
+			});
+			$('.goods_padd').click(function(event) {
+				if(!data.single){	
+					num++;
+				}else{
+					alert('本商品只能兑换一件');
+				}
+				$('.goods_pcount').text(num);
+				$('.goods_ptext p:nth-of-type(2) span').text(num);
+			});
 			
 			
 			expressId = data.postage;//true

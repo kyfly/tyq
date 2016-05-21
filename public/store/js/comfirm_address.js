@@ -52,14 +52,19 @@ $(function(){
 		dataType: 'json',
 		data: {num: num},
 		success:function(data){
-
+			console.log(data);
 			//改商品的数据
 			$('.img_box img').attr('src',data.img);
 			$('.comfirm_center_name p').text(data.name);
 			$('.comfirm_center_top .comfirm_center_right span').text(num);
 			$('.comfirm_center_top .comfirm_center_left span').text(data.cPoint);
 			$('.comfirm_center_bottom .comfirm_center_left span').text(data.cPoint*num);
-			$('.comfirm_center_bottom .comfirm_center_right span').text(data.price);
+
+			if(data.postage === true){
+				$('.comfirm_center_bottom .comfirm_center_right span').text('包邮');
+			}else{
+				$('.comfirm_center_bottom .comfirm_center_right span').text('不包邮');
+			}
 
 
 		},
