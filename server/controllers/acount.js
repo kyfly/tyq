@@ -1,15 +1,17 @@
 var crypto = require('crypto');
-
+var request = require('request');
 exports.login = function (req, res, next) {
-    var token = {
-        id: req.app.id ++,
-        created: "2015-12-02T04:05:00.396Z",
-        ttl: 7200
-    }
-    var sha1 = crypto.createHash('sha1');
-    sha1.update(token.id.toString());
-    token.token = sha1.digest('hex');
-    res.send(token);
+    var remote = req.app.get('remote')
+    var url = `${remote.domain}/${remote.pathPrefix}/admin`;
+    var data='{"username": "liu","password": "liu654123"}';
+    console.log(req.body)
+    request.post({
+        url: url,
+        headers: {
+            'content-type': 'application/json'
+        },
+        json: req.body
+    }).pipe(res);
 }
 exports.register = function (req, res, next) {
     

@@ -1,6 +1,6 @@
 (function (window, angular) {
     var module = angular.module('tyq.api', ['ngResource']);
-    var urlBase = "/api";
+    var urlBase = "/apis";
     var authHeader = 'authorization';
     module.factory('Article', ['ExpressResource', function (Resource) {
             var R = Resource(
@@ -58,42 +58,6 @@
                 R.modelName = "Notice";
                 return R;
             }])
-        .factory(
-            'Topic',
-            ['ExpressResource', 'LoopBackAuth', '$injector',
-                function (Resource, LoopBackAuth, $injector) {
-                    var R = Resource(
-                        urlBase + '/topics/:id',
-                        {'id': '@id'},
-                        {
-                            "find": {
-                                url: urlBase + '/topics',
-                                method: 'GET'
-                            },
-                            "findById": {
-                                url: urlBase + '/topics/:id',
-                                method: 'GET'
-                            },
-                            "updateById": {
-                                utl: urlBase + '/topics/:id',
-                                method: 'PUT'
-                            },
-                            "destroyById": {
-                                utl: urlBase + '/topics/:id',
-                                method: 'DELETE'
-                            },
-                            "replyList": {
-                                utl: urlBase + '/topics/:id/reply',
-                                method: 'GET'
-                            },
-                            "destroyReply": {
-                                utl: urlBase + '/topics/:id/reply/:fk',
-                                method: 'DELETE'
-                            }
-                        });
-                    R.modelName = "Topic";
-                    return R;
-                }])
         .factory('Topic', ['ExpressResource', function (Resource) {
             var R = Resource(
                 urlBase + '/topics/:id',
@@ -340,6 +304,7 @@
                         }
                         if (ExpressAuth.accessTokenId) {
                             config.params = config.params || {};
+                            config.params.access_token = ExpressAuth.accessTokenId;
                             config.headers[authHeader] = ExpressAuth.accessTokenId;
                         } else if (config.__isGetCurrentUser__) {
                             // Return a stub 401 error for User.getCurrent() when

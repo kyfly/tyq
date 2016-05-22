@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var fs = require('fs');
+var typ = require('../lib/request');
 var readdir = fs.readdirSync;
 function setupRoute (model) {
   var apis = model.routes;
@@ -15,7 +16,8 @@ function setupRoute (model) {
     }
     router[api.method](api.api, function (req, res, next) {
       req.api = api;
-      model.controller[api.action](req, res, next);
+      req.model = model;
+      typ(req, res, next);
     });
   });
   function setModel (req, res, next) {
