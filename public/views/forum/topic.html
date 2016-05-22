@@ -116,7 +116,14 @@
 
                             <span class="secondary-content">
                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
-                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">修改标签 | </span>
+
+                                <a class="dropdown-button btn" data-activates='tag' href="" dropdown>修改标签 | </a>
+                                <ul id='tag' class='dropdown-content'>
+                                    <li><a href="">one</a></li>
+                                    <li><a href="">two</a></li>
+                                    <li><a href="">three</a></li>
+                                </ul>
+
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
                                       ng-show="!this.topic.state.istop">置顶 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
