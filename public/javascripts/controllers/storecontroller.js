@@ -108,19 +108,42 @@ app.controller('GoodDetailCtrl',
         });
     }]);
 app.controller('StoreEditCtrl',
-    ['$scope', '$stateParams', 'Store', 'Ueditor', function ($scope, $stateParams, Store, ueditor) {
+    ['$scope', '$stateParams', '$http', 'Store', 'Ueditor', '$window', function ($scope, $stateParams, $http, Store, ueditor, $window) {
         var id = $stateParams.id;
         $scope.editorConfig = ueditor.config;
         if (id) {
             Store.findById({id: id}, function (res) {
-                $scope.good = res;
+                $scope.good = res.content;
             });
         } else {
             $scope.good = {};
         }
+        $scope.uploadImg = function () {
+            var Fd = new FormData();
+            var file = document.getElementById('goodImg').files;
+            var path = '/ue/uploads?action=uploadimage';
+            if (!file[0]) {
+                console.log(111)
+            }
+            Fd.append('file', file[0]);
+            $http({
+                url: path,
+                data: Fd,
+                method: 'POST',
+                headers: {'Content-Type': undefined},
+                transformRequest: angular.identity
+            })
+            .success(function (data) {
+                $scope.good.img = data.url;
+                Materialize.toast("上传成功!", 2000);
+            })
+            .error(function (err) {
+                Materialize.toast("上传失败!", 2000);
+            });
+        }
         $scope.submit = function () {
             Store.create($scope.good, function (res) {
-                console.log(res)
+                $window.history.back();
             })
         }
     }]);

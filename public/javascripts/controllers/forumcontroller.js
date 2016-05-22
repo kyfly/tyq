@@ -50,40 +50,46 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', '$timeout', function ($sc
     }
 }]);
 
-app.controller('ForumPublishCtrl', ['$scope', 'Ueditor', 'Topic', function ($scope, Ueditor, Topic) {
-    $scope.editorConfig = Ueditor.config;
+app.controller('ForumPublishCtrl', ['$scope', 'Topic','FileUploader', function ($scope, Topic, FileUploader) {
     $scope.publishItem = {};
+    $scope.publishItem.img = [];
+    var uploader = $scope.uploader = new FileUploader({
+        url: '/ue/uploads?action=uploadimage'
+    });
+    // FILTERS
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function (item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
+    console.log(uploader);
+    uploader.onSuccessItem = function (fileItem, response, status, headers) {
+        //console.info('onSuccessItem', fileItem, response, status, headers);
+        Materialize.toast('上传成功', 2000);
+        console.log(response.url);
+        $scope.publishItem.img.push(response.url);
+    };
+    $scope.myremove = function () {
+        $scope.uploader.queue[this.$index].remove();
+        $scope.publishItem.img.splice(this.$index, 1);
+    };
     $scope.publishTopic = function () {
-        var content = $scope.publishItem.content;
-        var title = $scope.publishItem.title;
-
-        if (!content || !title) {
-            Materialize.toast('文章标题和内容都不能为空', 2000);
-            return;
+        if(!$scope.publishItem.title||!$scope.publishItem.content){
+            Materialize.toast('标题和内容不能为空', 2000);
         }
         else {
-            Topic.createTopic($scope.publishItem, function (res) {
-                Materialize.toast('发布成功', 2000);
-                $scope.publishItem = {};
-            }, function (res) {
-                Materialize.toast('发布失败', 2000);
-            })
+            Topic.createTopic(
+                {id:localStorage.$Express$currentUserId},
+                $scope.publishItem,function(){
+                    Materialize.toast('发布成功', 2000);
+                },function(){
+                    Materialize.toast('发布失败', 2000);
+                }
+            )
         }
-        console.log(content);
-        console.log(title);
-
-        //$http({
-        //    url: '/ue/uploads?dir=user&id=' + $scope.$currentUser.id + '&action=uploadtext',
-        //    method: "post",
-        //    data: {
-        //        'content': $scope.articleEditorContent
-        //    }
-        //}).success(function (res) {
-        //
-        //
-        //});
-    }
-
+    };
 }]);
 /*
  话题管理
@@ -368,6 +374,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
         }
         $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
     };
+
 }]);
 app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.page = 1;
