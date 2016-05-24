@@ -52,27 +52,77 @@
                                      materialboxed>
                             </div>
 
-                            </p>
                             <div class="margin-top">
-                                <i class="mdi-action-visibility dark-grey-text"></i>
-                                <span ng-bind="usertopic.view"></span>
-                                &nbsp;
-                                <i class="mdi-action-thumb-up dark-grey-text"></i>
-                                <span ng-bind="usertopic.like"></span>
-                                &nbsp;
-                                <i class="mdi-communication-chat dark-grey-text"></i>
-                                <span ng-bind="usertopic.reply"></span>
+
+                                <!--<span ng-bind="topic.reply"></span>-->
+                                <ul class="collapsible z-depth-0"  data-collapsible="accordion" style="border-width: 0">
+                                    <li>
+                                        <span>
+                                            <i class="mdi-action-visibility dark-grey-text"></i>
+                                            <span ng-bind="usertopic.view"></span>
+                                            &nbsp;
+                                        </span>
+
+                                        <span>
+                                            <i class="mdi-action-thumb-up dark-grey-text"></i>
+                                            <span ng-bind="usertopic.like"></span>
+                                            &nbsp;
+                                        </span>
+
+                                        <span class="collapsible-header"  ng-click="getReply()" style="padding-left: 80px;margin-top: -32px;border: 0;">
+                                            <i class="mdi-communication-chat dark-grey-text" style="font-size: 12px;margin: 0"></i>
+                                            <span ng-bind="usertopic.reply" style="font-size: 12px!important;"></span>
+                                        </span>
+
+                                        <div class="collapsible-body">
+                                            <ul class="collection margin-bottom" style="border: 0">
+                                                <li class="collection-item avatar" style="padding-bottom: 10px"
+                                                    ng-repeat="reply in replies">
+                                                    <a ng-href="users/{{reply.user.id}}/usertopic"><img
+                                                            ng-src="{{reply.user.headImg}}" class="circle"></a>
+                                                    <a ng-href="users/{{reply.user.id}}/usertopic"
+                                                       class="title topic-name black-text"
+                                                       ng-bind="usertopic.user.name"></a>
+                                                    <div ng-bind="reply.created | date: 'yyyy-MM-dd HH:mm:ss'"
+                                                         class="topic-time dark-grey-text"></div>
+                                                    <p ng-bind="reply.content" class="topic-content dark-grey-text"
+                                                       style="padding: 5px 0"></p>
+                                                    <div ng-if="reply.imgs" class="topic-img">
+                                                        <img ng-src={{reply.imgs}} class="materialboxed responsive-img"
+                                                             materialboxed>
+                                                    </div>
+
+
+                                                    <span class="secondary-content">
+                                                        <a ng-click="topicDelete()" class="dark-grey-text" >删除</a>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+
                             </div>
+
                             <span class="secondary-content">
                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
+
+                                <a class='dropdown-button btn change-tag' href='#' data-activates='drop{{$index}}' dropdown ng-bind="realType"></a>
+                                <ul id='drop{{$index}}' class='dropdown-content change-tag-ul'>
+                                    <li><a href="" ng-click="upToDate()">最新</a></li>
+                                    <li><a href="" ng-click="hottest()">最热</a></li>
+                                    <li><a href="" ng-click="select()">精选</a></li>
+                                    <li><a href="" ng-click="qusetion()">提问</a></li>
+                                </ul>
+
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
-                                      ng-show="!this.usertopic.state.istop">置顶 | </span>
+                                      ng-show="!this.topic.state.istop">| 置顶 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
-                                      ng-show="this.usertopic.state.istop">取消置顶 | </span>
+                                      ng-show="this.topic.state.istop">| 取消置顶 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
-                                      ng-show="!this.usertopic.state.locked">锁定 | </span>
+                                      ng-show="!this.topic.state.locked">锁定 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
-                                      ng-show="this.usertopic.state.locked">解锁 |</span>
+                                      ng-show="this.topic.state.locked">解锁 | </span>
                                 <span ng-click="topicDelete()" class="dark-grey-text cursor-pointer">删除</span>
                             </span>
                         </li>

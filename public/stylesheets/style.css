@@ -283,9 +283,7 @@ td {
 }
 
 /*订单管理-end*/
-.topic-list .input-field {
-    margin-top: 0;
-}
+
 
 .n_textarea {
     height: 130px;
@@ -310,7 +308,10 @@ td {
     font-size: 20px;
     margin-top: 10px;
 }
-
+/*话题管理*/
+.topic-list .input-field {
+    margin-top: 0;
+}
 .topic-time {
     font-size: 12px;
 }
@@ -336,6 +337,36 @@ td {
     position: absolute;
     margin-top: 14px;
 }
+.topic-img {
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.topic-choose-all {
+    padding: 10px 10px 8px 3px !important;
+}
+.change-tag{
+    background-color: white!important;
+    font-size: 13px;
+    color: #717171;
+    padding: 0;
+    margin-top: -1px;
+}
+.change-tag-ul{
+    width: 45px!important;
+    top: 25px!important;
+    min-width: 50px!important;
+}
+.change-tag-ul li{
+    min-height: 30px;
+}
+.change-tag-ul li a{
+    font-size: 13px;
+    color: #717171;
+    padding: 10px;
+}
+/*话题管理结束*/
 
 table {
     table-layout: fixed;
@@ -362,15 +393,7 @@ hr {
     font-weight: bold;
 }
 
-.topic-img {
-    max-width: 100px;
-    max-height: 100px;
-    overflow: hidden;
-}
 
-.topic-choose-all {
-    padding: 10px 10px 8px 3px !important;
-}
 
 body {
     font-family: "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体", "sans-serif";

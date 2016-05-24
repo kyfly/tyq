@@ -162,8 +162,8 @@
                         method: 'GET'
                     },
                     "destroyTopics": {
-                        url: urlBase + '/Users/:id/topics/:fk',
-                        method: 'DELETE'
+                        url: urlBase + '/Users/:id/topics',
+                        method: 'DELETE',
                     },
                     "findAnalysis": {
                         url: urlBase + '/users/:id/analysis',
