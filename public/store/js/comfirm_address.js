@@ -25,7 +25,7 @@ $(function(){
 
 	//获取用户信息
 	$.ajax({
-		url: '/api/users/'+userId+'/express?access_token=ACCESSTOKEN',
+		url: '/apis/users/'+userId+'/express?access_token=ACCESSTOKEN',
 		type: 'GET',
 		dataType: 'json',
 		success:function(data){
