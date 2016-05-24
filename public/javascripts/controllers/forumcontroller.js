@@ -331,18 +331,6 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
             search: search
         }, function (res) {
             $scope.usertopics = res;
-            console.log(res);
-            for(var i=0; i<$scope.usertopics.content.length;i++){
-                if($scope.usertopics.content[i].type === 1){
-                    $scope.realType = "最新";
-                }if($scope.usertopics.content[i].type === 2){
-                    $scope.realType = "最热";
-                }if($scope.usertopics.content[i].type === 3){
-                    $scope.realType = "精选";
-                }if($scope.usertopics.content[i].type === 4){
-                    $scope.realType = "提问";
-                }
-            }
 
         });
     };
@@ -366,10 +354,9 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
 
     //得到回复列表
     $scope.getReply = function () {
-        //console.log(this);
-        //$scope.all = false;
+        console.log(this);
         Topic.replyList({
-            id: this.usertopics.id
+            id: this.usertopic.id
         }, function (res) {
             //console.log(res);
             $scope.replies = res;

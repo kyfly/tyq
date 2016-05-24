@@ -91,7 +91,7 @@
                                                             ng-src="{{reply.user.headImg}}" class="circle"></a>
                                                     <a ng-href="users/{{reply.user.id}}/usertopic"
                                                        class="title topic-name black-text"
-                                                       ng-bind="topic.user.name"></a>
+                                                       ng-bind="reply.user.name"></a>
                                                     <div ng-bind="reply.created | date: 'yyyy-MM-dd HH:mm:ss'"
                                                          class="topic-time dark-grey-text"></div>
                                                     <p ng-bind="reply.content" class="topic-content dark-grey-text"

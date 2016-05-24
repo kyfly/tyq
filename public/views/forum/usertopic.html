@@ -82,7 +82,7 @@
                                                             ng-src="{{reply.user.headImg}}" class="circle"></a>
                                                     <a ng-href="users/{{reply.user.id}}/usertopic"
                                                        class="title topic-name black-text"
-                                                       ng-bind="usertopic.user.name"></a>
+                                                       ng-bind="reply.user.name"></a>
                                                     <div ng-bind="reply.created | date: 'yyyy-MM-dd HH:mm:ss'"
                                                          class="topic-time dark-grey-text"></div>
                                                     <p ng-bind="reply.content" class="topic-content dark-grey-text"
@@ -107,18 +107,10 @@
                             <span class="secondary-content">
                                 <span ng-click="clearTopic()" class="dark-grey-text cursor-pointer">清理 | </span>
 
-                                <a class='dropdown-button btn change-tag' href='#' data-activates='drop{{$index}}' dropdown ng-bind="realType"></a>
-                                <ul id='drop{{$index}}' class='dropdown-content change-tag-ul'>
-                                    <li><a href="" ng-click="upToDate()">最新</a></li>
-                                    <li><a href="" ng-click="hottest()">最热</a></li>
-                                    <li><a href="" ng-click="select()">精选</a></li>
-                                    <li><a href="" ng-click="qusetion()">提问</a></li>
-                                </ul>
-
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
-                                      ng-show="!this.topic.state.istop">| 置顶 | </span>
+                                      ng-show="!this.topic.state.istop">置顶 | </span>
                                 <span ng-click="toTop()" class="dark-grey-text cursor-pointer"
-                                      ng-show="this.topic.state.istop">| 取消置顶 | </span>
+                                      ng-show="this.topic.state.istop">取消置顶 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
                                       ng-show="!this.topic.state.locked">锁定 | </span>
                                 <span ng-click="isLocked()" class="dark-grey-text cursor-pointer"
