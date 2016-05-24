@@ -92,7 +92,9 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
     $scope.changePage = function (page) {
         getPoints(page);
     };
-
+    /*
+     删除积分记录
+     */
     $scope.pointsDelete = function () {
         var thisElement = this;
         User.destroyPoints({
@@ -103,6 +105,22 @@ app.controller('UserScoreCtrl', ['$scope', 'User', '$stateParams', function ($sc
             getPoints($scope.page);
         }, function () {
             Materialize.toast('删除记录失败！', 2000);
+        });
+    };
+    /*
+     修改用户积分
+     */
+    $scope.updatePoints = function () {
+        console.log($scope.user)
+        User.updateById({
+            id: userId
+        }, {
+            points: $scope.user.newPoint
+        }, function () {
+            Materialize.toast("修改成功!", 2000);
+            $scope.user.points = $scope.user.newPoint;
+        }, function () {
+            Materialize.toast("修改失败!", 2000);
         });
     };
     $scope.choseArr = [];//定义数组用于存放前端显示

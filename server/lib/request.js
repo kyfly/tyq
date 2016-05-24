@@ -1,26 +1,36 @@
-var rp = require('request-promise');
-function getOption(req) {
-    var option = {
-        uri: req.app.get('remote').domain + '/' + req.app.get('remote').pathPrefix + req.api.remote,
-        qs: req.query,
-        headers: req.headers,
-        method: req.api.method.toUpperCase()
+var rp = require('request');
+module.exports = function typ(req, res, next) {
+    var remote = req.app.get('remote')
+    var url = `${remote.domain}/${remote.pathPrefix}${req.api.remote}`;
+    if (req.params) {
+        Object.keys(req.params).forEach(function (key) {
+            url = url.replace(`:${key}`, req.params[key])
+        });
     }
-    return option;
+    console.log(url)
+    rp[req.api.method]({
+        url: url,
+        qs: req.query,
+        json: req.body,
+        header: {
+            'content-type': 'application/json'
+        }
+    }, function (err, response, data) {
+        if (err) {
+            next('接口调用失败');
+            return
+        }
+        if (data.error) {
+            req.model.controller[req.api.action](req, res, next)
+        } else if (typeof data === 'object') {
+            res.send(data);
+        } else {
+            req.model.controller[req.api.action](req, res, next)
+            console.log(data, err)
+        }
+    })
 }
-exports.get = function (req) {
-  return rp(getOption(req));
-}
-exports.post = function (req, res, next) {
-  return rp(getOption(req));
-}
-exports.delete = function (req, res, next) {
-  
-}
-exports.put = function (req, res, next) {
-  
-}
-exports.getMore = function (d) {
+module.exports.getMore = function (d) {
     var s = [];
     var r = [];
     for (var i = 0; i < 10; i++) {

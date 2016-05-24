@@ -102,11 +102,32 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             page: page,
             search: search
         }, function (res) {
-            //console.log(res);
             $scope.topics = res;
+            for(var i=0; i<$scope.topics.content.length;i++){
+                if($scope.topics.content[i].type === 1){
+                    $scope.realType = "最新";
+                }if($scope.topics.content[i].type === 2){
+                    $scope.realType = "最热";
+                }if($scope.topics.content[i].type === 3){
+                    $scope.realType = "精选";
+                }if($scope.topics.content[i].type === 4){
+                    $scope.realType = "提问";
+                }
+            }
         });
     };
+    $scope.changePage = function (page) {
+        getTopic(page, $scope.search.content);
+    };
 
+    getTopic($scope.page);
+
+    $scope.searchTopics = function () {
+        getTopic($scope.page, $scope.search.content);
+    };
+
+
+    //得到回复列表
    $scope.getReply = function () {
         //console.log(this);
         //$scope.all = false;
@@ -118,14 +139,61 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         });
     };
 
-    $scope.changePage = function (page) {
-        getTopic(page, $scope.search.content);
+ //修改标签
+    $scope.upToDate = function () {
+        Topic.updateById({
+            id : this.topic.id
+        },{
+            type : 1
+        },function(){
+                Materialize.toast('已经改为最新', 2000);
+                $scope.realType = "最新";
+        },function(){
+                Materialize.toast('更改失败', 2000);
+        }
+        )
+
     };
+    $scope.hottest = function () {
+        Topic.updateById({
+                id : this.topic.id
+            },{
+                type : 2
+            },function(){
+                Materialize.toast('已经改为最热', 2000);
+            $scope.realType = "最热";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
 
-    getTopic($scope.page);
+    };
+    $scope.select = function () {
+        Topic.updateById({
+                id : this.topic.id
+            },{
+                type : 3
+            },function(){
+                Materialize.toast('已经改为精选', 2000);
+            $scope.realType = "精选";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
+    };
+    $scope.qusetion = function () {
+        Topic.updateById({
+                id : this.topic.id
+            },{
+                type : 4
+            },function(){
+                Materialize.toast('已经改为提问', 2000);
+            $scope.realType = "提问";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
 
-    $scope.searchTopics = function () {
-        getTopic($scope.page, $scope.search.content);
     };
 
     //清理
@@ -135,7 +203,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
                 id: thisElement.topic.user.id
             }, function () {
                 Materialize.toast('清理该用户话题成功', 2000);
-                getTopic($scope.page);
+                getTopic($scope.page,$scope.search.content);
             }, function () {
                 Materialize.toast('清理话题失败！', 2000);
             }
@@ -149,7 +217,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             id: thisElement.topic.id
         }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            getTopic($scope.page);
+            getTopic($scope.page,$scope.search.content);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });
@@ -250,6 +318,238 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         }
     };
 }]);
+
+//用户个人话题
+app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
+    $scope.page = 1;
+    $scope.search = {};
+    var getTopic = function (page, search) {
+        $scope.all = false;
+        User.findTopics({
+            page: page,
+            id: $stateParams.id,
+            search: search
+        }, function (res) {
+            $scope.usertopics = res;
+
+        });
+    };
+
+    $scope.changePage = function (page) {
+        getTopic(page, $scope.search.content);
+    };
+
+    $scope.searchTopics = function () {
+        getTopic($scope.page, $scope.search.content);
+    };
+
+    getTopic($scope.page, $scope.search.content);
+    User.findById({
+            id: $stateParams.id
+        },
+        function (res) {
+            $scope.userInfos = res;
+        }
+    );
+
+    //得到回复列表
+    $scope.getReply = function () {
+        console.log(this);
+        Topic.replyList({
+            id: this.usertopic.id
+        }, function (res) {
+            //console.log(res);
+            $scope.replies = res;
+        });
+    };
+
+    //修改标签
+    $scope.upToDate = function () {
+        Topic.updateById({
+                id : this.usertopics.id
+            },{
+                type : 1
+            },function(){
+                Materialize.toast('已经改为最新', 2000);
+                $scope.realType = "最新";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
+
+    };
+    $scope.hottest = function () {
+        Topic.updateById({
+                id : this.usertopics.id
+            },{
+                type : 2
+            },function(){
+                Materialize.toast('已经改为最热', 2000);
+                $scope.realType = "最热";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
+
+    };
+    $scope.select = function () {
+        Topic.updateById({
+                id : this.usertopics.id
+            },{
+                type : 3
+            },function(){
+                Materialize.toast('已经改为精选', 2000);
+                $scope.realType = "精选";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
+    };
+    $scope.qusetion = function () {
+        Topic.updateById({
+                id : this.usertopics.id
+            },{
+                type : 4
+            },function(){
+                Materialize.toast('已经改为提问', 2000);
+                $scope.realType = "提问";
+            },function(){
+                Materialize.toast('更改失败', 2000);
+            }
+        )
+
+    };
+
+
+
+
+    //清理
+    $scope.clearTopic = function () {
+        var thisElement = this;
+        console.log(thisElement);
+        User.destroyTopics({
+                id: thisElement.usertopic.id
+            }, function () {
+                Materialize.toast('清理该用户话题成功', 2000);
+                getTopic($scope.page, $scope.search.content);
+            }, function () {
+                Materialize.toast('清理话题失败！', 2000);
+            }
+        );
+    };
+
+    //删除
+    $scope.topicDelete = function () {
+        var thisElement = this;
+        Topic.destroyById({
+            id: thisElement.usertopic.id
+        }, function () {
+            Materialize.toast('删除话题成功！', 2000);
+            getTopic($scope.page, $scope.search.content);
+        }, function () {
+            Materialize.toast('删除话题失败！', 2000);
+        });
+    };
+
+
+    //锁定
+    $scope.isLocked = function () {
+        var that = this;
+        console.log(that);
+        var state = that.usertopic.state.locked;
+        if (state === true) {
+            Topic.updateById({
+                id: that.usertopic.id
+            }, {
+                state: {
+                    locked: false
+                }
+            }, function () {
+                Materialize.toast('话题已经解锁', 2000);
+                that.usertopic.state.locked = false;
+            });
+        } else {
+            Topic.updateById({
+                id: that.usertopic.id
+            }, {
+                state: {
+                    locked: true
+                }
+            }, function () {
+                Materialize.toast('话题已经锁定', 2000);
+                that.usertopic.state.locked = true;
+            });
+        }
+    };
+
+    //置顶
+    $scope.toTop = function () {
+        var thisElement = this;
+        var state = thisElement.usertopic.state.istop;
+        if (state === true) {
+            Topic.updateById({
+                id: thisElement.usertopic.id
+            }, {
+                state: {
+                    istop: false
+                }
+            }, function () {
+                Materialize.toast('已经取消置顶', 2000);
+                thisElement.usertopic.state.istop = false;
+            });
+        } else {
+            Topic.updateById({
+                id: thisElement.usertopic.id
+            }, {
+                state: {
+                    istop: true
+                }
+            }, function () {
+                Materialize.toast('话题已经置顶', 2000);
+                thisElement.usertopic.state.istop = true;
+            });
+        }
+    };
+
+
+    $scope.choseArr = [];//定义数组用于存放前端显示
+    var str = "";//
+    var flag = '';//是否点击了全选，是为a
+    $scope.x = false;//默认未选中
+    $scope.all = function (c, v) {//全选
+        if (c == true) {
+            $scope.x = true;
+            $scope.choseArr = v;
+        } else {
+            $scope.x = false;
+            $scope.choseArr = [""];
+        }
+        flag = 'a';
+    };
+    $scope.chk = function (z, x) {//单选或者多选
+        if (flag == 'a') {//在全选的基础上操作
+            str = $scope.choseArr.join();
+        }
+        if (x == true) {//选中
+            str = str + z + ',';
+        } else {
+            str = str.replace(z + ',', '');//取消选中
+        }
+        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
+    };
+    $scope.delete = function () {// 操作CURD
+        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
+            Materialize.toast("请至少选中一条数据再操作!", 2000);
+            return;
+        }
+        for (var i = 0; i < $scope.choseArr.length; i++) {
+            //alert($scope.choseArr[i]);
+            console.log($scope.choseArr[i]);//遍历选中的id
+        }
+    };
+}]);
+
+
 app.controller('ForumNoticeEditCtrl', ['$scope', 'Notice', '$stateParams', '$location', function ($scope, Notice, $stateParams, $location) {
     console.log($stateParams.id);
     var id = $stateParams.id;
@@ -423,162 +723,3 @@ app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) 
     };
 }]);
 
-//用户个人话题
-app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams', function ($scope, Topic, User, $stateParams) {
-    $scope.page = 1;
-    $scope.search = {};
-    var getTopic = function (page, search) {
-        $scope.all = false;
-        User.findTopics({
-            page: page,
-            id: $stateParams.id,
-            search: search
-        }, function (res) {
-            console.log(res);
-            $scope.usertopics = res;
-        });
-    };
-
-
-    $scope.changePage = function (page) {
-        getTopic(page, $scope.search.content);
-    };
-
-    $scope.searchTopics = function () {
-        getTopic($scope.page, $scope.search.content);
-    };
-
-    getTopic($scope.page, $scope.search.content);
-    User.findById({
-            id: $stateParams.id
-        },
-        function (res) {
-            $scope.userInfos = res;
-        }
-    );
-
-    //清理
-    $scope.clearTopic = function () {
-        var thisElement = this;
-        console.log(thisElement);
-        User.destroyTopics({
-                id: thisElement.usertopic.id
-            }, function () {
-                Materialize.toast('清理该用户话题成功', 2000);
-                getTopic($scope.page, $scope.search.content);
-            }, function () {
-                Materialize.toast('清理话题失败！', 2000);
-            }
-        );
-    };
-
-    //删除
-    $scope.topicDelete = function () {
-        var thisElement = this;
-        Topic.destroyById({
-            id: thisElement.usertopic.id
-        }, function () {
-            Materialize.toast('删除话题成功！', 2000);
-            getTopic($scope.page, $scope.search.content);
-        }, function () {
-            Materialize.toast('删除话题失败！', 2000);
-        });
-    };
-
-
-    //锁定
-    $scope.isLocked = function () {
-        var that = this;
-        console.log(that);
-        var state = that.usertopic.state.locked;
-        if (state === true) {
-            Topic.updateById({
-                id: that.usertopic.id
-            }, {
-                state: {
-                    locked: false
-                }
-            }, function () {
-                Materialize.toast('话题已经解锁', 2000);
-                that.usertopic.state.locked = false;
-            });
-        } else {
-            Topic.updateById({
-                id: that.usertopic.id
-            }, {
-                state: {
-                    locked: true
-                }
-            }, function () {
-                Materialize.toast('话题已经锁定', 2000);
-                that.usertopic.state.locked = true;
-            });
-        }
-    };
-
-    //置顶
-    $scope.toTop = function () {
-        var thisElement = this;
-        var state = thisElement.usertopic.state.istop;
-        if (state === true) {
-            Topic.updateById({
-                id: thisElement.usertopic.id
-            }, {
-                state: {
-                    istop: false
-                }
-            }, function () {
-                Materialize.toast('已经取消置顶', 2000);
-                thisElement.usertopic.state.istop = false;
-            });
-        } else {
-            Topic.updateById({
-                id: thisElement.usertopic.id
-            }, {
-                state: {
-                    istop: true
-                }
-            }, function () {
-                Materialize.toast('话题已经置顶', 2000);
-                thisElement.usertopic.state.istop = true;
-            });
-        }
-    };
-
-
-    $scope.choseArr = [];//定义数组用于存放前端显示
-    var str = "";//
-    var flag = '';//是否点击了全选，是为a
-    $scope.x = false;//默认未选中
-    $scope.all = function (c, v) {//全选
-        if (c == true) {
-            $scope.x = true;
-            $scope.choseArr = v;
-        } else {
-            $scope.x = false;
-            $scope.choseArr = [""];
-        }
-        flag = 'a';
-    };
-    $scope.chk = function (z, x) {//单选或者多选
-        if (flag == 'a') {//在全选的基础上操作
-            str = $scope.choseArr.join();
-        }
-        if (x == true) {//选中
-            str = str + z + ',';
-        } else {
-            str = str.replace(z + ',', '');//取消选中
-        }
-        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
-    };
-    $scope.delete = function () {// 操作CURD
-        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
-            Materialize.toast("请至少选中一条数据再操作!", 2000);
-            return;
-        }
-        for (var i = 0; i < $scope.choseArr.length; i++) {
-            //alert($scope.choseArr[i]);
-            console.log($scope.choseArr[i]);//遍历选中的id
-        }
-    };
-}]);

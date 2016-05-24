@@ -7,7 +7,7 @@
 
 <div class="row top-nav">
     <h6 class="path col m4 s12">
-        积分总量 : {{user.points}}
+        积分总量 : {{user.points}} <a href='#addSport' modal>更改积分</a>
     </h6>
 </div>
 <hr class="path-line">
@@ -37,7 +37,7 @@
                 <label for="{{changeItem.id}}"></label>
             </td>
             <td ng-bind="changeItem.created| date: 'yyyy-MM-dd HH:mm:ss'"></td>
-            <td ng-bind="changeItem.count" ng-click="aa()"></td>
+            <td ng-bind="changeItem.count" ></td>
             <td ng-bind="changeItem.reason.message"></td>
             <td>
                 <a ng-click="pointsDelete()">删除</a>
@@ -64,5 +64,28 @@
                 class="center"></pagination>
     </div>
 </div>
+
+<!--修改积分弹出框-->
+<div id="addSport" class="modal">
+    <div class="modal-content">
+        <h4>修改积分</h4>
+        <div class="row" style="margin-top: 40px" >
+            <div class="col s6 topic-title"> <label>原来积分</label></div>
+            <div class="col s6 topic-title"> {{user.points}}</label></div>
+        </div>
+        <hr>
+        <div input-field class="double-margin-top">
+            <input type="number" ng-model="user.newPoint">
+            <label>修改积分</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect blue btn right margin-left"
+           ng-click="updatePoints()">确定</a>
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat right">取消</a>
+    </div>
+</div>
+</div>
+
 
 

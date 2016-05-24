@@ -26,7 +26,7 @@ exports.findById = function (req, res, next) {
         phone: '8454545454',
         BGtype: '一型糖尿病',
         lastBG: '5mmol/L',
-        points: '89',
+        points: 89,
         role: 1,
         sex: '男',
         topics: 8,
