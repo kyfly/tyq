@@ -1,6 +1,11 @@
 app.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/weixin/account');
+    $urlRouterProvider.otherwise('/');
     $stateProvider
+        .state('front', {
+            url: '/',
+            templateUrl: '/views/front.html',
+            controller: 'FrontCtrl'
+        })
         .state('wechatUsers', {
             url: '/users/wechat',
             templateUrl: '/views/users/info.html',

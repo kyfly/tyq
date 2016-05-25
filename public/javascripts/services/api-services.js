@@ -99,15 +99,15 @@
         }])
         .factory('User', ['ExpressResource', function (Resource) {
             var R = Resource(
-                urlBase + '/Users/:id',
+                urlBase + '/users/:id',
                 {'id': '@id'},
                 {
                     "find": {
-                        url: urlBase + '/Users',
+                        url: urlBase + '/users',
                         method: 'GET'
                     },
                     "findById": {
-                        url: urlBase + '/Users/:id',
+                        url: urlBase + '/users/:id',
                         method: 'GET'
                     },
                     "findPoints": {
@@ -122,47 +122,47 @@
                     修改用户信息
                      */
                     "updateById": {
-                        url: urlBase + '/Users/:id',
+                        url: urlBase + '/users/:id',
                         method: 'PUT'
                     },
                     "findHealth": {
-                        url: urlBase + '/Users/:id/health',
+                        url: urlBase + '/users/:id/health',
                         method: 'GET'
                     },
                     "updateHealth": {
-                        url: urlBase + '/Users/:id/health',
+                        url: urlBase + '/users/:id/health',
                         method: 'PUT'
                     },
                     "findExamine": {
-                        url: urlBase + '/Users/:id/examine',
+                        url: urlBase + '/users/:id/examine',
                         method: 'GET'
                     },
                     "updateExamine": {
-                        url: urlBase + '/Users/:id/examine',
+                        url: urlBase + '/users/:id/examine',
                         method: 'PUT'
                     },
                     "findSchema": {
-                        url: urlBase + '/Users/:id/schema',
+                        url: urlBase + '/users/:id/schema',
                         method: 'GET'
                     },
                     "updateSchema": {
-                        url: urlBase + '/Users/:id/schema',
+                        url: urlBase + '/users/:id/schema',
                         method: 'PUT'
                     },
                     "findLog": {
-                        url: urlBase + '/Users/:id/log',
+                        url: urlBase + '/users/:id/log',
                         method: 'GET'
                     },
                     "updateLog": {
-                        url: urlBase + '/Users/:id/log',
+                        url: urlBase + '/users/:id/log',
                         method: 'PUT'
                     },
                     "findTopics": {
-                        url: urlBase + '/Users/:id/topics',
+                        url: urlBase + '/users/:id/topics',
                         method: 'GET'
                     },
                     "destroyTopics": {
-                        url: urlBase + '/Users/:id/topics',
+                        url: urlBase + '/users/:id/topics',
                         method: 'DELETE',
                     },
                     "findAnalysis": {

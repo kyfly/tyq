@@ -7,7 +7,6 @@ module.exports = function typ(req, res, next) {
             url = url.replace(`:${key}`, req.params[key])
         });
     }
-    console.log(url)
     rp[req.api.method]({
         url: url,
         qs: req.query,
@@ -16,8 +15,9 @@ module.exports = function typ(req, res, next) {
             'content-type': 'application/json'
         }
     }, function (err, response, data) {
-        if (err) {
-            next('接口调用失败');
+        if (err || !data) {
+            console.log(err, '请求出错,重新登录后尝试')
+            req.model.controller[req.api.action](req, res, next)
             return
         }
         if (data.error) {

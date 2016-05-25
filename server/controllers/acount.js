@@ -4,14 +4,24 @@ exports.login = function (req, res, next) {
     var remote = req.app.get('remote')
     var url = `${remote.domain}/${remote.pathPrefix}/admin`;
     var data='{"username": "liu","password": "liu654123"}';
-    console.log(req.body)
     request.post({
         url: url,
         headers: {
             'content-type': 'application/json'
         },
         json: req.body
-    }).pipe(res);
+    }, function (err, response, data) {
+        if (err) {
+            res.status(401).send({
+                error: {
+                    code: 401,
+                    message: '验证失败,密码或者账号输入错误'
+                }
+            });
+        } else {
+            res.send(data);
+        }
+    });
 }
 exports.register = function (req, res, next) {
     

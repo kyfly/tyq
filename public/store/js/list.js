@@ -11,7 +11,7 @@ $(function(){
 	page = 0;
     $.ajax({
         type: 'GET',
-        url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
+        url: '/apis/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
         dataType: 'json',
         success: function(data){
         	var result = '';
@@ -43,7 +43,7 @@ $(function(){
 			page = ++page;
 			$.ajax({
                 type: 'GET',
-                url: '/api/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
+                url: '/apis/goods?exchengeable=true&access_token=ACCESSTOKEN&page=' +page,
                 dataType: 'json',
                 success: function(data){
                 	var result = '';
