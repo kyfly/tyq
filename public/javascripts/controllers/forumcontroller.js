@@ -103,17 +103,6 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             search: search
         }, function (res) {
             $scope.topics = res;
-            for(var i=0; i<$scope.topics.content.length;i++){
-                if($scope.topics.content[i].type === 1){
-                    $scope.realType = "最新";
-                }if($scope.topics.content[i].type === 2){
-                    $scope.realType = "最热";
-                }if($scope.topics.content[i].type === 3){
-                    $scope.realType = "精选";
-                }if($scope.topics.content[i].type === 4){
-                    $scope.realType = "提问";
-                }
-            }
         });
     };
     $scope.changePage = function (page) {
@@ -331,7 +320,6 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
             search: search
         }, function (res) {
             $scope.usertopics = res;
-
         });
     };
 
