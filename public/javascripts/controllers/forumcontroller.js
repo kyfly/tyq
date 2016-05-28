@@ -115,6 +115,35 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
         getTopic($scope.page, $scope.search.content);
     };
 
+    //显示最新
+    $scope.showUpToDate = function (page,search) {
+        Topic.find = ({
+            page: page,
+            search: search,
+            filter: {
+                type : 1
+            }
+        }, function(res){
+                $scope.topics = res;
+                Materialize.toast('已经显示最新', 2000);
+            }
+        )
+    };
+
+    //显示最热
+    $scope.showUpToDate = function (page,search) {
+        Topic.find = ({
+                page: page,
+                search: search,
+                filter: {
+                    type : 2
+                }
+            }, function(res){
+                $scope.topics = res;
+                Materialize.toast('已经显示最热', 2000);
+            }
+        )
+    };
 
     //得到回复列表
    $scope.getReply = function () {

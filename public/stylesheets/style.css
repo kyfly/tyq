@@ -346,6 +346,23 @@ td {
 .topic-choose-all {
     padding: 10px 10px 8px 3px !important;
 }
+.topic-checkbox-td{
+    position:absolute;
+    margin-top: 25px;
+    margin-left: 5px;
+}
+.topic-reply{
+    padding-left: 80px;
+    margin-top: -32px;
+    border: 0;
+}
+.topic-reply i{
+    font-size: 12px;
+    margin: 0;
+}
+.topic-reply span{
+    font-size: 12px!important;
+}
 .change-tag{
     background-color: white!important;
     font-size: 13px;

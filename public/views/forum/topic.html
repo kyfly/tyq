@@ -21,16 +21,16 @@
                     <label for="topic-top" id="chose_all"></label>
                 </th>
                 <th style="padding-left: 20px">
-                    <a href="">最新</a>
-                    <a href="">最热</a>
-                    <a href="">精选</a>
-                    <a href="">提问</a>
+                    <a ng-class="{'dark-grey-text':darkGreyText,'blue-text':blueText}" href="" ng-click="showUpToDate()">最新</a>
+                    <a class="dark-grey-text" href="" ng-click="showHottest()">最热</a>
+                    <a class="dark-grey-text" href="" ng-click="showSelect()">精选</a>
+                    <a class="dark-grey-text" href="" ng-click="showQuestion()">提问</a>
                 </th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="topic in topics.content">
-                <td style="position:absolute;margin-top: 25px;margin-left: 5px">
+                <td class="topic-checkbox-td">
                     <input type="checkbox" id="{{topic.id}}" class="filled-in"
                            ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
                     <label for="{{topic.id}}"></label>
@@ -78,9 +78,9 @@
                                             &nbsp;
                                         </span>
 
-                                        <span class="collapsible-header"  ng-click="getReply()" style="padding-left: 80px;margin-top: -32px;border: 0;">
-                                            <i class="mdi-communication-chat dark-grey-text" style="font-size: 12px;margin: 0"></i>
-                                            <span ng-bind="topic.reply" style="font-size: 12px!important;"></span>
+                                        <span class="collapsible-header topic-reply"  ng-click="getReply()">
+                                            <i class="mdi-communication-chat dark-grey-text"></i>
+                                            <span ng-bind="topic.reply"></span>
                                         </span>
 
                                         <div class="collapsible-body">

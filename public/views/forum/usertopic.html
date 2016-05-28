@@ -24,7 +24,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="usertopic in usertopics.content">
-                <td style="position:absolute;margin-top: 25px;margin-left: 5px">
+                <td class="topic-checkbox-td">
                     <input type="checkbox" id="{{usertopic.id}}" class="filled-in"
                            ng-model="x" ng-checked="master" ng-click="chk(usertopic,x)">
                     <label for="{{usertopic.id}}"></label>
@@ -69,9 +69,9 @@
                                             &nbsp;
                                         </span>
 
-                                        <span class="collapsible-header"  ng-click="getReply()" style="padding-left: 80px;margin-top: -32px;border: 0;">
-                                            <i class="mdi-communication-chat dark-grey-text" style="font-size: 12px;margin: 0"></i>
-                                            <span ng-bind="usertopic.reply" style="font-size: 12px!important;"></span>
+                                        <span class="collapsible-header topic-reply"  ng-click="getReply()">
+                                            <i class="mdi-communication-chat dark-grey-text"></i>
+                                            <span ng-bind="usertopic.reply"></span>
                                         </span>
 
                                         <div class="collapsible-body">
