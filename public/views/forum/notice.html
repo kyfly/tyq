@@ -14,7 +14,7 @@
 <div class="double-margin-top">
     <h5>正文</h5>
     <textarea class="n_textarea" placeholder="请输入公告内容" style="resize: none"ng-model="publishNtc.content"></textarea>
-    <a href="" class="btn  waves-light waves-effect blue margin-top" ng-click="publishNotice()">发布</a>
+    <a href="" class="btn  waves-light waves-effect blue margin-top right" ng-click="publishNotice()">发布</a>
 </div>
 <div class=" double-margin-top">
     <h5 class="path">公告列表</h5>
@@ -24,9 +24,9 @@
             <thead class="dark-grey-text">
             <tr>
                 <th class="choose-row">
-                    <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                           ng-click="all(master,notice)">
-                    <label for="topic-top" id="chose_all"></label>
+                    <input type="checkbox" class="filled-in" id="all"
+                           ng-click="chooseAll()">
+                    <label for="all" ></label>
                 </th>
                 <th>发布日期</th>
                 <th>标题</th>
@@ -38,8 +38,8 @@
             <tr ng-repeat="notice  in noticeList">
                 <td class="checkbox-td">
                     <input class="filled-in" type="checkbox" id="{{notice.id}}"
-                           ng-model="x" ng-checked="master" ng-click="chk(notice,x)">
-                    <label for="{{notice.id}}" class=""></label>
+                           ng-model="notice.select" ng-init="notice.select = false" >
+                    <label for="{{notice.id}}" ></label>
                 </td>
                 <td ng-bind="notice.created | date: 'yyyy-MM-dd HH:mm:ss'"></td>
                 <td clss="center" ng-bind="notice.title"></td>
@@ -54,18 +54,7 @@
         </table>
     </form>
     <div class="double-margin-bottom margin-top">
-        <button class="btn col wechat_btn waves-light waves-effect blue">删除</button>
-        <pagination
-                page="1"
-                page-size="10"
-                total="200"
-                show-prev-next="false"
-                dots="...."
-                hide-if-empty="false"
-                adjacent="2"
-                scroll-top="false"
-                pagination-action="changePage(page)"
-                class="center "></pagination>
+        <button class="btn col wechat_btn waves-light waves-effect blue" ng-click="deleteAll()">删除</button>
     </div>
 
 </div>

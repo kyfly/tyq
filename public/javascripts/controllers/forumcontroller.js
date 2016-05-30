@@ -50,7 +50,7 @@ app.controller('ForumUserlistCtrl', ['$scope', 'User', '$timeout', function ($sc
     }
 }]);
 
-app.controller('ForumPublishCtrl', ['$scope', 'Topic','FileUploader', function ($scope, Topic, FileUploader) {
+app.controller('ForumPublishCtrl', ['$scope', 'Topic', 'FileUploader', function ($scope, Topic, FileUploader) {
     $scope.publishItem = {};
     $scope.publishItem.img = [];
     var uploader = $scope.uploader = new FileUploader({
@@ -76,15 +76,15 @@ app.controller('ForumPublishCtrl', ['$scope', 'Topic','FileUploader', function (
         $scope.publishItem.img.splice(this.$index, 1);
     };
     $scope.publishTopic = function () {
-        if(!$scope.publishItem.title||!$scope.publishItem.content){
+        if (!$scope.publishItem.title || !$scope.publishItem.content) {
             Materialize.toast('标题和内容不能为空', 2000);
         }
         else {
             Topic.createTopic(
-                {id:localStorage.$Express$currentUserId},
-                $scope.publishItem,function(){
+                {id: localStorage.$Express$currentUserId},
+                $scope.publishItem, function () {
                     Materialize.toast('发布成功', 2000);
-                },function(){
+                }, function () {
                     Materialize.toast('发布失败', 2000);
                 }
             )
@@ -116,14 +116,14 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
 
     //显示最新
-    $scope.showUpToDate = function (page,search) {
+    $scope.showUpToDate = function (page, search) {
         Topic.find = ({
-            page: page,
-            search: search,
-            filter: {
-                type : 1
-            }
-        }, function(res){
+                page: page,
+                search: search,
+                filter: {
+                    type: 1
+                }
+            }, function (res) {
                 $scope.topics = res;
                 Materialize.toast('已经显示最新', 2000);
             }
@@ -131,14 +131,14 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
 
     //显示最热
-    $scope.showUpToDate = function (page,search) {
+    $scope.showUpToDate = function (page, search) {
         Topic.find = ({
                 page: page,
                 search: search,
                 filter: {
-                    type : 2
+                    type: 2
                 }
-            }, function(res){
+            }, function (res) {
                 $scope.topics = res;
                 Materialize.toast('已经显示最热', 2000);
             }
@@ -146,41 +146,41 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
 
     //得到回复列表
-   $scope.getReply = function () {
+    $scope.getReply = function () {
         //console.log(this);
         //$scope.all = false;
         Topic.replyList({
             id: this.topic.id
         }, function (res) {
             //console.log(res);
-                $scope.replies = res;
+            $scope.replies = res;
         });
     };
 
- //修改标签
+    //修改标签
     $scope.upToDate = function () {
         Topic.updateById({
-            id : this.topic.id
-        },{
-            type : 1
-        },function(){
+                id: this.topic.id
+            }, {
+                type: 1
+            }, function () {
                 Materialize.toast('已经改为最新', 2000);
                 $scope.realType = "最新";
-        },function(){
+            }, function () {
                 Materialize.toast('更改失败', 2000);
-        }
+            }
         )
 
     };
     $scope.hottest = function () {
         Topic.updateById({
-                id : this.topic.id
-            },{
-                type : 2
-            },function(){
+                id: this.topic.id
+            }, {
+                type: 2
+            }, function () {
                 Materialize.toast('已经改为最热', 2000);
-            $scope.realType = "最热";
-            },function(){
+                $scope.realType = "最热";
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
@@ -188,26 +188,26 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
     $scope.select = function () {
         Topic.updateById({
-                id : this.topic.id
-            },{
-                type : 3
-            },function(){
+                id: this.topic.id
+            }, {
+                type: 3
+            }, function () {
                 Materialize.toast('已经改为精选', 2000);
-            $scope.realType = "精选";
-            },function(){
+                $scope.realType = "精选";
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
     };
     $scope.qusetion = function () {
         Topic.updateById({
-                id : this.topic.id
-            },{
-                type : 4
-            },function(){
+                id: this.topic.id
+            }, {
+                type: 4
+            }, function () {
                 Materialize.toast('已经改为提问', 2000);
-            $scope.realType = "提问";
-            },function(){
+                $scope.realType = "提问";
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
@@ -221,7 +221,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
                 id: thisElement.topic.user.id
             }, function () {
                 Materialize.toast('清理该用户话题成功', 2000);
-                getTopic($scope.page,$scope.search.content);
+                getTopic($scope.page, $scope.search.content);
             }, function () {
                 Materialize.toast('清理话题失败！', 2000);
             }
@@ -235,7 +235,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             id: thisElement.topic.id
         }, function () {
             Materialize.toast('删除话题成功！', 2000);
-            getTopic($scope.page,$scope.search.content);
+            getTopic($scope.page, $scope.search.content);
         }, function () {
             Materialize.toast('删除话题失败！', 2000);
         });
@@ -383,13 +383,13 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     //修改标签
     $scope.upToDate = function () {
         Topic.updateById({
-                id : this.usertopics.id
-            },{
-                type : 1
-            },function(){
+                id: this.usertopics.id
+            }, {
+                type: 1
+            }, function () {
                 Materialize.toast('已经改为最新', 2000);
                 $scope.realType = "最新";
-            },function(){
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
@@ -397,13 +397,13 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     };
     $scope.hottest = function () {
         Topic.updateById({
-                id : this.usertopics.id
-            },{
-                type : 2
-            },function(){
+                id: this.usertopics.id
+            }, {
+                type: 2
+            }, function () {
                 Materialize.toast('已经改为最热', 2000);
                 $scope.realType = "最热";
-            },function(){
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
@@ -411,33 +411,31 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
     };
     $scope.select = function () {
         Topic.updateById({
-                id : this.usertopics.id
-            },{
-                type : 3
-            },function(){
+                id: this.usertopics.id
+            }, {
+                type: 3
+            }, function () {
                 Materialize.toast('已经改为精选', 2000);
                 $scope.realType = "精选";
-            },function(){
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
     };
     $scope.qusetion = function () {
         Topic.updateById({
-                id : this.usertopics.id
-            },{
-                type : 4
-            },function(){
+                id: this.usertopics.id
+            }, {
+                type: 4
+            }, function () {
                 Materialize.toast('已经改为提问', 2000);
                 $scope.realType = "提问";
-            },function(){
+            }, function () {
                 Materialize.toast('更改失败', 2000);
             }
         )
 
     };
-
-
 
 
     //清理
@@ -645,31 +643,85 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
         });
     };
 
-    $scope.choseArr = [];//定义数组用于存放前端显示
-    var str = "";//
-    var flag = '';//是否点击了全选，是为a
-    $scope.x = false;//默认未选中
-    $scope.all = function (c, v) {//全选
-        if (c == true) {
-            $scope.x = true;
-            $scope.choseArr = v;
+    $scope.chooseAll = function () {
+        var flag = 0;
+        $scope.noticeList.forEach(function (notice) {
+            if (notice.select == true) {
+                flag++;
+            }
+        });
+        if (flag == $scope.noticeList.length) {
+            $scope.noticeList.forEach(function (notice) {
+                if (notice.select == true) {
+                    notice.select = !notice.select;
+                }
+            });
         } else {
-            $scope.x = false;
-            $scope.choseArr = [""];
+            $scope.noticeList.forEach(function (notice) {
+                if (notice.select == false) {
+                    notice.select = !notice.select;
+                }
+            });
         }
-        flag = 'a';
     };
-    $scope.chk = function (z, x) {//单选或者多选
-        if (flag == 'a') {//在全选的基础上操作
-            str = $scope.choseArr.join();
-        }
-        if (x == true) {//选中
-            str = str + z + ',';
+    $scope.deleteAll = function () {
+        var flag = 0;
+        $scope.noticeList.forEach(function (notice) {
+            if (notice.select == true) {
+                flag++;
+            }
+        });
+        if (flag) {
+            $scope.noticeList.forEach(function (notice) {
+                if (notice.select == true) {
+                    Notice.destroyPublishById({
+                        id: notice.id
+                    }, function () {
+                        Materialize.toast('删除成功！', 2000);
+                        Notice.publish(function (res) {
+                                $scope.noticeList = res;
+                            }
+                        );
+                    }, function () {
+                        Materialize.toast('删除失败！', 2000);
+                    });
+                }
+            })
         } else {
-            str = str.replace(z + ',', '');//取消选中
+            Materialize.toast('请选中至少一条再进行删除', 2000);
         }
-        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
-    };
+        ;
+    }
+    //$scope.choseArr = [];//定义数组用于存放前端显示
+    //var str = "";//
+    //var flag = '';//是否点击了全选，是为a
+    //$scope.x = false;//默认未选中
+    //$scope.all = function (c, v) {//全选
+    //    if (c == true) {
+    //        $scope.x = true;
+    //        $scope.choseArr = v;
+    //    } else {
+    //        $scope.x = false;
+    //        $scope.choseArr = [""];
+    //    }
+    //    flag = 'a';
+    //};
+    //$scope.chk = function (z, x) {//单选或者多选
+    //    if (flag == 'a') {//在全选的基础上操作
+    //        str = $scope.choseArr.join();
+    //    }
+    //    if (x == true) {//选中
+    //        str = str + z + ',';
+    //    } else {
+    //        str = str.replace(z + ',', '');//取消选中
+    //    }
+    //    $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
+    //
+    //};
+    //$scope.deleteAll=function(choseArr){
+    //    console.log($scope.choseArr);
+    //}
+
 
 }]);
 app.controller('ForumBlacklistCtrl', ['$scope', 'User', function ($scope, User) {

@@ -1,31 +1,13 @@
-<div class="container">
-    <div class="margin-top">
-        <table >
-            <tbody >
-            <tr ng-repeat=" icons in iconList" class="">
-                <td style="">
-                <img ng-src="{{icons.ImgSrc}}" style="height:135px;width:125px">
-                </td>
-                <td>
-                    <h5 class="">{{icons.explain}}</h5>
-                </td>
-                <td>
-
-                </td>
-                <td style="font-size: 20px">
-                    <span >{{icons.preName}}</span>
-                </td>
-                <td style="font-size: 25px">
-                    <a >{{icons.numOne}}</a>
-                </td>
-                <td style="font-size: 20px">
-                    <span >{{icons.postName}}</span>
-                </td>
-                <td style="font-size: 25px">
-                    <a >{{icons.numTwo}}</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-       </div>
+<div class="container margin-top"ng-repeat=" icons in iconList"  >
+    <div class="row" >
+        <div class="col s12 m6 l3"><img ng-src="{{icons.ImgSrc}}" style="height: 110px;margin: 7px"></div>
+        <div class="col s12 m6 l3 " style="padding-top: 24px;padding-bottom: 24px;">
+            <h5>{{icons.explain}}</h5></div>
+        <div class="col s12 m6 l3"style="padding-top: 15px;padding-bottom: 24px;font-size: 16px;"><span>{{icons.preName}}</span></div>
+        <div class="col s12 m6 l3 "style="padding-top: 15px;padding-bottom: 24px;font-size: 16px;"><a>{{icons.numOne}}</a></div>
+        <div class="col s12 m6 l3" style="padding-top: 15px;padding-bottom: 24px;font-size: 16px;"><span>{{icons.postName}}</span></div>
+        <div class="col s12 m6 l3 " style="padding-top: 15px;padding-bottom: 24px;font-size: 16px;"><a>{{icons.numTwo}}</a></div>
+        <hr>
+    </div>
+    <hr>
 </div>

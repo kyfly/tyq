@@ -7,24 +7,23 @@
 <hr class="path-line">
 <div class="double-margin-top">
     <div input-field>
-        <input id="name" type="text" style="margin:0" ng-model="publishItem.title" length="20" required>
+        <input id="name" type="text" style="margin:0;width:400px;" ng-model="publishItem.title" length="20" required>
         <label for="name">请输入文章标题</label>
     </div>
     <div class="double-margin-top">
         <h5 class="path">内容</h5>
-        <hr>
         <textarea class="publish_textarea" style="resize: none" ng-model="publishItem.content"></textarea>
     </div>
 </div>
 <div class="" style="padding: 0" >
     <div class="left"style="height:50px;">
         <div class="file-field input-field col s6 margin-top">
-                <a class="btn wave">图片</a>
+                <a class="btn wave waves-light blue">图片</a>
             <input type="file" nv-file-select="" uploader="uploader" style="height: 45px"multiple  />
         </div>
     </div>
     <div class="right margin-top" style="height: 50px;">
-        <a class="btn wave right" ng-click="publishTopic()" style="height: 42px">发布</a>
+        <a class="btn wave right waves-light blue" ng-click="publishTopic()" style="height: 42px;">发布</a>
     </div>
 </div>
 <table class="table">
@@ -49,10 +48,10 @@
         </td>
         <td></td>
         <td class="right">
-            <button type="button" class="btn right " ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+            <button type="button" class="btn right margin-top waves-light blue" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
                 <span class=""></span> 上传
             </button>
-            <button type="button" class="btn margin-top right" ng-click="myremove()">
+            <button type="button" class="btn margin-top right waves-light blue" ng-click="myremove()">
                 <span class=""></span> 移除
             </button>
         </td>
