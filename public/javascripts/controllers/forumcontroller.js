@@ -322,6 +322,7 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
     };
     $scope.delete = function () {
         var flag = 0;
+        var success=0;
         $scope.topics.content.forEach(function (topic) {
             if (topic.select == true) {
                 flag++;
@@ -335,12 +336,12 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
                         id: topic.id
                     }, function () {
                         Materialize.toast('删除话题成功！', 2000);
-                        getTopic($scope.page, $scope.search.content);
                     }, function () {
                         Materialize.toast('删除话题失败！', 2000);
                     });
                 }
             })
+            getTopic($scope.page, $scope.search.content);
         }
         else {
             Materialize.toast('请选中至少一条再进行删除', 2000);
@@ -572,12 +573,13 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
                         id: usertopic.id
                     }, function () {
                         Materialize.toast('删除话题成功！', 2000);
-                        getTopic($scope.page, $scope.search.content);
+
                     }, function () {
                         Materialize.toast('删除话题失败！', 2000);
                     });
                 }
             })
+            getTopic($scope.page, $scope.search.content);
         }
         else {
             Materialize.toast('请选中至少一条再进行删除', 2000);
@@ -654,10 +656,7 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
             id: thisNotice.id
         }, function () {
             Materialize.toast('删除成功！', 2000);
-            Notice.publish(function (res) {
-                    $scope.noticeList = res;
-                }
-            );
+            get();
         }, function () {
             Materialize.toast('删除失败！', 2000);
         });
@@ -698,15 +697,12 @@ app.controller('ForumNoticeCtrl', ['$scope', 'Notice', '$stateParams', function 
                         id: notice.id
                     }, function () {
                         Materialize.toast('删除成功！', 2000);
-                        Notice.publish(function (res) {
-                                $scope.noticeList = res;
-                            }
-                        );
                     }, function () {
                         Materialize.toast('删除失败！', 2000);
                     });
                 }
             })
+            get();
         } else {
             Materialize.toast('请选中至少一条再进行删除', 2000);
         }
