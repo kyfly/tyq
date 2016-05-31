@@ -16,9 +16,9 @@
             <thead class="dark-grey-text">
             <tr>
                 <th class="choose-row">
-                    <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                           ng-click="all(master,topics)">
-                    <label for="topic-top" id="chose_all"></label>
+                    <input type="checkbox" class="filled-in" id="all"
+                           ng-click="chooseAll()">
+                    <label for="all" ></label>
                 </th>
                 <th style="padding-left: 20px">
                     <a ng-class="{'dark-grey-text':darkGreyText,'blue-text':blueText}" href="" ng-click="showUpToDate()">最新</a>
@@ -32,7 +32,7 @@
             <tr ng-repeat="topic in topics.content">
                 <td class="topic-checkbox-td">
                     <input type="checkbox" id="{{topic.id}}" class="filled-in"
-                           ng-model="x" ng-checked="master" ng-click="chk(topic,x)">
+                           ng-model="topic.select" ng-init="topic.select=false">
                     <label for="{{topic.id}}"></label>
                 </td>
                 <td style="padding:0;">
@@ -135,9 +135,6 @@
                                       ng-show="this.topic.state.locked">解锁 | </span>
                                 <span ng-click="topicDelete()" class="dark-grey-text cursor-pointer">删除</span>
                             </span>
-
-
-
                         </li>
                     </ul>
                 </td>

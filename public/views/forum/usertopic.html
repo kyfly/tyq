@@ -15,9 +15,9 @@
             <thead class="dark-grey-text">
             <tr>
                 <th class="choose-row">
-                    <input type="checkbox" class="filled-in" id="topic-top" ng-model="master"
-                           ng-click="all(master,usertopics)">
-                    <label for="topic-top" id="chose_all"></label>
+                    <input type="checkbox" class="filled-in" id="all"
+                           ng-click="chooseAll()">
+                    <label for="all" ></label>
                 </th>
                 <th style="padding-left: 20px">用户个人话题列表</th>
             </tr>
@@ -26,7 +26,7 @@
             <tr ng-repeat="usertopic in usertopics.content">
                 <td class="topic-checkbox-td">
                     <input type="checkbox" id="{{usertopic.id}}" class="filled-in"
-                           ng-model="x" ng-checked="master" ng-click="chk(usertopic,x)">
+                           ng-model="usertopic.select" ng-init="usertopic.select=false">
                     <label for="{{usertopic.id}}"></label>
                 </td>
                 <td style="padding:0;">

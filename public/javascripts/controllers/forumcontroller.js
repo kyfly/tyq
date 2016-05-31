@@ -299,42 +299,53 @@ app.controller('ForumTopicCtrl', ['$scope', 'Topic', 'User', function ($scope, T
             });
         }
     };
-
-    $scope.choseArr = [];//定义数组用于存放前端显示
-    var str = "";//
-    var flag = '';//是否点击了全选，是为a
-    $scope.x = false;//默认未选中
-    $scope.all = function (c, v) {//全选
-        if (c == true) {
-            $scope.x = true;
-            $scope.choseArr = v;
+    $scope.chooseAll = function () {
+        var flag = 0;
+        $scope.topics.content.forEach(function (topic) {
+            if (topic.select == true) {
+                flag++;
+            }
+        });
+        if (flag == $scope.topics.content.length) {
+            $scope.topics.content.forEach(function (topic) {
+                if (topic.select == true) {
+                    topic.select = !topic.select;
+                }
+            });
         } else {
-            $scope.x = false;
-            $scope.choseArr = [""];
-        }
-        flag = 'a';
-    };
-    $scope.chk = function (z, x) {//单选或者多选
-        if (flag == 'a') {//在全选的基础上操作
-            str = $scope.choseArr.join();
-        }
-        if (x == true) {//选中
-            str = str + z + ',';
-        } else {
-            str = str.replace(z + ',', '');//取消选中
-        }
-        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
-    };
-    $scope.delete = function () {// 操作CURD
-        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
-            Materialize.toast("请至少选中一条数据再操作!", 2000);
-            return;
-        }
-        for (var i = 0; i < $scope.choseArr.length; i++) {
-            //alert($scope.choseArr[i]);
-            console.log($scope.choseArr[i]);//遍历选中的id
+            $scope.topics.content.forEach(function (topic) {
+                if (topic.select == false) {
+                    topic.select = !topic.select;
+                }
+            });
         }
     };
+    $scope.delete = function () {
+        var flag = 0;
+        $scope.topics.content.forEach(function (topic) {
+            if (topic.select == true) {
+                flag++;
+            }
+            console.log(topic.id);
+        });
+        if (flag) {
+            $scope.topics.content.forEach(function (topic) {
+                if (topic.select == true) {
+                    Topic.destroyById({
+                        id: topic.id
+                    }, function () {
+                        Materialize.toast('删除话题成功！', 2000);
+                        getTopic($scope.page, $scope.search.content);
+                    }, function () {
+                        Materialize.toast('删除话题失败！', 2000);
+                    });
+                }
+            })
+        }
+        else {
+            Materialize.toast('请选中至少一条再进行删除', 2000);
+        }
+    }
 }]);
 
 //用户个人话题
@@ -525,45 +536,54 @@ app.controller('ForumUsertopicCtrl', ['$scope', 'Topic', 'User', '$stateParams',
             });
         }
     };
-
-
-    $scope.choseArr = [];//定义数组用于存放前端显示
-    var str = "";//
-    var flag = '';//是否点击了全选，是为a
-    $scope.x = false;//默认未选中
-    $scope.all = function (c, v) {//全选
-        if (c == true) {
-            $scope.x = true;
-            $scope.choseArr = v;
+    $scope.chooseAll = function () {
+        var flag = 0;
+        $scope.usertopics.content.forEach(function (usertopic) {
+            if (usertopic.select == true) {
+                flag++;
+            }
+        });
+        if (flag == $scope.usertopics.content.length) {
+            $scope.usertopics.content.forEach(function (usertopic) {
+                if (usertopic.select == true) {
+                    usertopic.select = !usertopic.select;
+                }
+            });
         } else {
-            $scope.x = false;
-            $scope.choseArr = [""];
-        }
-        flag = 'a';
-    };
-    $scope.chk = function (z, x) {//单选或者多选
-        if (flag == 'a') {//在全选的基础上操作
-            str = $scope.choseArr.join();
-        }
-        if (x == true) {//选中
-            str = str + z + ',';
-        } else {
-            str = str.replace(z + ',', '');//取消选中
-        }
-        $scope.choseArr = (str.substr(0, str.length - 1)).split(',');
-    };
-    $scope.delete = function () {// 操作CURD
-        if ($scope.choseArr[0] == "" || $scope.choseArr.length == 0) {//没有选择一个的时候提示
-            Materialize.toast("请至少选中一条数据再操作!", 2000);
-            return;
-        }
-        for (var i = 0; i < $scope.choseArr.length; i++) {
-            //alert($scope.choseArr[i]);
-            console.log($scope.choseArr[i]);//遍历选中的id
+            $scope.usertopics.content.forEach(function (usertopic) {
+                if (usertopic.select == false) {
+                    usertopic.select = !usertopic.select;
+                }
+            });
         }
     };
+    $scope.delete = function () {
+        var flag = 0;
+        $scope.usertopics.content.forEach(function (usertopic) {
+            if (usertopic.select == true) {
+                flag++;
+            }
+          console.log(usertopic.id);
+        });
+        if (flag) {
+            $scope.usertopics.content.forEach(function (usertopic) {
+                if (usertopic.select == true) {
+                    Topic.destroyById({
+                        id: usertopic.id
+                    }, function () {
+                        Materialize.toast('删除话题成功！', 2000);
+                        getTopic($scope.page, $scope.search.content);
+                    }, function () {
+                        Materialize.toast('删除话题失败！', 2000);
+                    });
+                }
+            })
+        }
+        else {
+            Materialize.toast('请选中至少一条再进行删除', 2000);
+        }
+    }
 }]);
-
 
 app.controller('ForumNoticeEditCtrl', ['$scope', 'Notice', '$stateParams', '$location', function ($scope, Notice, $stateParams, $location) {
     console.log($stateParams.id);
